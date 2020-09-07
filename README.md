@@ -1,8 +1,5 @@
 # Oasis Borrow/Save
 
-[![Build Status][build]][build-url]
-[![Coverage Status][cover]][cover-url]
-
 ## The official Maker dapp for managing Vaults and generating Dai
 
 ### Prerequisites
