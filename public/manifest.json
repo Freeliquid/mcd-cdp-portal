@@ -1,6 +1,6 @@
 {
-  "short_name": "Oasis",
-  "name": "Oasis",
+  "short_name": "Freeliquid",
+  "name": "Freeliquid",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,6 +10,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#fff",
+  "background_color": "#191E2B"
 }
