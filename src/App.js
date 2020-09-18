@@ -8,7 +8,6 @@ import { hot } from 'react-hot-loader/root';
 import { GenericNotFound } from 'pages/NotFound';
 import theme from 'styles/theme';
 import routes from './routes';
-import { gaInit, mixpanelInit, fathomInit } from './utils/analytics';
 import LoadingLayout from 'layouts/LoadingLayout';
 import ErrorBoundary from './ErrorBoundary';
 import debug from 'debug';
@@ -24,25 +23,6 @@ const navigation = createBrowserNavigation({
 });
 
 function App() {
-  useEffect(() => {
-    const reactGa = gaInit(navigation);
-    const mixpanel = mixpanelInit(navigation);
-    fathomInit();
-
-    navigation.subscribe(route => {
-      if (route.type === 'ready') {
-        log(`[Mixpanel] Tracked: ${route.title}`);
-        mixpanel.track('Pageview', { routeName: route.title });
-
-        log(`[GA] Tracked pageview: ${route.url.href}`);
-        reactGa.pageview(route.url.href);
-
-        log(`[Fathom] Tracked pageview: ${route.url.href}`);
-        window.fathom('trackPageview');
-      }
-    });
-  }, []);
-
   return (
     <Body>
       <NotFoundBoundary render={GenericNotFound}>
