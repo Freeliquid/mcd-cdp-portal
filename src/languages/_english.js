@@ -17,16 +17,27 @@ export default {
     // "outstanding_debt": "Outstanding debt",
     // "wallet_balance": "wallet balance",
     tx_history: 'Vault history',
-    outstanding_dai_debt: 'Outstanding Dai debt',
+    outstanding_dai_debt: 'Outstanding USDL debt',
     not_applicable: 'N/A'
   },
   landing_page: {
     meta: {
-      title: 'Oasis.app',
+      title: 'Freeliquid.io',
       description:
-        'Trade, Borrow and Save using Dai. Place orders on the marketplace using Trade, generate Dai, a stablecoin pegged to 1 USD, on Borrow and earn savings on your Dai using Save. All on Oasis.app.'
+        'Borrow and Save using USDL. Place orders on the marketplace using Trade, generate USDL, a stablecoin pegged to 1 USD, on Borrow and earn savings on your USDL using Save. All on Freeliquid.io.'
     },
-    headline: 'Trade, borrow, and save using Dai',
+    title:'Freeliquid',
+    usdl_title:'USDL - as long as your own liquidity is provided for you passive earnings',
+    usdl_desc:'Use up to 90% of your pools funds',
+    block1_text:'Freeliquid makes it easy to create a stablecoin for free by collateralizing pools with DAI, USDT, USDC, USDN',
+    block1_text2:'USDL is a fully decentralized, censorship-resistant stablecoin available to any liquidity provider',
+    block3_title:'Derivative giving even greater financial freedom',
+    block3_text:'A price-stable currency that you control. Get USDL instantly on your terms.',
+    block4_title:'Decentralized governance',
+    block4_text:'The work with USDL is provided by smart contracts. It is run by a decentralized community of FL token holders.',
+    block5_title:'Community',
+    block5_text:'Learn more about Freeliquid, connect with the team and other community members, and share your perspective on the future of DeFi.',
+    headline: 'Borrow and save using USDL',
     trade_card: {
       title: 'Trade',
       description:
@@ -36,78 +47,78 @@ export default {
     borrow_card: {
       title: 'Borrow',
       description:
-        'Lock your tokens as collateral to generate Dai, a decentralized stablecoin soft-pegged to 1 USD.',
-      button: 'Borrow Dai'
+        'Lock your tokens as collateral to generate USDL, a decentralized stablecoin soft-pegged to 1 USD.',
+      button: 'Borrow USDL'
     },
     save_card: {
       title: 'Save',
       description:
-        'Earn savings on your Dai by locking it into Oasis Save. Automatic and non-custodial.',
-      button: 'Save Dai'
+        'Earn savings on your USDL by locking it into Freeliquid Save. Automatic and non-custodial.',
+      button: 'Save USDL'
     },
     token_section_title: 'Supported Tokens',
-    token_section_only_on_trade: 'Only available on Oasis Trade',
-    section1_title: 'What is Oasis?',
+    token_section_only_on_trade: 'Only available on Freeliquid Trade',
+    section1_title: 'What is Freeliquid?',
     section1_p:
-      'Oasis is a platform for decentralized finance. Use it to exchange tokens, borrow Dai and earn savings — all in one place.',
+      'Freeliquid is a platform for decentralized finance. Use it to exchange tokens, borrow USDL and earn savings — all in one place.',
     section2_title: 'Secure protocol built on Ethereum',
     section2_p:
-      'Oasis is built on top of audited and formally verified smart contracts created by Maker, the industry leader in secure decentralized finance.',
+      'Freeliquid is built on top of audited and formally verified smart contracts created by Maker, the industry leader in secure decentralized finance.',
     section3_title: 'Completely permissionless',
     section3_p:
-      'You—and only you—control your assets. Oasis is a decentralized, non-custodial platform, accessible using an Ethereum-supported wallet.',
+      'You—and only you—control your assets. Freeliquid is a decentralized, non-custodial platform, accessible using an Ethereum-supported wallet.',
     questions_title: 'Questions',
-    question1: 'What is Oasis?',
+    question1: 'What is Freeliquid?',
     answer1:
-      'Oasis is a decentralized application that runs on the Ethereum blockchain. Anyone can use Oasis to trade tokens, borrow against them, and earn savings using Dai.',
-    question2: 'What is Dai?',
+      'Freeliquid is a decentralized application that runs on the Ethereum blockchain. Anyone can use Freeliquid to trade tokens, borrow against them, and earn savings using USDL.',
+    question2: 'What is USDL?',
     answer2:
-      'Dai is the world’s first unbiased currency and leading decentralized stablecoin soft-pegged to the US Dollar. Learn more about Dai {0}.',
+      'USDL is the world’s first unbiased currency and leading decentralized stablecoin soft-pegged to the US Dollar. Learn more about USDL {0}.',
     answer2_link1_url: 'https://makerdao.com/en/',
     answer2_link1_text: 'here',
     question3: 'Do I need an account?',
     answer3:
-      'You do not need an account to use Oasis. However, you will need an Ethereum wallet. Oasis supports most Ethereum browser wallets such as {0}, {1}, etc.',
+      'You do not need an account to use Freeliquid. However, you will need an Ethereum wallet. Freeliquid supports most Ethereum browser wallets such as {0}, {1}, etc.',
     answer3_link1_url: 'https://metamask.io/',
     answer3_link1_text: 'Metamask',
     answer3_link2_url: 'https://wallet.coinbase.com/',
     answer3_link2_text: 'Coinbase Wallet',
-    question4: 'Is Oasis secure?',
+    question4: 'Is Freeliquid secure?',
     answer4:
-      'Security is our top priority. The Oasis team regularly conducts audits on our smart contracts. In addition, the Oasis code is {0}, giving the community the ability to pressure test and audit the core technology.',
-    answer4_link1_url: 'https://github.com/OasisDEX',
+      'Security is our top priority. The Freeliquid team regularly conducts audits on our smart contracts. In addition, the Freeliquid code is {0}, giving the community the ability to pressure test and audit the core technology.',
+    answer4_link1_url: 'https://github.com/FreeliquidDEX',
     answer4_link1_text: 'open-source',
-    question5: 'Will I be charged a fee to use Oasis?',
+    question5: 'Will I be charged a fee to use Freeliquid?',
     answer5:
-      'Oasis is free to use. However, you will have to pay gas and other fees associated with the Maker Protocol, such as Stability Fees.',
-    question6: 'How can I contact the Oasis team?',
-    answer6: 'You can reach the Oasis team by contacting us on {0}.',
+      'Freeliquid is free to use. However, you will have to pay gas and other fees associated with the Maker Protocol, such as Stability Fees.',
+    question6: 'How can I contact the Freeliquid team?',
+    answer6: 'You can reach the Freeliquid team by contacting us on {0}.',
     answer6_link1_url: 'https://chat.makerdao.com',
     answer6_link1_text: 'chat',
     question7:
-      'Can I buy Bitcoin or Ethereum on Oasis using a credit card or via my bank account?',
+      'Can I buy Bitcoin or Ethereum on Freeliquid using a credit card or via my bank account?',
     answer7:
-      'You cannot buy crypto from your bank account using Oasis. Instead, you can use Dai to buy Ethereum and other supported tokens.',
+      'You cannot buy crypto from your bank account using Freeliquid. Instead, you can use USDL to buy Ethereum and other supported tokens.',
     read_only: 'Read-Only',
     wallet_connect: 'Wallet Connect',
     wallet_link: 'Coinbase Wallet'
   },
   borrow_landing: {
     meta: {
-      title: 'Oasis Borrow',
+      title: 'Freeliquid Borrow',
       description:
-        "Put your assets to work. Maker Vaults on Oasis Borrow make it easy to utilize your collateral by generating Dai against it. Realize liquidity through a Vault and ensure you don't lose long exposure to your collateral."
+        "Lock your liquidity pools as collateral to generate USDL, a decentralized stablecoin soft-pegged to 1 USD."
     },
-    page_name: 'Oasis Borrow',
-    headline: 'Put your assets to work',
+    page_name: 'Freeliquid Borrow',
+    headline: 'Extra assets for work',
     subheadline:
-      "Vaults make it easy to utilize your collateral by generating Dai against it. Realize liquidity through a vault and ensure you don't lose long exposure to your collateral.",
+      "Vaults make it easy to utilize your collateral by generating USDL against it. Realize liquidity through a vault and ensure you don't lose long exposure to your collateral.",
     connect_to_start: 'To open or manage a Vault, connect a crypto wallet.',
-    wbtc_notice: 'Bitcoin can now be used to open a Vault and generate Dai.',
+    wbtc_notice: 'Bitcoin can now be used to open a Vault and generate USDL.',
     quotes_block: {
       title: 'Maximize your opportunity',
       body:
-        'Seize opportunity and capitalize on future crypto asset prices. Use your generated DAI to create a multiplied position on any asset, increasing your exposure.',
+        'Seize opportunity and capitalize on future crypto asset prices. Use your generated USDL to create a multiplied position on any asset, increasing your exposure.',
       quote1:
         'Back in Sep 2018, I was looking for a place to maximize my ETH holdings. Selling was not an option, so opening a Vault was perfect for me. After locking up my ETH I was going leverage long in two transactions.',
       author1: 'Vault 2434'
@@ -116,12 +127,12 @@ export default {
     calc_subheading:
       'To see how much liquidity you can get right now, enter your desired collateral type',
     calc_dai_available:
-      'Up to {amount} Dai is available for you to generate right now',
+      'UP TO {amount} USDL is available for you to generate right now',
     calc_footnote:
-      'The above figure assumes a Collateralization Ratio of {ratio}%',
+      'The above figure assumes a Collateralization Ratio of 110%',
     feature1_heading: 'Flexible repayment and terms',
     feature1_content:
-      'Vaults are open-ended, meaning no fixed repayment schedules. Pay back or generate Dai when it suits you.',
+      'Vaults are open-ended, meaning no fixed repayment schedules. Pay back or generate USDL when it suits you.',
     feature2_heading: 'Secure and easy to use',
     feature2_content:
       'A simple interface that allows you to manage your Vault. No middleman or third party controls your funds.',
@@ -135,28 +146,25 @@ export default {
     questions: {
       question1: 'What assets can I use as collateral?',
       answer1:
-        'Currently, Oasis Borrow supports ETH, BAT, USDC and WBTC. There are plans for more types of collateral, and in some cases there can be multiple versions of the same collateral type with different risk parameters. You can read the Collateral On-boarding Guide for the Maker Protocol to find out more.',
+        'Currently, Freeliquid Borrow supports Uniswap and Mooniswap pools: USDT/USDC, USDT/USDN, USDT/DAI, USDC/USDN, USDC/DAI, USDN/DAI. There are plans for more types of collateral.',
       question2: 'How much does it cost?',
       answer2:
-        'The costs of generating Dai against collateral varies depending on the collateral, and the risk profile. When generating Dai against collateral, you will be charged a Stability Fee, which is shown as an annualised rate against your outstanding debt. This is calculated per second, and is automatically added to your total debt amount. There are also other fees associated with the Maker Protocol, including a Liquidation Penalty added in the event of a liquidation and each the user will have to pay Gas Fees with each transaction submitted.',
-      question3: 'What happens if my Vault goes below the Liquidation Price?',
+        'The costs of generating USDL against collateral varies depending on the collateral, and the risk profile. There are also other fees associated with the Freeliquid Protocol, including a Liquidation Penalty added in the event of a liquidation and each the user will have to pay Gas Fees with each transaction submitted.',
+      question3:
+        "What if I don't have a supported collateral, how can I get USDL?",
       answer3:
-        'If your Vault falls below your stated Liquidation Price, meaning it is now below the Minimum Collateralisation Ratio, then your Vault becomes at risk of liquidation. This means that keepers of the system can put your collateral up for auction and sell it to cover your outstanding debt, stability fees, and the Liquidation Penalty. If your vault has any collateral remaining at the end of auction (i.e., the auction proceeds covered your debt and fees and collateral remains), this will be returned to you. Please note that there is no guarantee that your collateral will be sold for the current market price and the amount of collateral, if any, that may revert back to you cannot be known until the auction has ended.',
-      question4:
-        "What if I don't have a supported collateral, how can I get Dai?",
-      answer4:
-        "If you don't have any of the supported collateral types, then you cannot use Oasis Borrow to generate Dai. You can still get Dai, but you would need to use an exchange to trade your collateral for Dai. You can check Oasis Trade which supports more collateral types.",
+        "If you don't have any of the supported collateral types, then you cannot use Freeliquid Borrow to generate USDL. You can still get USDL, but you would need to use an exchange to trade your collateral for USDL. You can check Freeliquid Trade which supports more collateral types.",
       question5: 'Do the rates and fees change, and if so how often?',
       answer5:
         "Yes, the fees, including Stability Fees and Liquidation Penalties are set by Maker Governance. These can be changed at any time due to continuous governance nature of the Maker Protocol. You can see more about Governance of the Maker Protocol at vote.makerdao.com. For Gas Fee's, these are determined by the activity on the Ethereum Network. In most cases, you have the option to set your Gas Fee, but if the network is busy, you will have to pay more for your transactions to go through in a timely manner.",
-      bottom_link1: 'Full list of Oasis Vault FAQs',
+      bottom_link1: 'Full list of Freeliquid Vault FAQs',
       bottom_link2: 'Glossary of terms'
     }
   },
   borrow_wbtc_landing: {
-    headline: 'How to use Bitcoin to generate Dai',
+    headline: 'How to use Bitcoin to generate USDL',
     subheadline:
-      'Bitcoin can now be used to open a vault and generate Dai through wBTC, a bridge that brings bitcoin to the ethereum blockchain.',
+      'Bitcoin can now be used to open a vault and generate USDL through wBTC, a bridge that brings bitcoin to the ethereum blockchain.',
     about_title: 'About WBTC',
     about_content:
       "Wrapped Bitcoin (wBTC) acts a bridge to bring BTC to the ethereum blockchain. It's the first ERC20 token backed 1:1 with Bitcoin.",
@@ -172,14 +180,14 @@ export default {
     step4: 'Send your WBTC to a compatible wallet',
     step4_details:
       'Send your wBTC to Metamask, Ledger, Trezor, or a compatible ERC20 wallet',
-    step5: 'Create a WBTC Vault to Generate Dai',
+    step5: 'Create a WBTC Vault to Generate USDL',
     step5_details:
-      'Navigate to {link} and open your vault with wBTC as collateral and generate your new Dai',
-    step5_link_text: 'Oasis.app/borrow'
+      'Navigate to {link} and open your vault with wBTC as collateral and generate your new USDL',
+    step5_link_text: 'Freeliquid.io/borrow'
   },
   borrow_markets: {
     meta: {
-      title: 'Oasis Borrow - Markets'
+      title: 'Freeliquid Borrow - Markets'
     },
     heading: 'Borrow Markets',
     subheading:
@@ -188,115 +196,115 @@ export default {
   },
   save_landing: {
     meta: {
-      title: 'Oasis Save',
+      title: 'Freeliquid Save',
       description:
-        'The most trusted way to earn on your Dai. Anyone with an internet connection can deposit DAI, and earn savings instantly. No fees. No minimums. No speculation.'
+        'The most trusted way to earn on your USDL. Anyone with an internet connection can deposit USDL, and earn savings instantly. No fees. No minimums. No speculation.'
     },
-    page_name: 'Oasis Save',
-    headline: 'The most trusted way to earn on your Dai',
+    page_name: 'Freeliquid Save',
+    headline: 'The most trusted way to earn on your USDL',
     subheadline:
-      'Anyone with an internet connection can deposit DAI, and earn savings instantly. No fees. No minimums. No speculation.',
+      'Earn savings on your USDL by locking it into Freeliquid Save. Automatic and non-custodial.',
     connect_to_start:
       'To open or manage your savings, connect a crypto wallet.',
     quotes_block: {
-      title: 'Earn a Dai Savings Rate',
+      title: 'Earn a USDL Savings Rate',
       body:
-        'Oasis Save helps you stay patient while waiting out volatile market conditions, allowing you to confidently capture steady, predictable earnings.',
+        'Freeliquid Save helps you stay patient while waiting out volatile market conditions, allowing you to confidently capture steady, predictable earnings.',
       quote1:
-        'When there was too much risk and volatility in the markets I decided to trade for DAI and deposit it in Oasis Save. It gave me peace of mind because I knew what my return would be, no more sleepless nights worrying about flash crashes',
-      author1: 'Oasis Save User'
+        'When there was too much risk and volatility in the markets I decided to trade for USDL and deposit it in Freeliquid Save. It gave me peace of mind because I knew what my return would be, no more sleepless nights worrying about flash crashes',
+      author1: 'Freeliquid Save User'
     },
     calc_heading: 'How much can I earn?',
     calc_subheading:
-      'To see how much savings you could earn at the current Dai Savings Rate simply input how much Dai you would like to deposit and select your desired time.',
+      'To see how much savings you could earn at the current USDL Savings Rate simply input how much USDL you would like to deposit and select your desired time.',
     calc_initial: 'Initial deposit',
     calc_contribution: 'Monthly contribution',
     calc_how_long: 'How long would you like to save for?',
-    calc_savings_earned: 'Amount of savings earned on your Dai',
-    calc_total_dai: 'Total Dai you will have',
+    calc_savings_earned: 'Amount of savings earned on your USDL',
+    calc_total_dai: 'Total USD you will have',
     calc_footnote:
-      'The above figure assumes an average Dai Savings Rate of {dsr}%',
+      'The above figure assumes an average USD Savings Rate of {dsr}%',
     feature1_heading: 'A smarter, better money',
     feature1_content:
-      'Manage your savings from anywhere, at anytime. Oasis is a decentralized application meaning that you are the only person that controls it.',
+      'Manage your savings from anywhere, at anytime. Freeliquid is a decentralized application meaning that you are the only person that controls it.',
     feature2_heading: 'Less volatility, no uncertainty',
     feature2_content:
-      'Dai is designed to be stable, just like cash. Stay in the crypto ecosystem without the volatility.',
+      'USDL is designed to be stable, just like cash. Stay in the crypto ecosystem without the volatility.',
     feature3_heading: 'Honest and transparent rate',
     feature3_content:
-      'The Dai Savings Rate is governed by MKR holders and is set based on the supply and demand of Dai on exchanges.',
+      'The USDL Savings Rate is governed by FL holders and is set based on the supply and demand of USDL on exchanges.',
     feature4_heading: 'Secure from the ground up',
     feature4_content:
-      'Oasis regularly undergoes security audits and checks. Built by the developers of the MakerDAO protocol.',
+      'Freeliquid regularly undergoes security audits and checks. Built by the developers of the MakerDAO protocol.',
     questions: {
-      question1: 'How is the Dai Savings Rate determined?',
+      question1: 'How is the USDL Savings Rate determined?',
       answer1:
-        'The Dai Savings Rate is determined through governance of the Maker Protocol by MKR token holders. The rate which is chosen based on a number of parameters including, but not limited to the current supply and demand of Dai, and the current stability fees charged on Vaults.',
-      question2: 'Where does the earned Dai come from?',
+        'The USDL Savings Rate is determined through governance of the Maker Protocol by FL token holders. The rate which is chosen based on a number of parameters including, but not limited to the current supply and demand of USDL, and the current stability fees charged on Vaults.',
+      question2: 'Where does the earned USDL come from?',
       answer2:
-        'The earnings you receive from the Dai Savings Rate come directly from the Maker Protocol. Your Dai is never leant out, instead Dai is taken from the Maker Protocol where it charges fees for generating Dai from Vaults (known as Stability Fees).',
-      question3: 'How much does it cost to use the Dai Savings Rate?',
+        'The earnings you receive from the USDL Savings Rate come directly from the Maker Protocol. Your USDL is never leant out, instead USDL is taken from the Maker Protocol where it charges fees for generating USDL from Vaults (known as Stability Fees).',
+      question3: 'How much does it cost to use the USDL Savings Rate?',
       answer3:
-        "There are no fees to pay for using the Dai Savings Rate other than the transaction, or Gas, fee's for using the Ethereum Network. The actual costs of these transaction fees varies depending on how busy the network is.",
-      question4: 'Can anyone else withdraw my Dai after I deposited it?',
+        "There are no fees to pay for using the USDL Savings Rate other than the transaction, or Gas, fee's for using the Ethereum Network. The actual costs of these transaction fees varies depending on how busy the network is.",
+      question4: 'Can anyone else withdraw my USDL after I deposited it?',
       answer4:
-        "No. Providing you don't share your wallet or private key with anyone else, only you are able to control and access the Dai deposited into Oasis Save. For this reason, it is also very important to backup your wallet, as there is no way to return your Dai if you lose access to your wallet.",
+        "No. Providing you don't share your wallet or private key with anyone else, only you are able to control and access the USDL deposited into Freeliquid Save. For this reason, it is also very important to backup your wallet, as there is no way to return your USDL if you lose access to your wallet.",
       question5: 'What are the risks involved?',
       answer5:
-        'As with all forms of digital, online technology, there is a risk of bugs and errors with the code. The Maker Protocol smart contracts, which run the Dai Savings Rate, have been through thorough testing, and multiple third party audits to address these risks. The biggest risk is often down to you and how you control your wallet - you should ensure you never share your private key or seed phrase with anyone else, and always make sure you keep a secure backup in case you need to restore your wallet in the future.',
-      bottom_link1: 'Full list of Oasis Save FAQs'
+        'As with all forms of digital, online technology, there is a risk of bugs and errors with the code. The Maker Protocol smart contracts, which run the USDL Savings Rate, have been through thorough testing, and multiple third party audits to address these risks. The biggest risk is often down to you and how you control your wallet - you should ensure you never share your private key or seed phrase with anyone else, and always make sure you keep a secure backup in case you need to restore your wallet in the future.',
+      bottom_link1: 'Full list of Freeliquid Save FAQs'
     }
   },
   trade_landing: {
     meta: {
-      title: 'Oasis Trade',
+      title: 'Freeliquid Trade',
       description:
-        'Peer to peer, decentralised crypto trading. Oasis Trade allows you to create orders where you set the Price. Using either Limit Orders or Average Price Fill or Kill, you set the price so you know you won’t pay more than you expect.'
+        'Peer to peer, decentralised crypto trading. Freeliquid Trade allows you to create orders where you set the Price. Using either Limit Orders or Average Price Fill or Kill, you set the price so you know you won’t pay more than you expect.'
     },
-    page_name: 'Oasis Trade',
+    page_name: 'Freeliquid Trade',
     headline: 'Peer to peer crypto trading',
     subheadline:
-      'Oasis Trade is a decentralized, zero-fee token exchange with limit order support and quick token swap.',
-    cta_button: 'Open Oasis Trade',
+      'Freeliquid Trade is a decentralized, zero-fee token exchange with limit order support and quick token swap.',
+    cta_button: 'Open Freeliquid Trade',
     quotes_block: {
       title: 'Place orders at the price you set',
       body:
-        'Oasis Trade allows you to create orders where you set the Price. Using either Limit Orders or Average Price Fill or Kill, you set the price and slippage limit so you know you won’t pay more than you expect.',
+        'Freeliquid Trade allows you to create orders where you set the Price. Using either Limit Orders or Average Price Fill or Kill, you set the price and slippage limit so you know you won’t pay more than you expect.',
       quote1:
-        "When I am looking to make trades, I always come back to Oasis because I know it's where I can get the best price. Not to mention not having to deal with all the hassles of the legacy financial system., wiring funds back and forth from place to place.",
-      author1: 'Oasis Trade User '
+        "When I am looking to make trades, I always come back to Freeliquid because I know it's where I can get the best price. Not to mention not having to deal with all the hassles of the legacy financial system., wiring funds back and forth from place to place.",
+      author1: 'Freeliquid Trade User '
     },
     feature1_heading: 'Liquidity and decentralization',
     feature1_content:
       'Get the price you want with low slippage. Anyone with a supported ethereum wallet can trade.',
     feature2_heading: 'Increase exposure with Multiply',
     feature2_content:
-      'A simple interface that allows you to open and manage your Multiplied Position with direct access to the Oasis Market.',
+      'A simple interface that allows you to open and manage your Multiplied Position with direct access to the Freeliquid Market.',
     feature3_heading: 'Quickly swap tokens',
     feature3_content:
-      'Oasis Trade permits you to get in and out of positions quickly, for a price you select and you only pay Gas Fees.',
+      'Freeliquid Trade permits you to get in and out of positions quickly, for a price you select and you only pay Gas Fees.',
     feature4_heading: 'Non-custodial',
     feature4_content:
-      'Oasis never touches or handles your tokens as all trades are settled within the contract. You are always in control of your funds.',
+      'Freeliquid never touches or handles your tokens as all trades are settled within the contract. You are always in control of your funds.',
     questions: {
-      question1: 'Do I have to pay any fees for using Oasis Trade?',
+      question1: 'Do I have to pay any fees for using Freeliquid Trade?',
       answer1:
-        "The only fee's that apply to Oasis Trade are fees for Gas. These are the fees you pay to use and interact with the Ethereum Blockchain. These fee's vary based on how busy the Ethereum network is, and how quickly you would like transaction to be processed.",
+        "The only fee's that apply to Freeliquid Trade are fees for Gas. These are the fees you pay to use and interact with the Ethereum Blockchain. These fee's vary based on how busy the Ethereum network is, and how quickly you would like transaction to be processed.",
       question2: 'Can I buy cryptocurrency with my debit or credit card?',
       answer2:
-        'Oasis Trade only allows you to trade selected Ethereum tokens, such as Dai, ETH, USDC and more. There is no way to buy crypto using a debit or credit card using Oasis Trade.',
+        'Freeliquid Trade only allows you to trade selected Ethereum tokens, such as USDL, ETH, USDC and more. There is no way to buy crypto using a debit or credit card using Freeliquid Trade.',
       question3: 'What is the difference between Market and Instant trades?',
       answer3:
         "With Market, when you create an order you are placing an order in the order book. In order for your order to be matched, you need another user to 'Take' your order by either buying or selling at a price that includes your open order. Instant allows you to quickly trade one token for another at the best price available on the order book. This means you can see the price you will pay for the token and once your transaction confirms, you will get the token (the price may move slightly due to slippage).",
       question4:
         'What is slippage and is there a limit to how much the price can change?',
       answer4:
-        "Slippage is where the price you think you are getting changes between the point you place your order and the time the transaction is processed. For example, you place an order to buy 1 ETH for 200 Dai, but by the time the transaction has confirmed, the price is now 202 Dai per ETH. This means you would get 0.99 ETH for 200 Dai instead. Within Oasis Trade you can set your slippage limit by a percentage, which means once your order is being matched, if it can't meet the price +/- slippage limit, then the order will automatically cancel. ",
+        "Slippage is where the price you think you are getting changes between the point you place your order and the time the transaction is processed. For example, you place an order to buy 1 ETH for 200 USDL, but by the time the transaction has confirmed, the price is now 202 USDL per ETH. This means you would get 0.99 ETH for 200 USDL instead. Within Freeliquid Trade you can set your slippage limit by a percentage, which means once your order is being matched, if it can't meet the price +/- slippage limit, then the order will automatically cancel. ",
       question5:
-        'Does Oasis or anyone at Oasis have any access to my crypto or my wallet?',
+        'Does Freeliquid or anyone at Freeliquid have any access to my crypto or my wallet?',
       answer5:
-        'No, Oasis Trade is a fully non-custodial, decentralised exchange. This means that you are in full control of your funds at all times, and only you can place orders or move your funds around. All orders are placed and settled directly in the smart contract, and everything is fully audit-able on-chain at all times.',
-      bottom_link1: 'Full list of Oasis Trade FAQs'
+        'No, Freeliquid Trade is a fully non-custodial, decentralised exchange. This means that you are in full control of your funds at all times, and only you can place orders or move your funds around. All orders are placed and settled directly in the smart contract, and everything is fully audit-able on-chain at all times.',
+      bottom_link1: 'Full list of Freeliquid Trade FAQs'
     }
   },
   overview_page: {
@@ -308,12 +316,12 @@ export default {
     ratio_mobile: 'Ratio',
     deposited: 'DEPOSITED',
     withdraw: 'AVAIL. TO WITHDRAW',
-    debt: 'DAI',
+    debt: 'USDL',
     view_cdp: 'Manage Vault',
     view_cdp_mobile: 'Manage',
     total_collateral_locked: 'total collateral locked',
-    total_dai_debt: 'total dai debt',
-    get_started_title: 'Open your first Vault to start generating Dai.',
+    total_dai_debt: 'total USDL debt',
+    get_started_title: 'Open your first Vault to start generating USDL.',
     select_another_wallet: 'Select another wallet',
     connect_ledgers_choice: 'Connect {0} or {1}',
     no_vaults: 'Address {0} has no Vaults.',
@@ -323,13 +331,13 @@ export default {
   navbar: {
     save: 'Save',
     borrow: 'Borrow',
-    trade: 'Trade',
+    governance: 'Governance',
     privacy: 'Privacy',
     terms: 'Terms',
     blog: 'Blog'
   },
   sidebar: {
-    wallet_balances: 'Wallet Balances',
+    wallet_balances: 'Wallet Pools Balances',
     // "read_only_mode": "Read-Only Mode",
     price_feeds: 'Price Feeds',
     system_info: 'System Info',
@@ -343,27 +351,27 @@ export default {
     inflate_and_sell_lot_size: 'INFLATE & SELL LOT SIZE',
     system_collateralization: 'COLLATERALIZATION',
     view_price_feeds: 'View price feeds',
-    view_mkr_tools: 'View mkr.tools',
+    view_mkr_tools: 'View fl.tools',
     view_more: 'View more',
     view_less: 'View less',
-    asset: 'ASSET',
-    balance: 'BALANCE',
-    usd: 'USD',
+    asset: 'PAIR',
+    balance: 'Total Value',
+    usd: 'USDT',
     send: 'SEND',
     migrate: 'UPGRADE',
     no_wallet: 'Not connected',
     save_details: {
       title: 'Save Details',
-      total_savings_dai: 'Total Dai in DSR',
-      total_dai_supply: 'Total Dai Supply',
-      dai_savings_rate: 'Dai Savings Rate'
+      total_savings_dai: 'Total USDL in DSR',
+      total_dai_supply: 'Total USDL Supply',
+      dai_savings_rate: 'USDL Savings Rate'
     }
   },
   cdp_create: {
     screen_titles: {
       select_collateral: 'Select Collateral',
       vault_management: 'Vault Management',
-      generate_dai: 'Generate Dai',
+      generate_dai: 'Generate USDL',
       confirmation: 'Confirmation'
     },
     set_allowance: 'Set Allowance',
@@ -380,24 +388,24 @@ export default {
     setup_proxy_proxy_text:
       'Configure your Vault for easy management. This only has to be done once.',
     setup_proxy_allowance_text:
-      'This permission allows Oasis to interact with your {0}. This has to be done once for each new collateral type.',
+      'This permission allows Freeliquid to interact with your {0}. This has to be done once for each new collateral type.',
     setup_proxy_proxy_button: 'Setup',
     setup_proxy_allowance_button: 'Set',
     setup_vault: 'Setup Vault',
-    max_dai_available_to_generate: 'Max Dai available to Generate',
+    max_dai_available_to_generate: 'Max USDL available to Generate',
 
-    deposit_title: 'Deposit {0} and Generate Dai',
+    deposit_title: 'Deposit {0} and Generate USDL',
     deposit_text:
       'Different collateral types have different risk parameters and collateralization ratios.',
     // "deposit_sidebar_title": "{0} Risk Parameters",
     deposit_form_field1_title:
       'How much {0} would you like to lock in your Vault?',
     deposit_form_field1_text:
-      'The amount of {0} you lock up determines how much Dai you can generate.',
+      'The amount of {0} you lock up determines how much USDL you can generate.',
     // "deposit_form_field2_title": "What target collateralization ratio would you like to stay above?",
     // "deposit_form_field2_text": "If your Vault drops below this target it will be considered {0} risk.",
     // "deposit_form_field2_after": "Suggested:",
-    deposit_form_field3_title: 'How much Dai would you like to generate?',
+    deposit_form_field3_title: 'How much USDL would you like to generate?',
     deposit_form_field3_text:
       'Generate an amount that is safely above the liquidation ratio.',
     // "deposit_form_field3_after1": "Max at target ratio",
@@ -413,19 +421,19 @@ export default {
     has_understood_stability_fee:
       'I understand the Stability Fee is not fixed and is likely to change over time',
     collateralization_warning:
-      'The amount of Dai you are generating is putting your Vault at risk of liquidation',
+      'The amount of USDL you are generating is putting your Vault at risk of liquidation',
     draw_too_much_dai: 'Vault below liquidation threshold',
-    below_dust_limit: 'A Vault requires a minimum of {0} Dai to be generated',
+    below_dust_limit: 'A Vault requires a minimum of {0} USDL to be generated',
     dust_max_payback:
-      'You can repay all your outstanding debt, or a maximum of {0} Dai',
+      'You can repay all your outstanding debt, or a maximum of {0} USDL',
     dust_payback_below_limit:
       'Due to your Vault being below the minimum, you must repay all of your outstanding debt',
     stability_fee_description:
       'The fee calculated based on the outstanding debt of your Vault. This is continuously added to your existing debt.',
     liquidation_ratio_description:
-      'The collateral-to-dai ratio at which the Vault becomes vulnerable to liquidation.',
+      'The collateral-to-USDL ratio at which the Vault becomes vulnerable to liquidation.',
     liquidation_penalty_description:
-      'This is the additional fee that you will pay on top of your debt when your position is liquidated. There could also be other costs involved depending on the price your collateral is sold',
+      'This is the additional fee that you will pay on top of your debt when your position is liquidated. There could also be other costs involved depending on the price your collateral is sold.',
     waiting_for_comfirmations: 'Waiting for confirmations... {0} of {1}',
     confirmed_with_confirmations: 'Confirmed with {0} confirmations',
     waiting_for_confirmations_info:
@@ -446,21 +454,21 @@ export default {
   cdp_migrate: {
     select_title: 'Select Vault to Migrate',
     select_text:
-      'Select a Vault and pay back the stability fee in DAI or MKR to migrate it to Multi-collateral Dai and the new CDP Portal.',
+      'Select a Vault and pay back the stability fee in USDL or FL to migrate it to Multi-collateral USDL and the new CDP Portal.',
     current_ratio: 'Current Ratio',
-    dai_debt: 'Dai debt',
-    fee_in_dai: 'Fee in Dai',
-    fee_in_mkr: 'Fee in MKR',
+    dai_debt: 'USDL debt',
+    fee_in_dai: 'Fee in USDL',
+    fee_in_mkr: 'Fee in FL',
     migrate: 'Migrate',
     payment: 'Payment',
-    trust_site_with_dai: 'Trust this site with my DAI',
+    trust_site_with_dai: 'Trust this site with my USDL',
     pay_and_migrate: 'Pay and Migrate',
     migrate_in_progress_header: 'Your CDP is being migrated',
     migrate_in_progress_text:
       'The estimated time is 8 minutes. You can safely leave this page and return.',
     migrate_complete_header: 'CDP Migration complete',
     migrate_complete_text:
-      'CDP #{0} has been successfully migrated to Multi-collateral Dai and the new CDP Portal.',
+      'CDP #{0} has been successfully migrated to Multi-collateral USDL and the new CDP Portal.',
     view_transaction_details: 'View transaction details',
     migrate_another_cdp: 'Migrate another CDP',
     exit_to_cdp_portal: 'Exit to CDP Portal'
@@ -468,11 +476,11 @@ export default {
   dsr_deposit: {
     screen_titles: {
       open_vault: 'Manage Proxy',
-      deposit_dai: 'Deposit Dai',
+      deposit_dai: 'Deposit USDL',
       confirmation: 'Confirmation'
     },
     setup_header: 'Deploy Proxy',
-    open_vault: 'Earn savings on your Dai by locking into Oasis Save',
+    open_vault: 'Earn savings on your USDL by locking into Freeliquid Save',
     deposit_form_title: 'Enter the amount you would like to deposit.',
     setup_proxy_text:
       'Setting up your proxy will bundle multiple transactions into one, saving transaction time and gas costs. This only has to be done once.',
@@ -501,11 +509,11 @@ export default {
   event_history: {
     open: 'Opened a new Vault with id #{0}',
     deposit: 'Deposited {0} {1} into Vault',
-    dsr_deposit: 'Deposited {0} Dai',
+    dsr_deposit: 'Deposited {0} USDL',
     withdraw: 'Withdrew {0} {1} from Vault',
-    dsr_withdraw: 'Withdrew {0} Dai',
-    generate: 'Generated {0} new Dai from Vault',
-    pay_back: 'Repaid {0} Dai to Vault',
+    dsr_withdraw: 'Withdrew {0} USDL',
+    generate: 'Generated {0} new USDL from Vault',
+    pay_back: 'Repaid {0} USDL to Vault',
     give: 'Vault given to {0} by {1}',
     migrate: 'Vault upgraded from SCD',
     bite: 'Auctioned {0} {1} from Vault',
@@ -519,19 +527,19 @@ export default {
     withdraw_description: 'How much {0} would you like to withdraw?',
     withdraw_warning:
       'The amount of collateral you are withdrawing puts your Vault at risk of liquidation',
-    generate_title: 'Generate DAI',
-    generate_description: 'How much DAI would you like to generate?',
+    generate_title: 'Generate USDL',
+    generate_description: 'How much USDL would you like to generate?',
     generate_warning:
-      'The amount of Dai you are generating puts your Vault at risk of liquidation',
+      'The amount of USDL you are generating puts your Vault at risk of liquidation',
     generate_threshold:
-      'The amount of Dai you are trying to generate exceeds the amount of Dai available. Please enter less than {0} Dai',
-    payback_title: 'Pay Back DAI',
-    payback_description: 'How much DAI would you like to pay back?',
+      'The amount of USDL you are trying to generate exceeds the amount of USDL available. Please enter less than {0} USDL',
+    payback_title: 'Pay Back USDL',
+    payback_description: 'How much USDL would you like to pay back?',
     cdp_below_threshold: 'Vault below liquidation threshold',
     insufficient_balance: 'Insufficient {0} balance',
     cannot_payback_more_than_owed: 'Cannot pay back more than owed',
-    dai_balance: 'Your Dai balance',
-    dai_debt: 'Dai debt',
+    dai_balance: 'Your USDL balance',
+    dai_debt: 'USDL debt',
     locked_dsr: 'Locked in DSR',
     unlock_token: 'Unlock {0} to continue',
     unlocking_token: 'Unlocking {0}...',
@@ -557,28 +565,28 @@ export default {
     invalid_address: 'This is not a valid address',
     invalid_allowance: 'Amount is higher than your allowance for {0}',
     negative_debt_avail:
-      'Debt ceiling has been reached. There is currently no Dai available for this collateral type.'
+      'Debt ceiling has been reached. There is currently no USDL available for this collateral type.'
   },
   save: {
     title: 'Savings',
-    dai_savings_rate: 'Dai Savings rate',
+    dai_savings_rate: 'USDL Savings rate',
     description:
-      'Receive savings on your Dai. Deposit or withdraw at any time.',
+      'Receive savings on your USDL. Deposit or withdraw at any time.',
     deposit_amount: 'Deposit amount',
     withdraw_amount: 'Withdraw amount',
-    deposit_dai: 'Deposit Dai',
+    deposit_dai: 'Deposit USDL',
     deposit_dai_subheading:
       'Start earning as soon as your deposit is confirmed.',
-    get_started_title: 'Start earning {0} on your Dai today',
+    get_started_title: 'Start earning {0} on your USDL today',
     start_earning:
-      'Deposit Dai to see your first transaction and start earning',
+      'Deposit USDL to see your first transaction and start earning',
     tx_history: 'History',
     savings_earned_to_date: 'Savings earned to date',
     estimated_savings: 'Estimated savings',
-    dai_locked_dsr: 'DAI locked in DSR',
+    dai_locked_dsr: 'USDL locked in DSR',
     deposit_withdraw: 'Deposit and withdraw',
-    deposit_btn_cta: 'Receive savings on your Dai. Deposit at any time',
-    withdraw_btn_cta: 'Safely withdraw your Dai at any time',
+    deposit_btn_cta: 'Receive savings on your USDL. Deposit at any time',
+    withdraw_btn_cta: 'Safely withdraw your USDL at any time',
     no_savings:
       "This address either doesn't exist or has no DSR account history"
   },
@@ -601,8 +609,8 @@ export default {
     unlocking_token: 'Unlocking {0}',
     setting_up_proxy: 'Setting up proxy',
     creating_cdp: 'Creating Vault',
-    generate_dai: 'Generating {0} DAI',
-    pay_back_dai: 'Paying back {0} DAI',
+    generate_dai: 'Generating {0} USDL',
+    pay_back_dai: 'Paying back {0} USDL',
     withdrawing_gem: 'Withdrawing {0}',
     depositing_gem: 'Depositing {0}',
     claiming_collateral: 'Claiming collateral',
@@ -613,8 +621,8 @@ export default {
     unlocking_token: 'Unlocked {0}',
     setting_up_proxy: 'Set up proxy',
     creating_cdp: 'Created Vault',
-    generate_dai: 'Generated {0} DAI',
-    pay_back_dai: 'Paid back {0} DAI',
+    generate_dai: 'Generated {0} USDL',
+    pay_back_dai: 'Paid back {0} USDL',
     withdrawing_gem: 'Withdrew {0}',
     depositing_gem: 'Deposited {0}',
     claiming_collateral: 'Claimed collateral',
@@ -657,7 +665,7 @@ export default {
   stability_fee: 'Stability Fee',
   liquidation_penalty: 'Liquidation Fee',
   collateral_debt_ceiling: 'Debt ceiling',
-  dai_available: 'DAI Available',
+  dai_available: 'USDL Available',
   returned_auction: 'returned from the auction',
   liquidated_event: 'Your Vault has been liquidated',
   liquidation_ratio: 'Liquidation Ratio',
@@ -708,7 +716,7 @@ export default {
     non_savings_owner:
       'You are currently viewing the savings of another address ({0})',
     emergency_shutdown_active:
-      'Emergency shutdown has been initiated on {0}. This dashboard is currently read-only. If you have any vaults or DAI, please go to {1}. For more information you can read more {2}',
+      'Emergency shutdown has been initiated on {0}. This dashboard is currently read-only. If you have any vaults or USDL, please go to {1}. For more information you can read more {2}',
     vault_below_next_price:
       'Your {0} Vault has entered the liquidation phase and your collateral will be auctioned at {1}. You can still avoid auction by depositing at least {2} or repaying {3}',
     vault_below_current_price:
@@ -716,6 +724,6 @@ export default {
     vault_is_liquidated:
       'Your Vault was recently liquidated and {0} was made available for Auction. Please check back here for more details.',
     vault_under_dust_limit:
-      'This Vault is currently under the required minimum amount by approximately {0} Dai which has resulted in reduced functionality. For full access again, you need to Payback the full Outstanding Dai Debt amount, or Deposit additional collateral and Generate at least {1} Dai'
+      'This Vault is currently under the required minimum amount by approximately {0} USDL which has resulted in reduced functionality. For full access again, you need to Payback the full Outstanding USDL Debt amount, or Deposit additional collateral and Generate at least {1} USDL'
   }
 };

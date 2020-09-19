@@ -46,7 +46,7 @@ const SeparatorDot = styled(Box)`
   width: 4px;
   height: 4px;
   border-radius: 2px;
-  background-color: ${props => props.theme.colors.darkPurple};
+  background-color: #ccc;
   opacity: 0.2;
 `;
 

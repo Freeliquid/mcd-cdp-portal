@@ -10,7 +10,7 @@ import CaratDownIcon from 'components/Carat';
 const ActiveAccount = ({
   address,
   type,
-  textColor = 'darkPurple',
+  textColor = 'fff',
   t = 'body',
   addressTextStyle = 'body',
   readOnly,

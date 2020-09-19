@@ -59,6 +59,7 @@ const Author = styled(Text).attrs(() => ({
   margin-top: 16px;
   .author-link {
     text-decoration: underline;
+    color: #fff;
   }
 `;
 

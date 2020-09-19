@@ -1,14 +1,18 @@
-<svg width="1142" height="600" viewBox="0 0 1142 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M152.659 426.359C151.637 428.023 149.208 427.99 148.232 426.299L53.6088 262.407C53.136 261.588 53.1497 260.576 53.6446 259.77L166.704 75.6865C167.725 74.0227 170.154 74.0557 171.131 75.7467L265.754 239.639C266.227 240.458 266.213 241.47 265.718 242.276L152.659 426.359Z" fill="#E8FFFC"/>
-    <path d="M482.344 597.825C483.366 599.489 485.795 599.456 486.771 597.765L527.846 526.621C528.319 525.802 528.305 524.79 527.81 523.984L478.494 443.686C477.472 442.023 475.043 442.056 474.067 443.747L432.992 514.891C432.519 515.71 432.533 516.722 433.027 517.528L482.344 597.825Z" fill="#E8FFFC"/>
-    <g filter="url(#filter0_f_back)">
-        <path d="M698.725 29.3247C698.778 27.3728 700.898 26.1868 702.589 27.1631L969.173 181.075C969.992 181.548 970.486 182.432 970.461 183.377L960.926 534.134C960.873 536.086 958.753 537.272 957.062 536.296L690.478 382.384C689.659 381.911 689.165 381.027 689.191 380.082L698.725 29.3247Z" fill="#E8FFFC"/>
-    </g>
-    <defs>
-        <filter id="filter0_f_back" x="517.744" y="0.105164" width="624.163" height="563.249" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-            <feGaussianBlur stdDeviation="12.8839" result="effect1_foregroundBlur"/>
-        </filter>
-    </defs>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.1.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1142 600" style="enable-background:new 0 0 1142 600;" xml:space="preserve">
+<style type="text/css">
+	.st0{opacity:0.72;fill:#EBF7FF;}
+	.st1{opacity:0.53;fill:#DEF6FC;}
+	.st2{opacity:0.4;fill:#EEF9FF;}
+</style>
+<path class="st0" d="M152.7,426.4c-1,1.7-3.5,1.6-4.4-0.1L53.6,262.4c-0.5-0.8-0.5-1.8,0-2.6L166.7,75.7c1-1.7,3.5-1.6,4.4,0.1
+	l94.6,163.9c0.5,0.8,0.5,1.8,0,2.6L152.7,426.4z"/>
+<path class="st1" d="M482.3,597.8c1,1.7,3.5,1.6,4.4-0.1l41.1-71.1c0.5-0.8,0.5-1.8,0-2.6l-49.3-80.3c-1-1.7-3.5-1.6-4.4,0.1
+	L433,514.9c-0.5,0.8-0.5,1.8,0,2.6L482.3,597.8z"/>
+<g>
+	<path class="st2" d="M827.7,42.3c0.1-2,2.2-3.1,3.9-2.2l266.6,153.9c0.8,0.5,1.3,1.4,1.3,2.3l-9.5,350.8c-0.1,2-2.2,3.1-3.9,2.2
+		L819.5,395.4c-0.8-0.5-1.3-1.4-1.3-2.3L827.7,42.3z"/>
+</g>
 </svg>

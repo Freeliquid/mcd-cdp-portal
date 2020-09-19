@@ -9,7 +9,7 @@ export const CopyBtn = styled.div`
   display: flex;
   cursor: pointer;
   &:hover {
-    background-color: #f5f5f5;
+    background-color: #222b3f;
   }
 `;
 

@@ -8,26 +8,26 @@ const LegalTextLayout = styled.div`
 
   h1 {
     font-size: 38px;
-    color: #1e2e3a;
+    color: #fff;
     margin: 20px 0;
   }
 
   .subheading {
     font-size: 17px;
-    color: #666666;
+    color: #ccc;
     margin-bottom: 49px;
   }
 
   h2 {
     font-size: 25px;
-    color: #000000;
+    color: #fff;
     margin: 35px 0;
     line-height: 36px;
   }
 
   h3 {
     font-size: 21px;
-    color: #000000;
+    color: #fff;
     margin: 28px 0;
   }
 
@@ -52,6 +52,7 @@ const LegalTextLayout = styled.div`
 
   a {
     text-decoration: underline;
+    color: #00c4c4;
   }
 
   strong {

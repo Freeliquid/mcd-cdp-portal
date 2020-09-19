@@ -10,8 +10,8 @@ const QuestionAndAnswerStyle = styled.div`
   position: relative;
 
   .question-row {
-    padding-top: 27px;
-    padding-bottom: 24px;
+    padding-top: 16px;
+    padding-bottom: 12px;
     letter-spacing: 0.007em;
     position: relative;
     border-bottom: 1px solid ${separatorColor};
@@ -52,7 +52,7 @@ const QuestionAndAnswerStyle = styled.div`
 
     &:before,
     &:after {
-      background: #000;
+      background: #00c4c4;
       content: '';
       height: 2px;
       left: 0;

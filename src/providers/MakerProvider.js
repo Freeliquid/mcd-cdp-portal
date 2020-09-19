@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, useCallback } from 'react';
 import { useNavigation as useNavigationBase } from 'react-navi';
-import { mixpanelIdentify } from '../utils/analytics';
+//import { mixpanelIdentify } from '../utils/analytics';
 import { AccountTypes } from '../utils/constants';
 import { instantiateMaker } from '../maker';
 import PropTypes from 'prop-types';
@@ -41,7 +41,7 @@ function MakerProvider({
 
   const { trackBtnClick } = useAnalytics();
   const initAccount = account => {
-    mixpanelIdentify(account.address, account.type);
+    //mixpanelIdentify(account.address, account.type);
     setAccount({ ...account });
   };
 
@@ -63,7 +63,10 @@ function MakerProvider({
 
     if (browserProvider.networkId !== networkId)
       throw new Error(
-        'browser ethereum provider and URL network param do not match. ' + browserProvider.networkId + "-" + networkId
+        'browser ethereum provider and URL network param do not match. ' +
+          browserProvider.networkId +
+          '-' +
+          networkId
       );
     if (
       !browserProvider.address ||

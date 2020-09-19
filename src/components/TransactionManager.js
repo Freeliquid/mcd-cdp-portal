@@ -29,7 +29,7 @@ const ActionButton = ({ children, ...rest }) => (
     minWidth="4.5rem"
     lineHeight="initial"
     height="23px"
-    bg="#fff !important"
+    bg="rgb(45, 57, 83) !important"
     {...rest}
   >
     <Text

@@ -4,24 +4,17 @@ import styled from 'styled-components';
 import { Link, useCurrentRoute } from 'react-navi';
 
 import MarketingLayout from 'layouts/MarketingLayout';
-import {
-  Questions,
-  buildQuestionsFromLangObj,
-  FullWidth,
-  FadeIn,
-  FilledButton,
-  PageHead,
-  TokenIcon
-} from 'components/Marketing';
+import { FadeIn, FilledButton, PageHead } from 'components/Marketing';
 import mixpanel from 'mixpanel-browser';
 import { Routes } from 'utils/constants';
 import useLanguage from 'hooks/useLanguage';
 import { getColor, marketingTheme } from 'styles/theme';
 
-import { ReactComponent as TradeIcon } from 'images/landing/trade-icon.svg';
 import { ReactComponent as BorrowIcon } from 'images/landing/borrow-icon.svg';
 import { ReactComponent as SaveIcon } from 'images/landing/save-icon.svg';
-import { Box, Grid, Text } from '@makerdao/ui-components-core';
+import { ReactComponent as UsdlIcon } from 'images/landing/usdl.svg';
+import { ReactComponent as LpgIcon } from 'images/landing/lpg.svg';
+import { Box, Flex, Text } from '@makerdao/ui-components-core';
 
 const Content = ({ children }) => (
   <Box p={{ s: `0 ${marketingTheme.mobilePaddingX}`, l: '0 32px' }}>
@@ -30,6 +23,15 @@ const Content = ({ children }) => (
     </Box>
   </Box>
 );
+
+const ImgBox = styled.div`
+  width: 100px;
+  height: 100px;
+`;
+const SpaceBox = styled.div`
+  width: 100%;
+  height: 50px;
+`;
 
 const Cards = (() => {
   const CardsContainer = styled(Box)`
@@ -49,14 +51,9 @@ const Cards = (() => {
       width: 93%;
       left: 3.5%;
       height: 91%;
-      background: linear-gradient(
-        180deg,
-        rgba(255, 249, 237, 0) 0%,
-        #fff9ed 100%
-      );
     }
 
-    @media (max-width: 1238px) {
+    @media (max-width: 735px) {
       max-width: 368px;
       :after {
         content: none;
@@ -66,7 +63,7 @@ const Cards = (() => {
 
   const Card = styled.div`
     overflow: hidden;
-    width: 368px;
+    width: 48%;
     position: relative;
     flex-shrink: 1;
     text-align: left;
@@ -74,6 +71,7 @@ const Cards = (() => {
 
     @media (max-width: 1238px) {
       margin-bottom: 24px;
+      width: 100%;
     }
 
     .title {
@@ -82,7 +80,7 @@ const Cards = (() => {
       margin-top: 21px;
       margin-bottom: 12px;
       font-weight: bold;
-      color: ${getColor('darkPurple')};
+      color: #fff;
     }
 
     .description {
@@ -97,11 +95,8 @@ const Cards = (() => {
       padding-bottom: 0;
       cursor: pointer;
       :hover {
-        margin-top: 16px;
-        padding-bottom: 2px;
-
         ${FilledButton} {
-          background-color: #50445e;
+          background-color: #00c4c4;
         }
       }
     }
@@ -123,34 +118,8 @@ const Cards = (() => {
       <CardsContainer {...props}>
         <Card
           style={{
-            background:
-              'radial-gradient(111.67% 100% at 0% 0%, #F2FFE6 0%, #C6FFF9 100%)'
-          }}
-        >
-          <TradeIcon />
-          <h1 className="title">{lang.landing_page.trade_card.title}</h1>
-          <Text className="description">
-            {lang.landing_page.trade_card.description}
-          </Text>
-          <div className="buttonContainer">
-            <Link
-              href={`/${Routes.TRADE}`}
-              onClick={() => {
-                mixpanel.track('btn-click', {
-                  id: 'StartTrading',
-                  product: 'oasis-landing'
-                });
-              }}
-              className="button-link"
-            >
-              <FilledButton>{lang.landing_page.trade_card.button}</FilledButton>
-            </Link>
-          </div>
-        </Card>
-        <Card
-          style={{
-            background:
-              'radial-gradient(100% 100% at 0% 0%, #FFE9E9 0%, #FFE9B5 100%)'
+            background: 'rgb(45 57 83)',
+            boxShadow: '0px 5px 20px -10px rgba(0,0,0,0.75)'
           }}
         >
           <BorrowIcon />
@@ -165,7 +134,7 @@ const Cards = (() => {
               onClick={() => {
                 mixpanel.track('btn-click', {
                   id: 'BorrowDai',
-                  product: 'oasis-landing'
+                  product: 'freeliquid-landing'
                 });
               }}
               className="button-link"
@@ -178,8 +147,8 @@ const Cards = (() => {
         </Card>
         <Card
           style={{
-            background:
-              'radial-gradient(100% 100% at 0% 0%, #E2FFCC 0%, #FFF1CF 100%)',
+            background: 'rgb(45 57 83)',
+            boxShadow: '0px 5px 20px -10px rgba(0,0,0,0.75)',
             marginBottom: 0
           }}
         >
@@ -195,7 +164,7 @@ const Cards = (() => {
               onClick={() => {
                 mixpanel.track('btn-click', {
                   id: 'SaveDai',
-                  product: 'oasis-landing'
+                  product: 'freeliquid-landing'
                 });
               }}
               className="button-link"
@@ -209,230 +178,11 @@ const Cards = (() => {
   };
 })();
 
-const SupportedTokens = (() => {
-  const tokens = [
-    {
-      name: 'Dai',
-      symbol: 'DAI'
-    },
-    {
-      name: 'Ethereum',
-      symbol: 'ETH'
-    },
-    {
-      name: 'BAT'
-    },
-    {
-      name: 'USDC'
-    },
-    {
-      name: 'WBTC'
-    },
-    {
-      name: 'MANA'
-    },
-    {
-      name: '0x',
-      symbol: 'ZRX'
-    },
-    {
-      name: 'KNC'
-    },
-    {
-      name: 'COMP',
-      onlyOnTrade: true
-    },
-    {
-      name: 'LINK',
-      onlyOnTrade: true
-    },
-    {
-      name: 'PAX',
-      onlyOnTrade: true
-    },
-    {
-      name: 'TUSD',
-      onlyOnTrade: true
-    }
-  ];
-
-  const TokenList = styled(Grid)`
-    margin: 74px auto 69px;
-    justify-content: center;
-    justify-items: center;
-
-    grid-row-gap: 85px;
-
-    @media (min-width: ${props => props.theme.breakpoints.m}) {
-      grid-row-gap: 60px;
-    }
-  `;
-
-  const TokenStyle = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 70px;
-
-    svg {
-      flex-grow: 0;
-      flex-shrink: 0;
-    }
-
-    svg {
-      width: 70px;
-      height: 70px;
-    }
-
-    span {
-      margin-top: 28px;
-      font-size: ${props => props.theme.typography.body.fontSize};
-      letter-spacing: 0.5px;
-      color: ${getColor('darkPurple')};
-      position: relative;
-    }
-
-    span.onlyOnTrade:after {
-      font-family: 'Arial Hebrew', Arial, sans-serif;
-      content: '*';
-      font-size: 2.7rem;
-      position: absolute;
-      top: 0.45rem;
-      line-height: 20px;
-    }
-  `;
-
-  const Token = ({ config: { name, symbol, onlyOnTrade } }) => {
-    return (
-      <FadeIn triggerOffset={70}>
-        <TokenStyle>
-          <TokenIcon symbol={symbol || name} />
-          <span className={onlyOnTrade ? 'onlyOnTrade' : ''}>{name}</span>
-        </TokenStyle>
-      </FadeIn>
-    );
-  };
-
-  return props => {
-    const { lang } = useLanguage();
-
-    return (
-      <Box {...props}>
-        <Text.h2>{lang.landing_page.token_section_title}</Text.h2>
-        <TokenList
-          gridTemplateColumns={{
-            s: 'repeat(2, 1fr)',
-            m: 'repeat(3, 1fr)',
-            l: 'repeat(4, 1fr)',
-            xl: 'repeat(5, 1fr)'
-          }}
-          maxWidth={{
-            s: '313px',
-            m: '656px',
-            l: '850px',
-            xl: '1080px'
-          }}
-        >
-          {tokens.map(config => (
-            <Token config={config} key={config.name} />
-          ))}
-        </TokenList>
-        <span
-          style={{
-            fontSize: '18px',
-            letterSpacing: '0.5px',
-            color: '#4F445E',
-            position: 'relative'
-          }}
-        >
-          <span
-            style={{ fontSize: '2.6rem', position: 'relative', top: '5px' }}
-          >
-            *
-          </span>{' '}
-          {lang.landing_page.token_section_only_on_trade}
-        </span>
-      </Box>
-    );
-  };
-})();
-
-const BlurryBackground = (() => {
-  const ballsContainerOriginalWidth = 1440;
-
-  // adjust this based on how much do we want the balls to move when reducing window size
-  const ballsContainerMaxWidth = 1180;
-
-  // converts absolute positioning to percentage based.
-  const perc = absolutePx =>
-    ((absolutePx / ballsContainerMaxWidth) * 100).toFixed(1);
-  // changes the distance from original container width, to the new width.
-  const adjustDistance = originalDistance =>
-    originalDistance -
-    (ballsContainerOriginalWidth - ballsContainerMaxWidth) / 2;
-
-  const BallTop = styled.div`
-    position: absolute;
-    width: 206px;
-    height: 206px;
-    top: -45px;
-    left: ${perc(adjustDistance(130))}%;
-    background: radial-gradient(
-      51.51% 110.6% at 32.77% 50%,
-      #eaffcf 0%,
-      #fedb88 100%
-    );
-    border-radius: 50%;
-    filter: blur(33px);
-  `;
-
-  const BallRight = styled.div`
-    position: absolute;
-    width: 83px;
-    height: 83px;
-    top: 619px;
-    right: ${perc(adjustDistance(140))}%;
-    background: radial-gradient(
-      51.51% 110.6% at 32.77% 50%,
-      #d2ff72 0%,
-      #fdc134 100%
-    );
-    border-radius: 50%;
-    filter: blur(15px);
-  `;
-
-  const BlurryBackgroundStyle = styled.div`
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(
-      99.92% 100% at 40.9% 100%,
-      #f7fce7 0%,
-      #fff9ed 54.69%,
-      rgba(255, 249, 237, 0) 100%
-    );
-    z-index: -1;
-
-    & > div {
-      position: relative;
-      max-width: ${ballsContainerMaxWidth}px;
-      margin: 0 auto;
-    }
-  `;
-
-  return props => (
-    <BlurryBackgroundStyle {...props}>
-      <div>
-        <BallTop />
-        <BallRight />
-      </div>
-    </BlurryBackgroundStyle>
-  );
-})();
-
 const BulletPoints = (() => {
   const JumboBlock = styled(Box)`
     max-width: 966px;
-    background: radial-gradient(100% 100% at 0% 0%, #f4ffec 0%, #fef4db 100%);
+    background: rgb(218 228 249);
+    boxshadow: 0px 5px 20px -10px rgba(0, 0, 0, 0.75);
     text-align: left;
     padding: 120px 24px 122px;
 
@@ -490,6 +240,45 @@ const BulletPoints = (() => {
     );
   };
 })();
+const TextDiv = styled.div`
+  padding: 30px 70px;
+  @media (max-width: 735px) {
+    width: 100%;
+    padding: 30px 15px;
+  }
+`;
+const Blocks = styled(Flex)`
+  margin: 74px auto 69px;
+  flex-wrap: wrap;
+  text-align: left;
+  @media (min-width: ${props => props.theme.breakpoints.m}) {
+  }
+  @media (max-width: 735px) {
+    width: 100%;
+    text-align: center;
+    flex-direction: column-reverse;
+  }
+`;
+const BlocksDiv = styled.div`
+  width: 60%;
+  padding: 20px 50px 20px 100px;
+  @media (max-width: 735px) {
+    width: 100%;
+    padding: 30px 15px;
+  }
+`;
+const BlocksDiv2 = styled.div`
+  width: 40%;
+  padding: 20px 40px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 735px) {
+    width: 100%;
+    padding: 30px 15px;
+  }
+`;
 
 function Landing() {
   const { lang } = useLanguage();
@@ -499,34 +288,74 @@ function Landing() {
       <PageHead
         title={lang.landing_page.meta.title}
         description={lang.landing_page.meta.description}
-        imgUrl="https://oasis.app/meta/Oasis-app.png"
       />
       <Content>
-        <Box mt={{ s: '126px', m: '149px' }} px={{ s: '10px', m: 0 }}>
-          <Text.h1>{lang.landing_page.headline}</Text.h1>
+        <SpaceBox />
+        <FadeIn moveDistance="-60px">
+          <TextDiv style={{ paddingTop: '80px' }}>
+            <Text.h2>{lang.landing_page.usdl_title}</Text.h2>
+            <br />
+            <Text>{lang.landing_page.usdl_desc}</Text>
+          </TextDiv>
+        </FadeIn>
+        <FadeIn moveDistance="40px">
+          <Blocks>
+            <BlocksDiv2></BlocksDiv2>
+            <BlocksDiv
+              style={{
+                padding: '80px 50px',
+                backgroundColor: 'rgb(45, 57, 83)'
+              }}
+            >
+              <Text.h4>{lang.landing_page.block1_text}</Text.h4>
+              <Text>{lang.landing_page.block1_text2}</Text>
+            </BlocksDiv>
+          </Blocks>
+        </FadeIn>
+        <Blocks>
+          <BlocksDiv>
+            <Text.h4>{lang.landing_page.block3_title}</Text.h4>
+            <Text>{lang.landing_page.block3_text}</Text>
+          </BlocksDiv>
+          <BlocksDiv2>
+            <ImgBox>
+              <UsdlIcon />
+            </ImgBox>
+          </BlocksDiv2>
+        </Blocks>
+
+        <Blocks>
+          <BlocksDiv>
+            <Text.h4>{lang.landing_page.block4_title}</Text.h4>
+            <Text>{lang.landing_page.block4_text}</Text>
+          </BlocksDiv>
+          <BlocksDiv2>
+            <ImgBox>
+              <LpgIcon />
+            </ImgBox>
+          </BlocksDiv2>
+        </Blocks>
+
+        <Blocks>
+          <BlocksDiv>
+            <Text.h4>{lang.landing_page.block5_title}</Text.h4>
+            <Text>{lang.landing_page.block5_text}</Text>
+          </BlocksDiv>
+          <BlocksDiv2></BlocksDiv2>
+        </Blocks>
+
+        <Box mt={{ s: '126px', m: '89px' }} px={{ s: '10px', m: 0 }}>
+          <Text.h2>{lang.landing_page.headline}</Text.h2>
         </Box>
+
         <FadeIn moveDistance="47px">
           <Cards mt="72px" />
         </FadeIn>
-        <SupportedTokens mt="200px" />
-        <Box mt="323px" height="100%">
-          <FullWidth
-            style={{ height: '91%', position: 'absolute', top: '-25px' }}
-            display={{ s: 'none', m: 'inherit' }}
-          >
-            <BlurryBackground />
-          </FullWidth>
-          <Box m="0 auto" display="inline-block">
-            <FadeIn triggerOffset={150} moveDistance="80px">
-              <BulletPoints />
-            </FadeIn>
-          </Box>
-        </Box>
-        <Box mt={{ s: '158px', m: '200px' }} mb="98px">
-          <Text.h2>{lang.landing_page.questions_title}</Text.h2>
-          <Questions
-            questions={buildQuestionsFromLangObj(lang.landing_page, lang)}
-          />
+        <Box>
+          <Text.h2 style={{ padding: '30px 150px 10px' }}>
+            {lang.landing_page.block6_title}
+          </Text.h2>
+          <Text>{lang.landing_page.block6_text}</Text>
         </Box>
       </Content>
     </MarketingLayout>

@@ -60,7 +60,7 @@ const SidebarFeeds = ({ feeds }) => {
                       .reverse()
                       .join('/')}
                   </Text>
-                  <Text fontSize="1.4rem" color="darkPurple">
+                  <Text fontSize="1.4rem" color="white">
                     {`${formatter(value, {
                       rounding: BigNumber.ROUND_HALF_UP
                     })} ${value.symbol}`}

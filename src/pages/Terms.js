@@ -22,7 +22,7 @@ const Privacy = () => (
         laws of Cayman Islands (“<strong>Company</strong>” or “we,” “our” or
         “us” and together with you, the “Parties”) concerning your use of
         (including any access to) Company’s websites, currently located at
-        oasis.app, mobile applications, web applications, decentralized
+        Freeliquid.io, mobile applications, web applications, decentralized
         applications, smart contracts and API located at any of Company’s
         websites (together with any materials and services available therein,
         and successor website(s) or application(s) thereto, the “
@@ -45,11 +45,11 @@ const Privacy = () => (
       <h3>1.1. Services</h3>
 
       <p>
-        The Company has developed Oasis – an online, decentralized and
+        The Company has developed Freeliquid – an online, decentralized and
         autonomous environment that displays price information and autonomous
         smart contract mechanisms of digital tokens and assets (“
         <strong>Digital Assets</strong>”) and provides the user-interface that
-        guides your access to Oasis (the “<strong>Services</strong>”).
+        guides your access to Freeliquid (the “<strong>Services</strong>”).
       </p>
       <p>
         You affirm that you are aware and acknowledge that Company is a
@@ -155,15 +155,17 @@ const Privacy = () => (
         </li>
         <li>
           You are not a resident of any of the following countries or regions:
-          Belarus, Burma (Myanmar), Burundi, Central African Republic, Congo, Côte d'Ivoire,
-          Cuba, Iran, Iraq, Lebanon, Liberia, Libya, Mali, Nicaragua, North Korea, Somalia,
-          South Sudan, Sudan, Syria, Crimea (Ukraine/Russia), Venezuela, Yemen, Zimbabwe
-          (“<strong>Non-Supported Countries</strong>”).
+          Belarus, Burma (Myanmar), Burundi, Central African Republic, Congo,
+          Côte d'Ivoire, Cuba, Iran, Iraq, Lebanon, Liberia, Libya, Mali,
+          Nicaragua, North Korea, Somalia, South Sudan, Sudan, Syria, Crimea
+          (Ukraine/Russia), Venezuela, Yemen, Zimbabwe (“
+          <strong>Non-Supported Countries</strong>”).
         </li>
         <li>
-          You do not use Virtual Private Network software or any other privacy or anonymization
-          tools or techniques in order to circumvent any restrictions which apply to the Services,
-          especially those which restrict the geographical availability of the Services.
+          You do not use Virtual Private Network software or any other privacy
+          or anonymization tools or techniques in order to circumvent any
+          restrictions which apply to the Services, especially those which
+          restrict the geographical availability of the Services.
         </li>
       </ul>
       <h3>1.3. Fees</h3>
@@ -206,9 +208,8 @@ const Privacy = () => (
         Services if the laws of your country of residency or establishment
         prohibit you from doing so in accordance with this Agreement. You
         further represent that neither you nor your Organization is a resident
-        of any of the Non-Supported Countries. Finally,
-        you represent and warrant that you will not use the Service for any
-        illegal activity.
+        of any of the Non-Supported Countries. Finally, you represent and
+        warrant that you will not use the Service for any illegal activity.
       </p>
       <h2>3. Modification of Agreement and Transfer</h2>
       <p>
@@ -535,17 +536,17 @@ const Privacy = () => (
         and you agree to abide by the terms of this license.
       </p>
       <p>
-        The “Oasis” name, the Oasis logo, other related trademarks (“Oasis
-        DeFi,” “Oasis DEX”), and the web domains and URLs are property of Maker
-        Ecosystem Growth Foundation and “Oasis Pro” is owned by Oasis Pro Buyer,
-        LLC and are not covered under the licenses above. Using our Services
-        does not give you ownership of any proprietary intellectual property
-        rights in our Services or the content you access. You may not use
-        proprietary content from our Services unless you obtain permission from
-        its owner or are otherwise permitted by law. These terms do not grant
-        you the right to use any branding or logos used in our Services. You may
-        not remove, obscure, or alter any legal notices displayed in or along
-        with our Services.
+        The “Freeliquid” name, the Freeliquid logo, other related trademarks
+        (“Freeliquid DeFi,” “Freeliquid DEX”), and the web domains and URLs are
+        property of Maker Ecosystem Growth Foundation and “Freeliquid Pro” is
+        owned by Freeliquid Pro Buyer, LLC and are not covered under the
+        licenses above. Using our Services does not give you ownership of any
+        proprietary intellectual property rights in our Services or the content
+        you access. You may not use proprietary content from our Services unless
+        you obtain permission from its owner or are otherwise permitted by law.
+        These terms do not grant you the right to use any branding or logos used
+        in our Services. You may not remove, obscure, or alter any legal notices
+        displayed in or along with our Services.
       </p>
 
       <h2>8. Links</h2>
@@ -628,7 +629,7 @@ const Privacy = () => (
         any Dispute within thirty (30) days of when it arises so that the
         parties can attempt, in good faith, to resolve the Dispute informally.
         Notice to the Company shall be provided by sending an email to
-        legal@oasis.app. Your notice must include: (1) your name, postal
+        support@freeliquid.info. Your notice must include: (1) your name, postal
         address, and email address; (2) a description of the nature or basis of
         the Dispute; and (3) the specific relief that you are seeking. If you
         and the Company cannot agree how to resolve the Dispute within thirty
@@ -690,8 +691,9 @@ const Privacy = () => (
         are representative, but not exhaustive. If you are uncertain as to
         whether or not your use of the Services involves a Prohibited Use, or
         have questions about how these requirements apply to you, please contact
-        us at legal@oasis.app. By using the Site or Services, you confirm that
-        you will not use the Site or Services to do any of the following:
+        us at support@freeliquid.info. By using the Site or Services, you
+        confirm that you will not use the Site or Services to do any of the
+        following:
       </p>
 
       <ul>
@@ -816,9 +818,7 @@ const Privacy = () => (
       </p>
 
       <h3>13.5 Privacy and Transparency</h3>
-      <p>
-        Company respects the privacy of the Users.
-      </p>
+      <p>Company respects the privacy of the Users.</p>
       <p>
         The Services are being autonomously performed on blockchains, which are
         inherently transparent and available to Company and any third parties.
@@ -827,11 +827,12 @@ const Privacy = () => (
         Services.
       </p>
       <p>
-        The Company will treat any information about you in accordance with its Privacy Policy,
-        which is incorporated herein by reference. The Privacy Policy provides an outline of
-        the types of data and information about you we may collect or process. You are asked
-        to read the Privacy Policy before you use the Site or Services. If you are unwilling
-        to accept the terms and conditions of the Privacy Policy, please do not use the Site
+        The Company will treat any information about you in accordance with its
+        Privacy Policy, which is incorporated herein by reference. The Privacy
+        Policy provides an outline of the types of data and information about
+        you we may collect or process. You are asked to read the Privacy Policy
+        before you use the Site or Services. If you are unwilling to accept the
+        terms and conditions of the Privacy Policy, please do not use the Site
         and the Services.
       </p>
 
@@ -839,7 +840,8 @@ const Privacy = () => (
       <p>
         Users with questions, complaints or claims with respect to the Services
         may contact us using the relevant contact information set forth above
-        and at <a href="mailto:legal@oasis.app">legal@oasis.app</a>.
+        and at{' '}
+        <a href="mailto:support@freeliquid.info">support@freeliquid.info</a>.
       </p>
     </LegalTextLayout>
   </MarketingLayout>

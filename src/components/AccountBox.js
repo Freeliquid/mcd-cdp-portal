@@ -29,7 +29,7 @@ import FullScreenAction from './CDPDisplay/FullScreenAction';
 import useCdpTypes from '../hooks/useCdpTypes';
 import { watch } from 'hooks/useObservable';
 
-const migrateUrl = 'https://oasis.app/trade/account';
+const migrateUrl = 'https://freeliquid.io/trade/account';
 
 const StyledCardBody = styled(CardBody)`
   cursor: pointer;

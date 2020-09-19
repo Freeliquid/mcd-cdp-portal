@@ -8,8 +8,8 @@ import useLanguage from 'hooks/useLanguage';
 import { hot } from 'react-hot-loader/root';
 
 const CookieNoticeStyle = styled.div`
-  background: #ffffff;
-  border: 1px solid #d4d9e1;
+  background: rgb(45, 57, 83);
+  border: 1px solid rgb(45, 57, 83);
   box-sizing: border-box;
   box-shadow: 0 1px 2px rgba(90, 90, 90, 0.06);
   border-radius: 90px;
@@ -62,7 +62,7 @@ const CookieNotice = () => {
   return (
     <CookieNoticeStyle style={{ display: show ? 'block' : 'none' }}>
       <div style={{ display: 'flex', alignItems: 'center' }}>
-        <span style={{ fontSize: '14px', color: '#231536', flexShrink: 1 }}>
+        <span style={{ fontSize: '14px', color: '#fff', flexShrink: 1 }}>
           {lang.formatString(
             lang.cookie_notice,
             <Link href={`/${Routes.PRIVACY}`}>

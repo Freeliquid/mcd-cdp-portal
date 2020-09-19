@@ -22,9 +22,6 @@ import {
 import { Box, Text } from '@makerdao/ui-components-core';
 import useLanguage from 'hooks/useLanguage';
 import styled from 'styled-components';
-import { ReactComponent as FrontTrianglesBase } from 'images/landing/save/front-triangles.svg';
-import { ReactComponent as BackTrianglesBase } from 'images/landing/save/back-triangles.svg';
-import { ReactComponent as QuotesImg } from 'images/landing/save/quotes.svg';
 import { ReactComponent as Feat1 } from 'images/landing/save/feature-1.svg';
 import { ReactComponent as Feat2 } from 'images/landing/save/feature-2.svg';
 import { ReactComponent as Feat3 } from 'images/landing/save/feature-3.svg';
@@ -35,28 +32,6 @@ import { Link } from 'react-navi';
 import { useDaiSavingsRate } from '../components/Marketing/Calculators';
 
 const HeroBackground = (() => {
-  const BackTriangles = styled(BackTrianglesBase)`
-    position: absolute;
-    left: -45px;
-    top: -164px;
-
-    @media (min-width: ${props => props.theme.breakpoints.m}) {
-      left: -184px;
-      top: -196px;
-    }
-  `;
-
-  const FrontTriangles = styled(FrontTrianglesBase)`
-    position: absolute;
-    left: -35px;
-    top: -76px;
-
-    @media (min-width: ${props => props.theme.breakpoints.m}) {
-      left: -178px;
-      top: -121px;
-    }
-  `;
-
   return () => (
     <Box
       width="100%"
@@ -65,23 +40,20 @@ const HeroBackground = (() => {
       style={{ position: 'absolute' }}
     >
       <Box maxWidth="866px" m="0 auto">
-        <BackTriangles />
-        <Parallaxed style={{ zIndex: 10 }}>
-          <FrontTriangles />
-        </Parallaxed>
+        <Parallaxed style={{ zIndex: 10 }}></Parallaxed>
       </Box>
     </Box>
   );
 })();
 
 const StyledQuotes = styled(Quotes)`
-  background: radial-gradient(100% 181.73% at 0% 0%, #feffc6 0%, #d5ffe3 100%);
+  background: rgb(45, 57, 83);
+  box-shadow: 0px 5px 20px -10px rgba(0, 0, 0, 0.75);
 
   @media (min-width: ${props => props.theme.breakpoints.m}) {
     :after {
       content: '';
       display: block;
-      background: #c9ffe1;
       height: 80%;
       width: 110%;
       position: absolute;
@@ -109,12 +81,11 @@ function SaveOverview() {
       <PageHead
         title={lang.save_landing.meta.title}
         description={lang.save_landing.meta.description}
-        imgUrl="https://oasis.app/meta/Oasis_Save.png"
       />
       <FixedHeaderTrigger>
         <ConnectHero>
           <HeroBackground />
-          <ThickUnderline background="linear-gradient(354.42deg, #B7FFB8 0%, #FCFF9E 64.82%)">
+          <ThickUnderline>
             <Text.h4>{lang.save_landing.page_name}</Text.h4>
           </ThickUnderline>
           <Text.h1
@@ -133,10 +104,7 @@ function SaveOverview() {
           <AccountSelection className="button" />
         </ConnectHero>
       </FixedHeaderTrigger>
-      <GradientBox
-        mt="141px"
-        background="linear-gradient(170.64deg, #f5ffda 7.17%, rgba(255, 245, 222, 0.490208) 59.55%, #f5ffda 108.77%)"
-      >
+      <GradientBox mt="141px">
         <QuotesFadeIn>
           <StyledQuotes
             title={lang.save_landing.quotes_block.title}
@@ -144,7 +112,6 @@ function SaveOverview() {
             quote={lang.save_landing.quotes_block.quote1}
             author={lang.save_landing.quotes_block.author1}
             url="https://dsr.fyi/0xb277d98b101af4f1a1c7fe6d443f6993f1904237"
-            quotesImg={<QuotesImg />}
           />
         </QuotesFadeIn>
         {dsr > 0 && (
@@ -196,6 +163,7 @@ function SaveOverview() {
           )}
           links={
             <Link
+              style={{ color: '#00C4C4' }}
               href="https://community-development.makerdao.com/makerdao-mcd-faqs/faqs/dsr"
               target="_blank"
               rel="noopener noreferrer"

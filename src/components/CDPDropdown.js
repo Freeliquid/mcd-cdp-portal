@@ -26,7 +26,7 @@ const CDPDropdown = memo(function({
       placement="bottom"
       trigger={
         <Flex
-          bg={!account && selected && 'grey.200'}
+          bg="rgb(45 57 83)"
           flexDirection="column"
           alignItems="center"
           justifyContent="center"

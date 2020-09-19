@@ -180,7 +180,7 @@ const CDPList = memo(function({
       : !active && account
       ? 'blueGrayDarker'
       : active && !account
-      ? 'white'
+      ? '"rgb(45 57 83)"'
       : 'grey.200';
 
   return listOpen && userVaults ? (
@@ -189,7 +189,7 @@ const CDPList = memo(function({
         <DirectionalButton
           onClick={() => onDirectionalClick('up')}
           show={scrollTop > 0}
-          bg={account ? 'blueGrayDarker' : 'white'}
+          bg={account ? 'blueGrayDarker' : '"rgb(45 57 83)"'}
         >
           <NavUp />
         </DirectionalButton>
@@ -218,11 +218,7 @@ const CDPList = memo(function({
             width={`${getMeasurement('navbarItemWidth')}px`}
             trackBtnClick={() => trackBtnClick('SelectOverview')}
           >
-            <Text
-              t="p6"
-              fontWeight="bold"
-              color={account ? 'white' : 'darkPurple'}
-            >
+            <Text t="p6" fontWeight="bold" color={account ? 'white' : 'grey'}>
               {lang.overview}
             </Text>
           </NavbarItem>
@@ -249,7 +245,7 @@ const CDPList = memo(function({
                   <Text
                     t="p6"
                     fontWeight="bold"
-                    color={account ? 'white' : 'darkPurple'}
+                    color={account ? 'white' : 'grey'}
                   >
                     {vaultType}
                   </Text>

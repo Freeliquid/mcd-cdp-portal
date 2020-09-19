@@ -12,16 +12,16 @@ const Privacy = () => (
       <p>
         This Privacy Policy provides our privacy policy regarding the nature,
         purpose, use, and sharing of personal data or other information
-        collected from the users of the website oasis.app and other websites
-        which use subdomains of oasis.app (the "Site"). This Privacy Policy also
-        includes the Cookie We are committed to protecting and respecting your
-        privacy. Please read this carefully as this Privacy Policy is legally
-        binding when you use the Site.
+        collected from the users of the website https://freeliquid.io and other
+        websites which use subdomains of freeliquid.io (the "Site"). This
+        Privacy Policy also includes the Cookie We are committed to protecting
+        and respecting your privacy. Please read this carefully as this Privacy
+        Policy is legally binding when you use the Site.
       </p>
       <p>
-        As used in this Privacy Policy, "we", "us" or "our" refers to Maker
-        Ecosystem Growth Holdings, Inc. You can reach us with any requests
-        relating to this Privacy Policy via contact details provided below.
+        As used in this Privacy Policy, "we", "us" or "our" refers to Freeliquid
+        community . You can reach us with any requests relating to this Privacy
+        Policy via contact details provided below.
       </p>
       <h2>Data processing in connection with the Site</h2>
       <h3>Use of Cookies and Similar Technologies</h3>
@@ -34,7 +34,7 @@ const Privacy = () => (
         is used by us to evaluate the effectiveness of our Site and analyze
         trends. The information collected from cookies allows us to determine
         such things as which parts of the Site are most visited and difficulties
-        our visitors may experience in accessing the SIte. With this knowledge,
+        our visitors may experience in accessing the Site. With this knowledge,
         we can improve the quality of your experience on the Site by recognizing
         and delivering more of the most desired features and information, as
         well as by resolving access difficulties.
@@ -78,12 +78,12 @@ const Privacy = () => (
       <h3>Public Ethereum Addresses</h3>
       <p>
         We use public Ethereum addresses to identify a user’s journey through
-        our product. We group and analyse these user journeys collectively in
+        our product. We group and analyze these user journeys collectively in
         order to improve our product user experience. We do not use this data
         for any purpose at an individual user level.
       </p>
       <p>
-        The legal basis for this processing is that it is necessary to fulfil a
+        The legal basis for this processing is that it is necessary to fulfill a
         contract with you, as well as our legitimate interests, such as
         monitoring and improving the Site and the proper protection of the Site
         against risks.
@@ -97,15 +97,15 @@ const Privacy = () => (
       <h3>Your inquiries</h3>
       <p>
         You may contact us by email to the following email address:{' '}
-        <a href="mailto:legal@oasis.app">legal@oasis.app</a>. We use the data
-        that you provide in an email to us, which you may give voluntarily, only
-        in order to answer your contact question or to reply to your email in
-        the best possible manner.
+        <a href="mailto:support@freeliquid.info">lsupport@freeliquid.info</a>.
+        We use the data that you provide in an email to us, which you may give
+        voluntarily, only in order to answer your contact question or to reply
+        to your email in the best possible manner.
       </p>
       <h2>Your rights</h2>
       <h3>Right to access</h3>
       <p>
-        As a data subject you have the right to obtain from us free information
+        As a data subject, you have the right to obtain from us free information
         about your personal data processed at any time and a copy of this
         information. Furthermore, you will have access to the following
         information: the purposes of the processing; the categories of personal
@@ -180,9 +180,9 @@ const Privacy = () => (
         You have the right to object, on grounds relating to your particular
         situation, at any time, to the processing of personal data concerning
         you. We shall no longer process the personal data in the event of the
-        objection, unless we can demonstrate reasonable grounds for the
-        processing, which override the interests, rights and freedoms of you, or
-        for the establishment, exercise or defense of legal claims.
+        objection unless we can demonstrate reasonable grounds for the
+        processing, which override the interests, rights, and freedoms of you,
+        or for the establishment, exercise, or defense of legal claims.
       </p>
       <h3>Right to withdraw data protection consent</h3>
       <p>
@@ -201,7 +201,7 @@ const Privacy = () => (
       <p>
         We use appropriate technical and organizational security measures to
         protect your personal data. Our security measures are continuously
-        improved in line with technical developments.
+        improved in line with technological developments.
       </p>
       <p>
         Please note that any data transmission on the Internet (e.g.
@@ -228,7 +228,7 @@ const Privacy = () => (
       <p>
         Please contact us with questions, comments, or concerns regarding our
         Privacy Policy as well as with any requests at{' '}
-        <a href="mailto:legal@oasis.app">legal@oasis.app</a>.
+        <a href="mailto:support@freeliquid.info">support@freeliquid.info</a>.
       </p>
     </LegalTextLayout>
   </MarketingLayout>

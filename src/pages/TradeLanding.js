@@ -21,7 +21,7 @@ import useLanguage from 'hooks/useLanguage';
 import styled from 'styled-components';
 import { ReactComponent as FrontParallelogramsBase } from 'images/landing/trade/front-parallelograms.svg';
 import { ReactComponent as BackParallelogramsBase } from 'images/landing/trade/back-parallelograms.svg';
-import { ReactComponent as QuotesImg } from 'images/landing/trade/quotes.svg';
+
 import { ReactComponent as Feat1 } from 'images/landing/trade/feature-1.svg';
 import { ReactComponent as Feat2 } from 'images/landing/trade/feature-2.svg';
 import { ReactComponent as Feat3 } from 'images/landing/trade/feature-3.svg';
@@ -74,13 +74,13 @@ const HeroBackground = (() => {
 })();
 
 const StyledQuotes = styled(Quotes)`
-  background: linear-gradient(125.71deg, #cbfffa 0%, #e7fce9 100%);
-
+  background: rgb(218 228 249);
+  box-shadow: 0px 5px 20px -10px rgba(0, 0, 0, 0.75);
   @media (min-width: ${props => props.theme.breakpoints.m}) {
     :after {
       content: '';
       display: block;
-      background: #bffff8;
+
       height: 100%;
       width: 100%;
       position: absolute;
@@ -106,12 +106,11 @@ function TradeLanding() {
       <PageHead
         title={lang.trade_landing.meta.title}
         description={lang.trade_landing.meta.description}
-        imgUrl="https://oasis.app/meta/Oasis_Trade.png"
       />
       <FixedHeaderTrigger cta={ctaButton}>
         <StyledConnectHero>
           <HeroBackground />
-          <ThickUnderline background="linear-gradient(176.45deg, #ECFFDA 18.9%, #AFFFFA 100%)">
+          <ThickUnderline>
             <Text.h4>{lang.trade_landing.page_name}</Text.h4>
           </ThickUnderline>
           <Text.h1 className="headline" style={{ marginBottom: '17px' }}>
@@ -127,17 +126,13 @@ function TradeLanding() {
           {ctaButton}
         </StyledConnectHero>
       </FixedHeaderTrigger>
-      <GradientBox
-        mt="211px"
-        background="radial-gradient(242.42% 146.56% at 0% 0%, #E8FFFC 0%, #F8FFE6 50.52%, #E8FFFC 100%)"
-      >
+      <GradientBox mt="211px">
         <QuotesFadeIn>
           <StyledQuotes
             title={lang.trade_landing.quotes_block.title}
             body={<Box mb="95px">{lang.trade_landing.quotes_block.body}</Box>}
             quote={lang.trade_landing.quotes_block.quote1}
             author={lang.trade_landing.quotes_block.author1}
-            quotesImg={<QuotesImg />}
           />
         </QuotesFadeIn>
       </GradientBox>

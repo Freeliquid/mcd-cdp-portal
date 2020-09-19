@@ -1,14 +1,19 @@
-import { themeLight } from '@makerdao/ui-components-core';
+import { themeDark } from '@makerdao/ui-components-core';
 import { SAFETY_LEVELS } from 'utils/constants';
-const { colors, typography, space, fontSizes } = themeLight;
+const { colors, typography, space, fontSizes } = themeDark;
 
 const theme = {
-  ...themeLight,
+  ...themeDark,
   breakpoints: {
-    ...themeLight.breakpoints,
+    ...themeDark.breakpoints,
     xl: '1150px'
   },
   colors: {
+    cayn: '#00C4C4',
+    blue: '#4E26FF',
+    grey: '#70788C',
+    bodyBg: '#191E2B',
+    cardBg: '#2d3953',
     spinner: '#9FAFB9',
     blackLight: '#222',
     blackLighter: '#383838',
@@ -28,8 +33,7 @@ const theme = {
       lineHeight: '1',
       fontWeight: '500',
       fontFamily:
-        "-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;",
-      color: '#231536'
+        "-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Helvetica, Arial, sans-serif;"
     },
     smallCaps: {
       fontSize: '1.1rem',
@@ -42,7 +46,7 @@ const theme = {
   },
   measurement: {
     sidebarWidth: 318,
-    navbarWidth: 80,
+    navbarWidth: 150,
     mobileNavHeight: 80,
     navbarItemWidth: 70,
     navbarItemHeight: 55
@@ -62,15 +66,15 @@ export default theme;
 
 export const marketingTheme = (() => {
   const mColors = {
-    purpleGray: '#2F3044',
-    violetGray: '#443854'
+    purpleGray: '#FFF',
+    violetGray: '#CCC'
   };
   const mFont = "'FT Base', Arial, Helvetica, sans-serif";
   const mHeading = {
     display: 'block',
     fontFamily: mFont,
     fontWeight: 'bold',
-    color: theme.colors.darkPurple
+    color: 'fff'
   };
 
   return {
@@ -83,30 +87,39 @@ export const marketingTheme = (() => {
       ...theme.typography,
       h1: {
         ...mHeading,
-        fontSize: '4.8rem',
-        lineHeight: '58px'
+        fontSize: '3.4rem',
+        lineHeight: '58px',
+        color: '#ffffff'
       },
       h2: {
         ...mHeading,
         fontSize: '4rem',
-        lineHeight: '48px'
+        lineHeight: '48px',
+        color: '#ffffff'
       },
       h3: {
         ...mHeading,
         fontSize: '3.2rem',
-        lineHeight: '38px'
+        lineHeight: '38px',
+        color: '#ffffff'
       },
       h4: {
         ...mHeading,
-        fontSize: '2.0rem',
-        lineHeight: '27px'
+        fontSize: '2.4rem',
+        lineHeight: '27px',
+        color: '#00C4C4',
+        fontWeight: '300',
+        marginBottom: '15px'
+      },
+      p: {
+        ...mHeading,
+        color: 'e3e3e3'
       },
       body: {
         fontFamily: mFont,
         fontSize: '1.8rem',
         lineHeight: '28px',
-        letterSpacing: '0.5px',
-        color: mColors.violetGray
+        letterSpacing: '0.5px'
       }
     },
     fontSizes: {

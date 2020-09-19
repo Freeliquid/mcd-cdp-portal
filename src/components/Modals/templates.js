@@ -68,7 +68,7 @@ const BasicModal = forwardRef(
     const [fadeUpStart, fadeUpEnd] = animations.fadeUp;
 
     const ModalContent = styled(animated.div)`
-      background-color: white;
+      background-color: #191e2b;
       border-radius: 6px;
       padding: ${({ theme }) => theme.space.m}px;
       box-shadow: 0px 3px 13px rgba(67, 67, 67, 0.13);

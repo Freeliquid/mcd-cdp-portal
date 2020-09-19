@@ -59,8 +59,7 @@ const ConnectDropdown = ({ trigger, show, children, ...props }) => {
 const DropdownItems = styled(Box)`
   margin-bottom: 8px;
   min-width: 270px;
-  background: #ffffff;
-  border: 1px solid #ecf1f3;
+  background: #222b3f;
   box-sizing: border-box;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
@@ -78,15 +77,14 @@ const DropdownWrapper = styled(Box)`
     props.isMobile
       ? `
     ${FilledButton}, ${FilledButton}:hover {
-       background-color: ${
-         props.isOpen ? '#50445e' : props.theme.colors.darkPurple
-       };
+       background-color: ${props.isOpen ? '#50445e' : '#fff'};
     }
   `
       : `
     :hover {
       ${FilledButton} {
-        background-color: #50445e;
+        background-color: #00C4C4;
+        color: #191E2B; 
       }
     }
   `}
@@ -169,7 +167,7 @@ const NavItem = styled(Item)`
   }
 `;
 
-function AccountSelection({ buttonWidth = '213px', ...props }) {
+function AccountSelection({ buttonWidth = '200px', ...props }) {
   const dropdown = useRef(null);
   const [showMain, setShowMain] = useState(true);
   const [isOpen, setIsOpen] = useState(false); // only for mobile

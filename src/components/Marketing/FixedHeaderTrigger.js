@@ -13,8 +13,8 @@ const HeaderStyle = styled(Box)`
   left: 0;
   height: 81px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.12);
-  background-color: #fff;
-
+  background-color: #191e2b;
+  color: #fff;
   z-index: -1;
   opacity: 0;
 
@@ -57,15 +57,15 @@ const Header = ({ cta, ...props }) => {
       <Text display={{ s: 'none', xl: 'inline' }} fontSize="s">
         {lang.providers.connect_wallet_long}
       </Text>
-      <AccountSelection ml="24px" buttonWidth="248px" display="inline" />
+      <AccountSelection ml="15px" display="inline" />
     </Flex>
   );
 
   return (
     <HeaderStyle {...props}>
       <HeaderContent>
-        <OasisLogoLink />
-        <div className="cta-container">{cta || defaultCTA}</div>
+        <OasisLogoLink style={{ color: '#FFF' }} />
+        <div className="">{cta || defaultCTA}</div>
       </HeaderContent>
     </HeaderStyle>
   );

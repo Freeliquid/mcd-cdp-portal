@@ -213,7 +213,7 @@ function BorrowWBTCLanding() {
       <FixedHeaderTrigger>
         <HeroStyle>
           <Box className="content">
-            <ThickUnderline background="linear-gradient(176.36deg, #FFE9E9 26.84%, #FFDB87 97.79%)">
+            <ThickUnderline>
               <Text.h4>{lang.borrow_landing.page_name}</Text.h4>
             </ThickUnderline>
             <Text.h1 className="headline">
@@ -240,7 +240,10 @@ function BorrowWBTCLanding() {
         <Text>
           {lang.formatString(lang.borrow_wbtc_landing.about_learn_more, {
             link: (
-              <ExternalLink href="https://www.wbtc.network/">
+              <ExternalLink
+                style={{ color: '#00C4C4' }}
+                href="https://www.wbtc.network/"
+              >
                 https://www.wbtc.network/
               </ExternalLink>
             )
@@ -253,7 +256,10 @@ function BorrowWBTCLanding() {
           title={lang.borrow_wbtc_landing.step1}
           details={lang.formatString(lang.borrow_wbtc_landing.step1_details, {
             link: (
-              <ExternalLink href="https://coinlist.co/wbtc-signup?referral_code=FETRCM">
+              <ExternalLink
+                style={{ color: '#00C4C4' }}
+                href="https://coinlist.co/wbtc-signup?referral_code=FETRCM"
+              >
                 CoinList
               </ExternalLink>
             )
@@ -284,6 +290,7 @@ function BorrowWBTCLanding() {
           details={lang.formatString(lang.borrow_wbtc_landing.step5_details, {
             link: (
               <Link
+                style={{ color: '#00C4C4' }}
                 style={{ textDecoration: 'underline' }}
                 href={`/${Routes.BORROW}`}
               >
@@ -304,6 +311,7 @@ function BorrowWBTCLanding() {
           links={
             <>
               <Link
+                style={{ color: '#00C4C4' }}
                 href="https://community-development.makerdao.com/makerdao-mcd-faqs/faqs/vault"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -314,6 +322,7 @@ function BorrowWBTCLanding() {
                 <SeparatorDot mx="24px" />
               </Box>
               <Link
+                style={{ color: '#00C4C4' }}
                 href="https://community-development.makerdao.com/makerdao-mcd-faqs/faqs/glossary"
                 target="_blank"
                 rel="noopener noreferrer"

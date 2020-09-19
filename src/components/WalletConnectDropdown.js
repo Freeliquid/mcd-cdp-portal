@@ -75,7 +75,7 @@ const Option = ({ icon, children, ...props }) => {
       css={`
         cursor: pointer;
         &:hover {
-          background-color: ${getColor('grey.100')};
+          background-color: #191e2b;
         }
       `}
       {...props}

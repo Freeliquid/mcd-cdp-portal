@@ -59,7 +59,10 @@ function Overview({ viewedAddress }) {
   const { emergencyShutdownActive } = useEmergencyShutdown();
   const { addNotification, deleteNotifications } = useNotification();
   useEffect(() => {
-    if (account && viewedAddress.toLowerCase() !== account.address.toLowerCase()) {
+    if (
+      account &&
+      viewedAddress.toLowerCase() !== account.address.toLowerCase()
+    ) {
       addNotification({
         id: NotificationList.NON_OVERVIEW_OWNER,
         content: lang.formatString(
@@ -126,7 +129,7 @@ function Overview({ viewedAddress }) {
 
   return (
     <PageContentLayout>
-      <Text.h2 pr="m" mb="m" color="darkPurple">
+      <Text.h2 pr="m" mb="m" color="white">
         {lang.overview_page.title}
       </Text.h2>
       {viewedAddressVaults && (
@@ -219,7 +222,7 @@ function Overview({ viewedAddress }) {
                             t="body"
                             fontSize={{ s: '1.7rem', xl: 'm' }}
                             fontWeight={{ s: 'medium', xl: 'normal' }}
-                            color="darkPurple"
+                            color="white"
                           >
                             {collateralAmount.symbol}
                           </Text>
@@ -228,7 +231,7 @@ function Overview({ viewedAddress }) {
                           <Text
                             t="body"
                             fontSize={{ s: '1.7rem', xl: 'm' }}
-                            color={{ s: 'darkLavender', xl: 'darkPurple' }}
+                            color={{ s: 'grey', xl: 'white' }}
                           >
                             {id}
                           </Text>

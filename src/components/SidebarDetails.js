@@ -26,9 +26,11 @@ const SidebarDetails = ({ system, savings }) => {
       : ''
   ];
 
-  const params = [TOTAL_DAI_SUPPLY, TOTAL_SAVINGS_DAI, DAI_SAVINGS_RATE].map(
-    f => f({ system, savings })
-  );
+  const params = [
+    TOTAL_DAI_SUPPLY,
+    TOTAL_SAVINGS_DAI,
+    DAI_SAVINGS_RATE
+  ].map(f => f({ system, savings }));
 
   return (
     <Card css={'overflow:hidden;'} pt="2xs">
@@ -44,12 +46,12 @@ const SidebarDetails = ({ system, savings }) => {
             width="100%"
             py="xs"
             px="s"
-            bg={idx % 2 ? 'coolGrey.100' : 'white'}
+            bg="rgb(45 57 83)"
           >
-            <Text color="steel" fontWeight="semibold" t="smallCaps">
+            <Text color="grey" fontWeight="semibold" t="smallCaps">
               {param}
             </Text>
-            <Text fontSize="1.4rem" color="darkPurple">
+            <Text fontSize="1.4rem" color="white">
               {value}
             </Text>
           </Flex>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Loader, Text, Flex } from '@makerdao/ui-components-core';
 import { getColor } from 'styles/theme';
 
-const LoadingLayout = ({ text, size = '4rem', background = '#fff' }) => (
+const LoadingLayout = ({ text, size = '4rem', background = '#191E2B' }) => (
   <Flex
     gridRowGap="l"
     p="m"

@@ -31,7 +31,7 @@ const TabHeader = ({ selected, children, ...props }) => {
       borderBottom={selected ? null : 'default'}
       {...props}
     >
-      <Text t="h5" color={selected ? 'darkPurple' : 'darkLavender'}>
+      <Text t="h5" color={selected ? 'fff' : 'ccc'}>
         {children}
       </Text>
     </TabHeaderContainer>

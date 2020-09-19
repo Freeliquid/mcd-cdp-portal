@@ -1,9 +1,9 @@
-import mixpanel from 'mixpanel-browser';
+/* import mixpanel from 'mixpanel-browser';
 import ReactGA from 'react-ga';
 import debug from 'debug';
 const log = debug('maker:analytics');
 
-const env = process.env.NODE_ENV === 'production' ? 'prod' : 'test';
+const env = 'test';
 const config = {
   test: {
     userSnap: {
@@ -27,7 +27,7 @@ const config = {
       pageView: 'QODYHBGU'
     }
   },
-  prod: {
+  /* prod: {
     mixpanel: {
       token: 'a030d8845e34bfdc11be3d9f3054ad67',
       config: { ip: false, api_host: 'https://mpp.makerfoundation.com' }
@@ -44,10 +44,10 @@ const config = {
     fathom: {
       pageView: 'XELBLZRK'
     }
-  }
-}[env];
+  } */
+//}[env];
 
-export const mixpanelInit = () => {
+/* export const mixpanelInit = () => {
   log(
     `[Mixpanel] Tracking initialized for ${env} env using ${config.mixpanel.token}`
   );
@@ -103,4 +103,4 @@ export const fathomInit = () => {
   elements.parentNode.insertBefore(script, elements);
 
   window.fathom('set', 'siteId', config.fathom.pageView);
-};
+}; */

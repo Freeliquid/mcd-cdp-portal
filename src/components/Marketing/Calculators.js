@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { prettifyCurrency } from 'utils/ui';
 import TokenIcon from './TokenIcon';
 import { ReactComponent as CaratDown } from 'images/carat-down-filled.svg';
-import { ReactComponent as DaiImg } from 'images/dai-color.svg';
+import { ReactComponent as DaiImg } from 'images/oasis-tokens/usdl.svg';
 
 import useLanguage from 'hooks/useLanguage';
 import useMaker from 'hooks/useMaker';
@@ -16,7 +16,7 @@ const Dropdown = (() => {
   const Trigger = styled(Flex)`
     justify-content: space-between;
     align-items: center;
-    background: #ffffff;
+    background: #191e2b;
     border: 1px solid #d4d9e1;
     border-radius: 5px;
     padding-right: 27px;
@@ -29,7 +29,7 @@ const Dropdown = (() => {
     width: calc(100% - 2px);
     top: calc(100% + 5px);
     right: 0;
-    background: #ffffff;
+    background: rgb(45, 57, 83);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     padding-top: 12px;
@@ -75,7 +75,7 @@ const Dropdown = (() => {
       <DropdownStyle ref={dropdown} {...props}>
         <Trigger onClick={() => setIsOpen(!isOpen)}>
           {getSelectedItem().render()}
-          <CaratDown style={{ fill: '#231536', marginTop: '2px' }} />
+          <CaratDown style={{ fill: '#ccc', marginTop: '2px' }} />
         </Trigger>
         <Items display={isOpen ? 'block' : 'none'}>
           {items
@@ -133,7 +133,7 @@ const Slider = (() => {
 })();
 
 const CalculatorStyle = styled(Box)`
-  background: #ffffff;
+  background: rgb(45, 57, 83);
   width: 100vw;
   left: -${props => props.theme.mobilePaddingX};
   border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -193,20 +193,17 @@ export const useDaiSavingsRate = () => {
 const DaiAmount = (() => {
   const GradientValue = styled(Text.h1)`
     display: inline;
-    background: linear-gradient(
-      125.96deg,
-      #fdc134 17.59%,
-      #c9e03b 48.87%,
-      #2dc1b1 83.6%
-    );
+    background: #fff;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   `;
 
   const DaiAmountStyle = styled(Box)`
     .dai-symbol {
+      width: 40px;
+      height: 40px;
       position: relative;
-      margin-right: 22px;
+      margin-right: 16px;
       top: 5px;
     }
   `;
@@ -311,52 +308,40 @@ const SmartStepSlider = ({
 
 const cdpTypesMetaData = {
   'ETH-A': {
-    text: 'Ethereum',
+    text: 'USDT/USDC',
     colRatio: 200,
     amountRange: [1, 350],
     amountStart: 25
   },
   'BAT-A': {
-    text: 'BAT',
+    text: 'USDT/USDN',
     colRatio: 200,
     amountRange: [200, 70000],
     amountStart: 600
   },
   'MANA-A': {
-    text: 'MANA',
+    text: 'USDT/DAI',
     colRatio: 240,
     amountRange: [1000, 350000],
     amountStart: 3000
   },
   'USDC-A': {
-    text: 'USDC',
+    text: 'USDC/USDN',
     colRatio: 120,
     amountRange: [200, 70000],
     amountStart: 5000
   },
   'WBTC-A': {
-    text: 'WBTC',
+    text: 'USDC/DAI',
     colRatio: 200,
     amountRange: [0.1, 35],
     amountStart: 0.5
   },
   'TUSD-A': {
-    text: 'TUSD',
+    text: 'USDN/DAI',
     colRatio: 120,
     amountRange: [200, 70000],
     amountStart: 5000
-  },
-  'ZRX-A': {
-    text: 'ZRX',
-    colRatio: 200,
-    amountRange: [200, 70000],
-    amountStart: 100
-  },
-  'KNC-A': {
-    text: 'KNC',
-    colRatio: 200,
-    amountRange: [200, 70000],
-    amountStart: 100
   }
 };
 
@@ -404,13 +389,13 @@ const BorrowCalculator = ({ prices, cdpTypesList, ...props }) => {
               value: ilk.symbol,
               render: () => (
                 <DropdownItem
-                  img={
+                /* img={
                     <TokenIcon
                       symbol={getTokenName(ilk)}
                       width="28.33"
                       height="28.33"
                     />
-                  }
+                  } */
                 >
                   {ilk.text || ilk.symbol}
                 </DropdownItem>
@@ -426,9 +411,9 @@ const BorrowCalculator = ({ prices, cdpTypesList, ...props }) => {
             <Position position="absolute" bottom="37px" right="0">
               <CapsText textAlign="right" data-testid="amount-chosen">
                 {collateralAmount}
-                <span style={{ marginLeft: '3px' }}>
+                {/* <span style={{ marginLeft: '3px' }}>
                   {getTokenName(selectedIlk)}
-                </span>
+                </span> */}
               </CapsText>
             </Position>
             <Slider

@@ -26,7 +26,6 @@ function BorrowMarkets() {
       <PageHead
         title={lang.borrow_markets.meta.title}
         description={lang.borrow_landing.meta.description}
-        imgUrl="https://oasis.app/meta/Oasis_Borrow.png"
       />
       <Box maxWidth="844px" m="76px auto 0">
         <Text.h3 fontWeight="normal" mb="12px">

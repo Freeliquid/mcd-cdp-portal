@@ -4,35 +4,36 @@ import { Loader, Table, Text } from '@makerdao/ui-components-core';
 import BigNumber from 'bignumber.js';
 import { TokenIcon } from './index';
 import { formatter, prettifyNumber } from 'utils/ui';
-import Carat from '../Carat';
 import { getColor } from 'styles/theme';
 import useLanguage from 'hooks/useLanguage';
 import groupBy from 'lodash.groupby';
 import { watch } from 'hooks/useObservable';
+import { getMaxDaiAvailable } from 'utils/cdp';
 
-const TABLE_PADDING = '33px';
+const TABLE_PADDING = '35px';
 
-const Number = styled(Text)``;
+const Number = styled(Text)`
+  color: #fff;
+`;
 
 const tokenNames = {
-  ETH: 'Ether',
-  BAT: 'Basic Attention Token',
-  WBTC: 'Wrapped Bitcoin',
-  USDC: 'USD Coin',
-  MANA: 'Mana',
-  ZRX: '0x',
-  KNC: 'Kyber Network',
-  TUSD: 'TrueUSD'
+  ETH: 'USDT/USDC',
+  BAT: 'USDT/USDN',
+  WBTC: 'USDT/DAI',
+  USDC: 'USDC/USDN',
+  MANA: 'USDC/DAI',
+  ZRX: 'USDN/DAI'
 };
 
 const MarketsTableStyle = styled(Table)`
-  width: 100%;
-  min-width: 401px;
+  widht: 100%;
   margin: 0 auto;
+  color: #fff;
 
   ${Text} {
-    color: ${props => props.theme.colors.darkPurple};
+    color: #fff;
     font-size: ${props => props.theme.fontSizes.s};
+    text-align: center;
   }
 
   ${Number} {
@@ -40,7 +41,7 @@ const MarketsTableStyle = styled(Table)`
   }
 
   .gem {
-    color: ${props => props.theme.colors.darkPurple};
+    color: #fff;
   }
 
   .profile-name {
@@ -56,6 +57,7 @@ const MarketsTableStyle = styled(Table)`
   ${Table.th} {
     padding-bottom: 18px;
     color: ${props => props.theme.colors.steel};
+    text-align: center;
   }
 
   ${Table.thead}, .summary:not(:nth-last-child(2)) {
@@ -65,89 +67,8 @@ const MarketsTableStyle = styled(Table)`
   ${Table.td} {
     padding-top: 14px;
     padding-bottom: 13px;
-  }
-
-  .expand-btn {
-    padding: 6px 0;
-    svg {
-      stroke: #9aa3ad;
-      transition: transform 0.2s;
-    }
-  }
-
-  .summary {
-    cursor: pointer;
-
-    td.margin {
-      border-bottom: 1px solid white;
-    }
-
-    &:hover {
-      ${Table.td} {
-        background-color: rgba(246, 248, 249, 0.4);
-        box-shadow: inset 0 0 6px 3px rgba(255, 255, 255, 0.6);
-      }
-
-      .expand-btn svg {
-        stroke: #60666c;
-      }
-    }
-
-    &.expanded {
-      border-bottom: none;
-
-      .expand-btn svg {
-        transform: rotate(180deg);
-      }
-    }
-  }
-
-  .risk-profiles {
-    ${Table.td} {
-      background-color: #f6f8f9;
-    }
-    ${Table.tr}:first-child {
-      .firstTD {
-        border-top-left-radius: 6px;
-      }
-      .lastTD {
-        border-top-right-radius: 6px;
-      }
-    }
-    /* prettier-ignore */
-    ${Table.tr}:nth-last-child(2) {
-      .firstTD {
-        border-bottom-left-radius: 6px;
-      }
-      .lastTD {
-        border-bottom-right-radius: 6px;
-      }
-    }
-
-    td,
-    div {
-      transition: opacity 0s;
-      opacity: 0;
-      max-height: 0;
-    }
-    td {
-      padding: 0 0;
-    }
-
-    &.expanded {
-      td,
-      div {
-        transition: opacity 0.15s ease;
-        opacity: 1;
-        max-height: 1100px;
-      }
-      td {
-        padding: 12px 0;
-      }
-      .risk-profiles-margin-row {
-        height: 10px;
-      }
-    }
+    text-align: center;
+    border-bottom: 1px solid #e8e8e8;
   }
 
   @media (max-width: ${props => props.theme.breakpoints.m}) {
@@ -167,9 +88,6 @@ const MarketsTable = ({ cdpTypesList, ...props }) => {
   );
   const [expandedRows, setExpandedRows] = useState({});
   const isExpanded = rowIndex => expandedRows[rowIndex];
-  const toggleRow = index => {
-    setExpandedRows({ ...expandedRows, [index]: !isExpanded(index) });
-  };
 
   return (
     <MarketsTableStyle {...props}>
@@ -191,21 +109,12 @@ const MarketsTable = ({ cdpTypesList, ...props }) => {
           <Table.th width={{ s: '0', m: TABLE_PADDING }} />
         </Table.tr>
       </Table.thead>
-      <tr style={{ height: '8px', border: 'none' }} />
       {collateralTypesData ? (
         Object.entries(cdpTypesByGem).map(([gem, cdpTypesData], rowIndex) => {
-          cdpTypesData = cdpTypesData.map(data => {
-            const collateralDebtAvailable = data.collateralDebtAvailable?.toBigNumber();
-
-            const maxDaiAvailableToGenerate = collateralDebtAvailable?.lt(0)
-              ? BigNumber(0)
-              : collateralDebtAvailable;
-
-            return {
-              maxDaiAvailableToGenerate,
-              ...data
-            };
-          });
+          cdpTypesData = cdpTypesData.map(ilkData => ({
+            maxDaiAvailableToGenerate: getMaxDaiAvailable(ilkData),
+            ...ilkData
+          }));
 
           // aggregate data
           const fees = cdpTypesData.map(data => data.annualStabilityFee);
@@ -224,8 +133,8 @@ const MarketsTable = ({ cdpTypesList, ...props }) => {
           return [
             <Table.tbody
               key={gem}
-              className={`summary ${isExpanded(rowIndex) ? 'expanded' : ''}`}
-              onClick={() => toggleRow(rowIndex)}
+
+              //onClick={() => toggleRow(rowIndex)}
             >
               <Table.tr>
                 <td className="margin" />
@@ -236,9 +145,9 @@ const MarketsTable = ({ cdpTypesList, ...props }) => {
                   <Text display={{ s: 'none', m: 'inline' }}>
                     {tokenNames[gem]}
                   </Text>
-                  <Text ml="8px" className="gem">
+                  {/* <Text ml="8px" className="gem">
                     {gem}
-                  </Text>
+                  </Text> */}
                 </Table.td>
                 <Table.td>
                   <Number>
@@ -268,71 +177,7 @@ const MarketsTable = ({ cdpTypesList, ...props }) => {
                 <Table.td>
                   <Number>{prettifyNumber(totalDaiAvailable, true)}</Number>
                 </Table.td>
-                <Table.td>
-                  <div className="expand-btn">
-                    <Carat />
-                  </div>
-                </Table.td>
-                <td className="margin" />
               </Table.tr>
-            </Table.tbody>,
-            <Table.tbody
-              key={gem + '-risk-profiles'}
-              className={`risk-profiles ${
-                isExpanded(rowIndex) ? 'expanded' : ''
-              }`}
-            >
-              {cdpTypesData.map(cdpType => (
-                <Table.tr key={cdpType.symbol} borderBottom="none">
-                  <td />
-                  <Table.td className="firstTD" />
-                  <Table.td>
-                    <div>
-                      <Text className="profile-name">{cdpType.symbol}</Text>
-                    </div>
-                  </Table.td>
-                  <Table.td>
-                    <div>
-                      <Number>
-                        {formatter(cdpType.annualStabilityFee, {
-                          percentage: true
-                        })}
-                        %
-                      </Number>
-                    </div>
-                  </Table.td>
-                  <Table.td>
-                    <div>
-                      <Number>
-                        {formatter(cdpType.liquidationRatio, {
-                          percentage: true
-                        })}
-                        %
-                      </Number>
-                    </div>
-                  </Table.td>
-                  <Table.td>
-                    <div>
-                      <Number>
-                        {prettifyNumber(
-                          cdpType.maxDaiAvailableToGenerate,
-                          true
-                        )}
-                        {debtCeilings &&
-                          ` / ${prettifyNumber(
-                            debtCeilings[cdpType.symbol],
-                            true,
-                            2,
-                            false
-                          )}`}
-                      </Number>
-                    </div>
-                  </Table.td>
-                  <Table.td className="lastTD" />
-                  <td />
-                </Table.tr>
-              ))}
-              <tr className="risk-profiles-margin-row" />
             </Table.tbody>
           ];
         })

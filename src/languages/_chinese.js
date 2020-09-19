@@ -22,7 +22,7 @@ export default {
   },
   landing_page: {
     meta: {
-      title: 'Oasis.app',
+      title: 'Freeliquid.io',
       description: '"一站式 Dai 交易、借贷、存款平台。订单簿模式交易，抵押生成美元稳定币 Dai，存 Dai 获取收益。'
     },
     headline: '一站式 Dai 交易、借贷、存款平台',
@@ -44,21 +44,21 @@ export default {
         '存 Dai 生息，随存随取',
       button: '存 Dai'
     },
-    token_section_title: 'Oasis Trade 支持的交易对',
-    token_section_only_on_trade: '只在 Oasis Trade 支持',
-    section1_title: 'Oasis 是什么?',
+    token_section_title: 'Freeliquid Trade 支持的交易对',
+    token_section_only_on_trade: '只在 Freeliquid Trade 支持',
+    section1_title: 'Freeliquid 是什么?',
     section1_p:
-      'Oasis 是去中心化金融 (DeFi) 的一站式平台。你可以交易数字资产、借 Dai 和存 Dai 赚利息。',
+      'Freeliquid 是去中心化金融 (DeFi) 的一站式平台。你可以交易数字资产、借 Dai 和存 Dai 赚利息。',
     section2_title: '基于以太坊的安全协议',
     section2_p:
-      'Oasis 是由 Maker 开发，基于以太坊创建、通过形式化验证和安全审计的智能合约，是去中心化金融领域的领导者。',
+      'Freeliquid 是由 Maker 开发，基于以太坊创建、通过形式化验证和安全审计的智能合约，是去中心化金融领域的领导者。',
     section3_title: '完全无门槛',
     section3_p:
-      'Oasis 是完全去中心化、无中心化托管的平台，通过以太坊钱包即可访问，资产永远掌握在用户自己手里。',
+      'Freeliquid 是完全去中心化、无中心化托管的平台，通过以太坊钱包即可访问，资产永远掌握在用户自己手里。',
     questions_title: '常见问题',
-    question1: 'Oasis 是什么?',
+    question1: 'Freeliquid 是什么?',
     answer1:
-      'Oasis 是运行在以太坊区块链上的去中心化应用。任何人都可以在 Oasis 上交易数字资产、抵押借 Dai 并且存 Dai 生息。',
+      'Freeliquid 是运行在以太坊区块链上的去中心化应用。任何人都可以在 Freeliquid 上交易数字资产、抵押借 Dai 并且存 Dai 生息。',
     question2: 'Dai 是什么?',
     answer2:
       'Dai 是全球第一个无偏见的去中心化稳定币，其价格和美元保持软锚定。了解 Dai：{0}',
@@ -66,37 +66,37 @@ export default {
     answer2_link1_text: '更多内容',
     question3: '我需要注册账户吗?',
     answer3:
-      '使用 Oasis，你不用注册账户，只需要通过以太坊钱包连接。Oasis 支持以下以太坊钱包: {0}, {1} 等。',
+      '使用 Freeliquid，你不用注册账户，只需要通过以太坊钱包连接。Freeliquid 支持以下以太坊钱包: {0}, {1} 等。',
     answer3_link1_url: 'https://metamask.io/',
     answer3_link1_text: 'Metamask',
     answer3_link2_url: 'https://wallet.coinbase.com/',
     answer3_link2_text: 'Coinbase Wallet',
-    question4: 'Oasis 安全吗?',
+    question4: 'Freeliquid 安全吗?',
     answer4:
-      'Oasis 具备最高的安全标准，并且经过日常的审计和形式化验证。此外, Oasis 是 {0} 协议，任何人都可以测试和审计。',
-    answer4_link1_url: 'https://github.com/OasisDEX',
+      'Freeliquid 具备最高的安全标准，并且经过日常的审计和形式化验证。此外, Freeliquid 是 {0} 协议，任何人都可以测试和审计。',
+    answer4_link1_url: 'https://github.com/FreeliquidDEX',
     answer4_link1_text: '开源',
-    question5: '在 Oasis 上交易需要付手续费吗？',
+    question5: '在 Freeliquid 上交易需要付手续费吗？',
     answer5:
-      'Oasis 协议本身是完全免费的。在使用过程中，你仅需要支付以太坊矿工费。',
-    question6: '如何联系 Oasis 团队?',
-    answer6: '你可以通过 {0} 联系 Oasis 团队。',
+      'Freeliquid 协议本身是完全免费的。在使用过程中，你仅需要支付以太坊矿工费。',
+    question6: '如何联系 Freeliquid 团队?',
+    answer6: '你可以通过 {0} 联系 Freeliquid 团队。',
     answer6_link1_url: 'https://chat.makerdao.com',
     answer6_link1_text: 'chat',
     question7:
-      '我可以用银行卡在 Oasis 上购买比特币或者以太坊吗？',
+      '我可以用银行卡在 Freeliquid 上购买比特币或者以太坊吗？',
     answer7:
-      '你无法在 Oasis 用银行卡购买加密资产，你可以用 Dai 购买以太坊和其他资产。',
+      '你无法在 Freeliquid 用银行卡购买加密资产，你可以用 Dai 购买以太坊和其他资产。',
     read_only: 'Read-Only',
     wallet_connect: 'Wallet Connect',
     wallet_link: 'Coinbase Wallet'
   },
   borrow_landing: {
     meta: {
-      title: 'Oasis Borrow',
+      title: 'Freeliquid Borrow',
       description: '让你的资产增倍。通过「金库」轻松抵押资产生成 Dai。在获得流动性的同时，保持抵押品的增值机会。'
     },
-    page_name: 'Oasis Borrow',
+    page_name: 'Freeliquid Borrow',
     headline: '让你的资产增倍',
     subheadline:
       "通过「金库」轻松抵押资产生成 Dai。在获得流动性的同时，保持抵押品的增值机会。",
@@ -129,7 +129,7 @@ export default {
     questions: {
       question1: '我可以用哪些资产作为抵押品？',
       answer1:
-        '目前，Oasis Borrow 支持 ETH、BAT、USDC 和 WBTC，且有计划新增更多类型的抵押品，而且不同抵押品类型可以有不同的风险参数。你可以阅读 Maker 协议《抵押品入选指南》来了解更多信息。',
+        '目前，Freeliquid Borrow 支持 ETH、BAT、USDC 和 WBTC，且有计划新增更多类型的抵押品，而且不同抵押品类型可以有不同的风险参数。你可以阅读 Maker 协议《抵押品入选指南》来了解更多信息。',
       question2: '抵押借 Dai 的成本是多少？',
       answer2:
         '根据抵押品的不同，生成 Dai 的成本也不同。抵押借 Dai 需要收取稳定费用，稳定费用按每秒钟复利计算，并自动加到金库的债务总额中，在前端以未偿债务的年化利率显示。此外，还有一些其它费用，包括清算时 13% 的清算罚金以及每一笔交易需支付的矿工费。',
@@ -139,11 +139,11 @@ export default {
       question4:
         "我没有支持的抵押品，如何获得 Dai ？",
       answer4:
-        "如果你没有协议所支持的抵押品资产，那么就无法通过 Oasis Borrow 抵押生成 Dai 。不过你仍然可以在交易所将你的资产兑换成 Dai。你可以前往 Oasis Trade 交易获得 Dai。",
+        "如果你没有协议所支持的抵押品资产，那么就无法通过 Freeliquid Borrow 抵押生成 Dai 。不过你仍然可以在交易所将你的资产兑换成 Dai。你可以前往 Freeliquid Trade 交易获得 Dai。",
       question5: '费率会不会变，多久变一次？',
       answer5:
         "费率会变化。稳定费率和清算罚金都是由 Maker 治理所决定的，由于 Maker 协议的持续治理，这些费率可以发生调整。你可以在 vote.makerdao.com 上查看关于 Maker 协议的各项治理。至于矿工费，这是由以太坊网络的拥堵情况决定的（你可以自己设置矿工费的高低）。如果网络很拥堵，你需要支付更多的矿工费才能快速打包交易。",
-      bottom_link1: 'Oasis 金库常见问题完整列表',
+      bottom_link1: 'Freeliquid 金库常见问题完整列表',
       bottom_link2: '术语表'
     }
   },
@@ -169,14 +169,14 @@ export default {
     step5: '创建 WBTC 金库生成 Dai',
     step5_details:
       '前往 {link} ，开始抵押 wBTC 生成 Dai',
-    step5_link_text: 'Oasis.app/borrow'
+    step5_link_text: 'Freeliquid.io/borrow'
   },
   save_landing: {
     meta: {
-      title: 'Oasis Save',
+      title: 'Freeliquid Save',
       description: '最安全的储蓄方式。任何人都可以存入 Dai 获取实时收益。无手续费，无限额，低波动。'
     },
-    page_name: 'Oasis Save',
+    page_name: 'Freeliquid Save',
     headline: '最安全的储蓄方式',
     subheadline:
       '任何人都可以存入 Dai 获取实时收益。无手续费，无限额，低波动。',
@@ -188,7 +188,7 @@ export default {
         '在波动的市场环境里，找到资产的避风港。享受稳定收益，等待机会。',
       quote1:
         '当市场波动大的时候，我决定将资产换成 Dai 放在「金库」里。享受稳定收益带来的宁静，不用再担心暴跌。',
-      author1: 'Oasis Save 用户'
+      author1: 'Freeliquid Save 用户'
     },
     calc_heading: '我可以赚多少利息？',
     calc_subheading:
@@ -222,21 +222,21 @@ export default {
       question3: '使用 Dai 存款利率有成本吗？',
       answer3:
         "使用 Dai 存款利率没有任何原生费用，除了支付以太坊网络的矿工费之外。以太坊矿工费由网络拥堵情况决定。",
-      question4: '我在 Oasis Save 存了 Dai 后，别人能挪用吗？',
+      question4: '我在 Freeliquid Save 存了 Dai 后，别人能挪用吗？',
       answer4:
-        "不可以，任何人都无法控制你在 Oasis 金库里储蓄的 Dai。只要你保管好自己的钱包私钥，因此，备份钱包是非常重要的，如果你的钱包丢失了，Dai 是没有办法找回的。",
-      question5: 'Oasis Save 有什么风险吗？',
+        "不可以，任何人都无法控制你在 Freeliquid 金库里储蓄的 Dai。只要你保管好自己的钱包私钥，因此，备份钱包是非常重要的，如果你的钱包丢失了，Dai 是没有办法找回的。",
+      question5: 'Freeliquid Save 有什么风险吗？',
       answer5:
         '任何数字科技网络都存在着代码故障的风险。Maker 协议的 Dai 存款利率合约经过全面的测试以及多方审计。最大的风险往往在于你是否备份了钱包并确保没有将私钥或助记词分享给其他人。',
-      bottom_link1: 'Oasis Save 常见问题完整列表'
+      bottom_link1: 'Freeliquid Save 常见问题完整列表'
     }
   },
   trade_landing: {
     meta: {
-      title: 'Oasis Trade',
+      title: 'Freeliquid Trade',
       description: '点对点的加密货币交易。完全去中心化、零手续费，支持订单簿与闪兑'
     },
-    page_name: 'Oasis Trade',
+    page_name: 'Freeliquid Trade',
     headline: '点对点的加密货币交易',
     subheadline:
       '完全去中心化、零手续费，支持订单簿与闪兑',
@@ -244,17 +244,17 @@ export default {
     quotes_block: {
       title: '出价由你来定',
       body:
-        'Oasis Trade 支持订单簿模式，由你决定出价，支持限价单或市价全额成交。灵活设置价格和滑点，交易不吃亏。',
+        'Freeliquid Trade 支持订单簿模式，由你决定出价，支持限价单或市价全额成交。灵活设置价格和滑点，交易不吃亏。',
       quote1:
-        "Oasis 是我交易的首选，不仅有最好的价格，重要的是不需要将自己的资产通过传统交易所转来转去。",
-      author1: 'Oasis Trade 用户 '
+        "Freeliquid 是我交易的首选，不仅有最好的价格，重要的是不需要将自己的资产通过传统交易所转来转去。",
+      author1: 'Freeliquid Trade 用户 '
     },
     feature1_heading: '高流动性且去中心化',
     feature1_content:
       '提供最好的价格，有以太坊钱包即可交易。',
     feature2_heading: '杠杆利器',
     feature2_content:
-      '如果你用「金库」生成了 Dai，可以通过 Oasis Trade 做多初始资产。',
+      '如果你用「金库」生成了 Dai，可以通过 Freeliquid Trade 做多初始资产。',
     feature3_heading: '秒级交易',
     feature3_content:
       '只需要支付以太坊网络矿工费，你就可以在一个区块内快速完成交易。',
@@ -262,24 +262,24 @@ export default {
     feature4_content:
       '所有的交易都通过智能合约结算，你始终掌握自己资产的控制权。',
     questions: {
-      question1: '使用 Oasis Trade 需要支付任何费用吗？',
+      question1: '使用 Freeliquid Trade 需要支付任何费用吗？',
       answer1:
-        "使用 Oasis Trade 没有任何原生费用，除了支付以太坊网络的矿工费之外。以太坊矿工费由网络拥堵情况决定。",
+        "使用 Freeliquid Trade 没有任何原生费用，除了支付以太坊网络的矿工费之外。以太坊矿工费由网络拥堵情况决定。",
       question2: '我可以用借记卡或信用卡购买加密货币吗？',
       answer2:
-        'Oasis Trade 只支持交易 Dai、ETH、USDC、WBTC 等以太坊代币，不支持使用借记卡或信用卡购买。',
+        'Freeliquid Trade 只支持交易 Dai、ETH、USDC、WBTC 等以太坊代币，不支持使用借记卡或信用卡购买。',
       question3: '订单簿交易和闪兑有什么区别？',
       answer3:
         "订单簿模式下，你需要自定义价格创建或匹配订单，实现买入或卖出的撮合。闪兑模式下你能以订单簿上的最佳价格快速将一个代币换成另一个代币（成交价可能会因为滑点而略有变动）。",
       question4:
         '什么是价格滑点，是否可以限制范围？',
       answer4:
-        "滑点是下单价格与实际成交价格之间的差异。例如，你下单买入1个 ETH，价格为 200 Dai，但到交易确认的时候，最优价格是 202 Dai/ETH。在 Oasis Trade 中，你可以通过百分比来设置你的滑点限制，这意味着你的订单匹配后，如果超过了滑点限制，那么订单将自动取消。",
+        "滑点是下单价格与实际成交价格之间的差异。例如，你下单买入1个 ETH，价格为 200 Dai，但到交易确认的时候，最优价格是 202 Dai/ETH。在 Freeliquid Trade 中，你可以通过百分比来设置你的滑点限制，这意味着你的订单匹配后，如果超过了滑点限制，那么订单将自动取消。",
       question5:
-        'Oasis Trade 官方能否控制我的加密货币或钱包私钥？',
+        'Freeliquid Trade 官方能否控制我的加密货币或钱包私钥？',
       answer5:
-        '不会，Oasis Trade 是一个完全非托管、去中心化的交易所。这意味着资金的控制权永远在你自己手里，只有你能够下单或发送资金。所有的订单都是直接通过智能合约下单和结算，可以随时在以太坊网络上核对。',
-      bottom_link1: 'Oasis Trade 常见问题完整列表'
+        '不会，Freeliquid Trade 是一个完全非托管、去中心化的交易所。这意味着资金的控制权永远在你自己手里，只有你能够下单或发送资金。所有的订单都是直接通过智能合约下单和结算，可以随时在以太坊网络上核对。',
+      bottom_link1: 'Freeliquid Trade 常见问题完整列表'
     }
   },
   overview_page: {

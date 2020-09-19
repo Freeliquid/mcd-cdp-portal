@@ -20,12 +20,12 @@ const MarketingLayoutStyle = styled.div`
   font-style: normal;
   letter-spacing: normal;
   text-align: center;
-  color: ${getColor('purpleGray')};
+  color: #ccc;
   width: 100%;
   overflow-x: hidden;
 
   a {
-    color: ${getColor('darkPurple')};
+    color: ${getColor('white')};
     text-decoration: none;
   }
 `;
@@ -37,10 +37,11 @@ const Nav = styled(Box)`
 
   a {
     text-decoration: none;
+    color: #ccc;
   }
 
   a:hover {
-    color: #6d6d6d;
+    color: #00c4c4;
   }
 
   a:not(:first-child) {
@@ -52,7 +53,7 @@ const MainNavStyle = styled(Nav)`
   font-size: ${props => props.fontSize || '18px'};
 
   a {
-    color: ${getColor('violetGray')};
+    color: #fff;
   }
 `;
 
@@ -61,13 +62,13 @@ const MainNav = ({ onLinkClicked, ...props }) => {
 
   return (
     <MainNavStyle {...props}>
-      <Link
+      {/* <Link
         href={`/${Routes.TRADE}`}
         activeStyle={{ fontWeight: 'bold' }}
         onClick={() => onLinkClicked && onLinkClicked()}
       >
         {lang.navbar.trade}
-      </Link>
+      </Link> */}
       <Link
         href={`/${Routes.BORROW}`}
         activeStyle={{ fontWeight: 'bold' }}
@@ -82,24 +83,29 @@ const MainNav = ({ onLinkClicked, ...props }) => {
       >
         {lang.navbar.save}
       </Link>
-      <Link href="https://blog.oasis.app/">{lang.navbar.blog}</Link>
+      <Link
+        //href={`/${Routes.Governance}`}
+        activeStyle={{ fontWeight: 'bold' }}
+        //onClick={() => onLinkClicked && onLinkClicked()}
+      >
+        {lang.navbar.governance}
+      </Link>
     </MainNavStyle>
   );
 };
 
 const centerContent = css`
   margin: 0 auto;
-  max-width: 1280px;
   padding: 0 24px;
-
+  background: rgb(45, 57, 83);
   @media only screen and (min-width: ${props => props.theme.breakpoints.m}) {
-    padding: 0 40px;
+    padding: 25px 80px;
   }
 `;
 
 const Header = styled.header`
   ${centerContent};
-  margin-top: 16px;
+  padding: 16px;
   text-align: left;
   letter-spacing: 0.3px;
   display: flex;
@@ -113,7 +119,7 @@ const Header = styled.header`
   }
 
   a {
-    color: ${getColor('purpleGray')};
+    color: #fff;
   }
 
   ${MainNavStyle} {
@@ -126,7 +132,7 @@ const Header = styled.header`
   }
 
   @media (min-width: ${props => props.theme.breakpoints.m}) {
-    margin-top: 32px;
+    margin-top: 0px;
 
     ${MainNavStyle} {
       display: inline-flex;
@@ -143,29 +149,31 @@ const MobileMenu = styled(Box)`
   top: 43px;
   left: 0;
   width: 100vw;
-  background-color: #fff;
+  background-color: rgb(45, 57, 83);
   overflow-y: scroll;
   transition: all 0.2s ease-in-out;
   z-index: 99;
 
   ${MainNavStyle} {
-    margin-top: 64px;
     flex-direction: column;
     align-items: flex-start;
     font-size: 26px;
     float: left;
     a:not(:first-child) {
       margin-left: 0;
-      margin-top: 63px;
+      margin-top: 15px;
     }
   }
 
   ${OasisLogoLink} {
-    display: block;
     text-align: left;
-    font-size: 40px;
+    font-size: 28px;
     line-height: 48px;
-    letter-spacing: 0.3px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
 `;
 
@@ -173,8 +181,7 @@ const centerFooterMaxWidth = '980px';
 
 const Footer = styled.footer`
   ${centerContent};
-  margin-top: 90px;
-  margin-bottom: 39px;
+  padding: 20px;
   letter-spacing: 0.3px;
 
   *,
@@ -206,8 +213,6 @@ const Footer = styled.footer`
   }
 
   @media (min-width: ${props => props.theme.breakpoints.m}) {
-    margin-bottom: 70px;
-
     ${SeparatorDot} {
       display: inline-block;
     }
@@ -257,7 +262,7 @@ const Footer = styled.footer`
   }
 `;
 
-// It has the Oasis logo, the top nav links, and the copyright notice.
+// It has the Freeliquid logo, the top nav links, and the copyright notice.
 // It also has a ThemeProvider
 const MarketingLayout = ({ showNavInFooter, children }) => {
   const { lang } = useLanguage();
@@ -361,11 +366,10 @@ const MarketingLayout = ({ showNavInFooter, children }) => {
             )}
             <Nav className="legal-nav">
               <Link href={`/${Routes.PRIVACY}`}>{lang.navbar.privacy}</Link>
-              <Link href={`/${Routes.TERMS}`}>{lang.navbar.terms}</Link>
             </Nav>
           </div>
           <div className="copyright">
-            © {new Date().getFullYear()} Maker Ecosystem Growth Holdings, Inc.
+            © {new Date().getFullYear()} Freeliquid.io
           </div>
         </Footer>
       </MarketingLayoutStyle>

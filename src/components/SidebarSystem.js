@@ -57,7 +57,7 @@ const SidebarSystem = ({ system }) => {
               {param}
             </Text>
             <Box>
-              <Text fontSize="s" color="darkPurple">
+              <Text fontSize="s" color="white">
                 {value}
               </Text>
             </Box>

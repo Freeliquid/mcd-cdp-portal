@@ -1,6 +1,5 @@
 import LocalizedStrings from 'react-localization';
 import english from './_english';
-import chinese from './_chinese';
 
 export const defaultLocale = 'en';
 
@@ -15,10 +14,9 @@ export const languages = [
   // { value: 'pt-BR', text: 'Português (Brasil)' },
   // { value: 'ru', text: 'Pусский' },
   // { value: 'vi', text: 'Tiếng Việt' },
-  { value: 'zh-CN', text: '中文 (简体)' }
+  //{ value: 'zh-CN', text: '中文 (简体)' }
 ];
 
 export default new LocalizedStrings({
-  en: english,
-  'zh-CN': chinese
+  en: english
 });

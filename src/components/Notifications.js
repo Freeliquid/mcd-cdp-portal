@@ -17,7 +17,7 @@ import { NotificationList } from 'utils/constants';
 import useLanguage from 'hooks/useLanguage';
 
 const ButtonBackgroundWrapper = styled.div`
-  background-color: #fff;
+  background-color: rgb(45, 57, 83);
   border-radius: 4px;
   width: fit-content;
   height: fit-content;
