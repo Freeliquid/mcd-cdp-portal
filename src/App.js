@@ -8,7 +8,7 @@ import { hot } from 'react-hot-loader/root';
 import { GenericNotFound } from 'pages/NotFound';
 import theme from 'styles/theme';
 import routes from './routes';
-import {mixpanelInit} from './utils/analytics';
+import { mixpanelInit } from './utils/analytics';
 import LoadingLayout from 'layouts/LoadingLayout';
 import ErrorBoundary from './ErrorBoundary';
 import debug from 'debug';

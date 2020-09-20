@@ -22,7 +22,7 @@ const config = {
         }
       }
     },
-    
+
     gaTrackingId: 'UA-128164213-4',
     fathom: {
       pageView: 'QODYHBGU'
