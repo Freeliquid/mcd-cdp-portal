@@ -10,7 +10,7 @@ import groupBy from 'lodash.groupby';
 import { watch } from 'hooks/useObservable';
 import { getMaxDaiAvailable } from 'utils/cdp';
 
-const TABLE_PADDING = '35px';
+const TABLE_PADDING = '20px';
 
 const Number = styled(Text)`
   color: #fff;
@@ -80,7 +80,7 @@ const MarketsTableStyle = styled(Table)`
 
 const MarketsTable = ({ cdpTypesList, ...props }) => {
   const collateralTypesData = watch.collateralTypesData(cdpTypesList);
-  const debtCeilings = watch.collateralDebtCeilings(cdpTypesList);
+  //const debtCeilings = watch.collateralDebtCeilings(cdpTypesList);
   const { lang } = useLanguage();
   const cdpTypesByGem = groupBy(
     collateralTypesData,
@@ -93,20 +93,20 @@ const MarketsTable = ({ cdpTypesList, ...props }) => {
     <MarketsTableStyle {...props}>
       <Table.thead>
         <Table.tr>
-          <Table.th width={{ s: '0', m: TABLE_PADDING }} />
+          <Table.th width={{ s: '0' }} />
           <Table.th width={{ s: '30px', m: '49px' }} />
-          <Table.th minWidth="80px">{lang.overview_page.token}</Table.th>
-          <Table.th width={{ s: 'unset', xl: '190px' }}>
+          <Table.th>{lang.overview_page.token}</Table.th>
+          <Table.th width={{ s: 'unset', xl: '220px' }}>
             {lang.stability_fee}
           </Table.th>
-          <Table.th width={{ s: 'unset', xl: '190px' }}>
+          <Table.th width={{ s: 'unset', xl: '220px' }}>
             {lang.borrow_markets.min_col_ratio}
           </Table.th>
-          <Table.th width={{ s: 'unset', xl: '190px' }}>
+          <Table.th width={{ s: 'unset', xl: '220px' }}>
             {lang.dai_available}
           </Table.th>
           <Table.th />
-          <Table.th width={{ s: '0', m: TABLE_PADDING }} />
+          <Table.th width={{ s: '0' }} />
         </Table.tr>
       </Table.thead>
       {collateralTypesData ? (
@@ -124,7 +124,7 @@ const MarketsTable = ({ cdpTypesList, ...props }) => {
             data.liquidationRatio.toBigNumber()
           );
           const minRatio = BigNumber.min.apply(null, colRatios);
-          const maxRatio = BigNumber.max.apply(null, colRatios);
+          //const maxRatio = BigNumber.max.apply(null, colRatios);
           const daiAvailableList = cdpTypesData.map(
             data => data.maxDaiAvailableToGenerate
           );
@@ -139,7 +139,7 @@ const MarketsTable = ({ cdpTypesList, ...props }) => {
               <Table.tr>
                 <td className="margin" />
                 <Table.td>
-                  <TokenIcon symbol={gem} size={31.67} />
+                  {/*  <TokenIcon symbol={gem} size={31.67} /> */}
                 </Table.td>
                 <Table.td>
                   <Text display={{ s: 'none', m: 'inline' }}>
@@ -150,12 +150,7 @@ const MarketsTable = ({ cdpTypesList, ...props }) => {
                   </Text> */}
                 </Table.td>
                 <Table.td>
-                  <Number>
-                    {formatter(minFee, { percentage: true })}%
-                    {!minFee.eq(maxFee) && (
-                      <> - {formatter(maxFee, { percentage: true })}%</>
-                    )}
-                  </Number>
+                  <Number>{formatter(minFee, { percentage: true })}%</Number>
                 </Table.td>
                 <Table.td>
                   <Number>
@@ -163,15 +158,6 @@ const MarketsTable = ({ cdpTypesList, ...props }) => {
                       percentage: true
                     })}
                     %
-                    {!minRatio.eq(maxRatio) && (
-                      <>
-                        {' - '}
-                        {formatter(maxRatio, {
-                          percentage: true
-                        })}
-                        %
-                      </>
-                    )}
                   </Number>
                 </Table.td>
                 <Table.td>

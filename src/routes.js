@@ -26,7 +26,7 @@ import TransactionManagerProvider from 'providers/TransactionManagerProvider';
 import NotificationProvider from 'providers/NotificationProvider';
 import config from 'references/config';
 import MobileNav from 'components/MobileNav';
-import { userSnapInit } from 'utils/analytics';
+//import { userSnapInit } from 'utils/analytics';
 import { Routes } from 'utils/constants';
 
 const { networkNames, defaultNetwork } = config;
@@ -151,20 +151,19 @@ export default mount({
   ),
 
   [`/${Routes.PRIVACY}`]: route(() => ({
-    title: 'Oasis - Privacy Policy',
+    title: 'Freeliquid - Privacy Policy',
     view: <Privacy />
   })),
 
   [`/${Routes.TERMS}`]: route(() => ({
-    title: 'Oasis - Terms of Service',
+    title: 'Freeliquid - Terms of Service',
     view: <Terms />
   }))
 });
 
 function RouteEffects({ network }) {
   useEffect(() => {
-    if (network !== 'mainnet' && window.location.hostname !== 'localhost')
-      userSnapInit();
+    if (network !== 'mainnet' && window.location.hostname !== 'localhost');
   }, [network]);
   return null;
 }

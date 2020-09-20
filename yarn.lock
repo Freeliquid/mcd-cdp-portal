@@ -1073,6 +1073,13 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@7":
+  version "7.11.2"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.11.2.tgz#f549c13c754cc40b87644b9fa9f09a6a95fe0736"
+  integrity sha512-TeWkU52so0mPtDcaCTxNBI/IHiz0pZgr8VEFqXFtZWpYD08ZB6FaSwVAS8MKRQAP3bYKiVjwysOJgMFY28o6Tw==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/runtime@7.9.0":
   version "7.9.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.0.tgz#337eda67401f5b066a6f205a3113d4ac18ba495b"
@@ -11566,6 +11573,11 @@ mixin-object@^2.0.1:
     for-in "^0.1.3"
     is-extendable "^0.1.1"
 
+mixpanel-browser@2:
+  version "2.39.0"
+  resolved "https://registry.yarnpkg.com/mixpanel-browser/-/mixpanel-browser-2.39.0.tgz#bf746e1ccf66fcd43a0c416b9ea8179e6945c98f"
+  integrity sha512-/h/0ed8qI8OLnqUo7GMWJRnGhnhblgGXrotz7nL4t1vrrXmINK676OI8XO8W1aYZ8gUFDHRKMkQJJUF7cQXD3w==
+
 mixpanel-browser@^2.26.0:
   version "2.35.0"
   resolved "https://registry.yarnpkg.com/mixpanel-browser/-/mixpanel-browser-2.35.0.tgz#82d2ddb0dcff2c95cd141da1f40340697df110e3"
@@ -13962,6 +13974,14 @@ react-localization@^1.0.13:
   integrity sha512-s+yK3EqPUhN8kAfUIoA5m0a0iGOvxB3DrvngYnSZNLRQRX+yS7LYfTuKT66KVa3Cr6EP4iGRtw4XRqpsi1ZLjw==
   dependencies:
     localized-strings "^0.2.0"
+
+react-mixpanel-browser@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/react-mixpanel-browser/-/react-mixpanel-browser-3.1.1.tgz#b803f6b56f32f5af33be491f1182bcd0ddeab74d"
+  integrity sha512-ZCRG8/9Wc8yOC2un4Z+3V7aN1VhbgUjUMofOQrHw8KvDlY2v7PwGUOWPRTOv1hVu9I2jhPdQuKXWjHMjVys7PA==
+  dependencies:
+    "@babel/runtime" "7"
+    mixpanel-browser "2"
 
 react-navi@^0.13.6:
   version "0.13.6"

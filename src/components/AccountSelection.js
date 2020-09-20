@@ -77,7 +77,8 @@ const DropdownWrapper = styled(Box)`
     props.isMobile
       ? `
     ${FilledButton}, ${FilledButton}:hover {
-       background-color: ${props.isOpen ? '#50445e' : '#fff'};
+       background-color: ${props.isOpen ? '#191E2B' : '#222B3F'};
+       color:${props.isOpen ? '#fff' : '#00C4C4'};
     }
   `
       : `
@@ -107,7 +108,7 @@ const DropdownWrapper = styled(Box)`
 `;
 
 const IconBox = styled(Box)`
-  display: flex;
+  fdisplay: flex;
   align-items: center;
   &,
   svg,
@@ -281,6 +282,7 @@ function AccountSelection({ buttonWidth = '200px', ...props }) {
           show={isMobile ? isOpen : undefined}
           trigger={
             <FilledButton
+              marginLeft="15px"
               width={buttonWidth}
               height="44px"
               onClick={() => {
@@ -289,7 +291,7 @@ function AccountSelection({ buttonWidth = '200px', ...props }) {
             >
               {lang.providers.connect_wallet}
               <CaratDown
-                style={{ marginTop: '2px', marginLeft: '19px', fill: 'white' }}
+                style={{ marginTop: '2px', marginLeft: '15px', fill: 'white' }}
               />
             </FilledButton>
           }

@@ -8,7 +8,7 @@ const Privacy = () => (
   <MarketingLayout>
     <LegalTextLayout>
       <h1>Privacy Policy</h1>
-      <div className="subheading">Last updated: 30 September 2019</div>
+      <div className="subheading">Last updated: 30 May 2020</div>
       <p>
         This Privacy Policy provides our privacy policy regarding the nature,
         purpose, use, and sharing of personal data or other information
