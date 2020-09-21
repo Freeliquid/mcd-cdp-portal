@@ -3,39 +3,15 @@ import ReactGA from 'react-ga';
 import debug from 'debug';
 const log = debug('maker:analytics');
 
-const env = process.env.NODE_ENV === 'production' ? 'prod' : 'test';
+const env = 'freeliquid';
 const config = {
-  test: {
-    mixpanel: {
-      token: '4ff3f85397ffc3c6b6f0d4120a4ea40a',
-      config: {
-        debug: true,
-        ip: false,
-        api_host: 'https://mpp.makerfoundation.com'
-      }
-    },
-    userSnap: {
-      token: 'def2ae23-a9a8-4f11-85e6-5346cb86d4f2',
-      config: {
-        fields: {
-          email: null
-        }
-      }
-    },
-
-    gaTrackingId: 'UA-128164213-4',
-    fathom: {
-      pageView: 'QODYHBGU'
-    }
-  },
-  prod: {
+  freeliquid: {
     mixpanel: {
       token: 'a030d8845e34bfdc11be3d9f3054ad67',
-      config: { ip: false, api_host: 'https://mpp.makerfoundation.com' }
     },
-    gaTrackingId: 'UA-128164213-3',
+    gaTrackingId: 'UA-178496588-1',
     userSnap: {
-      token: 'def2ae23-a9a8-4f11-85e6-5346cb86d4f2',
+      token: '1b98e02e-20b2-43c7-bcc1-ae991d6f439c',
       config: {
         fields: {
           email: null
@@ -43,7 +19,7 @@ const config = {
       }
     },
     fathom: {
-      pageView: 'XELBLZRK'
+      pageView: 'EXRQHVYJ'
     }
   }
 }[env];
