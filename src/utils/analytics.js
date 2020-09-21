@@ -15,7 +15,7 @@ const config = {
       }
     },
     mixpanel: {
-      token: 'a030d8845e34bfdc11be3d9f3054ad67',
+      token: 'eceaa3f91c3c3100e8febc827cb732ea',
       config: {
         debug: true,
         ip: false
@@ -29,7 +29,7 @@ const config = {
   },
   freeliquid: {
     mixpanel: {
-      token: 'a030d8845e34bfdc11be3d9f3054ad67',
+      token: 'eceaa3f91c3c3100e8febc827cb732ea',
       config: { debug: true, ip: false }
     },
     gaTrackingId: 'UA-178496588-1',
