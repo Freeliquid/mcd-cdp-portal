@@ -63,10 +63,7 @@ function MakerProvider({
 
     if (browserProvider.networkId !== networkId)
       throw new Error(
-        'browser ethereum provider and URL network param do not match. ' +
-          browserProvider.networkId +
-          '-' +
-          networkId
+        'browser ethereum provider and URL network param do not match.'
       );
     if (
       !browserProvider.address ||
