@@ -18,8 +18,8 @@ const config = {
       token: 'a030d8845e34bfdc11be3d9f3054ad67',
       config: {
         debug: true,
-        ip: false,
-        api_host: 'https://mpp.makerfoundation.com'
+        ip: false
+        //api_host: 'https://mpp.makerfoundation.com'
       }
     },
     gaTrackingId: 'UA-178496588-1',
