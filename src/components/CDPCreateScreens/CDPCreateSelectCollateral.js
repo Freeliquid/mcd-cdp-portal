@@ -129,13 +129,6 @@ const CDPCreateSelectCollateral = ({
   const { cdpTypes } = useCdpTypes();
   const hasAllowanceAndProxy = hasAllowance && !!proxyAddress;
 
-  console.log("cdpTypes select");
-  console.log(cdpTypes);
-
-  console.log(collateralTypesData);
-  console.log(balances);
-
-  console.log("cdpTypes select---");
 
   return (
     <Box
