@@ -118,7 +118,7 @@ const Slider = (() => {
   `;
 
   const Track = styled.div`
-    background: #222B3F;
+    background: #222b3f;
     border-radius: 3px;
     height: 4px;
   `;
@@ -139,10 +139,10 @@ const CalculatorStyle = styled(Box)`
   border-radius: 40px;
 
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    width:100%;
+    width: 100%;
   }
   @media (max-width: 767px) {
-    width:100%;
+    width: 100%;
     text-align: center;
     border-radius: 20px;
     padding: 15px;
@@ -244,7 +244,6 @@ const BorrowCalcContent = styled(Box)`
   margin: 0 auto;
 
   @media (min-width: ${props => props.theme.breakpoints.m}) {
-    
   }
 `;
 
@@ -385,9 +384,7 @@ const BorrowCalculator = ({ prices, cdpTypesList, ...props }) => {
     <CalculatorStyle px={{ s: '22px', m: '0' }} {...props}>
       <BorrowCalcContent>
         <BorrowCalcTopGrid>
-          <CapsText textAlign={{ m: 'right' }}>
-            {lang.collateral_type}
-          </CapsText>
+          <CapsText textAlign={{ m: 'right' }}>{lang.collateral_type}</CapsText>
           <Dropdown
             items={ilks.map(ilk => ({
               value: ilk.symbol,
@@ -430,7 +427,7 @@ const BorrowCalculator = ({ prices, cdpTypesList, ...props }) => {
           </Box>
         </BorrowCalcTopGrid>
         <Separator display={{ s: 'none', m: 'block' }} />
-        <Box textAlign={{m: 'center' }} pt="39px" pb="42px">
+        <Box textAlign={{ m: 'center' }} pt="39px" pb="42px">
           <CapsText>
             {lang.formatString(lang.borrow_landing.calc_dai_available, {
               amount: (

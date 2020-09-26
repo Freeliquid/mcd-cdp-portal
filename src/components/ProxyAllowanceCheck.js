@@ -29,7 +29,7 @@ const errorStates = {
 };
 
 const parseError = proxyErrors =>
-  errorStates[(proxyErrors?.name)] || {
+  errorStates[proxyErrors?.name] || {
     message: lang.cdp_create.proxy_failure_not_mined,
     information: lang.cdp_create.proxy_failure_not_mined_info,
     retry: false
@@ -63,10 +63,21 @@ const ProxyAllowanceCheck = ({
   } = labels;
 
   return (
-    <Card px={{ s: 'l', m: '2xl' }} py="l" mb="xl" style={{backgroundColor: getColor('cardBg'), border:'none', textAlign:'left'}}>
+    <Card
+      px={{ s: 'l', m: '2xl' }}
+      py="l"
+      mb="xl"
+      style={{
+        backgroundColor: getColor('cardBg'),
+        border: 'none',
+        textAlign: 'left'
+      }}
+    >
       <Grid gridRowGap="xs">
-        <Text style={{fontSize:'20px', color: getColor('whiteText')}}>{setup_header}</Text>
-        <Text style={{fontSize:'16px', color: getColor('greyText')}} >
+        <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
+          {setup_header}
+        </Text>
+        <Text style={{ fontSize: '16px', color: getColor('greyText') }}>
           {setup_text}
         </Text>
         {hasProxy ? (
@@ -128,8 +139,10 @@ const ProxyAllowanceCheck = ({
         </Text.p>
       </Grid>
       <Grid gridRowGap="xs" mt="l">
-        <Text style={{fontSize:'20px', color: getColor('whiteText')}}>{lang.cdp_create.set_allowance}</Text>
-        <Text style={{fontSize:'16px', color: getColor('greyText')}} >
+        <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
+          {lang.cdp_create.set_allowance}
+        </Text>
+        <Text style={{ fontSize: '16px', color: getColor('greyText') }}>
           {allowance_text}
         </Text>
         {hasAllowance ? (

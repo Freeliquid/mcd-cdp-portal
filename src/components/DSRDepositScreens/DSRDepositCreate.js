@@ -25,7 +25,7 @@ function DepositDaiForm({
     [
       lang.formatString(lang.dsr_deposit.deposit_form_title, 'DAI'),
       <Input
-      style={{fontSize:'14px', color: getColor('cayn')}}
+        style={{ fontSize: '14px', color: getColor('cayn') }}
         key="daiinput"
         name="gemsToLock"
         after={<SetMax onClick={setDepositMax} />}
@@ -37,8 +37,14 @@ function DepositDaiForm({
         placeholder="0 DAI"
       />,
       <Box key="ba">
-        <Text style={{fontSize:'14px', color: getColor('cayn')}}>{lang.your_balance} </Text>
-        <Text style={{fontSize:'14px', color: getColor('whiteText')}} display="inline-block" ml="s" >
+        <Text style={{ fontSize: '14px', color: getColor('cayn') }}>
+          {lang.your_balance}{' '}
+        </Text>
+        <Text
+          style={{ fontSize: '14px', color: getColor('whiteText') }}
+          display="inline-block"
+          ml="s"
+        >
           {prettifyNumber(daiBalance)} {'DAI'}
         </Text>
       </Box>
@@ -57,10 +63,17 @@ function DepositDaiForm({
           return (
             <Grid gridRowGap="s" key={title}>
               <Grid gridRowGap="xs">
-                <TextBlock style={{fontSize:'18px', color: getColor('whiteText')}} lineHeight="normal">
+                <TextBlock
+                  style={{ fontSize: '18px', color: getColor('whiteText') }}
+                  lineHeight="normal"
+                >
                   {title}
                 </TextBlock>
-                <TextBlock style={{fontSize:'16px', color: getColor('greyText')}}>{text}</TextBlock>
+                <TextBlock
+                  style={{ fontSize: '16px', color: getColor('greyText') }}
+                >
+                  {text}
+                </TextBlock>
               </Grid>
               <Box py="2xs">{input}</Box>
               {renderAfter}

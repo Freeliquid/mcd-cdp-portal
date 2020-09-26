@@ -78,10 +78,10 @@ const DsrWithdraw = ({ savings, reset }) => {
   return (
     <Grid gridRowGap="m">
       <Grid gridRowGap="s">
-        <Text style={{fontSize:'20px', color: getColor('whiteText')}} >
+        <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
           {lang.formatString(lang.action_sidebar.withdraw_title, displaySymbol)}
         </Text>
-        <Text.p style={{fontSize:'16px', color: getColor('greyText')}} >
+        <Text.p style={{ fontSize: '16px', color: getColor('greyText') }}>
           {lang.formatString(
             lang.action_sidebar.withdraw_description,
             displaySymbol

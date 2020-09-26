@@ -8,8 +8,8 @@ import { Routes } from '../utils/constants';
 import useLanguage from 'hooks/useLanguage';
 
 const StyledSaveIcon = styled(SaveIcon)`
- width: 40px;
- height: 30px;
+  width: 40px;
+  height: 30px;
 `;
 
 const SaveNav = ({ account, ...props }) => {

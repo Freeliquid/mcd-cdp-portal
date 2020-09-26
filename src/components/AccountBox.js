@@ -65,28 +65,13 @@ const TokenBalance = ({
       py="xs"
       {...props}
     >
-      <Text
-        fontWeight="semibold"
-        t="p5"
-        textAlign="left"
-        width="20%"
-      >
+      <Text fontWeight="semibold" t="p5" textAlign="left" width="20%">
         {symbol}
       </Text>
-      <Text
-        fontWeight="semibold"
-        t="p5"
-        textAlign="left"
-        width="30%"
-      >
+      <Text fontWeight="semibold" t="p5" textAlign="left" width="30%">
         {(hasActiveAccount && amount && prettifyNumber(amount, true)) || '--'}
       </Text>
-      <Text
-        fontWeight="semibold"
-        t="p5"
-        textAlign="left"
-        width="30%"
-      >
+      <Text fontWeight="semibold" t="p5" textAlign="left" width="30%">
         {(hasActiveAccount &&
           amount &&
           usdRatio &&
@@ -169,7 +154,13 @@ const WalletBalances = ({ hasActiveAccount, closeSidebarDrawer }) => {
 
   return (
     <>
-      <CardBody style={{background: getColor('cardBg'), borderColor: getColor('border'), color: getColor('whiteText')}}>
+      <CardBody
+        style={{
+          background: getColor('cardBg'),
+          borderColor: getColor('border'),
+          color: getColor('whiteText')
+        }}
+      >
         <Box px="s" pt="sm" pb="s2">
           <Text t="large">{lang.sidebar.wallet_balances}</Text>
         </Box>
@@ -274,7 +265,13 @@ function AccountBox({ currentAccount, closeSidebarDrawer }) {
   const type = currentAccount ? currentAccount.type : null;
 
   return (
-    <Card style={{background: getColor('cardBg'), borderColor: getColor('border'), color: getColor('cayn')}}>
+    <Card
+      style={{
+        background: getColor('cardBg'),
+        borderColor: getColor('border'),
+        color: getColor('cayn')
+      }}
+    >
       <CardBody p="s">
         <WalletConnectDropdown
           show={open}

@@ -67,7 +67,7 @@ function OpenCDPForm({
         selectedIlk.gem
       ),
       <Input
-      style={{fontSize:'14px', color: getColor('cayn')}}
+        style={{ fontSize: '14px', color: getColor('cayn') }}
         key="collinput"
         name="gemsToLock"
         after={selectedIlk.gem}
@@ -93,12 +93,13 @@ function OpenCDPForm({
         }
       />,
       <Box key="ba">
-        <Text  style={{fontSize:'14px', color: getColor('cayn')}}>{lang.your_balance} </Text>
+        <Text style={{ fontSize: '14px', color: getColor('cayn') }}>
+          {lang.your_balance}{' '}
+        </Text>
         <Text
-           style={{fontSize:'14px', color: getColor('whiteText')}}
+          style={{ fontSize: '14px', color: getColor('whiteText') }}
           display="inline-block"
           ml="s"
-          
           onClick={() => {
             handleInputChange({
               target: {
@@ -119,7 +120,7 @@ function OpenCDPForm({
       lang.cdp_create.deposit_form_field3_title,
       lang.cdp_create.deposit_form_field3_text,
       <Input
-      style={{fontSize:'14px', color: getColor('cayn')}}
+        style={{ fontSize: '14px', color: getColor('cayn') }}
         key="daiToDraw"
         name="daiToDraw"
         after="DAI"
@@ -144,14 +145,13 @@ function OpenCDPForm({
       />,
       <Grid gridRowGap="xs" key="keytodrawinfo">
         <Box key="ba">
-          <Text style={{fontSize:'14px', color: getColor('cayn')}}>
+          <Text style={{ fontSize: '14px', color: getColor('cayn') }}>
             {lang.cdp_create.deposit_form_field3_after2}{' '}
           </Text>
           <Text
             display="inline-block"
             ml="s"
-            style={{fontSize:'14px', color: getColor('whiteText')}}
-            
+            style={{ fontSize: '14px', color: getColor('whiteText') }}
             onClick={() => {
               handleInputChange({
                 target: {
@@ -188,10 +188,17 @@ function OpenCDPForm({
           return (
             <Grid gridRowGap="s" key={title}>
               <Grid gridRowGap="xs">
-                <TextBlock style={{fontSize:'18px', color: getColor('whiteText')}} lineHeight="normal">
+                <TextBlock
+                  style={{ fontSize: '18px', color: getColor('whiteText') }}
+                  lineHeight="normal"
+                >
                   {title}
                 </TextBlock>
-                <TextBlock style={{fontSize:'16px', color: getColor('greyText')}}>{text}</TextBlock>
+                <TextBlock
+                  style={{ fontSize: '16px', color: getColor('greyText') }}
+                >
+                  {text}
+                </TextBlock>
               </Grid>
               <Box py="2xs">{input}</Box>
               {renderAfter}
@@ -269,10 +276,15 @@ const CDPCreateDepositSidebar = ({
         ]
       ].map(([title, value]) => (
         <Grid gridRowGap="xs" key={title}>
-          <TextBlock style={{fontSize:'18px', color: getColor('cayn')}} lineHeight="normal">
+          <TextBlock
+            style={{ fontSize: '18px', color: getColor('cayn') }}
+            lineHeight="normal"
+          >
             {title}
           </TextBlock>
-          <TextBlock style={{fontSize:'14px', color: getColor('greyText')}}>{value}</TextBlock>
+          <TextBlock style={{ fontSize: '14px', color: getColor('greyText') }}>
+            {value}
+          </TextBlock>
         </Grid>
       ))}
     </Grid>
@@ -339,7 +351,14 @@ const CDPCreateDeposit = ({
         gridGap="m"
         my="l"
       >
-        <Card px={{ s: 'm', m: 'xl' }} py={{ s: 'm', m: 'l' }} style={{backgroundColor: getColor('cardBg'), borderColor: getColor('border')}}>
+        <Card
+          px={{ s: 'm', m: 'xl' }}
+          py={{ s: 'm', m: 'l' }}
+          style={{
+            backgroundColor: getColor('cardBg'),
+            borderColor: getColor('border')
+          }}
+        >
           <OpenCDPForm
             cdpParams={cdpParams}
             handleInputChange={handleInputChange}
@@ -348,7 +367,14 @@ const CDPCreateDeposit = ({
             collateralizationRatio={collateralizationRatio}
           />
         </Card>
-        <Card px={{ s: 'm', m: 'xl' }} py={{ s: 'm', m: 'l' }} style={{backgroundColor: getColor('cardBg'), borderColor: getColor('border')}}>
+        <Card
+          px={{ s: 'm', m: 'xl' }}
+          py={{ s: 'm', m: 'l' }}
+          style={{
+            backgroundColor: getColor('cardBg'),
+            borderColor: getColor('border')
+          }}
+        >
           <CDPCreateDepositSidebar
             selectedIlk={selectedIlk}
             cdpParams={cdpParams}

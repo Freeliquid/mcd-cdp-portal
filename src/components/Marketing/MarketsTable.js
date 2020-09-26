@@ -26,7 +26,7 @@ const tokenNames = {
 const MarketsTableStyle = styled(Table)`
   widht: 100%;
   margin: 0 auto;
-  color:  ${getColor('greyText')};
+  color: ${getColor('greyText')};
 
   ${Text} {
     color: ${getColor('greyText')};

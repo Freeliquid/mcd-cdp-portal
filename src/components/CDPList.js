@@ -218,7 +218,11 @@ const CDPList = memo(function({
             width={`${getMeasurement('navbarItemWidth')}px`}
             trackBtnClick={() => trackBtnClick('SelectOverview')}
           >
-            <Text t="p6" fontWeight="bold" color={account ? '#A3B2CF' : '#F3F3F5'}>
+            <Text
+              t="p6"
+              fontWeight="bold"
+              color={account ? '#A3B2CF' : '#F3F3F5'}
+            >
               {lang.overview}
             </Text>
           </NavbarItem>

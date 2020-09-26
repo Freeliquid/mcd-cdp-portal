@@ -17,7 +17,6 @@ import { decimalRules } from '../../styles/constants';
 import { getColor } from '../../styles/theme';
 const { long } = decimalRules;
 
-
 const Withdraw = ({ vault, reset }) => {
   const { trackBtnClick } = useAnalytics('Withdraw', 'Sidebar');
   const { lang } = useLanguage();
@@ -85,10 +84,13 @@ const Withdraw = ({ vault, reset }) => {
   return (
     <Grid gridRowGap="m">
       <Grid gridRowGap="s">
-        <Text style={{fontSize:'20px', color: getColor('whiteText')}} >
+        <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
           {lang.formatString(lang.action_sidebar.withdraw_title, symbol)}
         </Text>
-        <Text style={{fontSize:'16px', color: getColor('greyText')}} t="body">
+        <Text
+          style={{ fontSize: '16px', color: getColor('greyText') }}
+          t="body"
+        >
           {lang.formatString(lang.action_sidebar.withdraw_description, symbol)}
         </Text>
         <Input

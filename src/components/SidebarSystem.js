@@ -6,7 +6,6 @@ import SiteVersion from 'components/SiteVersion';
 import styled from 'styled-components';
 import { getColor } from 'styles/theme';
 
-
 const SidebarSystem = ({ system }) => {
   const { lang } = useLanguage();
   const {
@@ -36,16 +35,24 @@ const SidebarSystem = ({ system }) => {
   ];
 
   return (
-    <Fragment >
-      <Card css={'overflow:hidden;'} pt="sm" style={{background: getColor('cardBg'), borderColor: getColor('border')}}>
+    <Fragment>
+      <Card
+        css={'overflow:hidden;'}
+        pt="sm"
+        style={{
+          background: getColor('cardBg'),
+          borderColor: getColor('border')
+        }}
+      >
         <Flex
           justifyContent="space-between"
           alignContent="center"
           px="s"
           pb="s2"
-          
         >
-          <Text style={{fontSize:'20px', color: getColor('greyText')}}>{lang.sidebar.system_info}</Text>
+          <Text style={{ fontSize: '20px', color: getColor('greyText') }}>
+            {lang.sidebar.system_info}
+          </Text>
         </Flex>
         {systemParams.map(([param, value], idx) => (
           <Flex

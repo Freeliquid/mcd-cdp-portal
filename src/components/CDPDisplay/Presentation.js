@@ -315,7 +315,7 @@ export default function({
   return (
     <PageContentLayout>
       <Box>
-        <Text style={{fontSize:'24px', color: getColor('whiteText')}}>
+        <Text style={{ fontSize: '24px', color: getColor('whiteText') }}>
           {vaultType} {lang.cdp} #{vault.id}
         </Text>
       </Box>
@@ -328,14 +328,20 @@ export default function({
           xl: '1fr 1fr'
         }}
       >
-        <CdpViewCard title={lang.cdp_page.liquidation_price} style={{color: getColor('whiteText'), backgroundColor: getColor('cardBg')}}>
+        <CdpViewCard
+          title={lang.cdp_page.liquidation_price}
+          style={{
+            color: getColor('whiteText'),
+            backgroundColor: getColor('cardBg')
+          }}
+        >
           <Flex alignItems="flex-end" mt="s" mb="xs">
             <AmountDisplay amount={liquidationPrice} denomination="USD" />
             <ExtraInfo>({gem}/USD)</ExtraInfo>
           </Flex>
           <InfoContainerRow
             title={
-              <TextBlock fontSize="l" style={{color: getColor('greyText')}}>
+              <TextBlock fontSize="l" style={{ color: getColor('greyText') }}>
                 {lang.cdp_page.current_price_info}
                 <ExtraInfo ml="2xs">{`(${gem}/USD)`}</ExtraInfo>
               </TextBlock>
@@ -357,7 +363,6 @@ export default function({
             <AmountDisplay amount={collateralizationRatio} denomination="%" />
           </Flex>
           <InfoContainerRow
-            
             title={lang.cdp_page.minimum_ratio}
             value={
               formatter(vault.liquidationRatio, {

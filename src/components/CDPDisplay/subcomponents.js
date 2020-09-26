@@ -27,8 +27,8 @@ export const InfoContainerRow = ({ title, value }) => {
         gridColumnGap="s"
         alignItems="center"
       >
-        <Text style={{color: getColor('whiteText')}}>{title}</Text>
-        <Text style={{color: getColor('greyText')}}>{value}</Text>
+        <Text style={{ color: getColor('whiteText') }}>{title}</Text>
+        <Text style={{ color: getColor('greyText') }}>{value}</Text>
       </Grid>
     </WithSeparators>
   );
@@ -49,9 +49,8 @@ export const ActionContainerRow = ({ title, value, conversion, button }) => {
           css={`
             grid-column: 1;
             grid-row: span 2;
-            color: ${getColor('whiteText')}
+            color: ${getColor('whiteText')};
           `}
-          
         >
           {title}
         </Text>
@@ -59,9 +58,8 @@ export const ActionContainerRow = ({ title, value, conversion, button }) => {
           css={`
             grid-column: 2;
             grid-row: ${conversion ? '1' : 'span 2'};
-            color: ${getColor('cayn')}
+            color: ${getColor('cayn')};
           `}
-          
           justifySelf="end"
         >
           {value}
@@ -71,7 +69,7 @@ export const ActionContainerRow = ({ title, value, conversion, button }) => {
             css={`
               grid-row: 2;
               grid-column: 2;
-              color: ${getColor('greyText')}
+              color: ${getColor('greyText')};
             `}
             justifySelf="end"
           >
@@ -82,7 +80,7 @@ export const ActionContainerRow = ({ title, value, conversion, button }) => {
           css={`
             grid-column: 3;
             grid-row: span 2;
-            color: ${getColor('greyText')}
+            color: ${getColor('greyText')};
           `}
         >
           {button}
@@ -93,8 +91,23 @@ export const ActionContainerRow = ({ title, value, conversion, button }) => {
 };
 
 export const ActionButton = ({ children, ...props }) => (
-  <Button width="100px" p="xs" variant="secondary" style={{backgroundColor: getColor('cayn'), borderRadius: '30px', borderColor: getColor('border'), padding: '7px 10px'}} {...props}>
-    <Text fontSize="s" fontWeight="medium" style={{color: getColor('bodyBg')}}>
+  <Button
+    width="100px"
+    p="xs"
+    variant="secondary"
+    style={{
+      backgroundColor: getColor('cayn'),
+      borderRadius: '30px',
+      borderColor: getColor('border'),
+      padding: '7px 10px'
+    }}
+    {...props}
+  >
+    <Text
+      fontSize="s"
+      fontWeight="medium"
+      style={{ color: getColor('bodyBg') }}
+    >
       {children}
     </Text>
   </Button>
@@ -103,10 +116,19 @@ export const ActionButton = ({ children, ...props }) => (
 export const CdpViewCard = ({ title, children }) => {
   return (
     <Flex py="s" height="100%" flexDirection="column">
-      <Text style={{fontSize:'20px', color: getColor('whiteText')}}>{title}</Text>
-      <Card 
-      style={{backgroundColor: getColor('cardBg'), borderColor: getColor('border')}}
-      px={{ s: 'm', m: 'l' }} py="s" mt="s" flexGrow="1">
+      <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
+        {title}
+      </Text>
+      <Card
+        style={{
+          backgroundColor: getColor('cardBg'),
+          borderColor: getColor('border')
+        }}
+        px={{ s: 'm', m: 'l' }}
+        py="s"
+        mt="s"
+        flexGrow="1"
+      >
         {children}
       </Card>
     </Flex>
@@ -116,10 +138,18 @@ export const CdpViewCard = ({ title, children }) => {
 export const AmountDisplay = ({ amount, denomination }) => {
   return (
     <>
-      <Text style={{fontSize:'20px', color: getColor('cayn')}} lineHeight="1">
+      <Text
+        style={{ fontSize: '20px', color: getColor('cayn') }}
+        lineHeight="1"
+      >
         {amount}&nbsp;
       </Text>
-      <Text style={{fontSize:'16px', color: getColor('cayn')}} lineHeight="1">{denomination} &nbsp;</Text>
+      <Text
+        style={{ fontSize: '16px', color: getColor('cayn') }}
+        lineHeight="1"
+      >
+        {denomination} &nbsp;
+      </Text>
     </>
   );
 };

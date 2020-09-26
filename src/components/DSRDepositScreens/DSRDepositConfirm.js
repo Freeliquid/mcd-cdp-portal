@@ -45,7 +45,16 @@ const DSRDepositConfirmSummary = ({
         title={lang.dsr_deposit.confirm_title}
         text={lang.save.deposit_dai_subheading}
       />
-      <Card py={{ s: 'm', m: 'l' }} px={{ s: 'm', m: 'xl' }} my="l" style={{color: getColor('greyText'), backgroundColor: getColor('cardBg'), borderColor: getColor('border')}}>
+      <Card
+        py={{ s: 'm', m: 'l' }}
+        px={{ s: 'm', m: 'xl' }}
+        my="l"
+        style={{
+          color: getColor('greyText'),
+          backgroundColor: getColor('cardBg'),
+          borderColor: getColor('border')
+        }}
+      >
         <Grid>
           {rows.map(([title, value], index) => {
             return (
@@ -56,14 +65,13 @@ const DSRDepositConfirmSummary = ({
                 gridTemplateColumns="5fr 1fr"
                 justifyItems="start"
                 borderTop={index !== 0 ? '1px solid' : null}
-                
               >
-                <Text style={{color: getColor('greyText')}}>{title}</Text>
+                <Text style={{ color: getColor('greyText') }}>{title}</Text>
                 <Text
                   fontWeight="bold"
                   css="white-space: nowrap"
                   textAlign={{ s: 'right', m: 'left' }}
-                  style={{color: getColor('whiteText')}}
+                  style={{ color: getColor('whiteText') }}
                 >
                   {value}
                 </Text>

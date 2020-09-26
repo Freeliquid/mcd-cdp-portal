@@ -21,7 +21,7 @@ const Button = styled(Box)`
 `;
 
 const FilledButton = styled(Button)`
-color: ${getColor('cardBg')};
+  color: ${getColor('cardBg')};
   font-weight: bold;
 
   :hover {

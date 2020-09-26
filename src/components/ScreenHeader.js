@@ -7,9 +7,11 @@ const ScreenHeader = ({ title, text }) => {
   return (
     <Box textAlign="center" pt="m">
       <Box pb="m">
-        <TextBlock style={{fontSize:'22px', color: getColor('whiteText')}}>{title}</TextBlock>
+        <TextBlock style={{ fontSize: '22px', color: getColor('whiteText') }}>
+          {title}
+        </TextBlock>
       </Box>
-      <TextBlock  style={{fontSize:'16px', color: getColor('greyText')}}>
+      <TextBlock style={{ fontSize: '16px', color: getColor('greyText') }}>
         {text}
       </TextBlock>
     </Box>

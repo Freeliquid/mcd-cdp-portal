@@ -17,9 +17,17 @@ const SidebarFeeds = ({ feeds }) => {
   const { lang } = useLanguage();
 
   return (
-    <Card pt="sm" style={{background: getColor('cardBg'), borderColor: getColor('border')}}>
+    <Card
+      pt="sm"
+      style={{
+        background: getColor('cardBg'),
+        borderColor: getColor('border')
+      }}
+    >
       <Flex justifyContent="space-between" alignContent="center" px="s" pt="">
-        <Text t="h4" color="#A3B2CF">{lang.sidebar.price_feeds}</Text>
+        <Text t="h4" color="#A3B2CF">
+          {lang.sidebar.price_feeds}
+        </Text>
         <Link href={'https://makerdao.com/feeds'} target="_blank">
           <Text t="p5" color="#00DCDC" fontSize="s2">
             {lang.sidebar.view_price_feeds}
@@ -52,11 +60,7 @@ const SidebarFeeds = ({ feeds }) => {
                   bg={index % 2 ? '#131824' : '#1c2334'}
                   color="#A3B2CF"
                 >
-                  <Text
-                    fontWeight="semibold"
-                    t="smallCaps"
-                    color="#A3B2CF"
-                  >
+                  <Text fontWeight="semibold" t="smallCaps" color="#A3B2CF">
                     {value.symbol
                       .split('/')
                       .reverse()
@@ -76,12 +80,16 @@ const SidebarFeeds = ({ feeds }) => {
           <Flex justifyContent="center" alignItems="center">
             {collapsed ? (
               <>
-                <Text pr="xs" color="#00DCDC" >{lang.sidebar.view_more}</Text>
+                <Text pr="xs" color="#00DCDC">
+                  {lang.sidebar.view_more}
+                </Text>
                 <Carat />
               </>
             ) : (
               <>
-                <Text pr="xs" color="#00DCDC" >{lang.sidebar.view_less}</Text>
+                <Text pr="xs" color="#00DCDC">
+                  {lang.sidebar.view_less}
+                </Text>
                 <Carat rotation={180} />
               </>
             )}

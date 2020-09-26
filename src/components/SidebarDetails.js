@@ -34,9 +34,17 @@ const SidebarDetails = ({ system, savings }) => {
   ].map(f => f({ system, savings }));
 
   return (
-    <Card  style={{background: getColor('cardBg'), borderColor: getColor('border')}} pt="2xs">
+    <Card
+      style={{
+        background: getColor('cardBg'),
+        borderColor: getColor('border')
+      }}
+      pt="2xs"
+    >
       <Box p="s" pb="0" mb="xs">
-        <Text style={{fontSize:'20px', color: getColor('greyText')}}>{lang.sidebar.save_details.title}</Text>
+        <Text style={{ fontSize: '20px', color: getColor('greyText') }}>
+          {lang.sidebar.save_details.title}
+        </Text>
       </Box>
       <CardBody mt="xs">
         {params.map(([param, value], idx) => (

@@ -132,7 +132,7 @@ const Send = ({ token, trackBtnClick, reset }) => {
   };
 
   const PasteAddress = props => (
-    <PasteLink fontWeight="medium" {...props}  >
+    <PasteLink fontWeight="medium" {...props}>
       <Grid gridTemplateColumns="auto 1fr">
         {lang.paste}
         <StyledPaste />
@@ -143,12 +143,12 @@ const Send = ({ token, trackBtnClick, reset }) => {
   return (
     <Grid gridRowGap="m">
       <Grid gridRowGap="s">
-        <Text style={{fontSize:'20px', color: getColor('whiteText')}}>
+        <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
           {lang.formatString(lang.action_sidebar.send_title, displayToken)}
         </Text>
 
         <p>
-          <Text style={{fontSize:'16px', color: getColor('greyText')}}>
+          <Text style={{ fontSize: '16px', color: getColor('greyText') }}>
             {lang.formatString(
               lang.action_sidebar.send_description,
               displayToken
@@ -172,16 +172,20 @@ const Send = ({ token, trackBtnClick, reset }) => {
         />
 
         <Grid gridTemplateColumns="auto 1fr" gridColumnGap="s" alignItems="end">
-          <Text style={{fontSize:'12px', color: getColor('greyText')}} fontWeight="semibold" t="smallCaps">
+          <Text
+            style={{ fontSize: '12px', color: getColor('greyText') }}
+            fontWeight="semibold"
+            t="smallCaps"
+          >
             {lang.action_sidebar.your_balance}
           </Text>
-          <Text style={{color: getColor('cayn')}}>
+          <Text style={{ color: getColor('cayn') }}>
             {(balance && balance.toFixed(3)) || '--'} {displayToken}
           </Text>
         </Grid>
 
         <p>
-          <Text style={{fontSize:'14px', color: getColor('greyText')}}>
+          <Text style={{ fontSize: '14px', color: getColor('greyText') }}>
             {lang.formatString(lang.action_sidebar.dest_address, displayToken)}
           </Text>
         </p>
@@ -206,7 +210,7 @@ const Send = ({ token, trackBtnClick, reset }) => {
                 trackBtnClick('WalletSend', {
                   collateral: displayToken,
                   amount
-                })
+                });
               transfer();
             }}
             disabled={!valid}

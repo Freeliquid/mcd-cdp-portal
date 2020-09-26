@@ -114,12 +114,14 @@ const Payback = ({ vault, reset }) => {
         debtValue: DAI(debtValue.minus(amountToPayback))
       });
   return (
-    <Grid gridRowGap="m" >
+    <Grid gridRowGap="m">
       <Grid gridRowGap="s">
-        <Text style={{fontSize:'20px', color: getColor('whiteText')}}>
+        <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
           {lang.action_sidebar.payback_title}
         </Text>
-        <Text style={{fontSize:'16px', color: getColor('greyText')}}>{lang.action_sidebar.payback_description}</Text>
+        <Text style={{ fontSize: '16px', color: getColor('greyText') }}>
+          {lang.action_sidebar.payback_description}
+        </Text>
         <Input
           type="number"
           value={amount}

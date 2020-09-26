@@ -48,7 +48,15 @@ const DSRDepositCheckProxy = ({ dispatch, onClose }) => {
 
   return (
     <Box maxWidth="71.8rem">
-      <Text style={{fontSize:'22px', color: getColor('whiteText'), display: 'flex', justifyContent: 'center', paddingBottom:'30px'}}>
+      <Text
+        style={{
+          fontSize: '22px',
+          color: getColor('whiteText'),
+          display: 'flex',
+          justifyContent: 'center',
+          paddingBottom: '30px'
+        }}
+      >
         {lang.dsr_deposit.open_vault}
       </Text>
       <ProxyAllowanceCheck

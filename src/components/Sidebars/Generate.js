@@ -91,10 +91,15 @@ const Generate = ({ vault, reset }) => {
   return (
     <Grid gridRowGap="m">
       <Grid gridRowGap="s">
-        <Text style={{fontSize:'20px', color: getColor('whiteText')}}>
+        <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
           {lang.action_sidebar.generate_title}
         </Text>
-        <Text style={{fontSize:'16px', color: getColor('greyText')}} t="body">{lang.action_sidebar.generate_description}</Text>
+        <Text
+          style={{ fontSize: '16px', color: getColor('greyText') }}
+          t="body"
+        >
+          {lang.action_sidebar.generate_description}
+        </Text>
         <Input
           type="number"
           value={amount}

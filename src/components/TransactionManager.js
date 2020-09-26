@@ -29,7 +29,6 @@ const ActionButton = ({ children, ...rest }) => (
     py="0"
     lineHeight="initial"
     height="23px"
-    
     {...rest}
   >
     <Text
@@ -174,7 +173,10 @@ const TransactionManager = ({
               overflow: hidden;
               margin-bottom: 12px;
             `}
-            style={{background: getColor('cardBg'), borderColor: getColor('border')}}
+            style={{
+              background: getColor('cardBg'),
+              borderColor: getColor('border')
+            }}
           >
             <Flex
               justifyContent="space-between"

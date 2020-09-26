@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Flex } from '@makerdao/ui-components-core';
 
-
 const ConnectHero = styled(Flex)`
   flex-direction: column;
   align-items: left;
@@ -9,7 +8,6 @@ const ConnectHero = styled(Flex)`
   max-width: 1140px;
   margin: 25px auto 0;
   padding: 0 10px;
-  
 
   .headline {
     margin-top: 7px;
@@ -26,7 +24,6 @@ const ConnectHero = styled(Flex)`
   }
 
   @media (min-width: ${props => props.theme.breakpoints.m}) {
-
     .headline {
       margin-top: 16px;
       margin-bottom: 15px;

@@ -5,7 +5,7 @@ import { Box, Flex, Text } from '@makerdao/ui-components-core';
 import { getColor } from 'styles/theme';
 
 const answerAnimationTime = '350ms';
-const separatorColor =getColor('border') ;
+const separatorColor = getColor('border');
 
 const QuestionAndAnswerStyle = styled.div`
   position: relative;
@@ -40,7 +40,7 @@ const QuestionAndAnswerStyle = styled.div`
     .answer-text {
       padding: 32px 10px 32px 32px;
       color: ${getColor('greyText')};
-      font-size: 17px
+      font-size: 17px;
     }
   }
 

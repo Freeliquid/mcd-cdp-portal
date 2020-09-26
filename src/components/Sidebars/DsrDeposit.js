@@ -67,11 +67,11 @@ const DsrDeposit = ({ savings, reset }) => {
   return (
     <Grid gridRowGap="m">
       <Grid gridRowGap="s">
-        <Text style={{fontSize:'20px', color: getColor('whiteText')}}>
+        <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
           {lang.formatString(lang.action_sidebar.deposit_title, displaySymbol)}
         </Text>
         <p>
-          <Text style={{fontSize:'16px', color: getColor('greyText')}}>
+          <Text style={{ fontSize: '16px', color: getColor('greyText') }}>
             {lang.formatString(
               lang.action_sidebar.deposit_description,
               displaySymbol

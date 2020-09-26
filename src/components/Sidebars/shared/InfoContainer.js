@@ -10,7 +10,7 @@ export default ({ children }) => (
     borderRadius="default"
     css={`
       & > div:not(:last-child) {
-        border-bottom: 1px solid ${getColor ('border')};
+        border-bottom: 1px solid ${getColor('border')};
       }
     `}
   >

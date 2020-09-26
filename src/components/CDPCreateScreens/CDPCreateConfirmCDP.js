@@ -93,10 +93,18 @@ const CDPCreateConfirmSummary = ({
       css={`
         margin: 0 auto;
       `}
-      
     >
       <ScreenHeader title={lang.cdp_create.confirm_title} />
-      <Card py={{ s: 'm', m: 'l' }} px={{ s: 'm', m: 'xl' }} my="l" style={{color: getColor('greyText'), backgroundColor: getColor('cardBg'), borderColor: getColor('border')}}>
+      <Card
+        py={{ s: 'm', m: 'l' }}
+        px={{ s: 'm', m: 'xl' }}
+        my="l"
+        style={{
+          color: getColor('greyText'),
+          backgroundColor: getColor('cardBg'),
+          borderColor: getColor('border')
+        }}
+      >
         <Grid>
           {rows.map(([title, value], index) => {
             return (
@@ -107,14 +115,13 @@ const CDPCreateConfirmSummary = ({
                 gridTemplateColumns="5fr 1fr"
                 justifyItems="start"
                 borderTop={index !== 0 ? '1px solid' : null}
-                
               >
-                <Text style={{color: getColor('greyText')}}>{title}</Text>
+                <Text style={{ color: getColor('greyText') }}>{title}</Text>
                 <Text
                   fontWeight="bold"
                   css="white-space: nowrap"
                   textAlign={'right'}
-                  style={{color: getColor('whiteText')}}
+                  style={{ color: getColor('whiteText') }}
                 >
                   {value}
                 </Text>

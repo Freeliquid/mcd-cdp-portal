@@ -6,7 +6,9 @@ export default function({ children }) {
     <>
       {React.Children.map(children, (child, index) => {
         return (
-          <Box bg={index % 2 === 0 ? '#131824' : '#1c2334'} color="#A3B2CF">{child}</Box>
+          <Box bg={index % 2 === 0 ? '#131824' : '#1c2334'} color="#A3B2CF">
+            {child}
+          </Box>
         );
       })}
     </>

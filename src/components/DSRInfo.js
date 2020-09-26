@@ -239,18 +239,23 @@ function DSRInfo({ isMobile, savings }) {
           amount={balance.toNumber()}
           increment={amountChange.toNumber()}
           decimals={decimalsToShow}
-          style={{fontSize:'24px', color: getColor('whiteText')}}
-          
+          style={{ fontSize: '24px', color: getColor('whiteText') }}
         />
         <Box>
-          <Text style={{fontSize:'20px', color: getColor('whiteText')}} mb=".175rem" ml="s">
+          <Text
+            style={{ fontSize: '20px', color: getColor('whiteText') }}
+            mb=".175rem"
+            ml="s"
+          >
             DAI
           </Text>
         </Box>
       </Flex>
       <InfoContainerRow
         title={
-          <TextBlock style={{fontSize:'14px', color: getColor('whiteText')}}>{lang.save.savings_earned_to_date}</TextBlock>
+          <TextBlock style={{ fontSize: '14px', color: getColor('whiteText') }}>
+            {lang.save.savings_earned_to_date}
+          </TextBlock>
         }
         value={
           <>
@@ -260,12 +265,17 @@ function DSRInfo({ isMobile, savings }) {
                 amount={earnings.toNumber()}
                 increment={amountChange.toNumber()}
                 decimals={decimalsToShow}
-                style={{fontSize:'16px', color: getColor('cayn')}}
+                style={{ fontSize: '16px', color: getColor('cayn') }}
               />
             ) : (
-              <TextMono >{(0).toFixed(decimalsToShow)}</TextMono>
+              <TextMono>{(0).toFixed(decimalsToShow)}</TextMono>
             )}
-            <Text style={{fontSize:'14px', color: getColor('greyText')}} ml="xs">DAI</Text>
+            <Text
+              style={{ fontSize: '14px', color: getColor('greyText') }}
+              ml="xs"
+            >
+              DAI
+            </Text>
           </>
         }
       />
@@ -273,7 +283,7 @@ function DSRInfo({ isMobile, savings }) {
         title={lang.save.dai_savings_rate}
         value={
           annualDaiSavingsRate ? (
-            <TextMono style={{fontSize:'14px', color: getColor('greyText')}}>
+            <TextMono style={{ fontSize: '14px', color: getColor('greyText') }}>
               {formatter(annualDaiSavingsRate, {
                 rounding: BigNumber.ROUND_HALF_UP
               })}

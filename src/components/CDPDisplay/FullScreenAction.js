@@ -24,8 +24,12 @@ export default function FullScreenAction({ type, reset, props }) {
       width="100vw"
       height="100%"
       overflow="scroll"
-      style={{background: getColor('cardBg'), borderColor: getColor('border'), top: '0', left: '0'}}
-      
+      style={{
+        background: getColor('cardBg'),
+        borderColor: getColor('border'),
+        top: '0',
+        left: '0'
+      }}
     >
       <SidebarActionLayout onClose={reset} fullscreen={true}>
         <SidebarComponent {...{ ...props, reset }} />
