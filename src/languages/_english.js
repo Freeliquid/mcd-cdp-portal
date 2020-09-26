@@ -22,13 +22,15 @@ export default {
   },
   landing_page: {
     meta: {
-      title: 'Freeliquid.io',
+      title: 'Freeliquid',
       description:
         'Borrow and Save using USDL. Place orders on the marketplace using Trade, generate USDL, a stablecoin pegged to 1 USD, on Borrow and earn savings on your USDL using Save. All on Freeliquid.io.'
     },
     title:'Freeliquid',
-    usdl_title:'USDL - as long as your own liquidity is provided for you passive earnings',
-    usdl_desc:'Use up to 90% of your pools funds',
+    usdl_title:'Use up to 90% of your pools funds',
+    usdl_desc:'Freeliquid developed USDL token — as long as your own liquidity is provided for you passive earnings',
+    get_start:'Get started',
+    play_video:'Play video',
     block1_text:'Freeliquid makes it easy to create a stablecoin for free by collateralizing pools with DAI, USDT, USDC, USDN',
     block1_text2:'USDL is a fully decentralized, censorship-resistant stablecoin available to any liquidity provider',
     block3_title:'Derivative giving even greater financial freedom',
@@ -157,7 +159,7 @@ export default {
       question5: 'Do the rates and fees change, and if so how often?',
       answer5:
         "Yes, the fees, including Stability Fees and Liquidation Penalties are set by Maker Governance. These can be changed at any time due to continuous governance nature of the Maker Protocol. You can see more about Governance of the Maker Protocol at vote.makerdao.com. For Gas Fee's, these are determined by the activity on the Ethereum Network. In most cases, you have the option to set your Gas Fee, but if the network is busy, you will have to pay more for your transactions to go through in a timely manner.",
-      bottom_link1: 'Full list of Freeliquid Vault FAQs',
+      bottom_link1: 'Full list of Freeliquid Borrow FAQs →',
       bottom_link2: 'Glossary of terms'
     }
   },
