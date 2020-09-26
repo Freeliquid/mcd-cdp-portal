@@ -12,6 +12,7 @@ import useValidatedInput from 'hooks/useValidatedInput';
 import { add, greaterThan } from 'utils/bignumber';
 import { formatCollateralizationRatio, formatter } from 'utils/ui';
 import { decimalRules } from '../../styles/constants';
+import { getColor } from '../../styles/theme';
 const { long, medium } = decimalRules;
 
 const Generate = ({ vault, reset }) => {
@@ -90,10 +91,10 @@ const Generate = ({ vault, reset }) => {
   return (
     <Grid gridRowGap="m">
       <Grid gridRowGap="s">
-        <Text.h4 color="darkLavender">
+        <Text style={{fontSize:'20px', color: getColor('whiteText')}}>
           {lang.action_sidebar.generate_title}
-        </Text.h4>
-        <Text.p t="body">{lang.action_sidebar.generate_description}</Text.p>
+        </Text>
+        <Text style={{fontSize:'16px', color: getColor('greyText')}} t="body">{lang.action_sidebar.generate_description}</Text>
         <Input
           type="number"
           value={amount}

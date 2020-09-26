@@ -77,7 +77,7 @@ const AddCdpButton = ({ account, show, mobile }) => {
 };
 
 const DirectionalButton = styled(NavbarItemContent)`
-  height: 35px;
+  height: 25px;
   cursor: pointer;
   visibility: ${props => (props.show ? 'visible' : 'hidden')};
 `;
@@ -180,8 +180,8 @@ const CDPList = memo(function({
       : !active && account
       ? 'blueGrayDarker'
       : active && !account
-      ? '"rgb(45 57 83)"'
-      : 'grey.200';
+      ? 'cardBg'
+      : 'cardBg';
 
   return listOpen && userVaults ? (
     <Fragment>
@@ -189,13 +189,13 @@ const CDPList = memo(function({
         <DirectionalButton
           onClick={() => onDirectionalClick('up')}
           show={scrollTop > 0}
-          bg={account ? 'blueGrayDarker' : '"rgb(45 57 83)"'}
+          bg={account ? '#1c2334' : '"rgb(45 57 83)"'}
         >
           <NavUp />
         </DirectionalButton>
       )}
       <Box
-        bg={account ? 'blueGrayDarker' : 'grey.200'}
+        bg={account ? '#1c2334' : 'cardBg'}
         height="100%"
         width={mobile ? '100vw' : `${getMeasurement('navbarWidth')}px`}
         px={mobile ? '15px' : '5px'}
@@ -218,7 +218,7 @@ const CDPList = memo(function({
             width={`${getMeasurement('navbarItemWidth')}px`}
             trackBtnClick={() => trackBtnClick('SelectOverview')}
           >
-            <Text t="p6" fontWeight="bold" color={account ? 'white' : 'grey'}>
+            <Text t="p6" fontWeight="bold" color={account ? '#A3B2CF' : '#F3F3F5'}>
               {lang.overview}
             </Text>
           </NavbarItem>
@@ -245,7 +245,7 @@ const CDPList = memo(function({
                   <Text
                     t="p6"
                     fontWeight="bold"
-                    color={account ? 'white' : 'grey'}
+                    color={account ? '#A3B2CF' : '#F3F3F5'}
                   >
                     {vaultType}
                   </Text>
@@ -274,7 +274,7 @@ const CDPList = memo(function({
         <DirectionalButton
           onClick={() => onDirectionalClick('down')}
           show={scrollTop < maxScrollTop}
-          bg={account ? 'blueGrayDarker' : 'white'}
+          bg={account ? '#0B0E15' : '#323B4F'}
         >
           <NavDown />
         </DirectionalButton>

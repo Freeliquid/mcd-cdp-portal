@@ -21,6 +21,7 @@ import { DAI } from '../../libs/dai-plugin-mcd/src/index.js';
 
 import { ReactComponent as ExternalLinkIcon } from 'images/external-link.svg';
 import { ReactComponent as SpaceshipIllustration } from 'images/spaceship.svg';
+import { getColor } from '../../styles/theme';
 
 const DSRDepositConfirmSummary = ({
   onClose,
@@ -44,7 +45,7 @@ const DSRDepositConfirmSummary = ({
         title={lang.dsr_deposit.confirm_title}
         text={lang.save.deposit_dai_subheading}
       />
-      <Card py={{ s: 'm', m: 'l' }} px={{ s: 'm', m: 'xl' }} my="l">
+      <Card py={{ s: 'm', m: 'l' }} px={{ s: 'm', m: 'xl' }} my="l" style={{color: getColor('greyText'), backgroundColor: getColor('cardBg'), borderColor: getColor('border')}}>
         <Grid>
           {rows.map(([title, value], index) => {
             return (
@@ -55,13 +56,14 @@ const DSRDepositConfirmSummary = ({
                 gridTemplateColumns="5fr 1fr"
                 justifyItems="start"
                 borderTop={index !== 0 ? '1px solid' : null}
-                color="grey.200"
+                
               >
-                <Text>{title}</Text>
+                <Text style={{color: getColor('greyText')}}>{title}</Text>
                 <Text
                   fontWeight="bold"
                   css="white-space: nowrap"
                   textAlign={{ s: 'right', m: 'left' }}
+                  style={{color: getColor('whiteText')}}
                 >
                   {value}
                 </Text>

@@ -7,7 +7,7 @@ import { prettifyCurrency } from 'utils/ui';
 import TokenIcon from './TokenIcon';
 import { ReactComponent as CaratDown } from 'images/carat-down-filled.svg';
 import { ReactComponent as DaiImg } from 'images/oasis-tokens/usdl.svg';
-
+import { getColor } from 'styles/theme';
 import useLanguage from 'hooks/useLanguage';
 import useMaker from 'hooks/useMaker';
 import BigNumber from 'bignumber.js';
@@ -16,9 +16,9 @@ const Dropdown = (() => {
   const Trigger = styled(Flex)`
     justify-content: space-between;
     align-items: center;
-    background: #191e2b;
-    border: 1px solid #d4d9e1;
-    border-radius: 5px;
+    background: ${getColor('input')};
+    border: 1px solid ${getColor('border')};
+    border-radius: 40px;
     padding-right: 27px;
     cursor: pointer;
   `;
@@ -29,9 +29,9 @@ const Dropdown = (() => {
     width: calc(100% - 2px);
     top: calc(100% + 5px);
     right: 0;
-    background: rgb(45, 57, 83);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
+    background: ${getColor('cardBg')};
+    border: 1px solid ${getColor('border')};
+    border-radius: 20px;
     padding-top: 12px;
     padding-left: 1px;
     padding-bottom: 16px;
@@ -107,7 +107,7 @@ const Slider = (() => {
     width: 20px;
     height: 20px;
     top: -8px;
-    background: #231536;
+    background: ${getColor('greyText')};
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
     cursor: grab;
     border-radius: 50%;
@@ -118,7 +118,7 @@ const Slider = (() => {
   `;
 
   const Track = styled.div`
-    background: #dedce1;
+    background: #222B3F;
     border-radius: 3px;
     height: 4px;
   `;
@@ -133,17 +133,19 @@ const Slider = (() => {
 })();
 
 const CalculatorStyle = styled(Box)`
-  background: rgb(45, 57, 83);
-  width: 100vw;
-  left: -${props => props.theme.mobilePaddingX};
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: ${getColor('cardBg')};
+  width: 1140px;
+  padding: 5px;
+  border-radius: 40px;
 
-  @media (min-width: ${props => props.theme.breakpoints.m}) {
-    width: unset;
-    left: unset;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 3px;
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    width:100%;
+  }
+  @media (max-width: 767px) {
+    width:100%;
+    text-align: center;
+    border-radius: 20px;
+    padding: 15px;
   }
 `;
 
@@ -157,6 +159,9 @@ const DropdownItemStyle = styled.div`
 
   svg {
     margin-right: 13px;
+  }
+  @media (max-width: 767px) {
+    text-align: center;
   }
 `;
 
@@ -193,7 +198,7 @@ export const useDaiSavingsRate = () => {
 const DaiAmount = (() => {
   const GradientValue = styled(Text.h1)`
     display: inline;
-    background: #fff;
+    background: ${getColor('greyText')};
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   `;
@@ -223,7 +228,7 @@ const Separator = styled(Box)`
 
 const Footnote = styled(Text).attrs(() => ({
   fontSize: '16px',
-  color: '#9C9DA7',
+  color: getColor('greyText'),
   letterSpacing: '0.5px'
 }))``;
 
@@ -236,11 +241,10 @@ const getDaiAvailable = (locale, depositAmount, price, colRatio) => {
 };
 
 const BorrowCalcContent = styled(Box)`
-  max-width: 396px;
   margin: 0 auto;
 
   @media (min-width: ${props => props.theme.breakpoints.m}) {
-    max-width: unset;
+    
   }
 `;
 
@@ -257,12 +261,12 @@ const BorrowCalcTopGrid = styled(Grid)`
     justify-content: space-around;
     margin: 71px auto 69px;
     padding-right: 4px;
-    max-width: 700px;
+    max-width: 800px;
   }
 
   @media (min-width: ${props => props.theme.breakpoints.l}) {
     grid-template-columns: 217px 396px;
-    max-width: 821px;
+    max-width: 921px;
   }
 `;
 
@@ -381,7 +385,7 @@ const BorrowCalculator = ({ prices, cdpTypesList, ...props }) => {
     <CalculatorStyle px={{ s: '22px', m: '0' }} {...props}>
       <BorrowCalcContent>
         <BorrowCalcTopGrid>
-          <CapsText textAlign={{ s: 'left', m: 'right' }}>
+          <CapsText textAlign={{ m: 'right' }}>
             {lang.collateral_type}
           </CapsText>
           <Dropdown
@@ -404,7 +408,7 @@ const BorrowCalculator = ({ prices, cdpTypesList, ...props }) => {
             onSelected={selected => setSelectedSymbol(selected)}
             selectedValue={selectedSymbol}
           />
-          <CapsText textAlign={{ s: 'left', m: 'right' }}>
+          <CapsText textAlign={{ m: 'right' }}>
             {lang.collateral_amount}
           </CapsText>
           <Box position="relative">
@@ -426,7 +430,7 @@ const BorrowCalculator = ({ prices, cdpTypesList, ...props }) => {
           </Box>
         </BorrowCalcTopGrid>
         <Separator display={{ s: 'none', m: 'block' }} />
-        <Box textAlign={{ s: 'left', m: 'center' }} pt="39px" pb="42px">
+        <Box textAlign={{m: 'center' }} pt="39px" pb="42px">
           <CapsText>
             {lang.formatString(lang.borrow_landing.calc_dai_available, {
               amount: (
@@ -509,7 +513,7 @@ const SaveCalculator = (() => {
   };
 
   const Content = styled(Box)`
-    max-width: 519px;
+    max-width: 619px;
     margin: 0 auto;
     padding-right: 23px;
     padding-left: 23px;

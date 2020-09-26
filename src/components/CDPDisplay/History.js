@@ -5,6 +5,7 @@ import ExternalLink from 'components/ExternalLink';
 import { formatEventDescription, formatDate } from 'utils/ui';
 import theme from 'styles/theme';
 import styled, { keyframes } from 'styled-components';
+import { getColor } from 'styles/theme';
 
 const FADE_IN_ROWS = 20;
 const FADE_IN_DELAY = 30;
@@ -52,7 +53,7 @@ export default function({
                   overflow: hidden;
                 `}
               >
-                <Text color="darkLavender" t="caption">
+                <Text  t="caption">
                   {actionMsg}
                 </Text>
               </td>
@@ -61,7 +62,7 @@ export default function({
                   white-space: nowrap;
                 `}
               >
-                <Text color="darkLavender" t="caption">
+                <Text  t="caption">
                   {dateOfAction}
                 </Text>
               </td>
@@ -78,22 +79,23 @@ export default function({
 
   return (
     <Box>
-      <Text.h4>{title}</Text.h4>
+      <Text style={{fontSize:'20px', color: getColor('whiteText')}}>{title}</Text >
       <Card
         px="l"
         py="m"
         my="s"
-        css={{
-          overflowX
-        }}
+        style={{borderColor: getColor('border'), backgroundColor: getColor('cardBg')}}
       >
         <Table
           width="100%"
           variant="normal"
           css={`
-            td,
+            td span{
+              color: ${getColor('whiteText')
+            };
             th {
               padding-right: 10px;
+              color: ${getColor('greyText')}
             }
           `}
         >
@@ -104,11 +106,11 @@ export default function({
               <th>{lang.table.tx_hash}</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody >
             {isLoading ? (
               <tr key={0}>
                 <td colSpan="3">
-                  <Text color="darkLavender" t="caption">
+                  <Text  t="caption">
                     {lang.table.loading}
                   </Text>
                 </td>
@@ -118,7 +120,7 @@ export default function({
             ) : (
               <tr key={0}>
                 <td colSpan="3">
-                  <Text color="darkLavender" t="caption">
+                  <Text t="caption">
                     {emptyTableMessage}
                   </Text>
                 </td>

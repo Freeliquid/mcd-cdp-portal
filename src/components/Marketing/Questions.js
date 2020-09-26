@@ -2,9 +2,10 @@ import styled from 'styled-components';
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Box, Flex, Text } from '@makerdao/ui-components-core';
+import { getColor } from 'styles/theme';
 
 const answerAnimationTime = '350ms';
-const separatorColor = '#EBEBEB';
+const separatorColor =getColor('border') ;
 
 const QuestionAndAnswerStyle = styled.div`
   position: relative;
@@ -20,7 +21,7 @@ const QuestionAndAnswerStyle = styled.div`
   .question {
     margin-right: 58px;
     line-height: 31px;
-
+    font-size: 20px;
     @media (min-width: ${props => props.theme.breakpoints.m}) {
       line-height: 36px;
     }
@@ -38,6 +39,8 @@ const QuestionAndAnswerStyle = styled.div`
 
     .answer-text {
       padding: 32px 10px 32px 32px;
+      color: ${getColor('greyText')};
+      font-size: 17px
     }
   }
 
@@ -52,7 +55,7 @@ const QuestionAndAnswerStyle = styled.div`
 
     &:before,
     &:after {
-      background: #00c4c4;
+      background: ${getColor('cayn')};
       content: '';
       height: 2px;
       left: 0;

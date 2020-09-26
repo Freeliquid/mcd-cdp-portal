@@ -9,7 +9,7 @@ import templates from './templates';
 const modals = {
   cdpcreate: ({ onClose }) => (
     <Box
-      bg="lightGrey"
+      bg="#0B0E15"
       minHeight="100vh"
       p="m"
       onClick={e => e.stopPropagation()}
@@ -20,7 +20,7 @@ const modals = {
 
   dsrdeposit: ({ onClose, hideOnboarding }) => (
     <Box
-      bg="lightGrey"
+      bg="#0B0E15"
       minHeight="100vh"
       p="m"
       onClick={e => e.stopPropagation()}

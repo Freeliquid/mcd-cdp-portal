@@ -8,6 +8,7 @@ import useModal from 'hooks/useModal';
 import { txManager } from 'references/config';
 import { etherscanLink } from '../utils/ethereum';
 import useLanguage from '../hooks/useLanguage';
+import { getColor } from 'styles/theme';
 
 import { ReactComponent as TxIconInitialized } from 'images/tx-initialized.svg';
 import { ReactComponent as TxIconPending } from 'images/tx-pending.svg';
@@ -26,10 +27,9 @@ const ActionButton = ({ children, ...rest }) => (
     variant="secondary-outline"
     px="0"
     py="0"
-    minWidth="4.5rem"
     lineHeight="initial"
     height="23px"
-    bg="rgb(45, 57, 83) !important"
+    
     {...rest}
   >
     <Text
@@ -104,9 +104,8 @@ const Circle = ({ size, color, ...props }) => (
   <Box
     width={size}
     height={size}
-    bg={color}
+    bg="#131824"
     borderRadius="50%"
-    border="1px solid #D4D9E1"
     css="line-height: 23px; text-align: center"
     {...props}
   >
@@ -116,7 +115,7 @@ const Circle = ({ size, color, ...props }) => (
 
 const TinyButton = props => (
   <Box
-    bg="rgba(0, 0, 0, 0.03)"
+    bg="#131824"
     p="xs"
     py="4px"
     borderRadius="3px"
@@ -175,6 +174,7 @@ const TransactionManager = ({
               overflow: hidden;
               margin-bottom: 12px;
             `}
+            style={{background: getColor('cardBg'), borderColor: getColor('border')}}
           >
             <Flex
               justifyContent="space-between"
@@ -226,8 +226,8 @@ const TransactionManager = ({
                       bg={
                         visible
                           ? rowCount++ % 2 === 0
-                            ? 'coolGrey.100'
-                            : 'white'
+                            ? '#131824'
+                            : '#1c2334'
                           : ''
                       }
                       css={`
@@ -237,7 +237,7 @@ const TransactionManager = ({
                       `}
                     >
                       <Box
-                        bg={state === 'initialized' ? '#fff3d8' : 'transparent'}
+                        bg={state === 'initialized' ? '#131824' : 'transparent'}
                         css={`
                           opacity: ${pendingRemoval ? '0' : '1'};
                           transition: opacity ${autoDismissFadeoutTime}ms linear
@@ -282,7 +282,7 @@ const TransactionManager = ({
                                     m="6px 8px 2px 0"
                                   >
                                     {lang.view}&nbsp;
-                                    <ExternalLinkIcon fill="#708390" />
+                                    <ExternalLinkIcon fill="#00DCDC" />
                                   </ActionButton>
                                   <ActionButton
                                     disabled={false}
@@ -319,10 +319,10 @@ const TransactionManager = ({
                         </Flex>
 
                         {/* Pending removal timer progress indicator */}
-                        <Box css="width: 100%; background: #efefef;">
+                        <Box css="width: 100%; background: #ccc;">
                           <Box
                             css={`
-                              background: #${success ? '45bbae' : 'e67002'};
+                              background: #${success ? '#45bbae' : '#e67002'};
                               transition: width ${autoDismissTime}ms linear 0s;
                               width: ${pendingRemoval ? '100%' : '0%'};
                               height: ${pendingRemoval ? '1px' : '0'};

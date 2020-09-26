@@ -108,7 +108,7 @@ const DropdownWrapper = styled(Box)`
 `;
 
 const IconBox = styled(Box)`
-  fdisplay: flex;
+  display: flex;
   align-items: center;
   &,
   svg,
@@ -168,7 +168,7 @@ const NavItem = styled(Item)`
   }
 `;
 
-function AccountSelection({ buttonWidth = '200px', ...props }) {
+function AccountSelection({ buttonWidth = '240px', ...props }) {
   const dropdown = useRef(null);
   const [showMain, setShowMain] = useState(true);
   const [isOpen, setIsOpen] = useState(false); // only for mobile

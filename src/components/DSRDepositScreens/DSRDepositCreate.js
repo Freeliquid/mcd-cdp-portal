@@ -10,6 +10,7 @@ import useWalletBalances from '../../hooks/useWalletBalances';
 import useValidatedInput from '../../hooks/useValidatedInput';
 import SetMax from '../SetMax';
 import useTokenAllowance from 'hooks/useTokenAllowance';
+import { getColor } from '../../styles/theme';
 
 function DepositDaiForm({
   depositAmount,
@@ -24,6 +25,7 @@ function DepositDaiForm({
     [
       lang.formatString(lang.dsr_deposit.deposit_form_title, 'DAI'),
       <Input
+      style={{fontSize:'14px', color: getColor('cayn')}}
         key="daiinput"
         name="gemsToLock"
         after={<SetMax onClick={setDepositMax} />}
@@ -35,8 +37,8 @@ function DepositDaiForm({
         placeholder="0 DAI"
       />,
       <Box key="ba">
-        <Text t="subheading">{lang.your_balance} </Text>
-        <Text t="caption" display="inline-block" ml="s" color="darkLavender">
+        <Text style={{fontSize:'14px', color: getColor('cayn')}}>{lang.your_balance} </Text>
+        <Text style={{fontSize:'14px', color: getColor('whiteText')}} display="inline-block" ml="s" >
           {prettifyNumber(daiBalance)} {'DAI'}
         </Text>
       </Box>
@@ -55,10 +57,10 @@ function DepositDaiForm({
           return (
             <Grid gridRowGap="s" key={title}>
               <Grid gridRowGap="xs">
-                <TextBlock t="h5" lineHeight="normal">
+                <TextBlock style={{fontSize:'18px', color: getColor('whiteText')}} lineHeight="normal">
                   {title}
                 </TextBlock>
-                <TextBlock t="body">{text}</TextBlock>
+                <TextBlock style={{fontSize:'16px', color: getColor('greyText')}}>{text}</TextBlock>
               </Grid>
               <Box py="2xs">{input}</Box>
               {renderAfter}

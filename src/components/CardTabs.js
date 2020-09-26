@@ -24,14 +24,14 @@ const TabHeaderContainer = styled(Box)`
 const TabHeader = ({ selected, children, ...props }) => {
   return (
     <TabHeaderContainer
-      bg={selected ? 'white' : 'lightGrey'}
+      bg={selected ? '#0B0E15' : '#131824'}
       py="m"
       flexGrow="1"
       textAlign="center"
       borderBottom={selected ? null : 'default'}
       {...props}
     >
-      <Text t="h5" color={selected ? 'fff' : 'ccc'}>
+      <Text t="h5" color={selected ? '#A3B2CF' : '#F3F3F5'}>
         {children}
       </Text>
     </TabHeaderContainer>

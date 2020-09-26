@@ -4,14 +4,12 @@ import styled from 'styled-components';
 import { getColor } from 'styles/theme';
 import { ReactComponent as LogoImg } from 'images/landing/logo_fl.svg';
 
-
 const StyledLink = styled(Link)`
   font-size: 22px;
   line-height: 26px;
   font-weight: bold;
   display: flex;
-  color: ${getColor ('logo')};
-
+  color: ${getColor('logo')};
 `;
 const LogoDiv = styled.div`
   display: flex;
@@ -20,13 +18,13 @@ const LogoDiv = styled.div`
 const LogoTitle = styled.div`
   margin-left: 10px;
   @media (max-width: 639px) {
-   display:none;
-    }
+    display: none;
+  }
 `;
 export default styled(props => (
   <StyledLink {...props} href="/">
     <LogoDiv>
-      <LogoImg style={{width:'30px'}}/>
+      <LogoImg style={{ width: '30px' }} />
       <LogoTitle>Freeliquid</LogoTitle>
     </LogoDiv>
   </StyledLink>

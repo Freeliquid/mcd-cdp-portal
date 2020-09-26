@@ -15,11 +15,13 @@ import useAnalytics from 'hooks/useAnalytics';
 import ScreenFooter from '../ScreenFooter';
 import ScreenHeader from '../ScreenHeader';
 import BigNumber from 'bignumber.js';
+import { getColor } from 'styles/theme';
+
 
 const CDPCreateSelectCollateralSidebar = () => {
   const { lang } = useLanguage();
   return (
-    <Box px="l" py="m">
+    <Box px="l" py="m" style={{color: getColor('greyText'), background: getColor('cardBg'), borderColor: getColor('border')}}>
       <Box>
         {[
           [lang.stability_fee, lang.cdp_create.stability_fee_description],
@@ -33,10 +35,10 @@ const CDPCreateSelectCollateralSidebar = () => {
           ]
         ].map(([title, text]) => (
           <Grid mb="m" key={title} gridRowGap="xs">
-            <TextBlock t="h5" lineHeight="normal">
+            <TextBlock style={{fontSize:'18px', color: getColor('whiteText')}}>
               {title}
             </TextBlock>
-            <TextBlock t="body">{text}</TextBlock>
+            <TextBlock style={{fontSize:'14px', color: getColor('greyText')}}>{text}</TextBlock>
           </Grid>
         ))}
       </Box>
@@ -129,13 +131,10 @@ const CDPCreateSelectCollateral = ({
   const { cdpTypes } = useCdpTypes();
   const hasAllowanceAndProxy = hasAllowance && !!proxyAddress;
 
-
   return (
     <Box
       maxWidth="1040px"
-      css={`
-        margin: 0 auto;
-      `}
+      style={{background: getColor('cardBg'), borderColor: getColor('border'), padding: '30px', borderRadius: '20px'}}
     >
       <ScreenHeader
         title={lang.cdp_create.select_title}
@@ -147,14 +146,15 @@ const CDPCreateSelectCollateral = ({
         my="l"
       >
         <div>
-          <Card px="l" py="l">
+          <Card px="l" py="l" style={{background: getColor('cardBg'), borderColor: getColor('border')}}>
             <Overflow x="scroll" y="visible">
               <Table
                 width="100%"
                 css={`
-                  th,
+                  th{color: ${getColor('greyText')}};
                   td {
                     padding-right: 10px;
+                    color: ${getColor('whiteText')}
                   }
                 `}
               >
@@ -191,9 +191,9 @@ const CDPCreateSelectCollateral = ({
             </Overflow>
           </Card>
         </div>
-        <Card>
+        
           <CDPCreateSelectCollateralSidebar />
-        </Card>
+        
       </Grid>
       <ScreenFooter
         onNext={() => {

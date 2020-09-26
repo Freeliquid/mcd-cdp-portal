@@ -46,7 +46,6 @@ const DrawerBg = styled.div`
   width: 100vw;
   z-index: 9;
   height: 100%;
-  background-color: #fff;
   ${({ sidebarDrawerOpen }) =>
     sidebarDrawerOpen
       ? css`
@@ -80,7 +79,7 @@ const MobileNav = ({ viewedAddress }) => {
   return (
     <Flex
       justifyContent="center"
-      bg={account ? 'blueGray' : 'white'}
+      bg={account ? '#131824' : '#131824'}
       height={getMeasurement('mobileNavHeight')}
     >
       <Flex flex="1" alignItems="center" justifyContent="flex-start">
@@ -96,11 +95,6 @@ const MobileNav = ({ viewedAddress }) => {
           account={account}
           mobile={true}
           borderRadius="4px"
-          ml="xs"
-        />
-        <TradeNav
-          borderRadius="4px"
-          width={`${getMeasurement('navbarWidth')}px`}
           ml="xs"
         />
       </Flex>

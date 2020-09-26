@@ -13,6 +13,7 @@ import { DAI } from '../../libs/dai-plugin-mcd/src/index.js';
 import SetMax from 'components/SetMax';
 import { BigNumber } from 'bignumber.js';
 import { safeToFixed } from '../../utils/ui';
+import { getColor } from '../../styles/theme';
 
 const DsrWithdraw = ({ savings, reset }) => {
   const { trackBtnClick } = useAnalytics('Withdraw', 'Sidebar');
@@ -77,10 +78,10 @@ const DsrWithdraw = ({ savings, reset }) => {
   return (
     <Grid gridRowGap="m">
       <Grid gridRowGap="s">
-        <Text.h4 color="darkLavender">
+        <Text style={{fontSize:'20px', color: getColor('whiteText')}} >
           {lang.formatString(lang.action_sidebar.withdraw_title, displaySymbol)}
-        </Text.h4>
-        <Text.p t="body">
+        </Text>
+        <Text.p style={{fontSize:'16px', color: getColor('greyText')}} >
           {lang.formatString(
             lang.action_sidebar.withdraw_description,
             displaySymbol

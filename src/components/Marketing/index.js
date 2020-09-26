@@ -1,5 +1,5 @@
 import { Box } from '@makerdao/ui-components-core';
-import { marketingTheme } from 'styles/theme';
+import { getColor, marketingTheme } from 'styles/theme';
 
 import FullWidth from './FullWidth';
 import Questions, {
@@ -12,7 +12,7 @@ import Quotes, { QuotesFadeIn } from './Quotes';
 import GradientBox from './GradientBox';
 import Features from './Features';
 import styled from 'styled-components';
-import OasisLogoLink from './OasisLogoLink';
+import LogoLink from './LogoLink';
 import FixedHeaderTrigger from './FixedHeaderTrigger';
 import Parallaxed from './Parallaxed';
 import FadeIn from './FadeIn';
@@ -46,12 +46,12 @@ const SeparatorDot = styled(Box)`
   width: 4px;
   height: 4px;
   border-radius: 2px;
-  background-color: #ccc;
+  background-color: ${getColor('cardBg')};
   opacity: 0.2;
 `;
 
 const StyledPageContentLayout = styled(PageContentLayout).attrs(() => ({
-  p: { s: `25px ${marketingTheme.mobilePaddingX}`, l: '30px 32px' }
+  p: { s: `25px ${marketingTheme.mobilePaddingX}`, l: '0px 32px' }
 }))``;
 
 export {
@@ -67,7 +67,7 @@ export {
   GradientBox,
   QuotesFadeIn,
   Features,
-  OasisLogoLink,
+  LogoLink,
   FixedHeaderTrigger,
   Parallaxed,
   FadeIn,

@@ -12,6 +12,7 @@ import ProxyAllowanceToggle from 'components/ProxyAllowanceToggle';
 import { DAI } from '../../libs/dai-plugin-mcd/src/index.js';
 import SetMax from 'components/SetMax';
 import { safeToFixed } from '../../utils/ui';
+import { getColor } from '../../styles/theme';
 
 const DsrDeposit = ({ savings, reset }) => {
   const { trackBtnClick } = useAnalytics('Deposit', 'Sidebar');
@@ -66,11 +67,11 @@ const DsrDeposit = ({ savings, reset }) => {
   return (
     <Grid gridRowGap="m">
       <Grid gridRowGap="s">
-        <Text color="darkLavender" t="h4">
+        <Text style={{fontSize:'20px', color: getColor('whiteText')}}>
           {lang.formatString(lang.action_sidebar.deposit_title, displaySymbol)}
         </Text>
         <p>
-          <Text t="body">
+          <Text style={{fontSize:'16px', color: getColor('greyText')}}>
             {lang.formatString(
               lang.action_sidebar.deposit_description,
               displaySymbol

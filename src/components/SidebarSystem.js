@@ -3,6 +3,9 @@ import { Text, Box, Card, Flex } from '@makerdao/ui-components-core';
 import useLanguage from 'hooks/useLanguage';
 import { formatCollateralizationRatio, prettifyNumber } from 'utils/ui';
 import SiteVersion from 'components/SiteVersion';
+import styled from 'styled-components';
+import { getColor } from 'styles/theme';
+
 
 const SidebarSystem = ({ system }) => {
   const { lang } = useLanguage();
@@ -33,15 +36,16 @@ const SidebarSystem = ({ system }) => {
   ];
 
   return (
-    <Fragment>
-      <Card css={'overflow:hidden;'} pt="sm">
+    <Fragment >
+      <Card css={'overflow:hidden;'} pt="sm" style={{background: getColor('cardBg'), borderColor: getColor('border')}}>
         <Flex
           justifyContent="space-between"
           alignContent="center"
           px="s"
           pb="s2"
+          
         >
-          <Text t="h4">{lang.sidebar.system_info}</Text>
+          <Text style={{fontSize:'20px', color: getColor('greyText')}}>{lang.sidebar.system_info}</Text>
         </Flex>
         {systemParams.map(([param, value], idx) => (
           <Flex
@@ -51,9 +55,9 @@ const SidebarSystem = ({ system }) => {
             width="100%"
             py="xs"
             px="s"
-            bg={idx % 2 ? 'coolGrey.100' : 'white'}
+            bg={idx % 2 ? '#131824' : '#1c2334'}
           >
-            <Text color="darkLavender" fontWeight="semibold" t="smallCaps">
+            <Text fontWeight="semibold" t="smallCaps" color="#A3B2CF">
               {param}
             </Text>
             <Box>

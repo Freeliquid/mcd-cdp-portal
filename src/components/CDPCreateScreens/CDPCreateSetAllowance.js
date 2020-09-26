@@ -7,6 +7,7 @@ import useTokenAllowance from 'hooks/useTokenAllowance';
 import useLanguage from 'hooks/useLanguage';
 import useAnalytics from 'hooks/useAnalytics';
 import ProxyAllowanceCheck from '../ProxyAllowanceCheck';
+import { getColor } from 'styles/theme';
 
 const CDPCreateSetAllowance = ({ selectedIlk, isFirstVault, dispatch }) => {
   const { trackBtnClick } = useAnalytics('ProxyDeploy', 'VaultCreate');
@@ -48,10 +49,10 @@ const CDPCreateSetAllowance = ({ selectedIlk, isFirstVault, dispatch }) => {
   };
 
   return (
-    <Box maxWidth="71.8rem">
-      <Text.h2 textAlign="center" mb="xl">
+    <Box maxWidth="71.8rem" style={{background: getColor('cardBg'), borderColor: getColor('border'), borderRadius: '20px', padding: '20px 0px', textAlign:'center'}}>
+      <Text style={{fontSize:'22px', color: getColor('whiteText'), textAlign:'center'}}>
         {lang.cdp_create.setup_proxy_title}
-      </Text.h2>
+      </Text>
       <ProxyAllowanceCheck
         proxyAddress={proxyAddress}
         deployProxy={setupProxy}

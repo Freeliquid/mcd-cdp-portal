@@ -1,14 +1,15 @@
 import React from 'react';
 import { Box } from '@makerdao/ui-components-core';
 import { TextBlock } from 'components/Typography';
+import { getColor } from 'styles/theme';
 
 const ScreenHeader = ({ title, text }) => {
   return (
     <Box textAlign="center" pt="m">
       <Box pb="m">
-        <TextBlock t="h2">{title}</TextBlock>
+        <TextBlock style={{fontSize:'22px', color: getColor('whiteText')}}>{title}</TextBlock>
       </Box>
-      <TextBlock t="body" fontSize="1.8rem">
+      <TextBlock  style={{fontSize:'16px', color: getColor('greyText')}}>
         {text}
       </TextBlock>
     </Box>
