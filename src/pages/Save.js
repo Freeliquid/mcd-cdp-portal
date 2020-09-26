@@ -28,6 +28,9 @@ import useSavings from 'hooks/useSavings';
 import useNotification from 'hooks/useNotification';
 import { watch } from 'hooks/useObservable';
 import useEmergencyShutdown from 'hooks/useEmergencyShutdown';
+import { getColor } from 'styles/theme';
+import { FadeIn, FilledButton, PageHead } from 'components/Marketing';
+import { Link, useCurrentRoute } from 'react-navi';
 
 import { FeatureFlags } from 'utils/constants';
 import { NotificationList, SAFETY_LEVELS } from 'utils/constants';
@@ -96,7 +99,7 @@ function Save({ viewedAddress }) {
         >
           {viewedAddress === account?.address ? (
             <>
-              <Text.p t="h4" mb="26px">
+              <Text style={{fontSize:'20px', color: getColor('greyText')}} mb="26px">
                 {lang.formatString(
                   lang.save.get_started_title,
                   `${
@@ -105,8 +108,8 @@ function Save({ viewedAddress }) {
                       : '0.00'
                   }%`
                 )}
-              </Text.p>
-              <Button
+              </Text>
+              <Link
                 disabled={emergencyShutdownActive}
                 p="s"
                 css={{ cursor: 'pointer' }}
@@ -118,18 +121,18 @@ function Save({ viewedAddress }) {
                   })
                 }
               >
-                {lang.actions.get_started}
-              </Button>
+                 <FilledButton>{lang.actions.get_started}</FilledButton>
+              </Link>
             </>
           ) : (
-            <Text.p t="h4" mb="s">
+            <Text.p  mb="s">
               {lang.save.no_savings}
             </Text.p>
           )}
         </Flex>
       ) : savings && savings.fetchedSavings ? (
         <>
-          <Text.h2>{lang.save.title}</Text.h2>
+          <Text style={{fontSize:'24px', color: getColor('whiteText')}}>{lang.save.title}</Text>
           <Grid
             py="m"
             gridColumnGap="l"

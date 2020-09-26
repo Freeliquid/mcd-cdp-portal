@@ -37,11 +37,11 @@ const Nav = styled(Box)`
 
   a {
     text-decoration: none;
-    color:  ${getColor('headerNav')};
+    color: ${getColor('headerNav')};
   }
 
   a:hover {
-    color:  ${getColor('cayn')};
+    color: ${getColor('cayn')};
   }
 
   a:not(:first-child) {
@@ -123,10 +123,10 @@ const Header = styled.header`
     display: block;
     margin-right: 3px;
   }
-  @media (min-width: 52em){
+  @media (min-width: 52em) {
     padding: 20px 32px;
   }
-  @media (min-width: 40em){
+  @media (min-width: 40em) {
     padding: 20px 25px;
   }
   @media (min-width: ${props => props.theme.breakpoints.m}) {
@@ -210,14 +210,13 @@ const Footer = styled.footer`
       margin-left: 44px;
     }
   }
-  @media (min-width: 52em){
+  @media (min-width: 52em) {
     padding: 20px 32px;
   }
-  @media (min-width: 40em){
+  @media (min-width: 40em) {
     padding: 20px 25px;
   }
-  @media only screen and (min-device-width: 769px) and (max-device-width: 1024px) and (orientation:portrait) {
-   
+  @media only screen and (min-device-width: 769px) and (max-device-width: 1024px) and (orientation: portrait) {
   }
   @media (min-width: ${props => props.theme.breakpoints.m}) {
     ${SeparatorDot} {
@@ -244,7 +243,7 @@ const Footer = styled.footer`
       text-align: center;
       flex-direction: row;
     }
-    
+
     @media (min-width: ${centerFooterMaxWidth}) {
       float: right;
     }

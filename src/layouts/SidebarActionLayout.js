@@ -9,7 +9,15 @@ const fullscreenCardProps = {
 
 const SidebarActionLayout = ({ onClose, children, fullscreen }) => {
   return (
-    <Card p="m" {...(fullscreen ? fullscreenCardProps : {})} style={{color: getColor('greyText'), backgroundColor: getColor('cardBg'), borderColor: getColor('border')}}>
+    <Card
+      p="m"
+      {...(fullscreen ? fullscreenCardProps : {})}
+      style={{
+        color: getColor('greyText'),
+        backgroundColor: getColor('cardBg'),
+        borderColor: getColor('border')
+      }}
+    >
       <Flex justifyContent="flex-end" pb="xs">
         <Box
           onClick={onClose}

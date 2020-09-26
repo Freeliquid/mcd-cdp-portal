@@ -23,15 +23,17 @@ import useAnalytics from 'hooks/useAnalytics';
 import useVaults from 'hooks/useVaults';
 import useEmergencyShutdown from 'hooks/useEmergencyShutdown';
 import { NotificationList, Routes, SAFETY_LEVELS } from 'utils/constants';
+import { FadeIn, FilledButton, PageHead } from 'components/Marketing';
 
 const InfoCard = ({ title, amount, denom }) => (
-  <Card py={{ s: 'm', xl: 'l' }} px="m" minWidth="22.4rem">
+  <Card py={{ s: 'm', xl: 'l' }} px="m" minWidth="22.4rem" style={{borderColor: getColor('border'), backgroundColor: getColor('cardBg')}}>
     <Grid gridRowGap="s">
       <Text
         justifySelf={{ s: 'left', xl: 'center' }}
         t="subheading"
         css={`
           white-space: nowrap;
+          color: ${getColor('greyText')}
         `}
       >
         {title.toUpperCase()}
@@ -39,12 +41,12 @@ const InfoCard = ({ title, amount, denom }) => (
       <Box justifySelf={{ s: 'left', xl: 'center' }}>
         <Box display={{ s: 'none', xl: 'unset' }}>
           <Flex alignSelf="end" alignItems="flex-end">
-            <Text.h3>{amount}</Text.h3>&nbsp;<Text.h4>{denom}</Text.h4>
+            <Text style={{fontSize:'20px', color: getColor('whiteText')}}>{amount}</Text>&nbsp;<Text style={{fontSize:'18px', color: getColor('whiteText')}}>{denom}</Text>
           </Flex>
         </Box>
-        <Text.h4 display={{ s: 'unset', xl: 'none' }}>
+        <Text style={{fontSize:'20px', color: getColor('whiteText')}} display={{ s: 'unset', xl: 'none' }}>
           {amount} {denom}
-        </Text.h4>
+        </Text>
       </Box>
     </Grid>
   </Card>
@@ -78,7 +80,7 @@ function Overview({ viewedAddress }) {
 
   const { show } = useModal();
   if (!viewedAddressVaults) {
-    return <LoadingLayout background={getColor('lightGrey')} />;
+    return <LoadingLayout background={getColor('cardBg')} />;
   }
 
   if (viewedAddressVaults && !viewedAddressVaults.length) {
@@ -92,10 +94,10 @@ function Overview({ viewedAddress }) {
         >
           {account && account.address === viewedAddress ? (
             <>
-              <Text.p t="h4" mb="26px">
+              <Text style={{fontSize:'20px', color: getColor('greyText')}} mb="26px">
                 {lang.overview_page.get_started_title}
-              </Text.p>
-              <Button
+              </Text>
+              <Link
                 disabled={emergencyShutdownActive}
                 p="s"
                 css={{ cursor: 'pointer' }}
@@ -107,11 +109,11 @@ function Overview({ viewedAddress }) {
                   });
                 }}
               >
-                {lang.actions.get_started}
-              </Button>
+                <FilledButton>{lang.actions.get_started}</FilledButton>
+              </Link>
             </>
           ) : (
-            <Text.p t="h4" mb="s">
+            <Text style={{fontSize:'20px', color: getColor('greyText')}}>
               {lang.formatString(
                 lang.overview_page.no_vaults,
                 <Address
@@ -120,7 +122,7 @@ function Overview({ viewedAddress }) {
                   expandable={false}
                 />
               )}
-            </Text.p>
+            </Text>
           )}
         </Flex>
       </PageContentLayout>
@@ -138,8 +140,9 @@ function Overview({ viewedAddress }) {
             gridTemplateColumns={{ s: '1fr', xl: 'auto auto 1fr' }}
             gridColumnGap="m"
             gridRowGap="s"
+            
           >
-            <InfoCard
+            <InfoCard 
               title={lang.overview_page.total_collateral_locked}
               amount={`$${viewedAddressVaults
                 .reduce(
@@ -149,6 +152,7 @@ function Overview({ viewedAddress }) {
                 .toBigNumber()
                 .toFixed(2)}`}
               denom={'USD'}
+              
             />
             <InfoCard
               title={lang.overview_page.total_dai_debt}
@@ -160,23 +164,27 @@ function Overview({ viewedAddress }) {
             />
           </Grid>
           <Box>
-            <Text.h4>{lang.overview_page.your_cdps}</Text.h4>
+            <Text style={{fontSize:'20px', color: getColor('greyText')}}>{lang.overview_page.your_cdps}</Text>
             <Card
               px={{ s: 'm', xl: 'l' }}
               pt="m"
               pb="s"
               my="m"
               css={`
-                overflow-x: scroll;
+                overflow-x: none;
+                background: ${getColor('cardBg')};
+                border-color: ${getColor('border')};
               `}
             >
               <Table
                 width="100%"
                 variant="cozy"
+               
                 css={`
                   td,
                   th {
                     white-space: nowrap;
+                    color: ${getColor('whiteText')};
                   }
                   td:not(:last-child),
                   th:not(:last-child) {
@@ -184,7 +192,7 @@ function Overview({ viewedAddress }) {
                   }
                 `}
               >
-                <Table.thead>
+                <Table.thead >
                   <Table.tr>
                     <Table.th>{lang.overview_page.token}</Table.th>
                     <Table.th>{lang.overview_page.id}</Table.th>
@@ -256,17 +264,17 @@ function Overview({ viewedAddress }) {
                           )}
                         </Table.td>
                         <Table.td display={{ s: 'none', xl: 'table-cell' }}>
-                          <Text t="caption" color="darkLavender">
+                          <Text t="caption" >
                             {collateralAmount.toString()}
                           </Text>
                         </Table.td>
                         <Table.td display={{ s: 'none', xl: 'table-cell' }}>
-                          <Text t="caption" color="darkLavender">
+                          <Text t="caption" >
                             {collateralAvailableAmount.toString()}
                           </Text>
                         </Table.td>
                         <Table.td display={{ s: 'none', xl: 'table-cell' }}>
-                          <Text t="caption" color="darkLavender">
+                          <Text t="caption" >
                             {debtValue.toBigNumber().toFixed(2)} DAI
                           </Text>
                         </Table.td>
