@@ -1,14 +1,12 @@
-<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M24 24C24 37.2548 34.7452 48 48 48V0C34.7452 0 24 10.7452 24 24Z" fill="url(#paint0_linear_feat4)"/>
-<rect width="24" height="48" fill="url(#paint1_linear_feat4)"/>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0)">
+<path opacity="0.2" d="M64 0L64 32C64 49.6731 49.6731 64 32 64C14.3269 64 -2.17128e-06 49.6731 -1.39876e-06 32L0 -2.79753e-06L64 0Z" fill="#00DCDC"/>
+<circle opacity="0.7" cx="32.0001" cy="32" r="16.8183" transform="rotate(90 32.0001 32)" fill="#00DCDC"/>
+<path opacity="0.4" d="M64 0L64 32C64 49.6731 49.6731 64 32 64L32 -1.39876e-06L64 0Z" fill="#00DCDC"/>
+</g>
 <defs>
-<linearGradient id="paint0_linear_feat4" x1="36" y1="48" x2="36" y2="2.6272e-07" gradientUnits="userSpaceOnUse">
-<stop stop-color="#99FFC3"/>
-<stop offset="1" stop-color="#FCFF9E"/>
-</linearGradient>
-<linearGradient id="paint1_linear_feat4" x1="2.75" y1="23.9981" x2="24" y2="23.9981" gradientUnits="userSpaceOnUse">
-<stop stop-color="#8CF2A6"/>
-<stop offset="1" stop-color="#4DF177"/>
-</linearGradient>
+<clipPath id="clip0">
+<rect width="64" height="64" fill="white"/>
+</clipPath>
 </defs>
 </svg>
