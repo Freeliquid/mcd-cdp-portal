@@ -1,4 +1,4 @@
-# Oasis Borrow/Save
+# Freeliquid Borrow/Save
 
 ## The official Maker dapp for managing Vaults and generating Dai
 
@@ -16,7 +16,7 @@ Have installed:
 
 2. `cd mcd-cdp-portal && yarn`
 
-### Running Oasis
+### Running Freeliquid
 
 - `yarn start`
 - Go to http://localhost:3000
