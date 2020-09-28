@@ -8,24 +8,24 @@ import CookieNotice from '../components/CookieNotice';
 import { hot } from 'react-hot-loader/root';
 import { getColor, marketingTheme } from 'styles/theme';
 import { Box, Flex } from '@makerdao/ui-components-core';
-import { OasisLogoLink, SeparatorDot, Hamburger } from 'components/Marketing';
+import { LogoLink, SeparatorDot, Hamburger } from 'components/Marketing';
 
 const MarketingLayoutStyle = styled.div`
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: auto;
 
-  font-family: 'FT Base', Arial, Helvetica, sans-serif;
+  font-family: 'PT Root', Arial, Helvetica, sans-serif;
   font-weight: normal;
   font-style: normal;
   letter-spacing: normal;
   text-align: center;
-  color: #ccc;
+  color: ${getColor('headerNav')};
   width: 100%;
   overflow-x: hidden;
 
   a {
-    color: ${getColor('white')};
+    color: ${getColor('headerNav')};
     text-decoration: none;
   }
 `;
@@ -37,11 +37,11 @@ const Nav = styled(Box)`
 
   a {
     text-decoration: none;
-    color: #ccc;
+    color: ${getColor('headerNav')};
   }
 
   a:hover {
-    color: #00c4c4;
+    color: ${getColor('cayn')};
   }
 
   a:not(:first-child) {
@@ -53,7 +53,7 @@ const MainNavStyle = styled(Nav)`
   font-size: ${props => props.fontSize || '18px'};
 
   a {
-    color: #fff;
+    color: ${getColor('headerNav')};
   }
 `;
 
@@ -62,13 +62,6 @@ const MainNav = ({ onLinkClicked, ...props }) => {
 
   return (
     <MainNavStyle {...props}>
-      {/* <Link
-        href={`/${Routes.TRADE}`}
-        activeStyle={{ fontWeight: 'bold' }}
-        onClick={() => onLinkClicked && onLinkClicked()}
-      >
-        {lang.navbar.trade}
-      </Link> */}
       <Link
         href={`/${Routes.BORROW}`}
         activeStyle={{ fontWeight: 'bold' }}
@@ -97,21 +90,21 @@ const MainNav = ({ onLinkClicked, ...props }) => {
 const centerContent = css`
   margin: 0 auto;
   padding: 0 24px;
-  background: rgb(45, 57, 83);
   @media only screen and (min-width: ${props => props.theme.breakpoints.m}) {
-    padding: 25px 80px;
+    padding: 25px 0px;
   }
 `;
 
 const Header = styled.header`
   ${centerContent};
+  max-width: 1140px;
   padding: 16px;
   text-align: left;
   letter-spacing: 0.3px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  border-bottom: 1px solid ${getColor('border')};
   .logo {
     font-size: 22px;
     line-height: 26px;
@@ -119,7 +112,7 @@ const Header = styled.header`
   }
 
   a {
-    color: #fff;
+    color: ${getColor('headerNav')};
   }
 
   ${MainNavStyle} {
@@ -130,7 +123,12 @@ const Header = styled.header`
     display: block;
     margin-right: 3px;
   }
-
+  @media (min-width: 52em) {
+    padding: 20px 32px;
+  }
+  @media (min-width: 40em) {
+    padding: 20px 25px;
+  }
   @media (min-width: ${props => props.theme.breakpoints.m}) {
     margin-top: 0px;
 
@@ -149,7 +147,7 @@ const MobileMenu = styled(Box)`
   top: 43px;
   left: 0;
   width: 100vw;
-  background-color: rgb(45, 57, 83);
+  background-color: ${getColor('cardBg')};
   overflow-y: scroll;
   transition: all 0.2s ease-in-out;
   z-index: 99;
@@ -165,11 +163,11 @@ const MobileMenu = styled(Box)`
     }
   }
 
-  ${OasisLogoLink} {
+  ${LogoLink} {
     text-align: left;
     font-size: 28px;
     line-height: 48px;
-    color: #fff;
+    color: ${getColor('headerNav')};
     display: flex;
     align-items: center;
     margin-top: 15px;
@@ -181,9 +179,10 @@ const centerFooterMaxWidth = '980px';
 
 const Footer = styled.footer`
   ${centerContent};
-  padding: 20px;
+  max-width: 1140px;
+  padding: 20px 0px;
   letter-spacing: 0.3px;
-
+  border-top: 1px solid ${getColor('border')};
   *,
   *:before,
   *:after {
@@ -211,7 +210,14 @@ const Footer = styled.footer`
       margin-left: 44px;
     }
   }
-
+  @media (min-width: 52em) {
+    padding: 20px 32px;
+  }
+  @media (min-width: 40em) {
+    padding: 20px 25px;
+  }
+  @media only screen and (min-device-width: 769px) and (max-device-width: 1024px) and (orientation: portrait) {
+  }
   @media (min-width: ${props => props.theme.breakpoints.m}) {
     ${SeparatorDot} {
       display: inline-block;
@@ -245,7 +251,7 @@ const Footer = styled.footer`
 
   .copyright {
     font-size: 13px;
-
+    color: ${getColor('footercopy')};
     white-space: nowrap;
 
     padding-top: 48px;
@@ -289,48 +295,48 @@ const MarketingLayout = ({ showNavInFooter, children }) => {
           <link
             rel="preload"
             as="font"
-            href="/fonts/FTBase-Regular.woff2"
+            href="/fonts/PT-Root-UI_Regular.woff2"
             type="font/woff2"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
             as="font"
-            href="/fonts/FTBase-Regular.woff"
+            href="/fonts/PT-Root-UI_Regular.woff"
             type="font/woff"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
             as="font"
-            href="/fonts/FTBase-Medium.woff2"
+            href="/fonts/PT-Root-UI_Medium.woff2"
             type="font/woff2"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
             as="font"
-            href="/fonts/FTBase-Medium.woff"
+            href="/fonts/PT-Root-UI_Medium.woff"
             type="font/woff"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
             as="font"
-            href="/fonts/FTBase-Bold.woff2"
+            href="/fonts/PT-Root-UI_Bold.woff2"
             type="font/woff2"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
             as="font"
-            href="/fonts/FTBase-Bold.woff"
+            href="/fonts/PT-Root-UI_Bold.woff"
             type="font/woff"
             crossOrigin="anonymous"
           />
         </Helmet>
         <Header className={mobileMenuOpen ? 'menu-open' : ''}>
-          <OasisLogoLink
+          <LogoLink
             style={{ visibility: mobileMenuOpen ? 'hidden' : 'visible' }}
           />
           <MainNav separation="67px" />
@@ -346,7 +352,7 @@ const MarketingLayout = ({ showNavInFooter, children }) => {
         >
           <Box p="39px 33px 33px">
             <Box display="inline-block" style={{ float: 'left' }}>
-              <OasisLogoLink onClick={() => setMobileMenuOpen(false)} />
+              <LogoLink onClick={() => setMobileMenuOpen(false)} />
               <MainNav onLinkClicked={() => setMobileMenuOpen(false)} />
             </Box>
           </Box>

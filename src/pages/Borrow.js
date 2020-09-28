@@ -2,23 +2,22 @@ import React, { useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Link, useNavigation } from 'react-navi';
 import styled from 'styled-components';
+import { getColor } from 'styles/theme';
 import AccountSelection from 'components/AccountSelection';
 import { Routes } from 'utils/constants';
 import useMaker from 'hooks/useMaker';
 import useLanguage from 'hooks/useLanguage';
-import { Box, Flex, Position, Text } from '@makerdao/ui-components-core';
+import { Box, Position, Text } from '@makerdao/ui-components-core';
+import BgBorrow from 'images/landing/borrow/bg_borrow.png';
 import {
   ConnectHero,
   ThickUnderline,
-  Quotes,
   GradientBox,
-  Features,
   Questions,
   QuestionsWrapper,
   buildQuestionsFromLangObj,
   FixedHeaderTrigger,
   Parallaxed,
-  QuotesFadeIn,
   SeparatorDot,
   BorrowCalculator,
   StyledPageContentLayout,
@@ -60,23 +59,7 @@ const HeroBackground = (() => {
   );
 })();
 
-const StyledQuotes = styled(Quotes)`
-  background: rgb(45 57 83);
-  box-shadow: 0px 5px 20px -10px rgba(0, 0, 0, 0.75);
 
-  @media (min-width: ${props => props.theme.breakpoints.m}) {
-    :after {
-      content: '';
-      display: block;
-      height: 98%;
-      width: 58%;
-      position: absolute;
-      top: 49px;
-      right: -40px;
-      z-index: -1;
-    }
-  }
-`;
 
 // disableConnect is for testing
 function Borrow({ disableConnect = false }) {
@@ -101,33 +84,53 @@ function Borrow({ disableConnect = false }) {
   const prices = watch.collateralTypesPrices(
     cdpTypesList?.length ? cdpTypesList : []
   );
+  const BorrowBg = styled.div`
+    background-image: url(${BgBorrow});
+    background-repeat: no-repeat;
+    background-position: top right;
+    margin-top: 60px;
+
+    
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+      background-position: top right;
+    }
+    @media (max-width: 767px) {
+      background-position: 60px 50px;
+    }
+  
+
+  }
+  `;
 
   return (
+    <BorrowBg>
     <StyledPageContentLayout>
+      
       <PageHead
         title={lang.borrow_landing.meta.title}
         description={lang.borrow_landing.meta.description}
       />
-      <FixedHeaderTrigger>
-        <ConnectHero>
+      <FixedHeaderTrigger >
+        <ConnectHero >
           <HeroBackground />
-          <ThickUnderline>
-            <Text.h4>{lang.borrow_landing.page_name}</Text.h4>
+          <ThickUnderline 
+          >
+            <Text style={{fontSize:'20px', color: getColor('cayn') }} >{lang.borrow_landing.page_name}</Text>
           </ThickUnderline>
-          <Text.h1 className="headline">{lang.borrow_landing.headline}</Text.h1>
-          <Box minHeight="81px" maxWidth="720px">
-            <Text>{lang.borrow_landing.subheadline}</Text>
+          <Text.h1 className="headline" style={{fontSize: '48px'}}>{lang.borrow_landing.headline}</Text.h1>
+          <Box minHeight="91px" maxWidth="645px">
+            <Text style={{fontSize: '20px', color: getColor('greyText')}}>{lang.borrow_landing.subheadline}</Text>
           </Box>
-          <Text fontSize="s" className="connect-to-start">
+          <Text fontSize="17px" color="#A3B2CF" className="connect-to-start">
             {lang.borrow_landing.connect_to_start}
           </Text>
-          <AccountSelection className="button" />
+          <AccountSelection style={{width:'260px'}} className="button"  />
         </ConnectHero>
       </FixedHeaderTrigger>
       <GradientBox mt="26px">
-        <Box m="30px auto 0" maxWidth="980px">
+        <Box m="30px auto 0">
           <Text.h2 mb="16px">{lang.borrow_landing.calc_heading}</Text.h2>
-          <Text>{lang.borrow_landing.calc_subheading}</Text>
+          <Text style={{fontSize:'20px', color: getColor('greyText') }}>{lang.borrow_landing.calc_subheading}</Text>
           {prices?.length && cdpTypesList?.length ? (
             <BorrowCalculator
               mt="40px"
@@ -137,10 +140,10 @@ function Borrow({ disableConnect = false }) {
           ) : null}
         </Box>
       </GradientBox>
-      <Box maxWidth="1007px" m="204px auto 0">
+      <Box maxWidth="1007px" m="104px auto 0">
         <Box maxWidth="777px" m="0 auto">
           <Text.h2 mb="34px">{lang.borrow_markets.heading}</Text.h2>
-          <Text>{lang.borrow_markets.subheading}</Text>
+          <Text style={{fontSize:'17px', color: getColor('greyText') }}>{lang.borrow_markets.subheading}</Text>
         </Box>
         <Box
           mt={{ s: '54px', m: '87px' }}
@@ -172,7 +175,7 @@ function Borrow({ disableConnect = false }) {
           </Link> */}
         </Box>
       </Box>
-      <QuestionsWrapper mt="147px">
+      <QuestionsWrapper mt="147px" style={{padding: '5px 25px'}}>
         <Text.h2>{lang.landing_page.questions_title}</Text.h2>
         <Questions
           questions={buildQuestionsFromLangObj(
@@ -183,7 +186,7 @@ function Borrow({ disableConnect = false }) {
             <>
               <Link
                 style={{ color: '#00C4C4' }}
-                href="https://community-development.makerdao.com/makerdao-mcd-faqs/faqs/vault"
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -192,19 +195,12 @@ function Borrow({ disableConnect = false }) {
               <Box display={{ s: 'none', m: 'inline-block' }}>
                 <SeparatorDot mx="24px" />
               </Box>
-              <Link
-                style={{ color: '#00C4C4' }}
-                href="https://community-development.makerdao.com/makerdao-mcd-faqs/faqs/glossary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {lang.borrow_landing.questions.bottom_link2}
-              </Link>
             </>
           }
         />
       </QuestionsWrapper>
     </StyledPageContentLayout>
+    </BorrowBg>
   );
 }
 

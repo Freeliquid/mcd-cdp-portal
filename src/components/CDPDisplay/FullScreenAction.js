@@ -4,6 +4,7 @@ import sidebars from '../Sidebars';
 import { Box } from '@makerdao/ui-components-core';
 import SidebarActionLayout from '../../layouts/SidebarActionLayout';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+import { getColor } from 'styles/theme';
 
 export default function FullScreenAction({ type, reset, props }) {
   const domNode = document.getElementById('portal1');
@@ -19,15 +20,16 @@ export default function FullScreenAction({ type, reset, props }) {
   return ReactDOM.createPortal(
     <Box
       ref={ref}
-      css={`
-        top: 0;
-        left: 0;
-      `}
       position="fixed"
       width="100vw"
       height="100%"
       overflow="scroll"
-      bg="white"
+      style={{
+        background: getColor('cardBg'),
+        borderColor: getColor('border'),
+        top: '0',
+        left: '0'
+      }}
     >
       <SidebarActionLayout onClose={reset} fullscreen={true}>
         <SidebarComponent {...{ ...props, reset }} />

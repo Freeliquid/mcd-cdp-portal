@@ -14,6 +14,7 @@ import { greaterThan, multiply } from 'utils/bignumber';
 import { formatCollateralizationRatio, formatter } from 'utils/ui';
 import { getCurrency } from 'utils/cdp';
 import { decimalRules } from '../../styles/constants';
+import { getColor } from '../../styles/theme';
 const { long } = decimalRules;
 
 const Withdraw = ({ vault, reset }) => {
@@ -83,12 +84,15 @@ const Withdraw = ({ vault, reset }) => {
   return (
     <Grid gridRowGap="m">
       <Grid gridRowGap="s">
-        <Text.h4 color="darkLavender">
+        <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
           {lang.formatString(lang.action_sidebar.withdraw_title, symbol)}
-        </Text.h4>
-        <Text.p t="body">
+        </Text>
+        <Text
+          style={{ fontSize: '16px', color: getColor('greyText') }}
+          t="body"
+        >
           {lang.formatString(lang.action_sidebar.withdraw_description, symbol)}
-        </Text.p>
+        </Text>
         <Input
           type="number"
           placeholder={`0.00 ${symbol}`}

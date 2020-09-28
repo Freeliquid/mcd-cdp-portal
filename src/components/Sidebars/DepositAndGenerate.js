@@ -163,9 +163,7 @@ const DepositAndGenerate = ({ vault, reset }) => {
   return (
     <Grid gridRowGap="m">
       <Grid gridRowGap="s">
-        <Text.h4 color="darkLavender">
-          {lang.action_sidebar.deposit_and_generate_title}
-        </Text.h4>
+        <Text.h4>{lang.action_sidebar.deposit_and_generate_title}</Text.h4>
         <Text t="body">
           {lang.formatString(lang.action_sidebar.deposit_description, symbol)}
         </Text>

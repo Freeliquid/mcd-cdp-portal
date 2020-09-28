@@ -16,7 +16,7 @@ import {
   ExtraInfo,
   InfoContainerRow
 } from './subcomponents';
-import theme from '../../styles/theme';
+import theme, { getColor } from '../../styles/theme';
 import FullScreenAction from './FullScreenAction';
 import debug from 'debug';
 import useNotification from 'hooks/useNotification';
@@ -315,9 +315,9 @@ export default function({
   return (
     <PageContentLayout>
       <Box>
-        <Text.h2>
+        <Text style={{ fontSize: '24px', color: getColor('whiteText') }}>
           {vaultType} {lang.cdp} #{vault.id}
-        </Text.h2>
+        </Text>
       </Box>
       <Grid
         py="m"
@@ -328,14 +328,20 @@ export default function({
           xl: '1fr 1fr'
         }}
       >
-        <CdpViewCard title={lang.cdp_page.liquidation_price}>
+        <CdpViewCard
+          title={lang.cdp_page.liquidation_price}
+          style={{
+            color: getColor('whiteText'),
+            backgroundColor: getColor('cardBg')
+          }}
+        >
           <Flex alignItems="flex-end" mt="s" mb="xs">
             <AmountDisplay amount={liquidationPrice} denomination="USD" />
             <ExtraInfo>({gem}/USD)</ExtraInfo>
           </Flex>
           <InfoContainerRow
             title={
-              <TextBlock fontSize="l">
+              <TextBlock fontSize="l" style={{ color: getColor('greyText') }}>
                 {lang.cdp_page.current_price_info}
                 <ExtraInfo ml="2xs">{`(${gem}/USD)`}</ExtraInfo>
               </TextBlock>

@@ -3,15 +3,13 @@ import { Link, useCurrentRoute } from 'react-navi';
 import styled from 'styled-components';
 import { Flex, Text } from '@makerdao/ui-components-core';
 
-import { ReactComponent as SaveIcon } from 'images/active-save-icon.svg';
+import { ReactComponent as SaveIcon } from 'images/landing/save_block.svg';
 import { Routes } from '../utils/constants';
 import useLanguage from 'hooks/useLanguage';
 
 const StyledSaveIcon = styled(SaveIcon)`
-  path {
-    stroke: ${props => props.textcolor};
-    fill: ${props => props.textcolor};
-  }
+  width: 40px;
+  height: 30px;
 `;
 
 const SaveNav = ({ account, ...props }) => {
@@ -34,7 +32,7 @@ const SaveNav = ({ account, ...props }) => {
   return (
     <Link href={saveUrl}>
       <Flex
-        bg={!account && selected && 'grey.200'}
+        bg={!account && selected && '#0B0E15'}
         flexDirection="column"
         alignItems="center"
         justifyContent="center"

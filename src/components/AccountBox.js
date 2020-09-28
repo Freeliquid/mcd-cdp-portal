@@ -8,7 +8,7 @@ import {
   Button,
   Flex
 } from '@makerdao/ui-components-core';
-import { getSpace } from 'styles/theme';
+import { getColor, getSpace } from 'styles/theme';
 import ActiveAccount from 'components/ActiveAccount';
 import StripedRows from 'components/StripedRows';
 import WalletConnectDropdown from 'components/WalletConnectDropdown';
@@ -28,6 +28,7 @@ import theme from '../styles/theme';
 import FullScreenAction from './CDPDisplay/FullScreenAction';
 import useCdpTypes from '../hooks/useCdpTypes';
 import { watch } from 'hooks/useObservable';
+import { background } from 'styled-system';
 
 const migrateUrl = 'https://freeliquid.io/trade/account';
 
@@ -64,31 +65,13 @@ const TokenBalance = ({
       py="xs"
       {...props}
     >
-      <Text
-        color="darkLavender"
-        fontWeight="semibold"
-        t="p5"
-        textAlign="left"
-        width="20%"
-      >
+      <Text fontWeight="semibold" t="p5" textAlign="left" width="20%">
         {symbol}
       </Text>
-      <Text
-        color="darkLavender"
-        fontWeight="semibold"
-        t="p5"
-        textAlign="left"
-        width="30%"
-      >
+      <Text fontWeight="semibold" t="p5" textAlign="left" width="30%">
         {(hasActiveAccount && amount && prettifyNumber(amount, true)) || '--'}
       </Text>
-      <Text
-        color="darkLavender"
-        fontWeight="semibold"
-        t="p5"
-        textAlign="left"
-        width="30%"
-      >
+      <Text fontWeight="semibold" t="p5" textAlign="left" width="30%">
         {(hasActiveAccount &&
           amount &&
           usdRatio &&
@@ -171,7 +154,13 @@ const WalletBalances = ({ hasActiveAccount, closeSidebarDrawer }) => {
 
   return (
     <>
-      <CardBody css={{ borderRadius: '0 0 4px 4px', overflow: 'hidden' }}>
+      <CardBody
+        style={{
+          background: getColor('cardBg'),
+          borderColor: getColor('border'),
+          color: getColor('whiteText')
+        }}
+      >
         <Box px="s" pt="sm" pb="s2">
           <Text t="large">{lang.sidebar.wallet_balances}</Text>
         </Box>
@@ -276,7 +265,13 @@ function AccountBox({ currentAccount, closeSidebarDrawer }) {
   const type = currentAccount ? currentAccount.type : null;
 
   return (
-    <Card>
+    <Card
+      style={{
+        background: getColor('cardBg'),
+        borderColor: getColor('border'),
+        color: getColor('cayn')
+      }}
+    >
       <CardBody p="s">
         <WalletConnectDropdown
           show={open}

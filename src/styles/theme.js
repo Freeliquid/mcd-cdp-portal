@@ -9,16 +9,23 @@ const theme = {
     xl: '1150px'
   },
   colors: {
-    cayn: '#00C4C4',
+    logo:'#fff',
+    cayn: '#00DCDC',
     blue: '#4E26FF',
-    grey: '#70788C',
-    bodyBg: '#191E2B',
-    cardBg: '#2d3953',
+    greyText: '#A3B2CF',
+    whiteText:'#F3F3F5',
+    linkColor:'#00DCDC',
+    headerNav:'#F3F3F5',
+    input:'#323B4F',
+    bodyBg: '#0B0E15',
+    cardBg: '#131824',
+    border:'#323B4F',
+    footercopy:'#6F7A96',
     spinner: '#9FAFB9',
     blackLight: '#222',
     blackLighter: '#383838',
     blueGray: '#1E2C37',
-    blueGrayDarker: '#18232C',
+    blueGrayDarker: '#131824',
     blueGrayLighter: '#31424E',
     red: '#F75524',
     ...colors
@@ -48,7 +55,7 @@ const theme = {
     sidebarWidth: 318,
     navbarWidth: 150,
     mobileNavHeight: 80,
-    navbarItemWidth: 70,
+    navbarItemWidth: 140,
     navbarItemHeight: 55
   },
   space: {
@@ -66,15 +73,15 @@ export default theme;
 
 export const marketingTheme = (() => {
   const mColors = {
-    purpleGray: '#FFF',
-    violetGray: '#CCC'
+    purpleGray: '#A3B2CF',
+    violetGray: '#F3F3F5'
   };
-  const mFont = "'FT Base', Arial, Helvetica, sans-serif";
+  const mFont = "'PT Root', Arial, Helvetica, sans-serif";
   const mHeading = {
     display: 'block',
     fontFamily: mFont,
     fontWeight: 'bold',
-    color: 'fff'
+    color: '#F3F3F5'
   };
 
   return {
@@ -89,31 +96,41 @@ export const marketingTheme = (() => {
         ...mHeading,
         fontSize: '3.4rem',
         lineHeight: '58px',
-        color: '#ffffff'
+        color: '#F3F3F5'
       },
       h2: {
         ...mHeading,
-        fontSize: '4rem',
-        lineHeight: '48px',
-        color: '#ffffff'
+        fontSize: '48px',
+        lineHeight: '58px',
+        color: '#F3F3F5'
       },
       h3: {
         ...mHeading,
-        fontSize: '3.2rem',
+        fontSize: '28px',
         lineHeight: '38px',
-        color: '#ffffff'
+        color: '#F3F3F5',
+        padding: '25px 0px'
       },
       h4: {
         ...mHeading,
-        fontSize: '2.4rem',
-        lineHeight: '27px',
-        color: '#00C4C4',
-        fontWeight: '300',
-        marginBottom: '15px'
+        fontSize: '24px',
+        lineHeight: '38px',
+        color: '#F3F3F5',
+        fontWeight: 'bold',
+        marginBottom: '25px'
       },
-      p: {
+      h5: {
         ...mHeading,
-        color: 'e3e3e3'
+        color: '#A3B2CF',
+        fontSize: '17px',
+        fontWeight: 'regular',
+        lineHeight: '32px'
+      },
+      span: {
+        ...mHeading,
+        color: '#A3B2CF',
+        fontSize: '17px',
+        fontWeight: 'regular',
       },
       body: {
         fontFamily: mFont,

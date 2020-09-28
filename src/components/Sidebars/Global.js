@@ -7,6 +7,7 @@ import { useCurrentRoute } from 'react-navi';
 import { Routes } from 'utils/constants';
 import useCdpTypes from 'hooks/useCdpTypes';
 import { watch } from 'hooks/useObservable';
+import { getColor } from 'styles/theme';
 
 const SidebarGlobalPanel = () => {
   const { cdpTypesList } = useCdpTypes();

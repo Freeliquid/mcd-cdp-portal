@@ -7,8 +7,8 @@
 }
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, Helvetica Neue,
-  FT Base, Segoe UI, sans-serif;
-  background-color: #191E2B;
+  PT Root, Segoe UI, sans-serif;
+  background-color: #0B0E15;
   overflow-y: scroll;
   padding: 0;
 }
@@ -17,28 +17,28 @@ a {
   text-decoration: none;
 }
 h1, h2, h3, h4 {
-  color: #fff;
+  color: #F3F3F5;
 }
 @font-face {
-  font-family: 'FT Base';
-  src: url('/fonts/FTBase-Bold.woff2') format('woff2'),
-  url('/fonts/FTBase-Bold.woff') format('woff');
+  font-family: 'PT Root';
+  src: url('/fonts/PT-Root-UI_Bold.woff2') format('woff2'),
+  url('/fonts/PT-Root-UI_Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'FT Base';
-  src: url('/fonts/FTBase-Regular.woff2') format('woff2'),
-  url('/fonts/FTBase-Regular.woff') format('woff');
+  font-family: 'PT Root';
+  src: url('/fonts/PT Root UI_Regular.woff2') format('woff2'),
+  url('/fonts/PT-Root-UI_Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'FT Base';
-  src: url('/fonts/FTBase-Medium.woff2') format('woff2'),
-  url('/fonts/FTBase-Medium.woff') format('woff');
+  font-family: 'PT Root';
+  src: url('/fonts/PT-Root-UI_Medium.woff2') format('woff2'),
+  url('/fonts/PT-Root-UI_Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
 }

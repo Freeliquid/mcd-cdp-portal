@@ -6,7 +6,7 @@ import { Flex, Text, Box } from '@makerdao/ui-components-core';
 import useLanguage from 'hooks/useLanguage';
 import usePrevious from 'hooks/usePrevious';
 import useMaker from 'hooks/useMaker';
-
+import { getColor } from '../styles/theme';
 import { InfoContainerRow, CdpViewCard } from './CDPDisplay/subcomponents';
 import { TextBlock } from 'components/Typography';
 import { formatter } from 'utils/ui';
@@ -233,23 +233,29 @@ function DSRInfo({ isMobile, savings }) {
 
   return (
     <CdpViewCard title={lang.save.dai_locked_dsr}>
-      <Flex alignItems="flex-end" mt="s" mb="xs">
+      <Flex alignItems="center" mt="s" mb="xs" justifyContent="center">
         <Ticker
           key={`${proxyAddress}.${balance.toString()}.${amountChange}.${decimalsToShow}`}
           amount={balance.toNumber()}
           increment={amountChange.toNumber()}
           decimals={decimalsToShow}
-          t="h2"
+          style={{ fontSize: '24px', color: getColor('whiteText') }}
         />
         <Box>
-          <Text.h4 mb=".175rem" ml="s">
+          <Text
+            style={{ fontSize: '20px', color: getColor('whiteText') }}
+            mb=".175rem"
+            ml="s"
+          >
             DAI
-          </Text.h4>
+          </Text>
         </Box>
       </Flex>
       <InfoContainerRow
         title={
-          <TextBlock fontSize="l">{lang.save.savings_earned_to_date}</TextBlock>
+          <TextBlock style={{ fontSize: '14px', color: getColor('whiteText') }}>
+            {lang.save.savings_earned_to_date}
+          </TextBlock>
         }
         value={
           <>
@@ -259,12 +265,17 @@ function DSRInfo({ isMobile, savings }) {
                 amount={earnings.toNumber()}
                 increment={amountChange.toNumber()}
                 decimals={decimalsToShow}
-                t="body"
+                style={{ fontSize: '16px', color: getColor('cayn') }}
               />
             ) : (
-              <TextMono t="body">{(0).toFixed(decimalsToShow)}</TextMono>
+              <TextMono>{(0).toFixed(decimalsToShow)}</TextMono>
             )}
-            <Text ml="xs">DAI</Text>
+            <Text
+              style={{ fontSize: '14px', color: getColor('greyText') }}
+              ml="xs"
+            >
+              DAI
+            </Text>
           </>
         }
       />
@@ -272,7 +283,7 @@ function DSRInfo({ isMobile, savings }) {
         title={lang.save.dai_savings_rate}
         value={
           annualDaiSavingsRate ? (
-            <TextMono>
+            <TextMono style={{ fontSize: '14px', color: getColor('greyText') }}>
               {formatter(annualDaiSavingsRate, {
                 rounding: BigNumber.ROUND_HALF_UP
               })}

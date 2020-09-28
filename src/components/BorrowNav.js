@@ -4,17 +4,15 @@ import styled from 'styled-components';
 
 import CDPList from 'components/CDPList';
 import { Flex, Text } from '@makerdao/ui-components-core';
-import { ReactComponent as BorrowIcon } from 'images/active-borrow-icon.svg';
+import { ReactComponent as BorrowIcon } from 'images/landing/borrow_block.svg';
 import { Routes } from 'utils/constants';
 import useLanguage from 'hooks/useLanguage';
 
 import CDPDropdown from './CDPDropdown';
 
 const StyledBorrowIcon = styled(BorrowIcon)`
-  path {
-    stroke: ${props => props.textcolor};
-    fill: ${props => props.textcolor};
-  }
+  height: 40px;
+  width: 30px;
 `;
 
 const BorrowNav = ({ viewedAddress, account, mobile, ...props }) => {
@@ -58,9 +56,8 @@ const BorrowNav = ({ viewedAddress, account, mobile, ...props }) => {
           />
         </CDPDropdown>
       ) : (
-        <Link href={`${path}${url.search}`} style={{ color: 'fff' }}>
+        <Link href={`${path}${url.search}`} style={{ color: '#F3F3F5' }}>
           <Flex
-            bg="rgb(45 57 83)"
             flexDirection="column"
             alignItems="center"
             justifyContent="center"

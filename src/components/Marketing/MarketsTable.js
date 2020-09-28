@@ -10,10 +10,8 @@ import groupBy from 'lodash.groupby';
 import { watch } from 'hooks/useObservable';
 import { getMaxDaiAvailable } from 'utils/cdp';
 
-const TABLE_PADDING = '20px';
-
 const Number = styled(Text)`
-  color: #fff;
+  color: ${getColor('greyText')};
 `;
 
 const tokenNames = {
@@ -28,10 +26,10 @@ const tokenNames = {
 const MarketsTableStyle = styled(Table)`
   widht: 100%;
   margin: 0 auto;
-  color: #fff;
+  color: ${getColor('greyText')};
 
   ${Text} {
-    color: #fff;
+    color: ${getColor('greyText')};
     font-size: ${props => props.theme.fontSizes.s};
     text-align: center;
   }
@@ -45,18 +43,18 @@ const MarketsTableStyle = styled(Table)`
   }
 
   .profile-name {
-    color: #6f838f;
+    color: ${getColor('greyText')};
   }
 
   @media (min-width: ${props => props.theme.breakpoints.m}) {
     .gem {
-      color: #6f838f;
+      color: ${getColor('greyText')};
     }
   }
 
   ${Table.th} {
     padding-bottom: 18px;
-    color: ${props => props.theme.colors.steel};
+    color: ${getColor('greyText')};
     text-align: center;
   }
 
@@ -173,7 +171,7 @@ const MarketsTable = ({ cdpTypesList, ...props }) => {
             <Loader
               size="4rem"
               color={getColor('spinner')}
-              bg="white"
+              bg="#131824"
               m="40px auto"
             />
           </td>

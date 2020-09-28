@@ -15,6 +15,7 @@ import { getCurrency } from 'utils/cdp';
 import ProxyAllowanceToggle from 'components/ProxyAllowanceToggle';
 import BigNumber from 'bignumber.js';
 import { decimalRules } from '../../styles/constants';
+import { getColor } from '../../styles/theme';
 const { long, medium } = decimalRules;
 
 const Deposit = ({ vault, reset }) => {
@@ -79,11 +80,11 @@ const Deposit = ({ vault, reset }) => {
   return (
     <Grid gridRowGap="m">
       <Grid gridRowGap="s">
-        <Text color="darkLavender" t="h4">
+        <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
           {lang.formatString(lang.action_sidebar.deposit_title, symbol)}
         </Text>
         <p>
-          <Text t="body">
+          <Text style={{ fontSize: '16px', color: getColor('greyText') }}>
             {lang.formatString(lang.action_sidebar.deposit_description, symbol)}
           </Text>
         </p>

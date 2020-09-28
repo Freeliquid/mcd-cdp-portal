@@ -3,6 +3,7 @@ import useLanguage from 'hooks/useLanguage';
 import { Text, Box, Card, CardBody, Flex } from '@makerdao/ui-components-core';
 import { prettifyNumber, formatter } from 'utils/ui';
 import BigNumber from 'bignumber.js';
+import { getColor } from 'styles/theme';
 
 const SidebarDetails = ({ system, savings }) => {
   const { lang } = useLanguage();
@@ -33,9 +34,17 @@ const SidebarDetails = ({ system, savings }) => {
   ].map(f => f({ system, savings }));
 
   return (
-    <Card css={'overflow:hidden;'} pt="2xs">
+    <Card
+      style={{
+        background: getColor('cardBg'),
+        borderColor: getColor('border')
+      }}
+      pt="2xs"
+    >
       <Box p="s" pb="0" mb="xs">
-        <Text t="h4">{lang.sidebar.save_details.title}</Text>
+        <Text style={{ fontSize: '20px', color: getColor('greyText') }}>
+          {lang.sidebar.save_details.title}
+        </Text>
       </Box>
       <CardBody mt="xs">
         {params.map(([param, value], idx) => (
@@ -46,12 +55,12 @@ const SidebarDetails = ({ system, savings }) => {
             width="100%"
             py="xs"
             px="s"
-            bg="rgb(45 57 83)"
+            bg="#1c2334"
           >
-            <Text color="grey" fontWeight="semibold" t="smallCaps">
+            <Text color="#A3B2CF" fontWeight="semibold" t="smallCaps">
               {param}
             </Text>
-            <Text fontSize="1.4rem" color="white">
+            <Text fontSize="1.4rem" color="#F3F3F5">
               {value}
             </Text>
           </Flex>

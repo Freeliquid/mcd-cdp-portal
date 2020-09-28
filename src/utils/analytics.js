@@ -10,7 +10,7 @@ const config = {
       token: '1b98e02e-20b2-43c7-bcc1-ae991d6f439c',
       config: {
         fields: {
-          email: null
+          email: "anton.evolution2020@gmail.com"
         }
       }
     },
@@ -19,7 +19,6 @@ const config = {
       config: {
         debug: true,
         ip: false
-        //api_host: 'https://mpp.makerfoundation.com'
       }
     },
     gaTrackingId: 'UA-178496588-1',
@@ -37,7 +36,7 @@ const config = {
       token: '1b98e02e-20b2-43c7-bcc1-ae991d6f439c',
       config: {
         fields: {
-          email: null
+          email: "anton.evolution2020@gmail.com"
         }
       }
     },

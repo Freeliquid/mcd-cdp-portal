@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 import { Box } from '@makerdao/ui-components-core';
-
+import { getColor } from 'styles/theme';
 const Button = styled(Box)`
-  border-radius: 5px;
-  border: 1px solid #00c4c4;
+  border-radius: 40px;
+  background-color: ${getColor('cayn')};
+  color: ${getColor('cardBg')};
+  border: 1px solid ${getColor('cayn')};
   display: inline-flex;
+  padding: 13px 35px 13px;
   align-items: center;
   justify-content: center;
-  font-family: FT Base;
+  font-family: PT Root;
   font-style: normal;
   font-size: 16px;
   line-height: 18px;
@@ -18,12 +21,12 @@ const Button = styled(Box)`
 `;
 
 const FilledButton = styled(Button)`
-  color: #00c4c4;
+  color: ${getColor('cardBg')};
   font-weight: bold;
 
   :hover {
-    background-color: #00c4c4;
-    color: #191e2b;
+    background-color: ${getColor('cardBg')};
+    color: ${getColor('cayn')};
   }
 `;
 

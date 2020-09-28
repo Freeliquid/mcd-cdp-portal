@@ -8,7 +8,6 @@ import theme, { getSpace } from '../styles/theme';
 const DashboardLayout = ({ mobileNav, navbar, children }) => {
   return (
     <Grid
-      bg="#191E2B"
       gridTemplateColumns={{
         s: 'minmax(0, 1fr)',
         l: `${theme.measurement.navbarWidth}px minmax(0, auto) ${

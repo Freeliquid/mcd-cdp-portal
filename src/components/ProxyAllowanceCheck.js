@@ -10,7 +10,7 @@ import lang from 'languages';
 import { ReactComponent as Checkmark } from 'images/checkmark.svg';
 import TooltipContents from 'components/TooltipContents';
 import { VendorErrors } from 'utils/constants';
-
+import { getColor } from '../styles/theme';
 const errorStates = {
   [VendorErrors.ENABLE_CONTRACT_DATA]: {
     message: lang.cdp_create.proxy_failure_contract_data,
@@ -29,7 +29,7 @@ const errorStates = {
 };
 
 const parseError = proxyErrors =>
-  errorStates[(proxyErrors?.name)] || {
+  errorStates[proxyErrors?.name] || {
     message: lang.cdp_create.proxy_failure_not_mined,
     information: lang.cdp_create.proxy_failure_not_mined_info,
     retry: false
@@ -63,12 +63,23 @@ const ProxyAllowanceCheck = ({
   } = labels;
 
   return (
-    <Card px={{ s: 'l', m: '2xl' }} py="l" mb="xl">
+    <Card
+      px={{ s: 'l', m: '2xl' }}
+      py="l"
+      mb="xl"
+      style={{
+        backgroundColor: getColor('cardBg'),
+        border: 'none',
+        textAlign: 'left'
+      }}
+    >
       <Grid gridRowGap="xs">
-        <Text.h4>{setup_header}</Text.h4>
-        <Text.p color="darkLavender" fontSize="l" lineHeight="normal">
+        <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
+          {setup_header}
+        </Text>
+        <Text style={{ fontSize: '16px', color: getColor('greyText') }}>
           {setup_text}
-        </Text.p>
+        </Text>
         {hasProxy ? (
           <SuccessButton />
         ) : (
@@ -128,10 +139,12 @@ const ProxyAllowanceCheck = ({
         </Text.p>
       </Grid>
       <Grid gridRowGap="xs" mt="l">
-        <Text.h4>{lang.cdp_create.set_allowance}</Text.h4>
-        <Text.p color="darkLavender" fontSize="l" lineHeight="normal">
+        <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
+          {lang.cdp_create.set_allowance}
+        </Text>
+        <Text style={{ fontSize: '16px', color: getColor('greyText') }}>
           {allowance_text}
-        </Text.p>
+        </Text>
         {hasAllowance ? (
           <SuccessButton />
         ) : (

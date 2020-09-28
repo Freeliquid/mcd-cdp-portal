@@ -1,6 +1,7 @@
 import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 import { useSpring, animated, config } from 'react-spring';
+import { getColor } from 'styles/theme';
 
 const animations = {
   fade: [{ opacity: 0 }, { opacity: 1 }],
@@ -24,12 +25,14 @@ const Bg = styled(animated.div)`
   left: 0;
   z-index: 2001;
   overflow-y: auto;
+  background: ${getColor('cardBg')};
 `;
 
 const SimpleBg = styled(Bg)`
   display: flex;
   justify-content: center;
   align-items: center;
+  background: ${getColor('cardBg')};
 `;
 
 const FullscreenModal = forwardRef(
@@ -68,7 +71,7 @@ const BasicModal = forwardRef(
     const [fadeUpStart, fadeUpEnd] = animations.fadeUp;
 
     const ModalContent = styled(animated.div)`
-      background-color: #191e2b;
+      background-color: ${getColor('cardBg')};
       border-radius: 6px;
       padding: ${({ theme }) => theme.space.m}px;
       box-shadow: 0px 3px 13px rgba(67, 67, 67, 0.13);
@@ -104,7 +107,7 @@ const BasicModal = forwardRef(
         ref={ref}
         onClick={onCloseAnimated}
         css={{
-          backgroundColor: 'rgba(0, 0, 0, 0.2)'
+          backgroundColor: '#0B0E15'
         }}
         style={bgAnimation}
       >

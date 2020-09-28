@@ -2,6 +2,7 @@ import React from 'react';
 import { DAI } from '../../libs/dai-plugin-mcd/src/index.js';
 import { Text, Input, Grid, Button } from '@makerdao/ui-components-core';
 import debug from 'debug';
+import { getColor } from '../../styles/theme';
 
 import { formatCollateralizationRatio } from 'utils/ui';
 
@@ -21,6 +22,7 @@ import ProxyAllowanceToggle from 'components/ProxyAllowanceToggle';
 import SetMax from 'components/SetMax';
 import { BigNumber } from 'bignumber.js';
 import { decimalRules } from '../../styles/constants';
+
 const { long, medium } = decimalRules;
 
 const log = debug('maker:Sidebars/Payback');
@@ -114,10 +116,12 @@ const Payback = ({ vault, reset }) => {
   return (
     <Grid gridRowGap="m">
       <Grid gridRowGap="s">
-        <Text.h4 color="darkLavender">
+        <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
           {lang.action_sidebar.payback_title}
-        </Text.h4>
-        <Text.p t="body">{lang.action_sidebar.payback_description}</Text.p>
+        </Text>
+        <Text style={{ fontSize: '16px', color: getColor('greyText') }}>
+          {lang.action_sidebar.payback_description}
+        </Text>
         <Input
           type="number"
           value={amount}

@@ -32,7 +32,7 @@ const ButtonCard = ({
             {subtitle}
           </Box>
         </Box>
-        <Box gridColumn={'3'} alignSelf="center">
+        <Box gridColumn={'2'} alignSelf="center">
           <Button onClick={onClick}>{buttonText}</Button>
         </Box>
       </Grid>

@@ -4,7 +4,8 @@ import { Box, Flex, Text } from '@makerdao/ui-components-core';
 import styled from 'styled-components';
 import AccountSelection from 'components/AccountSelection';
 import useLanguage from 'hooks/useLanguage';
-import OasisLogoLink from './OasisLogoLink';
+import LogoLink from './LogoLink';
+import { getColor } from 'styles/theme';
 
 const HeaderStyle = styled(Box)`
   position: fixed;
@@ -13,8 +14,8 @@ const HeaderStyle = styled(Box)`
   left: 0;
   height: 81px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.12);
-  background-color: #191e2b;
-  color: #fff;
+  background-color: ${getColor('bodyBg')};
+  color: ${getColor('headerNav')};
   z-index: -1;
   opacity: 0;
 
@@ -64,7 +65,7 @@ const Header = ({ cta, ...props }) => {
   return (
     <HeaderStyle {...props}>
       <HeaderContent>
-        <OasisLogoLink style={{ color: '#FFF' }} />
+        <LogoLink />
         <div className="">{cta || defaultCTA}</div>
       </HeaderContent>
     </HeaderStyle>

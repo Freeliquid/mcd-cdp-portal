@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { ReactComponent as ExternalLinkIcon } from 'images/external-link.svg';
 import useLanguage from 'hooks/useLanguage';
 import BigNumber from 'bignumber.js';
+import { getColor } from 'styles/theme';
 
 const StyledCardBody = styled(CardBody)`
   cursor: pointer;
@@ -16,15 +17,23 @@ const SidebarFeeds = ({ feeds }) => {
   const { lang } = useLanguage();
 
   return (
-    <Card pt="sm" css={'overflow:hidden;'}>
+    <Card
+      pt="sm"
+      style={{
+        background: getColor('cardBg'),
+        borderColor: getColor('border')
+      }}
+    >
       <Flex justifyContent="space-between" alignContent="center" px="s" pt="">
-        <Text t="h4">{lang.sidebar.price_feeds}</Text>
+        <Text t="h4" color="#A3B2CF">
+          {lang.sidebar.price_feeds}
+        </Text>
         <Link href={'https://makerdao.com/feeds'} target="_blank">
-          <Text t="p5" color="steel" fontSize="s2">
+          <Text t="p5" color="#00DCDC" fontSize="s2">
             {lang.sidebar.view_price_feeds}
           </Text>
           &nbsp;
-          <ExternalLinkIcon fill="#708390" />
+          <ExternalLinkIcon fill="#00DCDC" />
         </Link>
       </Flex>
 
@@ -48,13 +57,10 @@ const SidebarFeeds = ({ feeds }) => {
                   width="100%"
                   py="xs"
                   px="s"
-                  bg={index % 2 ? 'coolGrey.100' : 'white'}
+                  bg={index % 2 ? '#131824' : '#1c2334'}
+                  color="#A3B2CF"
                 >
-                  <Text
-                    color="darkLavender"
-                    fontWeight="semibold"
-                    t="smallCaps"
-                  >
+                  <Text fontWeight="semibold" t="smallCaps" color="#A3B2CF">
                     {value.symbol
                       .split('/')
                       .reverse()
@@ -74,12 +80,16 @@ const SidebarFeeds = ({ feeds }) => {
           <Flex justifyContent="center" alignItems="center">
             {collapsed ? (
               <>
-                <Text pr="xs">{lang.sidebar.view_more}</Text>
+                <Text pr="xs" color="#00DCDC">
+                  {lang.sidebar.view_more}
+                </Text>
                 <Carat />
               </>
             ) : (
               <>
-                <Text pr="xs">{lang.sidebar.view_less}</Text>
+                <Text pr="xs" color="#00DCDC">
+                  {lang.sidebar.view_less}
+                </Text>
                 <Carat rotation={180} />
               </>
             )}

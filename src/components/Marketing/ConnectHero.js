@@ -3,9 +3,10 @@ import { Flex } from '@makerdao/ui-components-core';
 
 const ConnectHero = styled(Flex)`
   flex-direction: column;
-  align-items: center;
-  max-width: 866px;
-  margin: 64px auto 0;
+  align-items: left;
+  text-align: left;
+  max-width: 1140px;
+  margin: 25px auto 0;
   padding: 0 10px;
 
   .headline {
@@ -14,7 +15,7 @@ const ConnectHero = styled(Flex)`
   }
 
   .connect-to-start {
-    margin-top: 58px;
+    margin-top: 88px;
   }
 
   .button {
@@ -23,8 +24,6 @@ const ConnectHero = styled(Flex)`
   }
 
   @media (min-width: ${props => props.theme.breakpoints.m}) {
-    margin-top: 130px;
-
     .headline {
       margin-top: 16px;
       margin-bottom: 15px;

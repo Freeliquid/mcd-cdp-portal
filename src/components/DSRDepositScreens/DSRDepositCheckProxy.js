@@ -6,6 +6,7 @@ import ProxyAllowanceCheck from '../ProxyAllowanceCheck';
 import useTokenAllowance from 'hooks/useTokenAllowance';
 import { useWeb3BlockHeight } from 'hooks/useBlockHeight';
 import useLanguage from 'hooks/useLanguage';
+import { getColor } from '../../styles/theme';
 
 const DSRDepositCheckProxy = ({ dispatch, onClose }) => {
   const { lang } = useLanguage();
@@ -47,9 +48,17 @@ const DSRDepositCheckProxy = ({ dispatch, onClose }) => {
 
   return (
     <Box maxWidth="71.8rem">
-      <Text.h2 textAlign="center" mb="xl">
+      <Text
+        style={{
+          fontSize: '22px',
+          color: getColor('whiteText'),
+          display: 'flex',
+          justifyContent: 'center',
+          paddingBottom: '30px'
+        }}
+      >
         {lang.dsr_deposit.open_vault}
-      </Text.h2>
+      </Text>
       <ProxyAllowanceCheck
         proxyAddress={proxyAddress}
         deployProxy={setupProxy}
