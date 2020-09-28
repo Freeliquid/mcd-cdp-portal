@@ -2,13 +2,11 @@
 import Maker from './libs/dai/src/index.js';
 import McdPlugin, {
   ETH,
-  BAT,
-  USDC,
+  USDTUSDC,
   USD,
   DAI,
   SAI,
   defaultCdpTypes
-  // } from './libs/dai-plugin-mcd/src/index.js';
 } from './libs/dai-plugin-mcd/src/index.js';
 
 import trezorPlugin from '@makerdao/dai-plugin-trezor-web';
@@ -124,4 +122,4 @@ export async function instantiateMaker({
   return maker;
 }
 
-export { USD, DAI, ETH, BAT, SAI, USDC };
+export { USD, DAI, ETH, USDTUSDC, SAI };

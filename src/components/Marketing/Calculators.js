@@ -307,47 +307,17 @@ const SmartStepSlider = ({
 };
 
 const cdpTypesMetaData = {
-  'ETH-A': {
+  'USDTUSDC-A': {
     text: 'USDT/USDC',
     colRatio: 200,
     amountRange: [1, 350],
     amountStart: 25
-  },
-  'BAT-A': {
-    text: 'USDT/USDN',
-    colRatio: 200,
-    amountRange: [200, 70000],
-    amountStart: 600
-  },
-  'MANA-A': {
-    text: 'USDT/DAI',
-    colRatio: 240,
-    amountRange: [1000, 350000],
-    amountStart: 3000
-  },
-  'USDC-A': {
-    text: 'USDC/USDN',
-    colRatio: 120,
-    amountRange: [200, 70000],
-    amountStart: 5000
-  },
-  'WBTC-A': {
-    text: 'USDC/DAI',
-    colRatio: 200,
-    amountRange: [0.1, 35],
-    amountStart: 0.5
-  },
-  'TUSD-A': {
-    text: 'USDN/DAI',
-    colRatio: 120,
-    amountRange: [200, 70000],
-    amountStart: 5000
   }
 };
 
 const BorrowCalculator = ({ prices, cdpTypesList, ...props }) => {
   const { lang } = useLanguage();
-  const [selectedSymbol, setSelectedSymbol] = useState('ETH-A');
+  const [selectedSymbol, setSelectedSymbol] = useState('USDTUSDC-A');
 
   const interfaceLocale = lang.getInterfaceLanguage();
 

@@ -1,21 +1,21 @@
 {
   "supportedNetworkIds": ["1337", "999", "99", "5", "4", "3", "42", "1"],
   "rpcUrls": {
-    "1": "https://mainnet.infura.io/v3/58073b4a32df4105906c702f167b91d2",
-    "42": "https://kovan.infura.io/v3/58073b4a32df4105906c702f167b91d2",
-    "3": "https://ropsten.infura.io/v3/58073b4a32df4105906c702f167b91d2",
-    "4": "https://rinkeby.infura.io/v3/58073b4a32df4105906c702f167b91d2",
-    "5": "https://goerli.infura.io/v3/58073b4a32df4105906c702f167b91d2",
+    "1": "https://mainnet.infura.io/v3/6cf197c96ea54310860815644865edbe",
+    "42": "https://kovan.infura.io/v3/6cf197c96ea54310860815644865edbe",
+    "3": "https://ropsten.infura.io/v3/6cf197c96ea54310860815644865edbe",
+    "4": "https://rinkeby.infura.io/v3/6cf197c96ea54310860815644865edbe",
+    "5": "https://goerli.infura.io/v3/6cf197c96ea54310860815644865edbe",
     "999": "http://localhost:2000",
     "99": "http://localhost:8545",
     "1337": "http://localhost:2000"
   },
   "wsRpcUrls": {
-    "1": "wss://mainnet.infura.io/ws/v3/58073b4a32df4105906c702f167b91d2",
-    "42": "wss://kovan.infura.io/ws/v3/58073b4a32df4105906c702f167b91d2",
-    "3": "wss://ropsten.infura.io/ws/v3/58073b4a32df4105906c702f167b91d2",
-    "4": "wss://rinkeby.infura.io/ws/v3/58073b4a32df4105906c702f167b91d2",
-    "5": "wss://goerli.infura.io/ws/v3/58073b4a32df4105906c702f167b91d2"
+    "1": "wss://mainnet.infura.io/ws/v3/6cf197c96ea54310860815644865edbe",
+    "42": "wss://kovan.infura.io/ws/v3/6cf197c96ea54310860815644865edbe",
+    "3": "wss://ropsten.infura.io/ws/v3/6cf197c96ea54310860815644865edbe",
+    "4": "wss://rinkeby.infura.io/ws/v3/6cf197c96ea54310860815644865edbe",
+    "5": "wss://goerli.infura.io/ws/v3/6cf197c96ea54310860815644865edbe"
   },
   "networkNames": {
     "1": "mainnet",
@@ -37,9 +37,9 @@
     "99": "Testchain",
     "1337": "Ex_Testchain"
   },
-  "defaultNetwork": "99",
+  "defaultNetwork": "42",
   "exTestchainApiUrl": "http://localhost:4000/chain",
-  "showWalletTokens": ["DAI", "ETH", "WETH", "BAT", "USDC", "WBTC", "TUSD", "KNC", "ZRX", "MANA"],
+  "showWalletTokens": ["DAI", "USDTUSDC"],
   "trackingPages": {
     "Overview": "Overview",
     "CDP": "Dashboard",

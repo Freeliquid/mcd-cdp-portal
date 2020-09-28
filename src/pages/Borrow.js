@@ -155,7 +155,7 @@ function Borrow({ disableConnect = false }) {
         >
           <MarketsTable
             cdpTypesList={cdpTypesList.filter(symbol =>
-              ['ETH', 'BAT', 'USDC', 'WBTC'].includes(symbol.split('-')[0])
+              ['USDTUSDC'].includes(symbol.split('-')[0])
             )}
           />
         </Box>

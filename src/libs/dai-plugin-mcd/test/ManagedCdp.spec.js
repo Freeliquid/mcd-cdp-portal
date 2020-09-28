@@ -120,30 +120,9 @@ async function expectValues(
 
 describe.each([
   [
-    'ETH-A',
-    ETH,
-    async () => setupCollateral(maker, 'ETH-A', { price: 150, debtCeiling: 50 })
-  ],
-  [
-    'BAT-A',
-    BAT,
-    async () => setupCollateral(maker, 'BAT-A', { price: 100, debtCeiling: 50 })
-  ],
-  [
-    'GNT-A',
-    GNT,
-    async () => setupCollateral(maker, 'GNT-A', { price: 100, debtCeiling: 50 })
-  ],
-  [
-    'DGD-A',
-    DGD,
-    async () => setupCollateral(maker, 'DGD-A', { price: 100, debtCeiling: 50 })
-  ],
-  [
-    'USDC-A',
-    USDC,
-    async () =>
-      setupCollateral(maker, 'USDC-A', { price: 100, debtCeiling: 50 })
+    'USDTUSDC-A',
+    USDTUSDC,
+    async () => setupCollateral(maker, 'USDTUSDC-A', { price: 150, debtCeiling: 50 })
   ]
 ])('%s', (ilk, GEM, setup) => {
   let startingGemBalance, startingDaiBalance;

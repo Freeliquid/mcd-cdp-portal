@@ -61,6 +61,12 @@ export const DAI = createCurrency('DAI');
 // Casting for savings dai
 export const DSR_DAI = createCurrency('DSR-DAI');
 
+export const USDT = createCurrency('USDT');
+
+export const USDTUSDC = createCurrency('USDTUSDC');
+
+
+
 export const REP = createCurrency('REP');
 export const ZRX = createCurrency('ZRX');
 export const KNC = createCurrency('KNC');
@@ -74,15 +80,7 @@ export const TUSD = createCurrency('TUSD');
 export const MANA = createCurrency('MANA');
 
 export const defaultCdpTypes = [
-  { currency: ETH, ilk: 'ETH-A' },
-  { currency: BAT, ilk: 'BAT-A' },
-  { currency: USDC, ilk: 'USDC-A', decimals: 6 },
-  { currency: WBTC, ilk: 'WBTC-A', decimals: 8 },
-  { currency: USDC, ilk: 'USDC-B', decimals: 6 },
-  { currency: TUSD, ilk: 'TUSD-A', decimals: 18 },
-  { currency: KNC, ilk: 'KNC-A', decimals: 18 },
-  { currency: ZRX, ilk: 'ZRX-A', decimals: 18 },
-  { currency: MANA, ilk: 'MANA-A', decimals: 18 }
+  { currency: USDTUSDC, ilk: 'USDTUSDC-A' }
 ];
 
 export const SAI = createCurrency('SAI');
@@ -134,7 +132,7 @@ export const McdPlugin = {
       token: {
         erc20: [
           { currency: DAI, address: addContracts.MCD_DAI.address },
-          { currency: WETH, address: addContracts.ETH.address, abi: wethAbi },
+          // { currency: WETH, address: addContracts.ETH.address, abi: wethAbi },
           ...tokens
         ]
       },
