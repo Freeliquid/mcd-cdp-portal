@@ -19,6 +19,7 @@ import { ReactComponent as VideoBg } from 'images/landing/video_bg.svg';
 import { ReactComponent as Play } from 'images/landing/play.svg';
 import { ReactComponent as ImgBlock2 } from 'images/landing/img_block21.svg';
 import { Box, Flex, Text } from '@makerdao/ui-components-core';
+import AnimateConvas from './AnimateConvas';
 
 const Content = ({ children }) => (
   <Box p={{ s: `0 ${marketingTheme.mobilePaddingX}`, l: '0 32px' }}>
@@ -377,8 +378,8 @@ function Landing() {
               </Link>
           </ButtonFlex>
           </BlocksDiv>
-          <BlocksDiv2 style={{textAlign:'right'}}>
-          <VideoBg className="video_bg"/>
+          <BlocksDiv2 style={{textAlign:'center'}}>
+          <AnimateConvas />
           </BlocksDiv2>
         </Blocks>
 

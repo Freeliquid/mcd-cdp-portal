@@ -360,13 +360,13 @@ const BorrowCalculator = ({ prices, cdpTypesList, ...props }) => {
               value: ilk.symbol,
               render: () => (
                 <DropdownItem
-                /* img={
+                img={
                     <TokenIcon
                       symbol={getTokenName(ilk)}
-                      width="28.33"
-                      height="28.33"
+                      width="50"
+                      height="30"
                     />
-                  } */
+                  }
                 >
                   {ilk.text || ilk.symbol}
                 </DropdownItem>
