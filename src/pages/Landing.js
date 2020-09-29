@@ -15,9 +15,9 @@ import { ReactComponent as SaveIcon } from 'images/landing/save_block.svg';
 import { ReactComponent as UsdlIcon } from 'images/landing/land_usdl.svg';
 import { ReactComponent as LpgIcon } from 'images/landing/land_fl.svg';
 import { ReactComponent as CommunityIcon } from 'images/landing/land_com.svg';
-import { ReactComponent as VideoBg } from 'images/landing/video_bg.svg';
 import { ReactComponent as Play } from 'images/landing/play.svg';
 import { ReactComponent as ImgBlock2 } from 'images/landing/img_block21.svg';
+
 import { Box, Flex, Text } from '@makerdao/ui-components-core';
 import AnimateConvas from './AnimateConvas';
 
@@ -30,15 +30,13 @@ const Content = ({ children }) => (
 );
 
 const ImgBox = styled.div`
-  height: 240px;
-  float: right;
+  text-align: center;
   @media only screen and (min-device-width: 769px) and (max-device-width: 1024px) {
     height: 160px;
   }
   @media (max-width: 768px) {
     height: 180px;
   }
-
 `;
 const SpaceBox = styled.div`
   width: 100%;
@@ -66,8 +64,6 @@ const Cards = (() => {
     }
 
     @media (max-width: 768px) {
-
-      
       :after {
         content: none;
       }
@@ -82,7 +78,7 @@ const Cards = (() => {
     flex-shrink: 1;
     text-align: left;
     padding: 60px 100px 60px 55px;
-    @media only screen and (min-device-width: 769px) and (max-device-width: 1024px)  {
+    @media only screen and (min-device-width: 769px) and (max-device-width: 1024px) {
       padding: 40px 30px 40px 30px;
     }
     @media (max-width: 768px) {
@@ -124,14 +120,12 @@ const Cards = (() => {
         <Card
           style={{
             background: getColor('cardBg'),
-            borderRadius:'20px',
+            borderRadius: '20px'
           }}
         >
           <BorrowIcon />
           <Text.h3>{lang.landing_page.borrow_card.title}</Text.h3>
-          <Text.h5>
-            {lang.landing_page.borrow_card.description}
-          </Text.h5>
+          <Text.h5>{lang.landing_page.borrow_card.description}</Text.h5>
           <div className="buttonContainer">
             <Link
               href={`/${Routes.BORROW}${url.search}`}
@@ -152,14 +146,12 @@ const Cards = (() => {
         <Card
           style={{
             background: getColor('cardBg'),
-            borderRadius:'20px',
+            borderRadius: '20px'
           }}
         >
           <SaveIcon />
           <Text.h3>{lang.landing_page.save_card.title}</Text.h3>
-          <Text.h5>
-            {lang.landing_page.save_card.description}
-          </Text.h5>
+          <Text.h5>{lang.landing_page.save_card.description}</Text.h5>
           <div className="buttonContainer">
             <Link
               href={`/${Routes.SAVE}${url.search}`}
@@ -187,8 +179,8 @@ const TextDiv = styled.div`
     width: 100%;
     padding: 30px 15px;
   }
-  
-  .text-desc{
+
+  .text-desc {
     font-size: 20px;
     color: ${getColor('greyText')};
     line-height: 34px;
@@ -208,7 +200,7 @@ const Blocks = styled(Flex)`
     flex-direction: column-reverse;
   }
   @media only screen and (min-device-width: 769px) and (max-device-width: 1024px) {
-    padding: 0px 25px;  
+    padding: 0px 25px;
   }
 `;
 const Blocks2 = styled(Flex)`
@@ -231,12 +223,12 @@ const Blocks2 = styled(Flex)`
   }
 `;
 const BlockBorder = styled.div`
-width:1px;
-height: 240px;
-border-left: 1px solid ${getColor('border')};
-@media (max-width: 768px) {
-  display: none;
-}
+  width: 1px;
+  height: 240px;
+  border-left: 1px solid ${getColor('border')};
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 const BlocksDiv = styled.div`
   width: 49%;
@@ -248,49 +240,51 @@ const BlocksDiv = styled.div`
     font-size: 17px;
     color: ${getColor('greyText')};
     line-height: 32px;
-    text-align:left;
+    text-align: left;
     padding: 0px 10px 0px 95px;
   }
-  @media only screen and (min-device-width: 769px) and (max-device-width: 1024px)  {
+  @media only screen and (min-device-width: 769px) and (max-device-width: 1024px) {
     padding: 20px 0px 30px 0px;
-    .text-bl2{padding: 10px 35px 0px 40px}
+    .text-bl2 {
+      padding: 10px 35px 0px 40px;
+    }
   }
   @media (max-width: 768px) {
     width: 100%;
     padding: 30px 15px;
-    .text-bl2{padding: 0px 15px;
-    text-align: center;
+    .text-bl2 {
+      padding: 0px 15px;
+      text-align: center;
     }
     @media (min-width: 736px) {
       width: 100%;
       padding: 30px 15px;
     }
   }
-  
 `;
 const BlocksDiv2 = styled.div`
   width: 49%;
-  @media only screen and (min-device-width: 769px) and (max-device-width: 1024px)  {
+  @media only screen and (min-device-width: 769px) and (max-device-width: 1024px) {
     padding: 0px 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    .video_bg{
+    .video_bg {
       width: 300px;
       height: 250px;
     }
-    .all_img{
+    .all_img {
       width: 360px;
       height: 270px;
       margin-top: -55px;
     }
-    .usdl_svg{
+    .usdl_svg {
       height: 160px;
     }
-    .lpg_svg{
+    .lpg_svg {
       height: 160px;
     }
-    .comm_svg{
+    .comm_svg {
       height: 160px;
     }
   }
@@ -300,22 +294,22 @@ const BlocksDiv2 = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    .video_bg{
+    .video_bg {
       width: 300px;
       height: 250px;
     }
-    .all_img{
-      width: 350px;
-      height: 270px;
-      margin-top: -65px;
+    .all_img {
+      height: 240px;
+      margin-top: -60px;
+      
     }
-    .usdl_svg{
+    .usdl_svg {
       height: 180px;
     }
-    .lpg_svg{
+    .lpg_svg {
       height: 180px;
     }
-    .comm_svg{
+    .comm_svg {
       height: 180px;
     }
   }
@@ -324,18 +318,17 @@ const ButtonFlex = styled.div`
   display: flex;
   align-items: center;
   @media (max-width: 768px) {
-    justify-content: space-between;  
+    justify-content: space-between;
   }
   @media (min-width: 40em) {
-    justify-content: space-around;  
+    justify-content: space-around;
   }
 `;
 const TitleCard = styled.div`
   font-size: 40px;
   font-weight: bold;
-  color: ${getColor('whiteText')}
+  color: ${getColor('whiteText')};
 `;
-
 
 function Landing() {
   const { lang } = useLanguage();
@@ -349,45 +342,53 @@ function Landing() {
       <Content>
         <SpaceBox />
         <FadeIn moveDistance="-60px">
+          <Blocks>
+            <BlocksDiv>
+              <TextDiv>
+                <Text.h2>{lang.landing_page.usdl_title}</Text.h2>
+                <br />
+                <div className="text-desc">{lang.landing_page.usdl_desc}</div>
+              </TextDiv>
+              <ButtonFlex>
+                <div className="buttonContainer">
+                  <Link href="#" className="button-link">
+                    <FilledButton>{lang.landing_page.get_start}</FilledButton>
+                  </Link>
+                </div>
 
-        <Blocks>
-          <BlocksDiv>
-          <TextDiv>
-            <Text.h2>{lang.landing_page.usdl_title}</Text.h2>
-            <br />
-            <div className="text-desc">{lang.landing_page.usdl_desc}</div>
-
-          </TextDiv>
-          <ButtonFlex>
-          <div className="buttonContainer">
-            <Link
-               href="#"
-              className="button-link"
-            >
-              <FilledButton>{lang.landing_page.get_start}</FilledButton>
-            </Link>
-          </div>
-          
-          <Link
-                style={{ color: '#00DCDC', marginLeft: '40px', display:'flex', alignItems:'center' }}
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-              ><Play style={{marginRight:'10px'}} />
-                <Text>{lang.landing_page.play_video}</Text>
-              </Link>
-          </ButtonFlex>
-          </BlocksDiv>
-          <BlocksDiv2 style={{textAlign:'center'}}>
-          <AnimateConvas />
-          </BlocksDiv2>
-        </Blocks>
-
+                <Link
+                  style={{
+                    color: '#00DCDC',
+                    marginLeft: '40px',
+                    display: 'flex',
+                    alignItems: 'center'
+                  }}
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Play style={{ marginRight: '10px' }} />
+                  <Text>{lang.landing_page.play_video}</Text>
+                </Link>
+              </ButtonFlex>
+            </BlocksDiv>
+            <BlocksDiv2 style={{ textAlign: 'center' }}>
+              <AnimateConvas />
+            </BlocksDiv2>
+          </Blocks>
         </FadeIn>
         <FadeIn moveDistance="40px">
-          <Blocks style={{background:getColor('cardBg'),  borderRadius: '40px', textAlign:'center'}}>
+          <Blocks
+            style={{
+              background: getColor('cardBg'),
+              borderRadius: '40px',
+              textAlign: 'center'
+            }}
+          >
             <BlocksDiv2>
-            <ImgBlock2 className="all_img"/>
+            <ImgBox>
+              <ImgBlock2 className="all_img" />
+            </ImgBox>
             </BlocksDiv2>
             <BlockBorder />
             <BlocksDiv>
@@ -404,7 +405,7 @@ function Landing() {
           </BlocksDiv>
           <BlocksDiv2>
             <ImgBox>
-              <UsdlIcon className="usdl_svg"/>
+              <UsdlIcon className="usdl_svg" />
             </ImgBox>
           </BlocksDiv2>
         </Blocks2>
@@ -416,7 +417,7 @@ function Landing() {
           </BlocksDiv>
           <BlocksDiv2>
             <ImgBox>
-              <LpgIcon className="lpg_svg"/>
+              <LpgIcon className="lpg_svg" />
             </ImgBox>
           </BlocksDiv2>
         </Blocks2>
@@ -427,8 +428,8 @@ function Landing() {
             <Text.h5>{lang.landing_page.block5_text}</Text.h5>
           </BlocksDiv>
           <BlocksDiv2>
-          <ImgBox>
-              <CommunityIcon className="comm_svg"/>
+            <ImgBox>
+              <CommunityIcon className="comm_svg" />
             </ImgBox>
           </BlocksDiv2>
         </Blocks2>
