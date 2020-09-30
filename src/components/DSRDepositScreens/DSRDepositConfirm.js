@@ -32,7 +32,7 @@ const DSRDepositConfirmSummary = ({
   const [hasReadTOS, setHasReadTOS] = useState(false);
 
   const rows = [
-    [lang.save.deposit_amount, `${prettifyNumber(depositAmount)} DAI`]
+    [lang.save.deposit_amount, `${prettifyNumber(depositAmount)} USDL`]
   ];
   return (
     <Box

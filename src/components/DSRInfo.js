@@ -247,7 +247,7 @@ function DSRInfo({ isMobile, savings }) {
             mb=".175rem"
             ml="s"
           >
-            DAI
+            USDL
           </Text>
         </Box>
       </Flex>
@@ -274,7 +274,7 @@ function DSRInfo({ isMobile, savings }) {
               style={{ fontSize: '14px', color: getColor('greyText') }}
               ml="xs"
             >
-              DAI
+              USDL
             </Text>
           </>
         }

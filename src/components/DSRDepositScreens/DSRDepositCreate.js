@@ -23,7 +23,7 @@ function DepositDaiForm({
 
   const fields = [
     [
-      lang.formatString(lang.dsr_deposit.deposit_form_title, 'DAI'),
+      lang.formatString(lang.dsr_deposit.deposit_form_title, 'USDL'),
       <Input
         style={{ fontSize: '14px', color: getColor('cayn') }}
         key="daiinput"
@@ -34,7 +34,7 @@ function DepositDaiForm({
         onChange={onDepositAmountChange}
         failureMessage={depositAmountErrors}
         min="0"
-        placeholder="0 DAI"
+        placeholder="0 USDL"
       />,
       <Box key="ba">
         <Text style={{ fontSize: '14px', color: getColor('cayn') }}>
@@ -45,7 +45,7 @@ function DepositDaiForm({
           display="inline-block"
           ml="s"
         >
-          {prettifyNumber(daiBalance)} {'DAI'}
+          {prettifyNumber(daiBalance)} {'USDL'}
         </Text>
       </Box>
     ]
@@ -109,9 +109,9 @@ const DSRDepositCreate = ({ dispatch, onClose }) => {
     },
     {
       maxFloat: () =>
-        lang.formatString(lang.action_sidebar.insufficient_balance, 'DAI'),
+        lang.formatString(lang.action_sidebar.insufficient_balance, 'USDL'),
       allowanceInvalid: () =>
-        lang.formatString(lang.action_sidebar.invalid_allowance, 'DAI')
+        lang.formatString(lang.action_sidebar.invalid_allowance, 'USDL')
     }
   );
 

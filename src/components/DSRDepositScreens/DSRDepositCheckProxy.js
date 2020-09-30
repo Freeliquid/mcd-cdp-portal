@@ -33,7 +33,7 @@ const DSRDepositCheckProxy = ({ dispatch, onClose }) => {
     setup_header: lang.dsr_deposit.setup_header,
     allowance_text: lang.formatString(
       lang.cdp_create.setup_proxy_allowance_text,
-      'DAI'
+      'USDL'
     ),
     confirmations_text: lang.formatString(
       lang.cdp_create.waiting_for_comfirmations,

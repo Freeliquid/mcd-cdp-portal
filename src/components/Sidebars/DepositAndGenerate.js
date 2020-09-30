@@ -168,7 +168,7 @@ const DepositAndGenerate = ({ vault, reset }) => {
           {lang.formatString(lang.action_sidebar.deposit_description, symbol)}
         </Text>
         <Input
-        style={{ color: getColor('whiteText') }}
+          style={{ color: getColor('whiteText') }}
           type="number"
           min="0"
           value={depositAmount}
@@ -184,7 +184,7 @@ const DepositAndGenerate = ({ vault, reset }) => {
           value={generateAmount}
           min="0"
           onChange={onGenerateAmountChange}
-          placeholder="0.00 DAI"
+          placeholder="0.00 USDL"
           failureMessage={generateFailureMessage}
         />
       </Grid>
@@ -210,7 +210,7 @@ const DepositAndGenerate = ({ vault, reset }) => {
         />
         <Info
           title={lang.action_sidebar.maximum_available_to_generate}
-          body={`${formatter(calculatedDaiAvailable, { precision: long })} DAI`}
+          body={`${formatter(calculatedDaiAvailable, { precision: long })} USDL`}
         />
         <Info
           title={lang.action_sidebar.new_liquidation_price}

@@ -360,7 +360,7 @@ const BorrowCalculator = ({ prices, cdpTypesList, ...props }) => {
               value: ilk.symbol,
               render: () => (
                 <DropdownItem
-                img={
+                  img={
                     <TokenIcon
                       symbol={getTokenName(ilk)}
                       width="50"
@@ -549,7 +549,7 @@ const SaveCalculator = (() => {
               value={initialDeposit}
               onChange={value => setInitialDeposit(value)}
               displayValue={value =>
-                `${prettifyCurrency(locale, value, 0)} DAI`
+                `${prettifyCurrency(locale, value, 0)} USDL`
               }
             />
           </SliderAndLabel>
@@ -562,7 +562,7 @@ const SaveCalculator = (() => {
               value={monthlyContribution}
               onChange={value => setMonthlyContribution(value)}
               displayValue={value =>
-                `${prettifyCurrency(locale, value, 0)} DAI`
+                `${prettifyCurrency(locale, value, 0)} USDL`
               }
             />
           </SliderAndLabel>
