@@ -14,6 +14,7 @@ import { getCurrency } from 'utils/cdp';
 import BigNumber from 'bignumber.js';
 import { decimalRules } from '../../styles/constants';
 import RatioDisplay, { RatioDisplayTypes } from 'components/RatioDisplay';
+import { getColor } from '../../styles/theme';
 
 const { long, medium } = decimalRules;
 
@@ -210,7 +211,9 @@ const DepositAndGenerate = ({ vault, reset }) => {
         />
         <Info
           title={lang.action_sidebar.maximum_available_to_generate}
-          body={`${formatter(calculatedDaiAvailable, { precision: long })} USDL`}
+          body={`${formatter(calculatedDaiAvailable, {
+            precision: long
+          })} USDL`}
         />
         <Info
           title={lang.action_sidebar.new_liquidation_price}
