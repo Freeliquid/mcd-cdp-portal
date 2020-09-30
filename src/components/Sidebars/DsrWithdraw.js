@@ -88,7 +88,7 @@ const DsrWithdraw = ({ savings, reset }) => {
           )}
         </Text.p>
         <Input
-         style={{ color: getColor('whiteText') }}
+          style={{ color: getColor('whiteText') }}
           disabled={!hasAllowance}
           type="number"
           min="0"

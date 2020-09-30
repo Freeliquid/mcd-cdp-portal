@@ -123,7 +123,7 @@ const Payback = ({ vault, reset }) => {
           {lang.action_sidebar.payback_description}
         </Text>
         <Input
-         style={{ color: getColor('whiteText') }}
+          style={{ color: getColor('whiteText') }}
           type="number"
           value={amount}
           min="0"

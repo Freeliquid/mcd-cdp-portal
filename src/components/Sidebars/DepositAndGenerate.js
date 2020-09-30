@@ -168,6 +168,7 @@ const DepositAndGenerate = ({ vault, reset }) => {
           {lang.formatString(lang.action_sidebar.deposit_description, symbol)}
         </Text>
         <Input
+        style={{ color: getColor('whiteText') }}
           type="number"
           min="0"
           value={depositAmount}

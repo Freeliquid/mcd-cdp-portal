@@ -156,7 +156,7 @@ const Send = ({ token, trackBtnClick, reset }) => {
           </Text>
         </p>
         <Input
-         style={{ color: getColor('whiteText') }}
+          style={{ color: getColor('whiteText') }}
           type="number"
           min="0"
           value={amount}
@@ -200,7 +200,7 @@ const Send = ({ token, trackBtnClick, reset }) => {
             e.target.value = tmp;
           }}
           placeholder="0x..."
-          after={<PasteAddress onClick={paste} color="cayn" />}
+          after={<PasteAddress onClick={paste} color="blue" />}
           failureMessage={destAddressFailureMessage}
           data-testid="send-address-input"
         />
