@@ -94,6 +94,7 @@ const Withdraw = ({ vault, reset }) => {
           {lang.formatString(lang.action_sidebar.withdraw_description, symbol)}
         </Text>
         <Input
+         style={{ color: getColor('whiteText') }}
           type="number"
           placeholder={`0.00 ${symbol}`}
           value={amount}

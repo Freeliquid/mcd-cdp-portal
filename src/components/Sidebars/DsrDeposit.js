@@ -79,6 +79,7 @@ const DsrDeposit = ({ savings, reset }) => {
           </Text>
         </p>
         <Input
+         style={{ color: getColor('whiteText') }}
           disabled={!hasAllowance}
           type="number"
           min="0"
