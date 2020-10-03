@@ -49,6 +49,7 @@ import { proxyRegistryProxies } from '../../src/schemas/proxyRegistry';
 import { potPie, potpie, potChi } from '../../src/schemas/pot';
 import { catIlks } from '../../src/schemas/cat';
 import { jugIlks } from '../../src/schemas/jug';
+import { rewardAmount } from '../../src/schemas/reward';
 import {
   tokenBalance,
   tokenAllowance,
@@ -108,6 +109,7 @@ beforeAll(async () => {
     tokenAllowance,
     tokenAllowanceBase,
     getCdps,
+    rewardAmount,
     ...computedSchemas
   });
   multicall.start();

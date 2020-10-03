@@ -54,7 +54,8 @@ import {
   COLLATERAL_DEBT,
   COLLATERAL_TYPE_COLLATERALIZATION,
   COLLATERAL_TYPE_DATA,
-  COLLATERAL_DEBT_AVAILABLE
+  COLLATERAL_DEBT_AVAILABLE,
+  REWARD_AMOUNT
 } from './_constants';
 import { validateAddress, validateVaultId } from './_validators';
 
@@ -411,6 +412,22 @@ export const vault = {
   }
 };
 
+
+export const walletRewardAmount = {
+  generate: address => ({
+    dependencies: [
+      [REWARD_AMOUNT, [PROXY_ADDRESS, address]]
+    ],
+    computed: (amount) => {
+      return amount;
+    }
+  }),
+  validate: {
+    args: validateAddress`Invalid address for walletRewardAmount: ${'address'}`
+  }
+};
+
+
 export const daiLockedInDsr = {
   generate: address => ({
     dependencies: [
@@ -678,5 +695,6 @@ export default {
   collateralTypeData,
   collateralTypesData,
   collateralDebtCeilings,
-  collateralDebtAvailable
+  collateralDebtAvailable,
+  walletRewardAmount
 };
