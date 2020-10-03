@@ -156,6 +156,7 @@ const Send = ({ token, trackBtnClick, reset }) => {
           </Text>
         </p>
         <Input
+          style={{ color: getColor('whiteText') }}
           type="number"
           min="0"
           value={amount}

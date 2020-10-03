@@ -101,11 +101,12 @@ const Generate = ({ vault, reset }) => {
           {lang.action_sidebar.generate_description}
         </Text>
         <Input
+          style={{ color: getColor('whiteText') }}
           type="number"
           value={amount}
           min="0"
           onChange={onAmountChange}
-          placeholder="0.00 DAI"
+          placeholder="0.00 USDL"
           failureMessage={failureMessage}
         />
         <RatioDisplay
@@ -144,7 +145,7 @@ const Generate = ({ vault, reset }) => {
       <InfoContainer>
         <Info
           title={lang.action_sidebar.maximum_available_to_generate}
-          body={`${formatter(daiAvailable, { precision: long })} DAI`}
+          body={`${formatter(daiAvailable, { precision: long })} USDL`}
         />
         <Info
           title={lang.action_sidebar.new_liquidation_price}

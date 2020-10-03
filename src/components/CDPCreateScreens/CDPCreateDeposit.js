@@ -123,7 +123,7 @@ function OpenCDPForm({
         style={{ fontSize: '14px', color: getColor('cayn') }}
         key="daiToDraw"
         name="daiToDraw"
-        after="DAI"
+        after="USDL"
         width={300}
         borderColor="#323B4F"
         type="number"
@@ -272,7 +272,7 @@ const CDPCreateDepositSidebar = ({
         ],
         [
           lang.cdp_create.max_dai_available_to_generate,
-          `${formatter(maxDaiAvailableToGenerate)} Dai`
+          `${formatter(maxDaiAvailableToGenerate)} USDL`
         ]
       ].map(([title, value]) => (
         <Grid gridRowGap="xs" key={title}>

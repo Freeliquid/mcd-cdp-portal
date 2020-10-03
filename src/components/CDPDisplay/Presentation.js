@@ -157,7 +157,7 @@ export default function({
             lang.notifications.vault_below_current_price,
             vaultType,
             `${formatter(currentCollateralNeeded)} ${gem}`,
-            `${formatter(currentDebtNeeded)} DAI`
+            `${formatter(currentDebtNeeded)} USDL`
           ),
           level: SAFETY_LEVELS.DANGER
         });
@@ -425,7 +425,7 @@ export default function({
         <CdpViewCard title={lang.cdp_page.outstanding_dai_debt}>
           <ActionContainerRow
             title={lang.cdp_page.outstanding_dai_debt}
-            value={formatter(vault.debtValue) + ' DAI'}
+            value={formatter(vault.debtValue) + ' USDL'}
             button={
               <ActionButton
                 disabled={disablePayback}
@@ -443,7 +443,7 @@ export default function({
           />
           <ActionContainerRow
             title={lang.cdp_page.available_generate}
-            value={`${formatter(vault.daiAvailable)} DAI`}
+            value={`${formatter(vault.daiAvailable)} USDL`}
             button={
               <ActionButton
                 disabled={disableGenerate}

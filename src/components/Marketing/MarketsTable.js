@@ -15,7 +15,7 @@ const Number = styled(Text)`
 `;
 
 const tokenNames = {
-  ETH: 'USDT/USDC',
+  USDTUSDC: 'USDT/USDC',
   BAT: 'USDT/USDN',
   WBTC: 'USDT/DAI',
   USDC: 'USDC/USDN',
@@ -136,8 +136,8 @@ const MarketsTable = ({ cdpTypesList, ...props }) => {
             >
               <Table.tr>
                 <td className="margin" />
-                <Table.td>
-                  {/*  <TokenIcon symbol={gem} size={31.67} /> */}
+                <Table.td style={{padding:'10px 15px 5px 35px'}}>
+                  <TokenIcon symbol={gem} size={50} />
                 </Table.td>
                 <Table.td>
                   <Text display={{ s: 'none', m: 'inline' }}>
