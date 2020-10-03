@@ -115,10 +115,9 @@ export const vaultTypeAndAddress = {
 export const vaultExternalOwner = {
   generate: id => ({
     dependencies: [
-      [PROXY_OWNER, [VAULT_OWNER, id]],
-      [VAULT_OWNER, id]
+      [PROXY_OWNER, [VAULT_OWNER, id]]
     ],
-    computed: owner => owner
+    computed: (owner) => owner
   })
 };
 
