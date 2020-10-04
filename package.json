@@ -58,8 +58,10 @@
     "react-spring": "^8.0.15",
     "react-visibility-sensor": "^5.1.1",
     "reinspect": "^1.0.1",
+    "simplex-noise": "^2.4.0",
     "styled-components": "^4.1.3",
     "styled-system": "^4.0.1",
+    "three": "^0.121.1",
     "window-scroll-manager": "^1.1.4"
   },
   "scripts": {
