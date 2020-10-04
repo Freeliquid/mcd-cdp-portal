@@ -13,7 +13,6 @@ import trezorPlugin from '@makerdao/dai-plugin-trezor-web';
 import ledgerPlugin from '@makerdao/dai-plugin-ledger-web';
 import walletLinkPlugin from '@makerdao/dai-plugin-walletlink';
 import walletConnectPlugin from '@makerdao/dai-plugin-walletconnect';
-import dcentPlugin from 'dai-plugin-dcent-web';
 import configPlugin from '@makerdao/dai-plugin-config';
 import networkConfig from './references/config';
 import { networkNameToId } from './utils/network';
@@ -76,7 +75,6 @@ export async function instantiateMaker({
       ledgerPlugin,
       [walletLinkPlugin, walletLinkPluginConfig],
       walletConnectPlugin,
-      dcentPlugin,
       [McdPlugin, mcdPluginConfig]
     ],
     smartContract: {
