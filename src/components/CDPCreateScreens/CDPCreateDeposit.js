@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Grid, Text, Input, Card } from '@makerdao/ui-components-core';
-import { DAI } from '../../libs/dai-plugin-mcd/src/index.js';
+import { USDL } from '../../libs/dai-plugin-mcd/src/index.js';
 import { greaterThanOrEqual } from 'utils/bignumber';
 import { TextBlock } from 'components/Typography';
 import {
@@ -161,7 +161,7 @@ function OpenCDPForm({
               });
             }}
           >
-            {formatter(daiAvailableToGenerate)} DAI
+            {formatter(daiAvailableToGenerate)} USDL
           </Text>
         </Box>
         <RatioDisplay
@@ -233,7 +233,7 @@ const CDPCreateDepositSidebar = ({
   let liquidationPriceDisplay = formatter(
     ilkData.calculateliquidationPrice(
       currency(cdpParams.gemsToLock || '0'),
-      DAI(cdpParams.daiToDraw || '0')
+      USDL(cdpParams.daiToDraw || '0')
     )
   );
   if ([Infinity, 'Infinity'].includes(liquidationPriceDisplay))
@@ -313,7 +313,7 @@ const CDPCreateDeposit = ({
 
   const collateralizationRatio = ilkData.calculateCollateralizationRatio(
     BigNumber(cdpParams.gemsToLock || '0'),
-    DAI(cdpParams.daiToDraw || '0')
+    USDL(cdpParams.daiToDraw || '0')
   );
 
   function handleInputChange({ target }) {

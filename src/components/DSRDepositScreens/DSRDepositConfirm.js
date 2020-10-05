@@ -17,7 +17,7 @@ import ScreenFooter from '../ScreenFooter';
 import ScreenHeader from '../ScreenHeader';
 import { prettifyNumber } from 'utils/ui';
 import { TxLifecycle } from 'utils/constants';
-import { DAI } from '../../libs/dai-plugin-mcd/src/index.js';
+import { USDL } from '../../libs/dai-plugin-mcd/src/index.js';
 
 import { ReactComponent as ExternalLinkIcon } from 'images/external-link.svg';
 import { ReactComponent as SpaceshipIllustration } from 'images/spaceship.svg';
@@ -197,7 +197,7 @@ const DSRDepositConfirm = ({ dispatch, onClose, depositAmount, txState }) => {
     const { type } = payload;
     if (type !== 'increment-step') return dispatch(payload);
 
-    const txObject = maker.service('mcd:savings').join(DAI(depositAmount));
+    const txObject = maker.service('mcd:savings').join(USDL(depositAmount));
 
     const txMgr = maker.service('transactionManager');
     txMgr.listen(txObject, {

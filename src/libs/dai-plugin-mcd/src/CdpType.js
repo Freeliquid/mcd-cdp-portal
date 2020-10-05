@@ -1,7 +1,7 @@
 import assert from 'assert';
 import { ServiceRoles } from './constants';
 import { stringToBytes } from './utils';
-import { DAI, ETH, WETH } from './index';
+import { USDL, ETH, WETH } from './index';
 import * as math from './math';
 
 export default class CdpType {
@@ -28,7 +28,7 @@ export default class CdpType {
 
   get totalDebt() {
     const { Art, rate } = this._getCached('vatInfo');
-    return DAI.wei(Art)
+    return USDL.wei(Art)
       .times(rate)
       .shiftedBy(-27);
   }

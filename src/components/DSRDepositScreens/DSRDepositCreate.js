@@ -88,9 +88,9 @@ function DepositDaiForm({
 const DSRDepositCreate = ({ dispatch, onClose }) => {
   const { lang } = useLanguage();
   const balances = useWalletBalances();
-  const { DAI } = balances;
-  const daiBalance = DAI.toFixed(6);
-  const { hasSufficientAllowance } = useTokenAllowance('DAI');
+  const { USDL } = balances;
+  const daiBalance = USDL.toFixed(6);
+  const { hasSufficientAllowance } = useTokenAllowance('USDL');
 
   const [
     depositAmount,
@@ -102,7 +102,7 @@ const DSRDepositCreate = ({ dispatch, onClose }) => {
     {
       isFloat: true,
       minFloat: 0.0,
-      maxFloat: DAI && DAI.toNumber(),
+      maxFloat: USDL && USDL.toNumber(),
       custom: {
         allowanceInvalid: value => !hasSufficientAllowance(value)
       }
@@ -116,12 +116,12 @@ const DSRDepositCreate = ({ dispatch, onClose }) => {
   );
 
   const setDepositMax = useCallback(() => {
-    if (DAI) {
-      setDepositAmount(DAI.toNumber().toString());
+    if (USDL) {
+      setDepositAmount(USDL.toNumber().toString());
     } else {
       setDepositAmount('0');
     }
-  }, [DAI, setDepositAmount]);
+  }, [USDL, setDepositAmount]);
   return (
     <Box
       maxWidth="1040px"

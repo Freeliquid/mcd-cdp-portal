@@ -140,9 +140,9 @@ function Overview({ viewedAddress }) {
             gridTemplateColumns={{ s: '1fr', xl: 'auto auto 1fr' }}
             gridColumnGap="m"
             gridRowGap="s"
-            
+
           >
-            <InfoCard 
+            <InfoCard
               title={lang.overview_page.total_collateral_locked}
               amount={`$${viewedAddressVaults
                 .reduce(
@@ -152,7 +152,7 @@ function Overview({ viewedAddress }) {
                 .toBigNumber()
                 .toFixed(2)}`}
               denom={'USD'}
-              
+
             />
             <InfoCard
               title={lang.overview_page.total_dai_debt}
@@ -160,7 +160,7 @@ function Overview({ viewedAddress }) {
                 .reduce((acc, { debtValue }) => debtValue.plus(acc), 0)
                 .toBigNumber()
                 .toFixed(2)}`}
-              denom={'DAI'}
+              denom={'USDL'}
             />
           </Grid>
           <Box>
@@ -179,7 +179,7 @@ function Overview({ viewedAddress }) {
               <Table
                 width="100%"
                 variant="cozy"
-               
+
                 css={`
                   td,
                   th {
@@ -275,7 +275,7 @@ function Overview({ viewedAddress }) {
                         </Table.td>
                         <Table.td display={{ s: 'none', xl: 'table-cell' }}>
                           <Text t="caption" >
-                            {debtValue.toBigNumber().toFixed(2)} DAI
+                            {debtValue.toBigNumber().toFixed(2)} USDL
                           </Text>
                         </Table.td>
                         <Table.td>

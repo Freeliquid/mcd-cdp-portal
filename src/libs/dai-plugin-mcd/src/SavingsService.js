@@ -1,6 +1,6 @@
 import { PublicService } from '@makerdao/services-core';
 import { ServiceRoles } from './constants';
-import { DAI } from './index';
+import { USDL } from './index';
 import BigNumber from 'bignumber.js';
 import { RAY, WAD, SECONDS_PER_YEAR } from './constants';
 import tracksTransactions from './utils/tracksTransactions';
@@ -55,13 +55,13 @@ export default class SavingsService extends PublicService {
   async balance() {
     const proxy = await this.get('proxy').currentProxy();
 
-    return proxy ? this.balanceOf(proxy) : DAI(0);
+    return proxy ? this.balanceOf(proxy) : USDL(0);
   }
 
   async balanceOf(guy) {
     const slice = new BigNumber(await this._pot.pie(guy));
     const chi = await this.chi();
-    return DAI(
+    return USDL(
       slice
         .times(chi)
         .div(WAD)
@@ -72,7 +72,7 @@ export default class SavingsService extends PublicService {
   async getTotalDai() {
     const totalPie = new BigNumber(await this._pot.Pie());
     const chi = await this.chi();
-    return DAI(
+    return USDL(
       totalPie
         .times(chi)
         .div(WAD)
@@ -98,7 +98,7 @@ export default class SavingsService extends PublicService {
   }
 
   get _daiAdapterAddress() {
-    return this.get(ServiceRoles.SYSTEM_DATA).adapterAddress('DAI');
+    return this.get(ServiceRoles.SYSTEM_DATA).adapterAddress('USDL');
   }
 
   getEventHistory(address) {
@@ -119,7 +119,7 @@ export default class SavingsService extends PublicService {
       if (type === 'DSR_WITHDRAW') sum = sum.minus(amount);
     });
     const balance = await this.balanceOf(address);
-    return balance.gt(sum) ? balance.minus(sum) : DAI(0);
+    return balance.gt(sum) ? balance.minus(sum) : USDL(0);
   }
 
   resetEventHistoryCache(address = null) {

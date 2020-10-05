@@ -15,12 +15,12 @@ const Number = styled(Text)`
 `;
 
 const tokenNames = {
-  USDTUSDC: 'USDT/USDC',
-  BAT: 'USDT/USDN',
-  WBTC: 'USDT/DAI',
-  USDC: 'USDC/USDN',
-  MANA: 'USDC/DAI',
-  ZRX: 'USDN/DAI'
+  USDTUSDC: 'USDT/USDC'
+  // BAT: 'USDT/USDN',
+  // WBTC: 'USDT/DAI',
+  // USDC: 'USDC/USDN',
+  // MANA: 'USDC/DAI',
+  // ZRX: 'USDN/DAI'
 };
 
 const MarketsTableStyle = styled(Table)`

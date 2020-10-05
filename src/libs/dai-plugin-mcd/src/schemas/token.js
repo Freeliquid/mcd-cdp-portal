@@ -11,16 +11,16 @@ export const ALLOWANCE_AMOUNT = BigNumber(
 export const tokenBalance = {
   generate: (address, symbol) => {
     if (symbol === 'WETH') symbol = 'WETH';
-    if (symbol === 'DAI') symbol = 'DAI';
+    if (symbol === 'USDL') symbol = 'USDL';
 
     const currencyToken = getMcdToken(symbol);
     const contract =
-      symbol === 'DAI' ? 'MCD_DAI' : symbol === 'WETH' ? 'ETH' : symbol;
+      symbol === 'USDL' ? 'MCD_DAI' : symbol === 'WETH' ? 'ETH' : symbol;
     if (!currencyToken)
       throw new Error(`${symbol} token is not part of the default tokens list`);
-    if (symbol === 'DSR-DAI')
+    if (symbol === 'DSR-USDL')
       throw new Error(
-        "Balance of DAI in savings cannot be retrieved from a token contract call. To get DAI balance in savings call 'balance('DSR-DAI')'"
+        "Balance of USDL in savings cannot be retrieved from a token contract call. To get USDL balance in savings call 'balance('DSR-USDL')'"
       );
 
     return {
@@ -57,12 +57,12 @@ export const tokenBalances = {
 
 export const tokenAllowanceBase = {
   generate: (address, proxyAddress, symbol) => {
-    if (symbol === 'ETH' || symbol === 'DSR-DAI')
+    if (symbol === 'ETH' || symbol === 'DSR-USDL')
       throw new Error(`${symbol} does not require an allowance to be set`);
 
     const currencyToken = getMcdToken(symbol);
     const contract =
-      symbol === 'DAI' ? 'MCD_DAI' : symbol === 'WETH' ? 'ETH' : symbol;
+      symbol === 'USDL' ? 'MCD_DAI' : symbol === 'WETH' ? 'ETH' : symbol;
     if (!currencyToken)
       throw new Error(`${symbol} token is not part of the default tokens list`);
 

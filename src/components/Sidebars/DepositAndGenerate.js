@@ -9,7 +9,7 @@ import useWalletBalances from 'hooks/useWalletBalances';
 import useTokenAllowance from 'hooks/useTokenAllowance';
 import Info from './shared/Info';
 import InfoContainer from './shared/InfoContainer';
-import { DAI } from '../../libs/dai-plugin-mcd/src/index.js';
+import { USDL } from '../../libs/dai-plugin-mcd/src/index.js';
 import { getCurrency } from 'utils/cdp';
 import BigNumber from 'bignumber.js';
 import { decimalRules } from '../../styles/constants';
@@ -21,8 +21,8 @@ const { long, medium } = decimalRules;
 export function calcDaiAvailable(collateralValue, debtValue, liquidationRatio) {
   const maxSafeDebtValue = collateralValue.div(liquidationRatio);
   return debtValue.lt(maxSafeDebtValue)
-    ? DAI(maxSafeDebtValue.minus(debtValue))
-    : DAI(0);
+    ? USDL(maxSafeDebtValue.minus(debtValue))
+    : USDL(0);
 }
 
 const DepositAndGenerate = ({ vault, reset }) => {
@@ -150,7 +150,7 @@ const DepositAndGenerate = ({ vault, reset }) => {
         vault.id,
         vaultType,
         currency(depositAmount),
-        DAI(generateAmount)
+        USDL(generateAmount)
       );
     reset();
   };

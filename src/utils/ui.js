@@ -93,7 +93,7 @@ export function firstLetterLowercase(str) {
 }
 
 export function cleanSymbol(s) {
-  if (s === 'DSR-DAI') return 'DAI';
+  if (s === 'DSR-USDL') return 'USDL';
   return s;
 }
 

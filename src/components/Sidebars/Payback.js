@@ -1,5 +1,5 @@
 import React from 'react';
-import { DAI } from '../../libs/dai-plugin-mcd/src/index.js';
+import { USDL } from '../../libs/dai-plugin-mcd/src/index.js';
 import { Text, Input, Grid, Button } from '@makerdao/ui-components-core';
 import debug from 'debug';
 import { getColor } from '../../styles/theme';
@@ -32,9 +32,9 @@ const Payback = ({ vault, reset }) => {
   const { lang } = useLanguage();
   const { maker } = useMaker();
   const balances = useWalletBalances();
-  const daiBalance = balances.DAI;
+  const daiBalance = balances.USDL;
 
-  const { hasAllowance, hasSufficientAllowance } = useTokenAllowance('DAI');
+  const { hasAllowance, hasSufficientAllowance } = useTokenAllowance('USDL');
   const { hasProxy } = useProxy();
 
   let { debtValue, debtFloor, collateralAmount } = vault;
@@ -96,7 +96,7 @@ const Payback = ({ vault, reset }) => {
     else log('Calling wipe()');
     wipeAll
       ? cdpManager.wipeAll(vault.id, owner)
-      : cdpManager.wipe(vault.id, DAI(amount), owner);
+      : cdpManager.wipe(vault.id, USDL(amount), owner);
     reset();
   };
 
@@ -106,12 +106,12 @@ const Payback = ({ vault, reset }) => {
   const liquidationPrice = undercollateralized
     ? BigNumber(0)
     : vault.calculateLiquidationPrice({
-        debtValue: DAI(debtValue.minus(amountToPayback))
+        debtValue: USDL(debtValue.minus(amountToPayback))
       });
   const collateralizationRatio = undercollateralized
     ? Infinity
     : vault.calculateCollateralizationRatio({
-        debtValue: DAI(debtValue.minus(amountToPayback))
+        debtValue: USDL(debtValue.minus(amountToPayback))
       });
   return (
     <Grid gridRowGap="m">
@@ -144,7 +144,7 @@ const Payback = ({ vault, reset }) => {
           }
         />
       </Grid>
-      <ProxyAllowanceToggle token="DAI" trackBtnClick={trackBtnClick} />
+      <ProxyAllowanceToggle token="USDL" trackBtnClick={trackBtnClick} />
       <Grid gridTemplateColumns="1fr 1fr" gridColumnGap="s">
         <Button
           disabled={!valid}

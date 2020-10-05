@@ -1,6 +1,6 @@
 import React from 'react';
 import BigNumber from 'bignumber.js';
-import { DAI } from '../../libs/dai-plugin-mcd/src/index.js';
+import { USDL } from '../../libs/dai-plugin-mcd/src/index.js';
 import { Text, Input, Grid, Button } from '@makerdao/ui-components-core';
 import Info from './shared/Info';
 import InfoContainer from './shared/InfoContainer';
@@ -60,7 +60,7 @@ const Withdraw = ({ vault, reset }) => {
   const withdraw = () => {
     maker
       .service('mcd:cdpManager')
-      .wipeAndFree(vault.id, vaultType, DAI(0), currency(amountToWithdraw));
+      .wipeAndFree(vault.id, vaultType, USDL(0), currency(amountToWithdraw));
     reset();
   };
 

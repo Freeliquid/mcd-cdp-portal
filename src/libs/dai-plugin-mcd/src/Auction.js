@@ -1,11 +1,11 @@
 import { WAD } from './constants';
 import BigNumber from 'bignumber.js';
-import { DAI } from './index';
+import { USDL } from './index';
 
 export default class Auction {
   constructor(ilk, smartContractService) {
     switch (ilk) {
-      case DAI.symbol:
+      case USDL.symbol:
         this.contract = smartContractService.getContract('MCD_FLAP');
         break;
       case 'MKR':
