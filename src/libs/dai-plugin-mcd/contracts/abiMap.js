@@ -45,5 +45,5 @@ module.exports = {
   TUSD: require('./abis/DSToken.json'),
   MANA: require('./abis/DSToken.json'),
   USDTUSDC: require('./abis/DSToken.json'),
-  FL_REWARDER: require('./abis/Cat.json'),
+  FL_REWARDER: require('./abis/StakingRewards.json')
 };
