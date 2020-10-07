@@ -98,7 +98,7 @@ export async function instantiateMaker({
 
   // Use the config plugin, if we have a testchainConfigId
   if (testchainId) {
-    console.log('testchainId mode is not unsupported:'+testchainId)
+    console.log('testchainId mode is not unsupported:' + testchainId);
     throw new Error('testchainId mode is not unsupported.');
   } else if (!rpcUrl) {
     if (config.provider.type === 'HTTP')
