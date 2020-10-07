@@ -208,14 +208,14 @@ export default {
       'Dai 是如现金一样的稳定币，免于加密货币市场的波动。',
     feature3_heading: '透明的利率',
     feature3_content:
-      'Dai 的利率是通过 MKR 持有者基于市场供需调节的。',
+      'Dai 的利率是通过 FL 持有者基于市场供需调节的。',
     feature4_heading: '安全可靠',
     feature4_content:
       '多方安全审计，Maker 团队开发',
     questions: {
       question1: 'Dai 存款利率是如何决定的？',
       answer1:
-        'Dai 存款利率是通过 MKR 持有者治理决定的。主要参考一系列参数，包括 Dai 的供需情况以及稳定费用水平。',
+        'Dai 存款利率是通过 FL 持有者治理决定的。主要参考一系列参数，包括 Dai 的供需情况以及稳定费用水平。',
       question2: 'Dai 的收益来源是什么？',
       answer2:
         'Dai 存款利率的收益直接来自于 Maker 协议中对借 Dai 金库收取的全局稳定费用。',
@@ -423,11 +423,11 @@ export default {
   cdp_migrate: {
     select_title: '选择要映射的金库',
     select_text:
-      '选择要映射的 CDP，用 USDL 或 MKR 偿还稳定费，映射到多抵押 Dai 和新的 CDP 面板。',
+      '选择要映射的 CDP，用 USDL 或 FL 偿还稳定费，映射到多抵押 Dai 和新的 CDP 面板。',
     current_ratio: '当前比率',
     dai_debt: '借 Dai 额',
     fee_in_dai: '以 USDL 计价的稳定费',
-    fee_in_mkr: '以 MKR 计价的稳定费',
+    fee_in_mkr: '以 FL 计价的稳定费',
     migrate: '映射',
     payment: '支付',
     trust_site_with_dai: '信任当前网站',

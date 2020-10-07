@@ -1,4 +1,4 @@
-import { MKR } from '../../src/eth/Currency';
+import { FL } from '../../src/eth/Currency';
 import accounts from '@makerdao/test-helpers/src/testAccounts.json';
 
 export async function setProxyAccount(service, account) {
@@ -34,8 +34,8 @@ export async function setNewAccount(service) {
 }
 
 export async function transferMkr(service, address) {
-  const mkr = service.get('token').getToken(MKR);
-  await mkr.transfer(address, MKR(1));
+  const mkr = service.get('token').getToken(FL);
+  await mkr.transfer(address, FL(1));
 }
 
 export async function setExistingAccount(service, name) {

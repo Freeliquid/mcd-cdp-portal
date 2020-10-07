@@ -2,7 +2,7 @@ import { buildTestEthereumTokenService } from '../helpers/serviceBuilders';
 import TestAccountProvider from '@makerdao/test-helpers/src/TestAccountProvider';
 import { mineBlocks } from '@makerdao/test-helpers';
 import TransactionState from '../../src/eth/TransactionState';
-import { ETH, MKR, WETH } from '../../src/eth/Currency';
+import { ETH, FL, WETH } from '../../src/eth/Currency';
 
 let service, mkr, testAddress;
 
@@ -17,7 +17,7 @@ describe('normal web service behavior', () => {
   beforeEach(async () => {
     service = buildTestEthereumTokenService();
     await service.manager().authenticate();
-    mkr = service.getToken(MKR);
+    mkr = service.getToken(FL);
     testAddress = TestAccountProvider.nextAddress();
   });
 

@@ -1,5 +1,5 @@
 export default {
-  MKR: 'MKR',
+  FL: 'FL',
   WETH: 'WETH',
   PETH: 'PETH',
   ETH: 'ETH'

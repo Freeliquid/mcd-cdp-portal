@@ -38,7 +38,7 @@ export function contractAddressesInfo(addresses) {
         decimals: 18
       }
     ],
-    [tokens.MKR]: [
+    [tokens.FL]: [
       {
         version: 1,
         address:

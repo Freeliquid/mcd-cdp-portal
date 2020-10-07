@@ -16,8 +16,8 @@ Maker's entire suite of contracts will eventually be accessible through this lib
 - Locking and unlocking collateral
 - Withdrawing and repaying Dai
 - Automated token conversions
-- Token contract functionality for WETH, PETH, MKR, Dai, and ETH
-- Buying and selling MKR and Dai with built-in DEX integration
+- Token contract functionality for WETH, PETH, FL, Dai, and ETH
+- Buying and selling FL and Dai with built-in DEX integration
 
 ## Usage
 

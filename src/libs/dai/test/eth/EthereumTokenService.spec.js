@@ -1,6 +1,6 @@
 import { buildTestEthereumTokenService } from '../helpers/serviceBuilders';
 import tokens from '../../contracts/tokens';
-import { MKR } from '../../src/eth/Currency';
+import { FL } from '../../src/eth/Currency';
 
 let ethereumTokenService;
 
@@ -11,20 +11,20 @@ beforeAll(async () => {
 
 test('getTokens returns tokens', () => {
   const tokensList = ethereumTokenService.getTokens();
-  expect(tokensList.includes(tokens.MKR)).toBe(true);
+  expect(tokensList.includes(tokens.FL)).toBe(true);
 });
 
 test('getToken returns token object of correct version', () => {
   expect(
-    ethereumTokenService.getToken(tokens.MKR)._contract.address.toUpperCase()
+    ethereumTokenService.getToken(tokens.FL)._contract.address.toUpperCase()
   ).toBe(
-    ethereumTokenService.getToken(tokens.MKR, 2)._contract.address.toUpperCase()
+    ethereumTokenService.getToken(tokens.FL, 2)._contract.address.toUpperCase()
   );
 
   expect(
-    ethereumTokenService.getToken(tokens.MKR)._contract.address.toUpperCase()
+    ethereumTokenService.getToken(tokens.FL)._contract.address.toUpperCase()
   ).not.toBe(
-    ethereumTokenService.getToken(tokens.MKR, 1)._contract.address.toUpperCase()
+    ethereumTokenService.getToken(tokens.FL, 1)._contract.address.toUpperCase()
   );
 });
 
@@ -33,8 +33,8 @@ test('getToken throws when given unknown token symbol', () => {
 });
 
 test('getToken works with Currency', () => {
-  const token = ethereumTokenService.getToken(MKR);
-  expect(token.symbol).toBe('MKR');
+  const token = ethereumTokenService.getToken(FL);
+  expect(token.symbol).toBe('FL');
 });
 
 test('_getTokenInfo returns token address for current network', () => {

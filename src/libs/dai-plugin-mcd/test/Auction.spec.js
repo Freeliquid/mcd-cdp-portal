@@ -1,7 +1,7 @@
 import { mcdMaker } from './helpers';
 import { ServiceRoles } from '../src/constants';
 
-const scenarios = [['ETH-A'], ['DAI'], ['MKR']];
+const scenarios = [['USDTUSDC-A'], ['USDL'], ['FL']];
 
 /*
   The following arrays are expected values for each tested
@@ -10,8 +10,8 @@ const scenarios = [['ETH-A'], ['DAI'], ['MKR']];
 */
 const systemData = {
   'ETH-A': [1, 0.01],
-  DAI: [3, 0.05],
-  MKR: [3, 0.05]
+  USDL: [3, 0.05],
+  FL: [3, 0.05]
 };
 
 describe.each(scenarios)('%s', ilk => {

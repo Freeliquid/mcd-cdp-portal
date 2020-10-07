@@ -51,7 +51,6 @@ let addContracts = reduce(
 );
 
 export const ETH = createCurrency('ETH');
-export const MKR = createCurrency('MKR');
 export const USD = createCurrency('USD');
 export const USD_ETH = createCurrencyRatio(USD, ETH);
 
@@ -63,8 +62,6 @@ export const DSR_USDL = createCurrency('DSR-USDL');
 export const USDT = createCurrency('USDT');
 
 export const USDTUSDC = createCurrency('USDTUSDC');
-
-
 
 export const REP = createCurrency('REP');
 export const ZRX = createCurrency('ZRX');
@@ -80,9 +77,7 @@ export const MANA = createCurrency('MANA');
 export const FL = createCurrency('FL');
 export const USDL = createCurrency('USDL');
 
-export const defaultCdpTypes = [
-  { currency: USDTUSDC, ilk: 'USDTUSDC-A' }
-];
+export const defaultCdpTypes = [{ currency: USDTUSDC, ilk: 'USDTUSDC-A' }];
 
 export const SAI = createCurrency('SAI');
 
