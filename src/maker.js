@@ -13,7 +13,6 @@ import trezorPlugin from '@makerdao/dai-plugin-trezor-web';
 import ledgerPlugin from '@makerdao/dai-plugin-ledger-web';
 import walletLinkPlugin from '@makerdao/dai-plugin-walletlink';
 import walletConnectPlugin from '@makerdao/dai-plugin-walletconnect';
-import configPlugin from '@makerdao/dai-plugin-config';
 import networkConfig from './references/config';
 import { networkNameToId } from './utils/network';
 import { getQueryParamByName } from './utils/dev';
@@ -33,7 +32,6 @@ const otherNetworksOverrides = [
   { network: 'goerli', contracts: goerliAddresses },
   { network: 'ropsten', contracts: ropstenAddresses },
   { network: 'testnet', contracts: testnetAddresses }
-
 ].reduce((acc, { network, contracts }) => {
   for (const [contractName, contractAddress] of Object.entries(contracts)) {
     if (!acc[contractName]) acc[contractName] = {};
@@ -100,8 +98,8 @@ export async function instantiateMaker({
 
   // Use the config plugin, if we have a testchainConfigId
   if (testchainId) {
-    delete config.provider;
-    config.plugins.push([configPlugin, { testchainId, backendEnv }]);
+    console.log('testchainId mode is not unsupported:'+testchainId)
+    throw new Error('testchainId mode is not unsupported.');
   } else if (!rpcUrl) {
     if (config.provider.type === 'HTTP')
       rpcUrl = networkConfig.rpcUrls[networkNameToId(network)];
