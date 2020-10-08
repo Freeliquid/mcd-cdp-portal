@@ -2,12 +2,14 @@ import React, { useMemo } from 'react';
 import SidebarFeeds from 'components/SidebarFeeds';
 import SidebarSystem from 'components/SidebarSystem';
 import SidebarDetails from 'components/SidebarDetails';
+import GetReward from './GetReward';
 import { Box, Grid } from '@makerdao/ui-components-core';
 import { useCurrentRoute } from 'react-navi';
 import { Routes } from 'utils/constants';
 import useCdpTypes from 'hooks/useCdpTypes';
 import { watch } from 'hooks/useObservable';
 import { getColor } from 'styles/theme';
+import useMaker from 'hooks/useMaker';
 
 const SidebarGlobalPanel = () => {
   const { cdpTypesList } = useCdpTypes();
@@ -18,6 +20,9 @@ const SidebarGlobalPanel = () => {
   const annualDaiSavingsRate = watch.annualDaiSavingsRate();
   const systemCollateralization = watch.systemCollateralization(cdpTypesList);
 
+  const { account } = useMaker();
+  const rewardAmount = watch.walletRewardAmount(account?.address);
+
   const { url } = useCurrentRoute();
   const routeIsBorrow = url.pathname.startsWith(`/${Routes.BORROW}`);
   const routeIsSave = url.pathname.startsWith(`/${Routes.SAVE}`);
@@ -27,6 +32,7 @@ const SidebarGlobalPanel = () => {
       <Box>
         <Grid gridRowGap="s">
           {routeIsBorrow && <SidebarFeeds feeds={prices} />}
+          {routeIsBorrow && <GetReward rewardAmount={rewardAmount} />}
           {routeIsBorrow && (
             <SidebarSystem
               system={{

@@ -11,13 +11,21 @@ import CdpManager from './CdpManager';
 import SavingsService from './SavingsService';
 import CdpTypeService from './CdpTypeService';
 import AuctionService from './AuctionService';
+import RewardService from './RewardService';
 import SystemDataService from './SystemDataService';
 import { ServiceRoles as ServiceRoles_ } from './constants';
 import BigNumber from 'bignumber.js';
 import wethAbi from '../contracts/abis/WETH9.json';
 
 export const ServiceRoles = ServiceRoles_;
-const { CDP_MANAGER, CDP_TYPE, SYSTEM_DATA, AUCTION, SAVINGS } = ServiceRoles;
+const {
+  CDP_MANAGER,
+  CDP_TYPE,
+  SYSTEM_DATA,
+  AUCTION,
+  SAVINGS,
+  REWARDS
+} = ServiceRoles;
 
 // look up contract ABIs using abiMap.
 // if an exact match is not found, prefix-match against keys ending in *, e.g.
@@ -137,12 +145,14 @@ export const McdPlugin = {
         CDP_TYPE,
         AUCTION,
         SYSTEM_DATA,
-        SAVINGS
+        SAVINGS,
+        REWARDS
       ],
       [CDP_TYPE]: [CdpTypeService, { cdpTypes, prefetch }],
       [CDP_MANAGER]: CdpManager,
       [SAVINGS]: SavingsService,
       [AUCTION]: AuctionService,
+      [REWARDS]: RewardService,
       [SYSTEM_DATA]: SystemDataService
     };
   }

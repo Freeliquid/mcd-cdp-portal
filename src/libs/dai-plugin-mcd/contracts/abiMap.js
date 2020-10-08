@@ -38,6 +38,7 @@ module.exports = {
   'PIP_*': require('./abis/DSValue.json'),
   PROXY_ACTIONS: require('./abis/DssProxyActions.json'),
   PROXY_ACTIONS_DSR: require('./abis/DssProxyActionsDsr.json'),
+  PROXY_ACTIONS_REWARD: require('./abis/RewardProxyActions.json'),
   MIGRATION: require('./abis/ScdMcdMigration.json'),
   MIGRATION_PROXY_ACTIONS: require('./abis/MigrationProxyActions.json'),
   USDC: require('./abis/USDC.json'),
