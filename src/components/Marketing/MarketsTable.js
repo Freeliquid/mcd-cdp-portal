@@ -15,12 +15,12 @@ const Number = styled(Text)`
 `;
 
 const tokenNames = {
-  USDTUSDC: 'USDT/USDC'
-  // BAT: 'USDT/USDN',
-  // WBTC: 'USDT/DAI',
-  // USDC: 'USDC/USDN',
-  // MANA: 'USDC/DAI',
-  // ZRX: 'USDN/DAI'
+  USDTUSDC: 'USDT/USDC',
+  /* BAT: 'USDT/USDN',
+  WBTC: 'USDT/DAI',
+  USDC: 'USDC/USDN',
+  MANA: 'USDC/DAI',
+  ZRX: 'USDN/DAI' */
 };
 
 const MarketsTableStyle = styled(Table)`
@@ -59,19 +59,19 @@ const MarketsTableStyle = styled(Table)`
   }
 
   ${Table.thead}, .summary:not(:nth-last-child(2)) {
-    border-bottom: 1px solid #e8e8e8;
+    border-bottom: 1px solid #323B4F;
   }
 
   ${Table.td} {
     padding-top: 14px;
     padding-bottom: 13px;
     text-align: center;
-    border-bottom: 1px solid #e8e8e8;
+    border-bottom: 1px solid #323B4F;
   }
 
   @media (max-width: ${props => props.theme.breakpoints.m}) {
     ${Table.td}, ${Table.th} {
-      padding-right: 6px;
+     
     }
   }
 `;
@@ -136,7 +136,7 @@ const MarketsTable = ({ cdpTypesList, ...props }) => {
             >
               <Table.tr>
                 <td className="margin" />
-                <Table.td style={{padding:'10px 15px 5px 35px'}}>
+                <Table.td style={{ padding: '10px 15px 5px 35px' }}>
                   <TokenIcon symbol={gem} size={50} />
                 </Table.td>
                 <Table.td>

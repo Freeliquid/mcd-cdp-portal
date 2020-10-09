@@ -168,6 +168,7 @@ const DepositAndGenerate = ({ vault, reset }) => {
         <Text t="body">
           {lang.formatString(lang.action_sidebar.deposit_description, symbol)}
         </Text>
+        <div className="input_border">
         <Input
           style={{ color: getColor('whiteText') }}
           type="number"
@@ -178,8 +179,9 @@ const DepositAndGenerate = ({ vault, reset }) => {
           failureMessage={depositFailureMessage}
           data-testid="deposit-input"
         />
-
+        </div>
         <Text.p t="body">{lang.action_sidebar.generate_description}</Text.p>
+        <div className="input_border">
         <Input
           type="number"
           value={generateAmount}
@@ -188,12 +190,13 @@ const DepositAndGenerate = ({ vault, reset }) => {
           placeholder="0.00 USDL"
           failureMessage={generateFailureMessage}
         />
+        </div>
       </Grid>
       <Grid gridTemplateColumns="1fr 1fr" gridColumnGap="s">
-        <Button disabled={actionDisabled} onClick={depositAndGenerate}>
+        <Button className="btn" disabled={actionDisabled} onClick={depositAndGenerate}>
           {lang.actions.generate}
         </Button>
-        <Button variant="secondary-outline" onClick={reset}>
+        <Button  className="btn" variant="secondary-outline" onClick={reset}>
           {lang.cancel}
         </Button>
       </Grid>

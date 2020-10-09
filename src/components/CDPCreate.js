@@ -136,7 +136,7 @@ function CDPCreate({ onClose }) {
   };
 
   return (
-    <StepperUI
+    <StepperUI 
       step={step}
       steps={screens.map(([title]) => title)}
       renderStepperHeader={() => <StepperHeader onClose={onClose} />}

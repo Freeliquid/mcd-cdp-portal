@@ -1,7 +1,7 @@
 import React from 'react';
 import BigNumber from 'bignumber.js';
 import { USDL } from '../../libs/dai-plugin-mcd/src/index.js';
-import { Text, Input, Grid, Button } from '@makerdao/ui-components-core';
+import { Text, Grid, Button, Card, Flex, CardBody } from '@makerdao/ui-components-core';
 import Info from './shared/Info';
 import InfoContainer from './shared/InfoContainer';
 import RatioDisplay, { RatioDisplayTypes } from 'components/RatioDisplay';
@@ -29,37 +29,54 @@ const GetReward = ({ rewardAmount }) => {
   };
 
   return (
-    <Grid gridRowGap="m">
-      <Grid gridRowGap="s">
-        <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
-          "Get reward"
+    <Card
+      pt="sm"
+      style={{
+        background: getColor('cardBg'),
+        borderColor: getColor('border')
+      }}
+    >
+    <Flex justifyContent="space-between" alignContent="center" px="s" pt="">
+        <Text t="h4" style={{color: getColor('whiteText'), paddingBottom:'10px'}}>
+        {lang.sidebar.reward}
         </Text>
-      </Grid>
-      <Grid gridTemplateColumns="1fr 1fr" gridColumnGap="s">
-        <Button
+      </Flex>
+      <CardBody>
+      <Flex
+                  justifyContent="space-between"
+                  alignItems="baseline"
+                  width="100%"
+                  py="xs"
+                  px="s"
+                  bg={'#1c2334'}
+                  color="#A3B2CF"
+                >
+                  <Text fontWeight="semibold" t="smallCaps" color="#A3B2CF">
+                  {lang.sidebar.reward_info}
+                  </Text>
+                  <Text fontSize="1.4rem" style={{color: getColor('greyText')}}>
+                  {`${formatter(rewardAmount, { precision: long })} FL`}
+                  </Text>
+                </Flex>
+      </CardBody>
+      <Button className="btn btn_center"
+          style={{ margin: '10px auto' }}
           disabled={!rewardAmount}
           onClick={() => {
             generate();
           }}
         >
-          "Get Reward"
+          {lang.sidebar.reward_button}
         </Button>
-        <Button
+        {/* <Button className="btn"
           variant="secondary-outline"
           onClick={() => {
             reset();
           }}
         >
           {lang.cancel}
-        </Button>
-      </Grid>
-      <InfoContainer>
-        <Info
-          title="Reward to claim"
-          body={`${formatter(rewardAmount, { precision: long })} FL`}
-        />
-      </InfoContainer>
-    </Grid>
+        </Button> */}
+    </Card>
   );
 };
 export default GetReward;

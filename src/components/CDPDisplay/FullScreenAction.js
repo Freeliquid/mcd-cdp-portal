@@ -25,6 +25,7 @@ export default function FullScreenAction({ type, reset, props }) {
       height="100%"
       overflow="scroll"
       style={{
+       
         background: getColor('cardBg'),
         borderColor: getColor('border'),
         top: '0',

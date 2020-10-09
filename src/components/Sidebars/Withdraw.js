@@ -83,7 +83,7 @@ const Withdraw = ({ vault, reset }) => {
 
   return (
     <Grid gridRowGap="m">
-      <Grid gridRowGap="s">
+      <Grid gridRowGap="s" className="input_des">
         <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
           {lang.formatString(lang.action_sidebar.withdraw_title, symbol)}
         </Text>
@@ -93,6 +93,7 @@ const Withdraw = ({ vault, reset }) => {
         >
           {lang.formatString(lang.action_sidebar.withdraw_description, symbol)}
         </Text>
+        <div className="input_border">
         <Input
           style={{ color: getColor('whiteText') }}
           type="number"
@@ -102,7 +103,7 @@ const Withdraw = ({ vault, reset }) => {
           onChange={onAmountChange}
           after={
             parseFloat(debtAmount) === 0 ? (
-              <SetMax
+              <SetMax style={{ color: getColor('greyText') }}
                 onClick={() => {
                   setMax();
                   trackBtnClick('SetMax', {
@@ -115,6 +116,7 @@ const Withdraw = ({ vault, reset }) => {
           }
           failureMessage={amountErrors}
         />
+        </div>
         <RatioDisplay
           type={RatioDisplayTypes.CARD}
           ratio={formatter(collateralizationRatio)}
@@ -126,7 +128,7 @@ const Withdraw = ({ vault, reset }) => {
         />
       </Grid>
       <Grid gridTemplateColumns="1fr 1fr" gridColumnGap="s">
-        <Button
+        <Button className="btn"
           disabled={!amount || amountErrors}
           onClick={() => {
             trackBtnClick('Confirm', {
@@ -138,7 +140,7 @@ const Withdraw = ({ vault, reset }) => {
         >
           {lang.actions.withdraw}
         </Button>
-        <Button
+        <Button className="btn"
           variant="secondary-outline"
           onClick={() => {
             trackBtnClick('Cancel');

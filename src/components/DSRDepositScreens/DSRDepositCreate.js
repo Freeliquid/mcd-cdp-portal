@@ -25,7 +25,7 @@ function DepositDaiForm({
     [
       lang.formatString(lang.dsr_deposit.deposit_form_title, 'USDL'),
       <Input
-        style={{ fontSize: '14px', color: getColor('cayn') }}
+        style={{ fontSize: '14px', color: getColor('greyText') }}
         key="daiinput"
         name="gemsToLock"
         after={<SetMax onClick={setDepositMax} />}
@@ -37,7 +37,7 @@ function DepositDaiForm({
         placeholder="0 USDL"
       />,
       <Box key="ba">
-        <Text style={{ fontSize: '14px', color: getColor('cayn') }}>
+        <Text style={{ fontSize: '14px', color: getColor('greyText') }}>
           {lang.your_balance}{' '}
         </Text>
         <Text

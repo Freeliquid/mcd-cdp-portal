@@ -17,11 +17,11 @@ const PasteLink = styled(Link)``;
 const StyledPaste = styled(PasteIcon)`
   margin-left: 4px;
   path {
-    fill: ${({ theme }) => theme.colors.blue};
+    fill: ${getColor('greyText')};
   }
   ${PasteLink}:hover & {
     path {
-      fill: ${({ theme }) => theme.colors.slate['600']};
+      fill: ${getColor('greyText')};
     }
   }
 `;
@@ -155,8 +155,9 @@ const Send = ({ token, trackBtnClick, reset }) => {
             )}
           </Text>
         </p>
+        <div className="input_border">
         <Input
-          style={{ color: getColor('whiteText') }}
+          style={{ color: getColor('whiteText')}}
           type="number"
           min="0"
           value={amount}
@@ -167,11 +168,11 @@ const Send = ({ token, trackBtnClick, reset }) => {
             e.target.value = tmp;
           }}
           placeholder={`0.00 ${displayToken}`}
-          after={<>{showSetMax && <SetMax onClick={setMax} />}</>}
+          after={<>{showSetMax && <SetMax onClick={setMax} style={{ color: getColor('greyText') }} />}</>}
           failureMessage={amountErrors}
           data-testid="send-amount-input"
         />
-
+        </div>
         <Grid gridTemplateColumns="auto 1fr" gridColumnGap="s" alignItems="end">
           <Text
             style={{ fontSize: '12px', color: getColor('greyText') }}
@@ -180,7 +181,7 @@ const Send = ({ token, trackBtnClick, reset }) => {
           >
             {lang.action_sidebar.your_balance}
           </Text>
-          <Text style={{ color: getColor('cayn') }}>
+          <Text style={{ color: getColor('whiteText') }}>
             {(balance && balance.toFixed(3)) || '--'} {displayToken}
           </Text>
         </Grid>
@@ -190,7 +191,9 @@ const Send = ({ token, trackBtnClick, reset }) => {
             {lang.formatString(lang.action_sidebar.dest_address, displayToken)}
           </Text>
         </p>
+        <div className="input_border">
         <Input
+          style={{ color: getColor('whiteText'), borderColor: getColor('boder'), }}
           type="text"
           value={destAddress}
           onChange={evt => setDestAddress(evt.target.value)}
@@ -200,12 +203,13 @@ const Send = ({ token, trackBtnClick, reset }) => {
             e.target.value = tmp;
           }}
           placeholder="0x..."
-          after={<PasteAddress onClick={paste} color="blue" />}
+          after={<PasteAddress onClick={paste} style={{ color: getColor('greyText') }} />}
           failureMessage={destAddressFailureMessage}
           data-testid="send-address-input"
         />
+        </div>
         <Grid gridTemplateColumns="1fr 1fr" gridColumnGap="s" mt="m">
-          <Button
+          <Button className="btn"
             onClick={() => {
               if (trackBtnClick)
                 trackBtnClick('WalletSend', {
@@ -219,7 +223,7 @@ const Send = ({ token, trackBtnClick, reset }) => {
           >
             {lang.actions.send}
           </Button>
-          <Button variant="secondary-outline" onClick={reset}>
+          <Button className="btn" variant="secondary-outline" onClick={reset}>
             {lang.cancel}
           </Button>
         </Grid>

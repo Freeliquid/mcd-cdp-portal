@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { prettifyCurrency } from 'utils/ui';
 import TokenIcon from './TokenIcon';
-import { ReactComponent as CaratDown } from 'images/carat-down-filled.svg';
+import { ReactComponent as CaratDown } from 'images/carat-down-white.svg';
 import { ReactComponent as DaiImg } from 'images/oasis-tokens/usdl.svg';
 import { getColor } from 'styles/theme';
 import useLanguage from 'hooks/useLanguage';
@@ -16,7 +16,7 @@ const Dropdown = (() => {
   const Trigger = styled(Flex)`
     justify-content: space-between;
     align-items: center;
-    background: ${getColor('input')};
+    background: ${getColor('bgInputCalc')};
     border: 1px solid ${getColor('border')};
     border-radius: 40px;
     padding-right: 27px;
@@ -75,7 +75,7 @@ const Dropdown = (() => {
       <DropdownStyle ref={dropdown} {...props}>
         <Trigger onClick={() => setIsOpen(!isOpen)}>
           {getSelectedItem().render()}
-          <CaratDown style={{ fill: '#ccc', marginTop: '2px' }} />
+          <CaratDown style={{ marginTop: '2px' }} />
         </Trigger>
         <Items display={isOpen ? 'block' : 'none'}>
           {items
@@ -100,7 +100,7 @@ const Dropdown = (() => {
 const Slider = (() => {
   const StyledSlider = styled(ReactSlider)`
     width: 100%;
-    height: 20px;
+    height: 10px;
   `;
 
   const Thumb = styled.div`
@@ -175,9 +175,8 @@ const DropdownItem = ({ img, children }) => (
 );
 
 const CapsText = styled(Text)`
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: bold;
+  color: ${getColor('greyText')};
+  font-size: 20px;
   display: block;
 `;
 
@@ -222,7 +221,7 @@ const DaiAmount = (() => {
 })();
 
 const Separator = styled(Box)`
-  background-color: #e5e5e5;
+  background-color: ${getColor('border')};
   height: 1px;
 `;
 

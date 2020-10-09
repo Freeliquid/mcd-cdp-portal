@@ -7,7 +7,6 @@ const ConnectHero = styled(Flex)`
   text-align: left;
   max-width: 1140px;
   margin: 25px auto 0;
-  padding: 0 10px;
 
   .headline {
     margin-top: 7px;

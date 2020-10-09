@@ -341,6 +341,9 @@ export default {
   sidebar: {
     wallet_balances: 'Wallet Pools Balances',
     // "read_only_mode": "Read-Only Mode",
+    reward:'Reward',
+    reward_info:'REWARD TO CLAIM',
+    reward_button:'Get Reward',
     price_feeds: 'Price Feeds',
     system_info: 'System Info',
     active_cdps: 'ACTIVE VAULTS',
@@ -357,7 +360,7 @@ export default {
     view_more: 'View more',
     view_less: 'View less',
     asset: 'PAIR',
-    balance: 'Total Value',
+    balance: 'Total',
     usd: 'USDT',
     send: 'SEND',
     migrate: 'UPGRADE',
@@ -388,9 +391,9 @@ export default {
 
     setup_proxy_title: 'Vault Setup and Management',
     setup_proxy_proxy_text:
-      'Configure your Vault for easy management. This only has to be done once.',
+      'Configure your Vault for an easy management. This needs to be done only once.',
     setup_proxy_allowance_text:
-      'This permission allows Freeliquid to interact with your {0}. This has to be done once for each new collateral type.',
+      'This permission allows Freeliquid to interact with your {0}. This needs to be done once for each new collateral type.',
     setup_proxy_proxy_button: 'Setup',
     setup_proxy_allowance_button: 'Set',
     setup_vault: 'Setup Vault',
@@ -409,9 +412,9 @@ export default {
     // "deposit_form_field2_after": "Suggested:",
     deposit_form_field3_title: 'How much USDL would you like to generate?',
     deposit_form_field3_text:
-      'Generate an amount that is safely above the liquidation ratio.',
+      'Generate an amount that the liquidation ratio.',
     // "deposit_form_field3_after1": "Max at target ratio",
-    deposit_form_field3_after2: 'Max avail to generate',
+    deposit_form_field3_after2: 'Max available to generate',
 
     confirm_title: 'Confirm Vault Details',
     confirmed_title: 'Your Vault is being created',
@@ -421,7 +424,7 @@ export default {
     post_confirmed_text: 'You can safely leave this page.',
     insufficient_ilk_balance: 'Insufficient {0} balance',
     has_understood_stability_fee:
-      'I understand the Stability Fee is not fixed and is likely to change over time',
+      'I understand that the Stability Fee is not fixed and is likely to change over time',
     collateralization_warning:
       'The amount of USDL you are generating is putting your Vault at risk of liquidation',
     draw_too_much_dai: 'Vault below liquidation threshold',
@@ -431,11 +434,11 @@ export default {
     dust_payback_below_limit:
       'Due to your Vault being below the minimum, you must repay all of your outstanding debt',
     stability_fee_description:
-      'The fee calculated based on the outstanding debt of your Vault. This is continuously added to your existing debt.',
+      'The fee which is calulated based on the outstanding debt of your Vault. This amount is then continuously added to your existing debt.',
     liquidation_ratio_description:
       'The collateral-to-USDL ratio at which the Vault becomes vulnerable to liquidation.',
     liquidation_penalty_description:
-      'This is the additional fee that you will pay on top of your debt when your position is liquidated. There could also be other costs involved depending on the price your collateral is sold.',
+      'This is the additional fee that you will pay on top of your debt when if you position is liquidated. There might be other potential costs involved depending on the price at which your collateral was sold.',
     waiting_for_comfirmations: 'Waiting for confirmations... {0} of {1}',
     confirmed_with_confirmations: 'Confirmed with {0} confirmations',
     waiting_for_confirmations_info:

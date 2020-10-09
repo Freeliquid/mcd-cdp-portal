@@ -49,3 +49,26 @@ h1, h2, h3, h4 {
   src: url("/fonts/SFMono-Regular.otf");
   font-style: normal;
 }
+.btn {
+  border-radius: 8px !important;
+  font-weight: 400 !important;
+  border: 1px solid #405361 !important;
+  padding: 10px 20px !important;
+}
+.btn:hover{
+  color: #fff !important;
+}
+.btn_center{
+  margin: 10px auto;
+  display: flex;
+}
+.input_border div div {
+  border: 1px solid #323B4F;
+}
+.btn_hover:hover{
+  background: #00DCDC !important;
+  color: #0B0E15 !important;
+}
+.btn_hover span:hover{
+  color: #0B0E15 !important;
+}

@@ -26,10 +26,15 @@ const CDPCreateSelectCollateralSidebar = () => {
       style={{
         color: getColor('greyText'),
         background: getColor('cardBg'),
-        borderColor: getColor('border')
+        borderColor: getColor('border'),
+
       }}
     >
-      <Box>
+      <Grid
+        gridTemplateRow={{ s: 'minmax(0, 1fr)', l: '1fr 1fr 1fr' }}
+        gridGap="m"
+        my="l"
+      >
         {[
           [lang.stability_fee, lang.cdp_create.stability_fee_description],
           [
@@ -41,7 +46,7 @@ const CDPCreateSelectCollateralSidebar = () => {
             lang.cdp_create.liquidation_penalty_description
           ]
         ].map(([title, text]) => (
-          <Grid mb="m" key={title} gridRowGap="xs">
+          <Grid mb="m" key={title} gridColumnGap="xs">
             <TextBlock
               style={{ fontSize: '18px', color: getColor('whiteText') }}
             >
@@ -54,7 +59,7 @@ const CDPCreateSelectCollateralSidebar = () => {
             </TextBlock>
           </Grid>
         ))}
-      </Box>
+      </Grid>
     </Box>
   );
 };
@@ -89,7 +94,7 @@ function IlkTableRow({
 
   return (
     <tr
-      style={disabled ? { color: '#ADADAD' } : { whiteSpace: 'nowrap' }}
+      style={disabled ? { color: '#6F7A96' } : { whiteSpace: 'nowrap' }}
       onClick={() => !disabled && selectIlk()}
     >
       <td>
@@ -159,7 +164,7 @@ const CDPCreateSelectCollateral = ({
         text={lang.cdp_create.select_text}
       />
       <Grid
-        gridTemplateColumns={{ s: 'minmax(0, 1fr)', l: '2fr 1fr' }}
+        gridTemplateColumns={{ s: 'minmax(0, 1fr)', l: '1fr' }}
         gridGap="m"
         my="l"
       >

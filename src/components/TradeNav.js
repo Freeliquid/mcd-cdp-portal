@@ -7,7 +7,7 @@ import useLanguage from 'hooks/useLanguage';
 
 const StyledTradeIcon = styled(TradeIcon)`
   circle {
-    stroke: ${props => (props.active ? '#131824' : 'gray')};
+    stroke: ${props => (props.active ? '#131824' : '#131824')};
   }
 `;
 

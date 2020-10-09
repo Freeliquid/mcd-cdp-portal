@@ -10,7 +10,6 @@ const Button = styled(Box)`
   padding: 13px 35px 13px;
   align-items: center;
   justify-content: center;
-  font-family: PT Root;
   font-style: normal;
   font-size: 16px;
   line-height: 18px;
@@ -21,13 +20,22 @@ const Button = styled(Box)`
 `;
 
 const FilledButton = styled(Button)`
+  background-color:${getColor('cayn')};
   color: ${getColor('cardBg')};
   font-weight: bold;
-
   :hover {
     background-color: ${getColor('cardBg')};
     color: ${getColor('cayn')};
   }
+  @media (max-width: 767px) {
+    background-color:${getColor('cayn')}!important;
+    color: ${getColor('cardBg')}!important;
+    font-weight: bold;
+    }
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+      background-color:${getColor('cayn')}!important;
+      color: ${getColor('cardBg')}!important;
+    }
 `;
 
 export { FilledButton };

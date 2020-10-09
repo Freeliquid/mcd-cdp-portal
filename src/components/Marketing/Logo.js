@@ -25,7 +25,6 @@ export default styled(props => (
   <StyledLink {...props} href="/">
     <LogoDiv>
       <LogoImg style={{ width: '30px' }} />
-      <LogoTitle style={{ color: getColor('whiteText')}}>Freeliquid</LogoTitle>
     </LogoDiv>
   </StyledLink>
 ))``;

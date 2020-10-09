@@ -15,7 +15,7 @@ const SidebarActionLayout = ({ onClose, children, fullscreen }) => {
       style={{
         color: getColor('greyText'),
         backgroundColor: getColor('cardBg'),
-        borderColor: getColor('border')
+        borderColor: getColor('dashBorder')
       }}
     >
       <Flex justifyContent="flex-end" pb="xs">

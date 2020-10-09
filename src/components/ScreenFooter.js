@@ -15,7 +15,7 @@ const ScreenFooter = ({
   const { lang } = useLanguage();
   return (
     <Flex textAlign="center" justifyContent="center">
-      <Button
+      <Button className="btn"
         disabled={!canGoBack}
         width="110px"
         variant="secondary-outline"
@@ -24,7 +24,7 @@ const ScreenFooter = ({
       >
         {secondaryButtonText ? secondaryButtonText : lang.actions.back}
       </Button>
-      <Button
+      <Button className="btn"
         disabled={!canProgress}
         loading={loading}
         width="145px"

@@ -13,6 +13,7 @@ import GradientBox from './GradientBox';
 import Features from './Features';
 import styled from 'styled-components';
 import LogoLink from './LogoLink';
+import Logo from './Logo';
 import FixedHeaderTrigger from './FixedHeaderTrigger';
 import Parallaxed from './Parallaxed';
 import FadeIn from './FadeIn';
@@ -51,7 +52,7 @@ const SeparatorDot = styled(Box)`
 `;
 
 const StyledPageContentLayout = styled(PageContentLayout).attrs(() => ({
-  p: { s: `25px ${marketingTheme.mobilePaddingX}`, l: '0px 32px' }
+  p: { s: `25px 0px`, l: '0px' }
 }))``;
 
 export {
@@ -68,6 +69,7 @@ export {
   QuotesFadeIn,
   Features,
   LogoLink,
+  Logo,
   FixedHeaderTrigger,
   Parallaxed,
   FadeIn,

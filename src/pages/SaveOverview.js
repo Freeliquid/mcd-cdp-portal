@@ -4,6 +4,7 @@ import useMaker from 'hooks/useMaker';
 import AccountSelection from 'components/AccountSelection';
 import { Routes } from 'utils/constants';
 import {
+  ConnectHero,
   buildQuestionsFromLangObj,
   Features,
   FixedHeaderTrigger,
@@ -27,9 +28,7 @@ import { ReactComponent as Feat1 } from 'images/landing/save/feature-1.svg';
 import { ReactComponent as Feat2 } from 'images/landing/save/feature-2.svg';
 import { ReactComponent as Feat3 } from 'images/landing/save/feature-3.svg';
 import { ReactComponent as Feat4 } from 'images/landing/save/feature-4.svg';
-import { ReactComponent as CalculatorLeftTriangles } from 'images/landing/save/calculator-left-triangles.svg';
-import { ReactComponent as CalculatorRightTriangle } from 'images/landing/save/calculator-right-triangle.svg';
-import BgSave from 'images/landing/save/bg_save.png';
+import BgSave from 'images/landing/save/save_block1.png';
 import { Link } from 'react-navi';
 import { useDaiSavingsRate } from '../components/Marketing/Calculators';
 
@@ -66,15 +65,26 @@ const StyledQuotes = styled(Quotes)`
     }
   }
 `;
-const ConnectSave = styled(Flex)`
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 1140px;
-  margin: 25px auto 0;
-  padding: 30px 10px;
-  
 
+const SaveBg = styled.div`
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  padding: 0px 20px;
+}
+    .save_block1{ 
+    margin-top: 60px;
+    background-image: url(${BgSave});
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+      background-position: 410px 0px;
+    }
+   
+    @media (max-width: 767px) {
+      background-position: -300px 0px;
+      padding: 0px 15px;
+      }
+    }
+  }
   .headline {
     margin-top: 7px;
     margin-bottom: 24px;
@@ -100,24 +110,6 @@ const ConnectSave = styled(Flex)`
       margin-top: 12px;
     }
   }
-`;
-const SaveBg = styled.div`
-    background-image: url(${BgSave});
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: 100%;
-
-    
-    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-      background-position: 0px 130px;
-    }
-    @media (max-width: 767px) {
-      background-position: -50px 71px;
-      background-size: 130%;
-    }
-  
-
-  }
   `;
 
 function SaveOverview() {
@@ -140,14 +132,14 @@ function SaveOverview() {
         description={lang.save_landing.meta.description}
       />
       <FixedHeaderTrigger>
-        <ConnectSave >
-          <HeroBackground />
+        <ConnectHero className="save_block1">
+          <HeroBackground/>
           <ThickUnderline>
             <Text style={{fontSize:'20px', color: getColor('cayn') }} >{lang.save_landing.page_name}</Text>
           </ThickUnderline>
           <Text.h1
             className="headline"
-            style={{ marginBottom: '17px', fontSize:'48px', padding: '30px' }}
+            style={{ marginBottom: '17px', fontSize:'48px'}}
             maxWidth="600px"
           >
             {lang.save_landing.headline}
@@ -159,7 +151,7 @@ function SaveOverview() {
             {lang.save_landing.connect_to_start}
           </Text>
           <AccountSelection className="button" />
-        </ConnectSave>
+        </ConnectHero>
       </FixedHeaderTrigger>
       <GradientBox mt="141px">
         <QuotesFadeIn>
@@ -172,7 +164,7 @@ function SaveOverview() {
           />
         </QuotesFadeIn>
         {dsr > 0 && (
-          <Box m="256px auto 0" maxWidth="813px">
+          <Box m="256px 15px 0" maxWidth="813px">
             <Text.h2 mb="16px">{lang.save_landing.calc_heading}</Text.h2>
             <Text>{lang.save_landing.calc_subheading}</Text>
             <Box position="relative">
@@ -185,16 +177,6 @@ function SaveOverview() {
                   height: '400px'
                 }}
               >
-                <CalculatorLeftTriangles
-                  style={{ position: 'absolute', left: '-172px' }}
-                />
-                <CalculatorRightTriangle
-                  style={{
-                    position: 'absolute',
-                    right: '-205px',
-                    top: '107px'
-                  }}
-                />
               </Parallaxed>
               <SaveCalculator mt="40px" />
             </Box>

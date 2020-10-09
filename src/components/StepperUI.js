@@ -50,18 +50,19 @@ class StepperUI extends React.Component {
         >
           <Flex justifyContent="center">
             <Stepper
+            className="stepper"
               minWidth="200px"
               steps={this.props.steps}
               selected={this.props.step}
             />
           </Flex>
 
-          <div
-            style={{ width: '100%', maxWidth: '100vw', position: 'relative' }}
+          <div className="stepDiv"
+            style={{ width: '100%', maxWidth: '100vw', position: 'relative', color:'#00DCDC' }}
           >
             {React.Children.map(this.props.children, (child, index) => {
               return (
-                <FadeIn
+                <FadeIn className="stepDiv1"
                   toLeft={index < this.props.step}
                   toRight={index > this.props.step}
                   active={index === this.props.step}

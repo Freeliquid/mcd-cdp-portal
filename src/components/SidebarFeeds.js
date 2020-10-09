@@ -25,7 +25,7 @@ const SidebarFeeds = ({ feeds }) => {
       }}
     >
       <Flex justifyContent="space-between" alignContent="center" px="s" pt="">
-        <Text t="h4" color="#A3B2CF">
+        <Text t="h4" style={{color: getColor('whiteText')}}>
           {lang.sidebar.price_feeds}
         </Text>
         <Link href={'https://makerdao.com/feeds'} target="_blank">
@@ -66,7 +66,7 @@ const SidebarFeeds = ({ feeds }) => {
                       .reverse()
                       .join('/')}
                   </Text>
-                  <Text fontSize="1.4rem" color="white">
+                  <Text fontSize="1.4rem" style={{color: getColor('greyText')}}>
                     {`${formatter(value, {
                       rounding: BigNumber.ROUND_HALF_UP
                     })} ${value.symbol}`}

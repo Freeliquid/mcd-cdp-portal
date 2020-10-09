@@ -122,6 +122,7 @@ const Payback = ({ vault, reset }) => {
         <Text style={{ fontSize: '16px', color: getColor('greyText') }}>
           {lang.action_sidebar.payback_description}
         </Text>
+        <div className="input_border">
         <Input
           style={{ color: getColor('whiteText') }}
           type="number"
@@ -143,10 +144,11 @@ const Payback = ({ vault, reset }) => {
             />
           }
         />
+        </div>
       </Grid>
       <ProxyAllowanceToggle token="USDL" trackBtnClick={trackBtnClick} />
       <Grid gridTemplateColumns="1fr 1fr" gridColumnGap="s">
-        <Button
+        <Button className="btn"
           disabled={!valid}
           onClick={() => {
             trackBtnClick('Confirm', {
@@ -158,7 +160,7 @@ const Payback = ({ vault, reset }) => {
         >
           {lang.actions.pay_back}
         </Button>
-        <Button
+        <Button className="btn"
           variant="secondary-outline"
           onClick={() => {
             trackBtnClick('Cancel');

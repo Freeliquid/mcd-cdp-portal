@@ -78,6 +78,7 @@ const DsrDeposit = ({ savings, reset }) => {
             )}
           </Text>
         </p>
+        <div className="input_border">
         <Input
           style={{ color: getColor('whiteText') }}
           disabled={!hasAllowance}
@@ -101,6 +102,7 @@ const DsrDeposit = ({ savings, reset }) => {
           }
           data-testid="dsrdeposit-input"
         />
+        </div>
       </Grid>
       <ProxyAllowanceToggle
         token="USDL"
@@ -108,7 +110,7 @@ const DsrDeposit = ({ savings, reset }) => {
         trackBtnClick={trackBtnClick}
       />
       <Grid gridTemplateColumns="1fr 1fr" gridColumnGap="s">
-        <Button
+        <Button className="btn"
           disabled={!valid}
           onClick={() => {
             trackBtnClick('Confirm', {
@@ -121,7 +123,7 @@ const DsrDeposit = ({ savings, reset }) => {
         >
           {lang.actions.deposit}
         </Button>
-        <Button
+        <Button className="btn"
           variant="secondary-outline"
           onClick={() => {
             trackBtnClick('Cancel');

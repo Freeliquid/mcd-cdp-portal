@@ -50,7 +50,7 @@ const SidebarSystem = ({ system }) => {
           px="s"
           pb="s2"
         >
-          <Text style={{ fontSize: '20px', color: getColor('greyText') }}>
+          <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
             {lang.sidebar.system_info}
           </Text>
         </Flex>
@@ -62,13 +62,13 @@ const SidebarSystem = ({ system }) => {
             width="100%"
             py="xs"
             px="s"
-            bg={idx % 2 ? '#131824' : '#1c2334'}
+            bg={idx % 2 ? '#1c2334' : '#1c2334'}
           >
             <Text fontWeight="semibold" t="smallCaps" color="#A3B2CF">
               {param}
             </Text>
             <Box>
-              <Text fontSize="s" color="white">
+              <Text fontSize="s" style={{color: getColor('greyText')}}>
                 {value}
               </Text>
             </Box>

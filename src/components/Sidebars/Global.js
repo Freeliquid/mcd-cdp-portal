@@ -8,8 +8,8 @@ import { useCurrentRoute } from 'react-navi';
 import { Routes } from 'utils/constants';
 import useCdpTypes from 'hooks/useCdpTypes';
 import { watch } from 'hooks/useObservable';
-import { getColor } from 'styles/theme';
 import useMaker from 'hooks/useMaker';
+import { getColor } from '../../styles/theme';
 
 const SidebarGlobalPanel = () => {
   const { cdpTypesList } = useCdpTypes();
@@ -31,8 +31,8 @@ const SidebarGlobalPanel = () => {
     return (
       <Box>
         <Grid gridRowGap="s">
-          {routeIsBorrow && <SidebarFeeds feeds={prices} />}
           {routeIsBorrow && <GetReward rewardAmount={rewardAmount} />}
+          {routeIsBorrow && <SidebarFeeds feeds={prices} />}
           {routeIsBorrow && (
             <SidebarSystem
               system={{

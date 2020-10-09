@@ -67,7 +67,7 @@ function OpenCDPForm({
         selectedIlk.gem
       ),
       <Input
-        style={{ fontSize: '14px', color: getColor('cayn') }}
+        style={{ fontSize: '14px', color: getColor('whiteText') }}
         key="collinput"
         name="gemsToLock"
         after={selectedIlk.gem}
@@ -93,7 +93,7 @@ function OpenCDPForm({
         }
       />,
       <Box key="ba">
-        <Text style={{ fontSize: '14px', color: getColor('cayn') }}>
+        <Text style={{ fontSize: '14px', color: getColor('whiteText') }}>
           {lang.your_balance}{' '}
         </Text>
         <Text
@@ -120,7 +120,7 @@ function OpenCDPForm({
       lang.cdp_create.deposit_form_field3_title,
       lang.cdp_create.deposit_form_field3_text,
       <Input
-        style={{ fontSize: '14px', color: getColor('cayn') }}
+        style={{ fontSize: '14px', color: getColor('whiteText') }}
         key="daiToDraw"
         name="daiToDraw"
         after="USDL"
@@ -145,7 +145,7 @@ function OpenCDPForm({
       />,
       <Grid gridRowGap="xs" key="keytodrawinfo">
         <Box key="ba">
-          <Text style={{ fontSize: '14px', color: getColor('cayn') }}>
+          <Text style={{ fontSize: '14px', color: getColor('whiteText') }}>
             {lang.cdp_create.deposit_form_field3_after2}{' '}
           </Text>
           <Text
@@ -277,7 +277,7 @@ const CDPCreateDepositSidebar = ({
       ].map(([title, value]) => (
         <Grid gridRowGap="xs" key={title}>
           <TextBlock
-            style={{ fontSize: '18px', color: getColor('cayn') }}
+            style={{ fontSize: '18px', color: getColor('whiteText') }}
             lineHeight="normal"
           >
             {title}

@@ -15,11 +15,11 @@ import { ReactComponent as SaveIcon } from 'images/landing/save_block.svg';
 import { ReactComponent as UsdlIcon } from 'images/landing/land_usdl.svg';
 import { ReactComponent as LpgIcon } from 'images/landing/land_fl.svg';
 import { ReactComponent as CommunityIcon } from 'images/landing/land_com.svg';
-import { ReactComponent as Play } from 'images/landing/play.svg';
-import { ReactComponent as ImgBlock2 } from 'images/landing/img_block21.svg';
+import { ReactComponent as ImgPoolsUsdl } from 'images/landing/pools_to_usdl_full.svg';
 
 import { Box, Flex, Text } from '@makerdao/ui-components-core';
-import AnimateConvas from './AnimateConvas';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
 const Content = ({ children }) => (
   <Box p={{ s: `0 ${marketingTheme.mobilePaddingX}`, l: '0 32px' }}>
@@ -78,10 +78,10 @@ const Cards = (() => {
     flex-shrink: 1;
     text-align: left;
     padding: 60px 100px 60px 55px;
-    @media only screen and (min-device-width: 769px) and (max-device-width: 1024px) {
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
       padding: 40px 30px 40px 30px;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       margin-bottom: 24px;
       width: 100%;
       padding: 40px 30px 40px 30px;
@@ -226,6 +226,9 @@ const BlockBorder = styled.div`
   width: 1px;
   height: 240px;
   border-left: 1px solid ${getColor('border')};
+  @media only screen and (min-device-width: 769px) and (max-device-width: 1024px) {
+    display: block;
+  }
   @media (max-width: 768px) {
     display: none;
   }
@@ -236,26 +239,13 @@ const BlocksDiv = styled.div`
   justify-content: center;
   align-items: revert;
 
-  .text-bl2 {
-    font-size: 17px;
-    color: ${getColor('greyText')};
-    line-height: 32px;
-    text-align: left;
-    padding: 0px 10px 0px 95px;
-  }
   @media only screen and (min-device-width: 769px) and (max-device-width: 1024px) {
     padding: 20px 0px 30px 0px;
-    .text-bl2 {
-      padding: 10px 35px 0px 40px;
-    }
   }
   @media (max-width: 768px) {
     width: 100%;
     padding: 30px 15px;
-    .text-bl2 {
-      padding: 0px 15px;
-      text-align: center;
-    }
+
     @media (min-width: 736px) {
       width: 100%;
       padding: 30px 15px;
@@ -290,6 +280,7 @@ const BlocksDiv2 = styled.div`
   }
   @media (max-width: 768px) {
     width: 100%;
+    min-height: 320px;
     padding: 0px 15px;
     display: flex;
     justify-content: center;
@@ -301,7 +292,6 @@ const BlocksDiv2 = styled.div`
     .all_img {
       height: 240px;
       margin-top: -60px;
-      
     }
     .usdl_svg {
       height: 180px;
@@ -314,9 +304,64 @@ const BlocksDiv2 = styled.div`
     }
   }
 `;
+
+const BlockPoolsUsdl = styled.div`
+display: flex;
+background: ${getColor('cardBg')};
+border-radius: 40px;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+margin-bottom: 80px;
+.block_img{width:49%};
+.block_text{
+  width:49%;
+  padding: 0px 120px 0px 120px;
+  text-align: left;
+  font-size: 18px;
+  color: ${getColor('greyText')};
+};
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  flex-direction:row;
+  padding: 20px 0px 30px 0px;
+  .block_img svg {
+    width: 100%;
+  }
+  .block_img{width:49%;
+  
+  }
+  .block_text{width:49%;
+    padding: 0px 30px 0px 30px;
+  }
+}
+@media (max-width: 767px) {
+  width: 100%;
+  .block_img svg {
+    width: 100%;
+    margin-top: -50px;
+}
+  .block_img{width:100%};
+  .block_text{width:100%;
+    padding: 15px 40px 55px;
+    text-align: center;
+  };
+  flex-direction:column;
+
+  @media (min-width: 736px) {
+    width: 100%;
+
+    .block_img{width:100%};
+    .block_text{width:100%;
+      padding: 15px 40px 55px;
+      text-align: center;
+    };
+  }
+}
+`;
+
 const ButtonFlex = styled.div`
-  display: flex;
-  align-items: center;
+font-size: 18px;
+
   @media (max-width: 768px) {
     justify-content: space-between;
   }
@@ -329,7 +374,105 @@ const TitleCard = styled.div`
   font-weight: bold;
   color: ${getColor('whiteText')};
 `;
-
+const VideoBg = styled.div`
+align-items: center;
+  display: flex;
+  justify-content: center;
+.shape {
+    position: absolute;
+    background: #4E26FF;
+    animation: morph 7s ease-in infinite;
+    border-radius: 30% 60% 70% 30% / 40% 60% 30% 70%;
+    height: 250px;
+    
+    width: 270px;
+    z-index: 5;
+  }
+  
+  .shape2 {
+    position: absolute;
+    background: #2A1980;
+    animation: morph2 6s ease-in-out infinite;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    height: 360px;
+    
+    width: 330px;
+    z-index: 5;
+  }
+  
+  .shape3 {
+    position: absolute;
+    background: #12102C;
+    animation: morph3 4s ease-in-out infinite;
+    border-radius: 55% 45% 44% 66% / 13% 46% 67% 23%;
+    height: 390px;
+   
+    width: 440px;
+    z-index: 5;
+  }
+  
+  @keyframes morph {
+    0% {
+      border-radius: 40% 60% 70% 30% / 40% 60% 30% 50%;
+      background: #4E26FF;
+     
+    }
+    50% {
+      border-radius: 60% 40% 60% 40% / 50% 60% 40% 60%;
+      background: #4E26FF;
+      
+    }
+    100% {
+      border-radius: 40% 60% 70% 30% / 40% 60% 30% 50%;
+      background: #4E26FF;
+      
+    }
+  }
+  @keyframes morph2 {
+    0% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      background: #2A1980;
+      
+    }
+    50% {
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+      background: #2A1980;
+    }
+    100% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      background: #2A1980;
+    }
+  }
+  @keyframes morph3 {
+    0% {
+     
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      background: #12102C;
+    }
+    50% {
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+      background: #12102C;
+   
+    }
+    100% {
+    
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      background: #12102C;
+    }
+  }
+  
+  .link_vdo_wrap{
+    position: absolute;
+     z-index: 5;
+  }
+  .link_vdo_wrap a {
+    color: #000;
+    font-size: 72px;
+}
+    .link_vdo_wrap a:hover{
+    color: #00DCDC;
+  }
+`;
 function Landing() {
   const { lang } = useLanguage();
 
@@ -351,52 +494,36 @@ function Landing() {
               </TextDiv>
               <ButtonFlex>
                 <div className="buttonContainer">
-                  <Link href="#" className="button-link">
+                  <Link href="/borrow" className="button-link">
                     <FilledButton>{lang.landing_page.get_start}</FilledButton>
                   </Link>
                 </div>
-
-                <Link
-                  style={{
-                    color: '#00DCDC',
-                    marginLeft: '40px',
-                    display: 'flex',
-                    alignItems: 'center'
-                  }}
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Play style={{ marginRight: '10px' }} />
-                  <Text>{lang.landing_page.play_video}</Text>
-                </Link>
               </ButtonFlex>
             </BlocksDiv>
             <BlocksDiv2 style={{ textAlign: 'center' }}>
-              <AnimateConvas />
+                <VideoBg>
+                <div className="shape3"></div>
+                <div className="shape2"></div>
+                <div className="shape"></div>
+                <div className="link_vdo_wrap">
+                    <a href="#"><FontAwesomeIcon icon={faPlay} /></a>
+                </div>
+        </VideoBg>
             </BlocksDiv2>
           </Blocks>
         </FadeIn>
         <FadeIn moveDistance="40px">
-          <Blocks
-            style={{
-              background: getColor('cardBg'),
-              borderRadius: '40px',
-              textAlign: 'center'
-            }}
-          >
-            <BlocksDiv2>
-            <ImgBox>
-              <ImgBlock2 className="all_img" />
-            </ImgBox>
-            </BlocksDiv2>
+          <BlockPoolsUsdl>
+            <div className="block_img">
+            <ImgPoolsUsdl />
+            </div>
             <BlockBorder />
-            <BlocksDiv>
-              <div className="text-bl2">{lang.landing_page.block1_text}</div>
+            <div className="block_text">
+              <div>{lang.landing_page.block1_text}</div>
               <br />
-              <div className="text-bl2">{lang.landing_page.block1_text2}</div>
-            </BlocksDiv>
-          </Blocks>
+              <div>{lang.landing_page.block1_text2}</div>
+            </div>
+          </BlockPoolsUsdl>
         </FadeIn>
         <Blocks2>
           <BlocksDiv>

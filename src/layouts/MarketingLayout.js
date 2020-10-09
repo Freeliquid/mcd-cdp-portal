@@ -14,18 +14,16 @@ const MarketingLayoutStyle = styled.div`
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: auto;
-
-  font-family: 'PT Root', Arial, Helvetica, sans-serif;
   font-weight: normal;
   font-style: normal;
   letter-spacing: normal;
   text-align: center;
-  color: ${getColor('headerNav')};
+  color: ${getColor('greyText')};
   width: 100%;
   overflow-x: hidden;
 
   a {
-    color: ${getColor('headerNav')};
+    color: ${getColor('greyText')};
     text-decoration: none;
   }
 `;
@@ -37,7 +35,7 @@ const Nav = styled(Box)`
 
   a {
     text-decoration: none;
-    color: ${getColor('headerNav')};
+    color: ${getColor('greyText')};
   }
 
   a:hover {
@@ -53,7 +51,7 @@ const MainNavStyle = styled(Nav)`
   font-size: ${props => props.fontSize || '18px'};
 
   a {
-    color: ${getColor('headerNav')};
+    color: ${getColor('greyText')};
   }
 `;
 
@@ -64,21 +62,21 @@ const MainNav = ({ onLinkClicked, ...props }) => {
     <MainNavStyle {...props}>
       <Link
         href={`/${Routes.BORROW}`}
-        activeStyle={{ fontWeight: 'bold' }}
+        activeStyle={{ color: getColor('whiteText'), fontWeight: 'bold' }}
         onClick={() => onLinkClicked && onLinkClicked()}
       >
         {lang.navbar.borrow}
       </Link>
       <Link
         href={`/${Routes.SAVE}`}
-        activeStyle={{ fontWeight: 'bold' }}
+        activeStyle={{ color: getColor('whiteText'), fontWeight: 'bold' }}
         onClick={() => onLinkClicked && onLinkClicked()}
       >
         {lang.navbar.save}
       </Link>
       <Link
         //href={`/${Routes.Governance}`}
-        activeStyle={{ fontWeight: 'bold' }}
+        activeStyle={{ color: getColor('greyText'), fontWeight: 'bold' }}
         //onClick={() => onLinkClicked && onLinkClicked()}
       >
         {lang.navbar.governance}
@@ -98,7 +96,7 @@ const centerContent = css`
 const Header = styled.header`
   ${centerContent};
   max-width: 1140px;
-  padding: 16px;
+  padding: 16px 0px;
   text-align: left;
   letter-spacing: 0.3px;
   display: flex;
@@ -112,7 +110,7 @@ const Header = styled.header`
   }
 
   a {
-    color: ${getColor('headerNav')};
+    color: ${getColor('greyText')};
   }
 
   ${MainNavStyle} {
@@ -124,11 +122,15 @@ const Header = styled.header`
     margin-right: 3px;
   }
   @media (min-width: 52em) {
-    padding: 20px 32px;
+    padding: 20px 0px;
   }
   @media (min-width: 40em) {
-    padding: 20px 25px;
+    padding: 20px 0px;
   }
+  @media (max-width: 1139px) {
+    padding: 20px 15px;
+  }
+  
   @media (min-width: ${props => props.theme.breakpoints.m}) {
     margin-top: 0px;
 
@@ -144,7 +146,7 @@ const Header = styled.header`
 
 const MobileMenu = styled(Box)`
   position: fixed;
-  top: 43px;
+  top: 60px;
   left: 0;
   width: 100vw;
   background-color: ${getColor('cardBg')};
@@ -211,12 +213,13 @@ const Footer = styled.footer`
     }
   }
   @media (min-width: 52em) {
-    padding: 20px 32px;
+    padding: 20px 0px;
   }
   @media (min-width: 40em) {
-    padding: 20px 25px;
+    padding: 20px 0px;
   }
   @media only screen and (min-device-width: 769px) and (max-device-width: 1024px) and (orientation: portrait) {
+    padding: 20px 15px;
   }
   @media (min-width: ${props => props.theme.breakpoints.m}) {
     ${SeparatorDot} {
@@ -350,7 +353,7 @@ const MarketingLayout = ({ showNavInFooter, children }) => {
           height={mobileMenuOpen ? '100%' : '0'}
           display={{ s: 'block', m: 'none' }}
         >
-          <Box p="39px 33px 33px">
+          <Box p="25px 33px 33px">
             <Box display="inline-block" style={{ float: 'left' }}>
               <LogoLink onClick={() => setMobileMenuOpen(false)} />
               <MainNav onLinkClicked={() => setMobileMenuOpen(false)} />

@@ -90,7 +90,7 @@ const DSRDepositConfirmSummary = ({
             checked={hasReadTOS}
             onChange={() => setHasReadTOS(state => !state)}
           />
-          <Text color="grey.500">
+          <Text style={{color: getColor('greyText')}}>
             {lang.formatString(
               lang.terms_of_service_text,
               <Link href="/terms" target="_blank">

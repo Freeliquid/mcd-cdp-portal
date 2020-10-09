@@ -7,6 +7,7 @@ import { Flex, Text } from '@makerdao/ui-components-core';
 import { ReactComponent as BorrowIcon } from 'images/landing/borrow_block.svg';
 import { Routes } from 'utils/constants';
 import useLanguage from 'hooks/useLanguage';
+import { getColor } from 'styles/theme';
 
 import CDPDropdown from './CDPDropdown';
 
@@ -30,14 +31,32 @@ const BorrowNav = ({ viewedAddress, account, mobile, ...props }) => {
     ? `/${Routes.BORROW}/owner/${address}`
     : `/${Routes.BORROW}`;
 
-  const textColor =
+    const textColor =
     selected && account
-      ? 'white'
+      ? '#F3F3F5'
       : !selected && account
-      ? 'gray'
+      ? '#6F7A96'
       : selected && !account
-      ? 'white'
-      : 'gray';
+      ? '#F3F3F5'
+      : '#6F7A96';
+
+  const iconColor =
+      selected && account
+        ? '1'
+        : !selected && account
+        ? '0.35'
+        : selected && !account
+        ? '1'
+        : '0.35';
+
+  const iconFilter =
+      selected && account
+        ? 'none'
+        : !selected && account
+        ? 'grayscale(1)'
+        : selected && !account
+        ? 'none'
+        : 'grayscale(1)';
 
   return (
     <Fragment>
@@ -56,7 +75,7 @@ const BorrowNav = ({ viewedAddress, account, mobile, ...props }) => {
           />
         </CDPDropdown>
       ) : (
-        <Link href={`${path}${url.search}`} style={{ color: '#F3F3F5' }}>
+        <Link href={`${path}${url.search}`} style={{ color: getColor('greyText') }}>
           <Flex
             flexDirection="column"
             alignItems="center"
@@ -66,8 +85,10 @@ const BorrowNav = ({ viewedAddress, account, mobile, ...props }) => {
           >
             <StyledBorrowIcon
               textcolor={textColor}
+              opacity={iconColor}
               selected={selected}
               connected={account}
+              
             />
             <Text t="p6" fontWeight="bold" color={textColor}>
               {lang.navbar.borrow}

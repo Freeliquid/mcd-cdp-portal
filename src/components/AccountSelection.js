@@ -77,17 +77,19 @@ const DropdownWrapper = styled(Box)`
     props.isMobile
       ? `
     ${FilledButton}, ${FilledButton}:hover {
-       background-color: ${props.isOpen ? '#191E2B' : '#222B3F'};
+       background-color: ${props.isOpen ? '#00C4C4' : '#222B3F'};
        color:${props.isOpen ? '#fff' : '#00C4C4'};
     }
   `
       : `
     :hover {
       ${FilledButton} {
-        background-color: #00C4C4;
-        color: #191E2B; 
+        background-color: #191E2B;
+        color: #00C4C4; 
+        
       }
     }
+  
   `}
 
   ${DropdownItems} {
@@ -159,7 +161,7 @@ const NavItem = styled(Item)`
   font-weight: bold;
   font-size: ${props => props.theme.fontSizes.s};
   letter-spacing: 0.5px;
-  color: #1aab9b;
+  color: #00C4C4;
   text-align: left;
   padding: 9px 26px;
 
@@ -291,7 +293,8 @@ function AccountSelection({ buttonWidth = '240px', ...props }) {
             >
               {lang.providers.connect_wallet}
               <CaratDown
-                style={{ marginTop: '2px', marginLeft: '15px', fill: 'white' }}
+                className="arrow_down"
+                style={{ marginTop: '2px', marginLeft: '10px' }}
               />
             </FilledButton>
           }

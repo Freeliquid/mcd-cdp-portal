@@ -2,13 +2,11 @@ import React, { memo, useState } from 'react';
 import styled from 'styled-components';
 import { Dropdown, Flex, Text } from '@makerdao/ui-components-core';
 import useLanguage from 'hooks/useLanguage';
-import { ReactComponent as BorrowIcon } from 'images/active-borrow-icon.svg';
+import { ReactComponent as BorrowIcon } from 'images/landing/borrow/bg_borrow.svg';
 
 const StyledBorrowIcon = styled(BorrowIcon)`
-  path {
-    stroke: ${props => props.textcolor};
-    fill: ${props => props.textcolor};
-  }
+ width: 30px;
+ height: 40px;
 `;
 const CDPDropdown = memo(function({
   textcolor,

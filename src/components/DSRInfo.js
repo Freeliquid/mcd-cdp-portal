@@ -232,7 +232,7 @@ function DSRInfo({ isMobile, savings }) {
   ]);
 
   return (
-    <CdpViewCard title={lang.save.dai_locked_dsr}>
+    <CdpViewCard title={lang.save.dai_locked_dsr} style={{padding: '0px 20px'}}>
       <Flex alignItems="center" mt="s" mb="xs" justifyContent="center">
         <Ticker
           key={`${proxyAddress}.${balance.toString()}.${amountChange}.${decimalsToShow}`}
@@ -265,7 +265,7 @@ function DSRInfo({ isMobile, savings }) {
                 amount={earnings.toNumber()}
                 increment={amountChange.toNumber()}
                 decimals={decimalsToShow}
-                style={{ fontSize: '16px', color: getColor('cayn') }}
+                style={{ fontSize: '16px', color: getColor('whiteText') }}
               />
             ) : (
               <TextMono>{(0).toFixed(decimalsToShow)}</TextMono>

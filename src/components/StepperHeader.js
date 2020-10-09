@@ -4,6 +4,7 @@ import ActiveAccount from './ActiveAccount';
 import useMaker from 'hooks/useMaker';
 import { ReactComponent as CloseIcon } from 'images/close-circle.svg';
 import lang from 'languages';
+import { getColor } from 'styles/theme';
 
 const StepperHeader = ({ onClose }) => {
   const { account } = useMaker();
@@ -17,7 +18,7 @@ const StepperHeader = ({ onClose }) => {
         <Box>
           <ActiveAccount
             address={account.address}
-            textColor="steel"
+            style={{color: getColor('greyText')}}
             t="1.6rem"
             readOnly
             maxWidth="250px"
@@ -32,7 +33,7 @@ const StepperHeader = ({ onClose }) => {
           css={{ cursor: 'pointer' }}
         >
           <CloseIcon />
-          <Text color="steel" t="1.6rem" fontWeight="medium">
+          <Text style={{color: getColor('greyText')}} t="1.6rem" fontWeight="medium">
             {lang.close}
           </Text>
         </Grid>

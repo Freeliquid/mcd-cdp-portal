@@ -37,12 +37,12 @@ const SidebarDetails = ({ system, savings }) => {
     <Card
       style={{
         background: getColor('cardBg'),
-        borderColor: getColor('border')
+        borderColor: getColor('dashBorder')
       }}
       pt="2xs"
     >
       <Box p="s" pb="0" mb="xs">
-        <Text style={{ fontSize: '20px', color: getColor('greyText') }}>
+        <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
           {lang.sidebar.save_details.title}
         </Text>
       </Box>
@@ -60,7 +60,7 @@ const SidebarDetails = ({ system, savings }) => {
             <Text color="#A3B2CF" fontWeight="semibold" t="smallCaps">
               {param}
             </Text>
-            <Text fontSize="1.4rem" color="#F3F3F5">
+            <Text fontSize="1.4rem" color="${getColor('greyText')}">
               {value}
             </Text>
           </Flex>

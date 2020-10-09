@@ -88,8 +88,9 @@ const Deposit = ({ vault, reset }) => {
             {lang.formatString(lang.action_sidebar.deposit_description, symbol)}
           </Text>
         </p>
+        <div className="input_border">
         <Input
-        style={{ color: getColor('whiteText') }}
+          style={{ color: getColor('whiteText') }}
           type="number"
           min="0"
           value={amount}
@@ -98,10 +99,11 @@ const Deposit = ({ vault, reset }) => {
           failureMessage={amountErrors}
           data-testid="deposit-input"
         />
+        </div>
       </Grid>
       <ProxyAllowanceToggle token={symbol} trackBtnClick={trackBtnClick} />
       <Grid gridTemplateColumns="1fr 1fr" gridColumnGap="s">
-        <Button
+        <Button className="btn"
           disabled={!valid}
           onClick={() => {
             trackBtnClick('Confirm', {
@@ -113,7 +115,7 @@ const Deposit = ({ vault, reset }) => {
         >
           {lang.actions.deposit}
         </Button>
-        <Button
+        <Button className="btn"
           variant="secondary-outline"
           onClick={() => {
             trackBtnClick('Cancel');

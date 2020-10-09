@@ -176,9 +176,9 @@ const CDPList = memo(function({
 
   const getBgColor = (active, account) =>
     active && account
-      ? 'blueGrayLighter'
+      ? '#222B3F'
       : !active && account
-      ? 'blueGrayDarker'
+      ? '#191E2B'
       : active && !account
       ? 'cardBg'
       : 'cardBg';
@@ -189,13 +189,13 @@ const CDPList = memo(function({
         <DirectionalButton
           onClick={() => onDirectionalClick('up')}
           show={scrollTop > 0}
-          bg={account ? '#1c2334' : '"rgb(45 57 83)"'}
+          bg={account ? '#191E2B' : '#191E2B'}
         >
           <NavUp />
         </DirectionalButton>
       )}
       <Box
-        bg={account ? '#1c2334' : 'cardBg'}
+        bg={account ? '#131824' : '#131824'}
         height="100%"
         width={mobile ? '100vw' : `${getMeasurement('navbarWidth')}px`}
         px={mobile ? '15px' : '5px'}
@@ -221,7 +221,7 @@ const CDPList = memo(function({
             <Text
               t="p6"
               fontWeight="bold"
-              color={account ? '#A3B2CF' : '#F3F3F5'}
+              color={account ? '#DEDFE7' : '#DEDFE7'}
             >
               {lang.overview}
             </Text>

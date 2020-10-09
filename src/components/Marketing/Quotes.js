@@ -7,18 +7,15 @@ import { Link } from 'react-navi';
 import FadeIn from './FadeIn';
 
 const QuotesStyle = styled(Box)`
-  background: gray;
-  max-width: 980px;
+
   padding: 100px 24px 53px;
   margin: 0 auto;
   position: relative;
   width: 100vw;
-  left: -${props => props.theme.mobilePaddingX};
 
   @media (min-width: ${props => props.theme.breakpoints.m}) {
     width: unset;
-    left: unset;
-    padding: 100px 9.1% 76px;
+    padding: 100px 15px 76px;
   }
 
   @media (min-width: ${props => props.theme.breakpoints.xl}) {

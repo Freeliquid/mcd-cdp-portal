@@ -9,7 +9,7 @@ const ExternalLink = ({
   string,
   network,
   hideText,
-  fill = '#447afb',
+  fill = '#00DCDC',
   arrowInheritsColorOnHover = false
 }) => (
   <Link
@@ -17,9 +17,10 @@ const ExternalLink = ({
     href={etherscanLink(string, network)}
     target="_blank"
     css={`
+      color: ${getColor('cayn')};
       whitespace: nowrap;
       &:hover svg {
-        fill: ${arrowInheritsColorOnHover && getColor('slate.600')};
+        fill: ${arrowInheritsColorOnHover && getColor('cayn')};
       }
     `}
   >

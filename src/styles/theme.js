@@ -13,13 +13,20 @@ const theme = {
     cayn: '#00DCDC',
     blue: '#4E26FF',
     greyText: '#A3B2CF',
+    subText:'#4D566E',
     whiteText:'#F3F3F5',
     linkColor:'#00DCDC',
     headerNav:'#F3F3F5',
+    LinkNotActive:'#DEDFE7',
     input:'#323B4F',
     bodyBg: '#0B0E15',
     cardBg: '#131824',
+    bgInputCalc:'#191E2B',
     border:'#323B4F',
+    dashBorder:'#222B3F',
+    buttonBg:'#323B4F',
+    buttonText:'#DEDFE7',
+    tableTh:'#4D566E',
     footercopy:'#6F7A96',
     spinner: '#9FAFB9',
     blackLight: '#222',
@@ -176,14 +183,14 @@ export function getSafetyLevels({ level, overrides = {} }) {
   const levels = {
     textColor: '700',
     backgroundColor: '100',
-    borderColor: '400'
+    borderColor: '200'
   };
   const { DANGER, WARNING, NEUTRAL, SAFE } = SAFETY_LEVELS;
   const colorPairings = {
-    [DANGER]: 'orange',
-    [WARNING]: 'yellow',
+    [DANGER]: 'aqua',
+    [WARNING]: 'aqua',
     [NEUTRAL]: 'slate',
-    [SAFE]: 'teal'
+    [SAFE]: ''
   };
 
   return Object.entries(levels).reduce(

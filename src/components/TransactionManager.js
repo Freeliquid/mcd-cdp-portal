@@ -171,7 +171,7 @@ const TransactionManager = ({
             pt="11px"
             css={`
               overflow: hidden;
-              margin-bottom: 12px;
+              margin-bottom: 18px;
             `}
             style={{
               background: getColor('cardBg'),
@@ -314,14 +314,14 @@ const TransactionManager = ({
                                 m="2px 0 2px 0"
                               >
                                 {lang.view}&nbsp;
-                                <ExternalLinkIcon fill="#708390" />
+                                <ExternalLinkIcon fill="${getColor('subText')}" />
                               </ActionButton>
                             ) : null}
                           </Flex>
                         </Flex>
 
                         {/* Pending removal timer progress indicator */}
-                        <Box css="width: 100%; background: #ccc;">
+                        <Box css="width: 100%; background: #6F7A96;">
                           <Box
                             css={`
                               background: #${success ? '#45bbae' : '#e67002'};

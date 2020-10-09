@@ -19,12 +19,29 @@ const SaveNav = ({ account, ...props }) => {
 
   const textColor =
     selected && account
-      ? 'white'
+      ? '#F3F3F5'
       : !selected && account
-      ? 'gray'
+      ? '#6F7A96'
       : selected && !account
-      ? 'black'
-      : 'gray';
+      ? '#6F7A96'
+      : '#6F7A96';
+
+  const iconColor =
+      selected && account
+        ? '1'
+        : !selected && account
+        ? '0.35'
+        : selected && !account
+        ? '1'
+        : '0.5';
+        const iconFilter =
+        selected && account
+          ? 'none'
+          : !selected && account
+          ? 'grayscale(1)'
+          : selected && !account
+          ? 'none'
+          : 'grayscale(1)';
 
   const saveUrl = account?.address
     ? `/${Routes.SAVE}/owner/${account?.address}${url.search}`
@@ -41,8 +58,10 @@ const SaveNav = ({ account, ...props }) => {
       >
         <StyledSaveIcon
           textcolor={textColor}
+          opacity={iconColor}
           selected={selected}
           connected={account}
+          
         />
         <Text t="p6" fontWeight="bold" color={textColor}>
           {lang.navbar.save}

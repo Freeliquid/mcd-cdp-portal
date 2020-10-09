@@ -33,7 +33,9 @@ const ButtonCard = ({
           </Box>
         </Box>
         <Box gridColumn={'2'} alignSelf="center">
-          <Button onClick={onClick}>{buttonText}</Button>
+          <Button style={{
+            borderRadius: '30px'
+          }}onClick={onClick}>{buttonText}</Button>
         </Box>
       </Grid>
     </Card>

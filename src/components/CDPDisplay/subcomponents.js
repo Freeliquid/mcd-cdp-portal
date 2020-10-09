@@ -11,7 +11,7 @@ import styled from 'styled-components';
 import { getColor } from 'styles/theme';
 const WithSeparators = styled(Box).attrs(() => ({
   borderBottom: '1px solid',
-  borderColor: 'grey.300'
+  borderColor: '#222B3F'
 }))`
   &:last-child {
     border-bottom: none;
@@ -27,7 +27,7 @@ export const InfoContainerRow = ({ title, value }) => {
         gridColumnGap="s"
         alignItems="center"
       >
-        <Text style={{ color: getColor('whiteText') }}>{title}</Text>
+        <Text style={{ color: getColor('greyText') }}>{title}</Text>
         <Text style={{ color: getColor('greyText') }}>{value}</Text>
       </Grid>
     </WithSeparators>
@@ -49,7 +49,7 @@ export const ActionContainerRow = ({ title, value, conversion, button }) => {
           css={`
             grid-column: 1;
             grid-row: span 2;
-            color: ${getColor('whiteText')};
+            color: ${getColor('greyText')};
           `}
         >
           {title}
@@ -58,7 +58,7 @@ export const ActionContainerRow = ({ title, value, conversion, button }) => {
           css={`
             grid-column: 2;
             grid-row: ${conversion ? '1' : 'span 2'};
-            color: ${getColor('cayn')};
+            color: ${getColor('greyText')};
           `}
           justifySelf="end"
         >
@@ -69,7 +69,7 @@ export const ActionContainerRow = ({ title, value, conversion, button }) => {
             css={`
               grid-row: 2;
               grid-column: 2;
-              color: ${getColor('greyText')};
+              color: ${getColor('subText')};
             `}
             justifySelf="end"
           >
@@ -91,22 +91,23 @@ export const ActionContainerRow = ({ title, value, conversion, button }) => {
 };
 
 export const ActionButton = ({ children, ...props }) => (
-  <Button
+  <Button className="btn_hover"
     width="100px"
     p="xs"
     variant="secondary"
     style={{
-      backgroundColor: getColor('cayn'),
+      backgroundColor: getColor('buttonBg'),
       borderRadius: '30px',
       borderColor: getColor('border'),
-      padding: '7px 10px'
+      padding: '7px 10px',
+      
     }}
     {...props}
   >
     <Text
       fontSize="s"
-      fontWeight="medium"
-      style={{ color: getColor('bodyBg') }}
+      fontWeight="400"
+      style={{ color: getColor('buttonText') }}
     >
       {children}
     </Text>
@@ -139,13 +140,13 @@ export const AmountDisplay = ({ amount, denomination }) => {
   return (
     <>
       <Text
-        style={{ fontSize: '20px', color: getColor('cayn') }}
+        style={{ fontSize: '20px', color: getColor('greyText') }}
         lineHeight="1"
       >
         {amount}&nbsp;
       </Text>
       <Text
-        style={{ fontSize: '16px', color: getColor('cayn') }}
+        style={{ fontSize: '16px', color: getColor('greyText') }}
         lineHeight="1"
       >
         {denomination} &nbsp;
@@ -156,7 +157,7 @@ export const AmountDisplay = ({ amount, denomination }) => {
 
 export const ExtraInfo = ({ children, ...props }) => {
   return (
-    <Text t="caption" lineHeight="none" color="steel" {...props}>
+    <Text t="caption" lineHeight="none" color= "#4D566E" {...props}>
       {children}
     </Text>
   );

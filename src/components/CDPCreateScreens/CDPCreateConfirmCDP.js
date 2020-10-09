@@ -143,10 +143,10 @@ const CDPCreateConfirmSummary = ({
               setHasReadTOS(state => !state);
             }}
           />
-          <Text color="grey.500" ml="s">
+          <Text style={{color: getColor('greyText')}} ml="s">
             {lang.formatString(
               lang.terms_of_service_text,
-              <Link href="/terms" target="_blank" color="blue">
+              <Link href="/terms" target="_blank" color="#00DCDC">
                 {lang.terms_of_service}
               </Link>
             )}
@@ -155,7 +155,7 @@ const CDPCreateConfirmSummary = ({
             checked={hasUnderstoodSF}
             onChange={() => setHasUnderstoodSF(state => !state)}
           />
-          <Text color="grey.500" ml="s">
+          <Text style={{color: getColor('greyText')}} ml="s">
             {lang.cdp_create.has_understood_stability_fee}
           </Text>
         </Grid>
@@ -251,15 +251,15 @@ const CDPCreateConfirmed = ({ hash, isFirstVault, onClose, txState }) => {
                   trackBtnClick('TxDetails', { isFirstVault });
                 }}
               >
-                <Button variant="secondary">
-                  <Text mr="xs">{lang.cdp_create.view_tx_details}</Text>
-                  <StyledExternalLink color={getColor('steel')} ml="4px" />
+                <Button variant="secondary" style={{background: getColor('cardBg'), borderColor: getColor('border') }}>
+                  <Text style={{color: getColor('whiteText')}} mr="xs">{lang.cdp_create.view_tx_details}</Text>
+                  <StyledExternalLink  color="aqua" ml="4px" />
                 </Button>
               </Link>
             )}
           </Box>
           <Flex textAlign="center" justifyContent="center">
-            <Button
+            <Button className="btn"
               onClick={() => {
                 trackBtnClick('Exit', { isFirstVault });
                 onClose();

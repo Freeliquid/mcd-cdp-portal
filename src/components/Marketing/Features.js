@@ -3,6 +3,7 @@ import { Flex, Grid, Text } from '@makerdao/ui-components-core';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import FadeIn from './FadeIn';
+import { getColor } from 'styles/theme';
 
 const StyledGrid = styled(Grid)`
   text-align: left;
@@ -22,6 +23,8 @@ const StyledGrid = styled(Grid)`
     display: block;
     letter-spacing: unset;
     line-height: 31px;
+    font-size: 17px;
+    color: ${getColor('greyText')}
   }
 `;
 
@@ -40,7 +43,7 @@ const Features = ({ features, ...props }) => {
           <Flex>
             {point.img}
             <Text.h4>{point.title}</Text.h4>
-            <Text fontSize="s">{point.content}</Text>
+            <Text>{point.content}</Text>
           </Flex>
         </FadeIn>
       ))}

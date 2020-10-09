@@ -85,20 +85,26 @@ function Borrow({ disableConnect = false }) {
     cdpTypesList?.length ? cdpTypesList : []
   );
   const BorrowBg = styled.div`
-    background-image: url(${BgBorrow});
+    max-width: 1140px;
+    padding: 0px;
+    margin: auto;
+    margin-top: 60px;
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+      padding: 0px 20px;
+    }
+    .borrow_block1{ background-image: url(${BgBorrow});
     background-repeat: no-repeat;
     background-position: top right;
-    margin-top: 60px;
-
-    
     @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
       background-position: top right;
+      
     }
     @media (max-width: 767px) {
       background-position: 60px 50px;
+      padding: 0px 20px;
+      
+      }
     }
-  
-
   }
   `;
 
@@ -111,7 +117,7 @@ function Borrow({ disableConnect = false }) {
         description={lang.borrow_landing.meta.description}
       />
       <FixedHeaderTrigger >
-        <ConnectHero >
+        <ConnectHero className="borrow_block1">
           <HeroBackground />
           <ThickUnderline 
           >
@@ -128,7 +134,7 @@ function Borrow({ disableConnect = false }) {
         </ConnectHero>
       </FixedHeaderTrigger>
       <GradientBox mt="26px">
-        <Box m="30px auto 0">
+        <Box m="30px 15px 0">
           <Text.h2 mb="16px">{lang.borrow_landing.calc_heading}</Text.h2>
           <Text style={{fontSize:'20px', color: getColor('greyText') }}>{lang.borrow_landing.calc_subheading}</Text>
           {prices?.length && cdpTypesList?.length ? (
@@ -140,7 +146,7 @@ function Borrow({ disableConnect = false }) {
           ) : null}
         </Box>
       </GradientBox>
-      <Box maxWidth="1007px" m="104px auto 0">
+      <Box maxWidth="1140px" m="104px 15px 0">
         <Box maxWidth="777px" m="0 auto">
           <Text.h2 mb="34px">{lang.borrow_markets.heading}</Text.h2>
           <Text style={{fontSize:'17px', color: getColor('greyText') }}>{lang.borrow_markets.subheading}</Text>
@@ -175,7 +181,7 @@ function Borrow({ disableConnect = false }) {
           </Link> */}
         </Box>
       </Box>
-      <QuestionsWrapper mt="147px" style={{padding: '5px 25px'}}>
+      <QuestionsWrapper mt="147px" style={{padding: '5px 0px'}}>
         <Text.h2>{lang.landing_page.questions_title}</Text.h2>
         <Questions
           questions={buildQuestionsFromLangObj(
