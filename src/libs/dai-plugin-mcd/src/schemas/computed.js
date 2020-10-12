@@ -1,6 +1,7 @@
 import { createCurrency, createCurrencyRatio } from '@makerdao/currency';
 import {
   collateralValue as calcCollateralValue,
+  collateralAmountByValue as calcCollateralAmountByValue,
   daiAvailable as calcDaiAvailable,
   collateralizationRatio as calcCollateralizationRatio,
   liquidationPrice as calcLiquidationPrice,
@@ -90,6 +91,8 @@ export const collateralTypesPrices = {
     }
   })
 };
+
+
 
 export const defaultCollateralTypesPrices = {
   generate: () => ({
@@ -294,6 +297,12 @@ export const collateralTypeData = {
       },
       calculateMaxDai(collateralAmount) {
         return priceWithSafetyMargin.times(collateralAmount);
+      },
+      collateralValueForAmount(amount) {
+        return calcCollateralValue(amount, collateralTypePrice.toBigNumber());
+      },
+      collateralAmountByValue(value) {
+        return calcCollateralAmountByValue(value, collateralTypePrice.toBigNumber());
       }
     })
   })

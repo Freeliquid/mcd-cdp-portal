@@ -56,6 +56,11 @@ export function collateralValue(collateralAmount, price) {
   return collateralAmount.times(price);
 }
 
+export function collateralAmountByValue(collateralValue, price) {
+  return collateralValue.div(price);
+}
+
+
 export function debtValue(art, rate) {
   art = USDL.wei(art);
   return art.times(rate).shiftedBy(-27);

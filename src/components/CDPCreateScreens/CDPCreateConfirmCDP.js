@@ -45,12 +45,11 @@ const CDPCreateConfirmSummary = ({
   const [hasReadTOS, setHasReadTOS] = useState(false);
   const [hasUnderstoodSF, setHasUnderstoodSF] = useState(false);
 
-  const { liquidationPenalty, liquidationRatio, annualStabilityFee } = ilkData;
-
+  const { liquidationPenalty, liquidationRatio, annualStabilityFee, collateralValueForAmount } = ilkData;
   const rows = [
     [
       lang.verbs.depositing,
-      `${prettifyNumber(cdpParams.gemsToLock)} ${selectedIlk.gem}`
+      `${prettifyNumber(collateralValueForAmount(cdpParams.gemsToLock))} ${"USD"}`
     ],
     [lang.verbs.generating, `${prettifyNumber(cdpParams.daiToDraw)} USDL`],
     [
@@ -65,15 +64,6 @@ const CDPCreateConfirmSummary = ({
     [
       lang.liquidation_ratio,
       `${formatter(liquidationRatio, { percentage: true })}%`
-    ],
-    [
-      lang.liquidation_price,
-      `$${formatter(
-        ilkData.calculateliquidationPrice(
-          BigNumber(cdpParams.gemsToLock),
-          USDL(cdpParams.daiToDraw)
-        )
-      )}`
     ],
     [
       lang.liquidation_penalty,
