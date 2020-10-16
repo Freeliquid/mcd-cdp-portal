@@ -1,6 +1,7 @@
 export default {
   cdp_page: {
     liquidation_price: 'Liquidation price',
+    liquidation_price_info:'Liquidation is temporarily not available in this version',
     // "liquidation_ratio": "Liquidation ratio",
     collateralization_ratio: 'Collateralization ratio',
     // "current_price_information": "Current price information",
@@ -17,29 +18,29 @@ export default {
     // "outstanding_debt": "Outstanding debt",
     // "wallet_balance": "wallet balance",
     tx_history: 'Vault history',
-    outstanding_dai_debt: 'Outstanding USDL debt',
+    outstanding_dai_debt: 'Outstanding USDFL debt',
     not_applicable: 'N/A'
   },
   landing_page: {
     meta: {
       title: 'Freeliquid',
       description:
-        'Borrow and Save using USDL. Place orders on the marketplace using Trade, generate USDL, a stablecoin pegged to 1 USD, on Borrow and earn savings on your USDL using Save. All on Freeliquid.io.'
+        'Borrow and Save using USDFL. Place orders on the marketplace using Trade, generate USDFL, a stablecoin pegged to 1 USD, on Borrow and earn savings on your USDFL using Save. All on Freeliquid.io.'
     },
     title:'Freeliquid',
     usdl_title:'Use up to 90% of your pools funds',
-    usdl_desc:'Freeliquid developed USDL token — as long as your own liquidity is provided for you passive earnings',
+    usdl_desc:'Freeliquid developed USDFL token — as long as your own liquidity is provided for you passive earnings',
     get_start:'Get started',
     play_video:'Play video',
     block1_text:'Freeliquid makes it easy to create a stablecoin for free by collateralizing pools with DAI, USDT, USDC, USDN',
-    block1_text2:'USDL is a fully decentralized, censorship-resistant stablecoin available to any liquidity provider',
+    block1_text2:'USDFL is a fully decentralized, censorship-resistant stablecoin available to any liquidity provider',
     block3_title:'Derivative giving even greater financial freedom',
-    block3_text:'A price-stable currency that you control. Get USDL instantly on your terms.',
+    block3_text:'A price-stable currency that you control. Get USDFL instantly on your terms.',
     block4_title:'Decentralized governance',
-    block4_text:'The work with USDL is provided by smart contracts. It is run by a decentralized community of FL token holders.',
+    block4_text:'The work with USDFL is provided by smart contracts. It is run by a decentralized community of FL token holders.',
     block5_title:'Community',
     block5_text:'Learn more about Freeliquid, connect with the team and other community members, and share your perspective on the future of DeFi.',
-    headline: 'Borrow and save using USDL',
+    headline: 'Borrow and save using USDFL',
     trade_card: {
       title: 'Trade',
       description:
@@ -49,20 +50,20 @@ export default {
     borrow_card: {
       title: 'Borrow',
       description:
-        'Lock your tokens as collateral to generate USDL, a decentralized stablecoin soft-pegged to 1 USD.',
-      button: 'Borrow USDL'
+        'Lock your tokens as collateral to generate USDFL, a decentralized stablecoin soft-pegged to 1 USD.',
+      button: 'Borrow USDFL'
     },
     save_card: {
       title: 'Save',
       description:
-        'Earn savings on your USDL by locking it into Freeliquid Save. Automatic and non-custodial.',
-      button: 'Save USDL'
+        'Earn savings on your USDFL by locking it into Freeliquid Save. Automatic and non-custodial.',
+      button: 'Save USDFL'
     },
     token_section_title: 'Supported Tokens',
     token_section_only_on_trade: 'Only available on Freeliquid Trade',
     section1_title: 'What is Freeliquid?',
     section1_p:
-      'Freeliquid is a platform for decentralized finance. Use it to exchange tokens, borrow USDL and earn savings — all in one place.',
+      'Freeliquid is a platform for decentralized finance. Use it to exchange tokens, borrow USDFL and earn savings — all in one place.',
     section2_title: 'Secure protocol built on Ethereum',
     section2_p:
       'Freeliquid is built on top of audited and formally verified smart contracts created by Maker, the industry leader in secure decentralized finance.',
@@ -72,10 +73,10 @@ export default {
     questions_title: 'Questions',
     question1: 'What is Freeliquid?',
     answer1:
-      'Freeliquid is a decentralized application that runs on the Ethereum blockchain. Anyone can use Freeliquid to trade tokens, borrow against them, and earn savings using USDL.',
-    question2: 'What is USDL?',
+      'Freeliquid is a decentralized application that runs on the Ethereum blockchain. Anyone can use Freeliquid to trade tokens, borrow against them, and earn savings using USDFL.',
+    question2: 'What is USDFL?',
     answer2:
-      'USDL is the world’s first unbiased currency and leading decentralized stablecoin soft-pegged to the US Dollar. Learn more about USDL {0}.',
+      'USDFL is the world’s first unbiased currency and leading decentralized stablecoin soft-pegged to the US Dollar. Learn more about USDFL {0}.',
     answer2_link1_url: 'https://makerdao.com/en/',
     answer2_link1_text: 'here',
     question3: 'Do I need an account?',
@@ -100,7 +101,7 @@ export default {
     question7:
       'Can I buy Bitcoin or Ethereum on Freeliquid using a credit card or via my bank account?',
     answer7:
-      'You cannot buy crypto from your bank account using Freeliquid. Instead, you can use USDL to buy Ethereum and other supported tokens.',
+      'You cannot buy crypto from your bank account using Freeliquid. Instead, you can use USDFL to buy Ethereum and other supported tokens.',
     read_only: 'Read-Only',
     wallet_connect: 'Wallet Connect',
     wallet_link: 'Coinbase Wallet'
@@ -109,18 +110,18 @@ export default {
     meta: {
       title: 'Freeliquid Borrow',
       description:
-        "Lock your liquidity pools as collateral to generate USDL, a decentralized stablecoin soft-pegged to 1 USD."
+        "Lock your liquidity pools as collateral to generate USDFL, a decentralized stablecoin soft-pegged to 1 USD."
     },
     page_name: 'Freeliquid Borrow',
     headline: 'Extra assets for work',
     subheadline:
-      "Vaults make it easy to utilize your collateral by generating USDL against it. Realize liquidity through a vault and ensure you don't lose long exposure to your collateral.",
+      "Vaults make it easy to utilize your collateral by generating USDFL against it. Realize liquidity through a vault and ensure you don't lose long exposure to your collateral.",
     connect_to_start: 'To open or manage a Vault, connect a crypto wallet.',
-    wbtc_notice: 'Bitcoin can now be used to open a Vault and generate USDL.',
+    wbtc_notice: 'Bitcoin can now be used to open a Vault and generate USDFL.',
     quotes_block: {
       title: 'Maximize your opportunity',
       body:
-        'Seize opportunity and capitalize on future crypto asset prices. Use your generated USDL to create a multiplied position on any asset, increasing your exposure.',
+        'Seize opportunity and capitalize on future crypto asset prices. Use your generated USDFL to create a multiplied position on any asset, increasing your exposure.',
       quote1:
         'Back in Sep 2018, I was looking for a place to maximize my ETH holdings. Selling was not an option, so opening a Vault was perfect for me. After locking up my ETH I was going leverage long in two transactions.',
       author1: 'Vault 2434'
@@ -129,12 +130,12 @@ export default {
     calc_subheading:
       'To see how much liquidity you can get right now, enter your desired collateral type',
     calc_dai_available:
-      'UP TO {amount} USDL is available for you to generate right now',
+      'UP TO {amount} USDFL is available for you to generate right now',
     calc_footnote:
       'The above figure assumes a Collateralization Ratio of 110%',
     feature1_heading: 'Flexible repayment and terms',
     feature1_content:
-      'Vaults are open-ended, meaning no fixed repayment schedules. Pay back or generate USDL when it suits you.',
+      'Vaults are open-ended, meaning no fixed repayment schedules. Pay back or generate USDFL when it suits you.',
     feature2_heading: 'Secure and easy to use',
     feature2_content:
       'A simple interface that allows you to manage your Vault. No middleman or third party controls your funds.',
@@ -151,11 +152,11 @@ export default {
         'Currently, Freeliquid Borrow supports Uniswap and Mooniswap pools: USDT/USDC, USDT/USDN, USDT/DAI, USDC/USDN, USDC/DAI, USDN/DAI. There are plans for more types of collateral.',
       question2: 'How much does it cost?',
       answer2:
-        'The costs of generating USDL against collateral varies depending on the collateral, and the risk profile. There are also other fees associated with the Freeliquid Protocol, including a Liquidation Penalty added in the event of a liquidation and each the user will have to pay Gas Fees with each transaction submitted.',
+        'The costs of generating USDFL against collateral varies depending on the collateral, and the risk profile. There are also other fees associated with the Freeliquid Protocol, including a Liquidation Penalty added in the event of a liquidation and each the user will have to pay Gas Fees with each transaction submitted.',
       question3:
-        "What if I don't have a supported collateral, how can I get USDL?",
+        "What if I don't have a supported collateral, how can I get USDFL?",
       answer3:
-        "If you don't have any of the supported collateral types, then you cannot use Freeliquid Borrow to generate USDL. You can still get USDL, but you would need to use an exchange to trade your collateral for USDL. You can check Freeliquid Trade which supports more collateral types.",
+        "If you don't have any of the supported collateral types, then you cannot use Freeliquid Borrow to generate USDFL. You can still get USDFL, but you would need to use an exchange to trade your collateral for USDFL. You can check Freeliquid Trade which supports more collateral types.",
       question5: 'Do the rates and fees change, and if so how often?',
       answer5:
         "Yes, the fees, including Stability Fees and Liquidation Penalties are set by Maker Governance. These can be changed at any time due to continuous governance nature of the Maker Protocol. You can see more about Governance of the Maker Protocol at vote.makerdao.com. For Gas Fee's, these are determined by the activity on the Ethereum Network. In most cases, you have the option to set your Gas Fee, but if the network is busy, you will have to pay more for your transactions to go through in a timely manner.",
@@ -164,9 +165,9 @@ export default {
     }
   },
   borrow_wbtc_landing: {
-    headline: 'How to use Bitcoin to generate USDL',
+    headline: 'How to use Bitcoin to generate USDFL',
     subheadline:
-      'Bitcoin can now be used to open a vault and generate USDL through wBTC, a bridge that brings bitcoin to the ethereum blockchain.',
+      'Bitcoin can now be used to open a vault and generate USDFL through wBTC, a bridge that brings bitcoin to the ethereum blockchain.',
     about_title: 'About WBTC',
     about_content:
       "Wrapped Bitcoin (wBTC) acts a bridge to bring BTC to the ethereum blockchain. It's the first ERC20 token backed 1:1 with Bitcoin.",
@@ -182,9 +183,9 @@ export default {
     step4: 'Send your WBTC to a compatible wallet',
     step4_details:
       'Send your wBTC to Metamask, Ledger, Trezor, or a compatible ERC20 wallet',
-    step5: 'Create a WBTC Vault to Generate USDL',
+    step5: 'Create a WBTC Vault to Generate USDFL',
     step5_details:
-      'Navigate to {link} and open your vault with wBTC as collateral and generate your new USDL',
+      'Navigate to {link} and open your vault with wBTC as collateral and generate your new USDFL',
     step5_link_text: 'Freeliquid.io/borrow'
   },
   borrow_markets: {
@@ -200,29 +201,29 @@ export default {
     meta: {
       title: 'Freeliquid Save',
       description:
-        'The most trusted way to earn on your USDL. Anyone with an internet connection can deposit USDL, and earn savings instantly. No fees. No minimums. No speculation.'
+        'The most trusted way to earn on your USDFL. Anyone with an internet connection can deposit USDFL, and earn savings instantly. No fees. No minimums. No speculation.'
     },
     page_name: 'Freeliquid Save',
-    headline: 'The most trusted way to earn on your USDL',
+    headline: 'The most trusted way to earn on your USDFL',
     subheadline:
-      'Earn savings on your USDL by locking it into Freeliquid Save. Automatic and non-custodial.',
+      'Earn savings on your USDFL by locking it into Freeliquid Save. Automatic and non-custodial.',
     connect_to_start:
       'To open or manage your savings, connect a crypto wallet.',
     quotes_block: {
-      title: 'Earn a USDL Savings Rate',
+      title: 'Earn a USDFL Savings Rate',
       body:
         'Freeliquid Save helps you stay patient while waiting out volatile market conditions, allowing you to confidently capture steady, predictable earnings.',
       quote1:
-        'When there was too much risk and volatility in the markets I decided to trade for USDL and deposit it in Freeliquid Save. It gave me peace of mind because I knew what my return would be, no more sleepless nights worrying about flash crashes',
+        'When there was too much risk and volatility in the markets I decided to trade for USDFL and deposit it in Freeliquid Save. It gave me peace of mind because I knew what my return would be, no more sleepless nights worrying about flash crashes',
       author1: 'Freeliquid Save User'
     },
     calc_heading: 'How much can I earn?',
     calc_subheading:
-      'To see how much savings you could earn at the current USDL Savings Rate simply input how much USDL you would like to deposit and select your desired time.',
+      'To see how much savings you could earn at the current USDFL Savings Rate simply input how much USDFL you would like to deposit and select your desired time.',
     calc_initial: 'Initial deposit',
     calc_contribution: 'Monthly contribution',
     calc_how_long: 'How long would you like to save for?',
-    calc_savings_earned: 'Amount of savings earned on your USDL',
+    calc_savings_earned: 'Amount of savings earned on your USDFL',
     calc_total_dai: 'Total USD you will have',
     calc_footnote:
       'The above figure assumes an average USD Savings Rate of {dsr}%',
@@ -231,29 +232,29 @@ export default {
       'Manage your savings from anywhere, at anytime. Freeliquid is a decentralized application meaning that you are the only person that controls it.',
     feature2_heading: 'Less volatility, no uncertainty',
     feature2_content:
-      'USDL is designed to be stable, just like cash. Stay in the crypto ecosystem without the volatility.',
+      'USDFL is designed to be stable, just like cash. Stay in the crypto ecosystem without the volatility.',
     feature3_heading: 'Honest and transparent rate',
     feature3_content:
-      'The USDL Savings Rate is governed by FL holders and is set based on the supply and demand of USDL on exchanges.',
+      'The USDFL Savings Rate is governed by FL holders and is set based on the supply and demand of USDFL on exchanges.',
     feature4_heading: 'Secure from the ground up',
     feature4_content:
       'Freeliquid regularly undergoes security audits and checks. Built by the developers of the MakerDAO protocol.',
     questions: {
-      question1: 'How is the USDL Savings Rate determined?',
+      question1: 'How is the USDFL Savings Rate determined?',
       answer1:
-        'The USDL Savings Rate is determined through governance of the Maker Protocol by FL token holders. The rate which is chosen based on a number of parameters including, but not limited to the current supply and demand of USDL, and the current stability fees charged on Vaults.',
-      question2: 'Where does the earned USDL come from?',
+        'The USDFL Savings Rate is determined through governance of the Maker Protocol by FL token holders. The rate which is chosen based on a number of parameters including, but not limited to the current supply and demand of USDFL, and the current stability fees charged on Vaults.',
+      question2: 'Where does the earned USDFL come from?',
       answer2:
-        'The earnings you receive from the USDL Savings Rate come directly from the Maker Protocol. Your USDL is never leant out, instead USDL is taken from the Maker Protocol where it charges fees for generating USDL from Vaults (known as Stability Fees).',
-      question3: 'How much does it cost to use the USDL Savings Rate?',
+        'The earnings you receive from the USDFL Savings Rate come directly from the Maker Protocol. Your USDFL is never leant out, instead USDFL is taken from the Maker Protocol where it charges fees for generating USDFL from Vaults (known as Stability Fees).',
+      question3: 'How much does it cost to use the USDFL Savings Rate?',
       answer3:
-        "There are no fees to pay for using the USDL Savings Rate other than the transaction, or Gas, fee's for using the Ethereum Network. The actual costs of these transaction fees varies depending on how busy the network is.",
-      question4: 'Can anyone else withdraw my USDL after I deposited it?',
+        "There are no fees to pay for using the USDFL Savings Rate other than the transaction, or Gas, fee's for using the Ethereum Network. The actual costs of these transaction fees varies depending on how busy the network is.",
+      question4: 'Can anyone else withdraw my USDFL after I deposited it?',
       answer4:
-        "No. Providing you don't share your wallet or private key with anyone else, only you are able to control and access the USDL deposited into Freeliquid Save. For this reason, it is also very important to backup your wallet, as there is no way to return your USDL if you lose access to your wallet.",
+        "No. Providing you don't share your wallet or private key with anyone else, only you are able to control and access the USDFL deposited into Freeliquid Save. For this reason, it is also very important to backup your wallet, as there is no way to return your USDFL if you lose access to your wallet.",
       question5: 'What are the risks involved?',
       answer5:
-        'As with all forms of digital, online technology, there is a risk of bugs and errors with the code. The Maker Protocol smart contracts, which run the USDL Savings Rate, have been through thorough testing, and multiple third party audits to address these risks. The biggest risk is often down to you and how you control your wallet - you should ensure you never share your private key or seed phrase with anyone else, and always make sure you keep a secure backup in case you need to restore your wallet in the future.',
+        'As with all forms of digital, online technology, there is a risk of bugs and errors with the code. The Maker Protocol smart contracts, which run the USDFL Savings Rate, have been through thorough testing, and multiple third party audits to address these risks. The biggest risk is often down to you and how you control your wallet - you should ensure you never share your private key or seed phrase with anyone else, and always make sure you keep a secure backup in case you need to restore your wallet in the future.',
       bottom_link1: 'Full list of Freeliquid Save FAQs'
     }
   },
@@ -294,14 +295,14 @@ export default {
         "The only fee's that apply to Freeliquid Trade are fees for Gas. These are the fees you pay to use and interact with the Ethereum Blockchain. These fee's vary based on how busy the Ethereum network is, and how quickly you would like transaction to be processed.",
       question2: 'Can I buy cryptocurrency with my debit or credit card?',
       answer2:
-        'Freeliquid Trade only allows you to trade selected Ethereum tokens, such as USDL, ETH, USDC and more. There is no way to buy crypto using a debit or credit card using Freeliquid Trade.',
+        'Freeliquid Trade only allows you to trade selected Ethereum tokens, such as USDFL, ETH, USDC and more. There is no way to buy crypto using a debit or credit card using Freeliquid Trade.',
       question3: 'What is the difference between Market and Instant trades?',
       answer3:
         "With Market, when you create an order you are placing an order in the order book. In order for your order to be matched, you need another user to 'Take' your order by either buying or selling at a price that includes your open order. Instant allows you to quickly trade one token for another at the best price available on the order book. This means you can see the price you will pay for the token and once your transaction confirms, you will get the token (the price may move slightly due to slippage).",
       question4:
         'What is slippage and is there a limit to how much the price can change?',
       answer4:
-        "Slippage is where the price you think you are getting changes between the point you place your order and the time the transaction is processed. For example, you place an order to buy 1 ETH for 200 USDL, but by the time the transaction has confirmed, the price is now 202 USDL per ETH. This means you would get 0.99 ETH for 200 USDL instead. Within Freeliquid Trade you can set your slippage limit by a percentage, which means once your order is being matched, if it can't meet the price +/- slippage limit, then the order will automatically cancel. ",
+        "Slippage is where the price you think you are getting changes between the point you place your order and the time the transaction is processed. For example, you place an order to buy 1 ETH for 200 USDFL, but by the time the transaction has confirmed, the price is now 202 USDFL per ETH. This means you would get 0.99 ETH for 200 USDFL instead. Within Freeliquid Trade you can set your slippage limit by a percentage, which means once your order is being matched, if it can't meet the price +/- slippage limit, then the order will automatically cancel. ",
       question5:
         'Does Freeliquid or anyone at Freeliquid have any access to my crypto or my wallet?',
       answer5:
@@ -318,12 +319,12 @@ export default {
     ratio_mobile: 'Ratio',
     deposited: 'DEPOSITED',
     withdraw: 'AVAIL. TO WITHDRAW',
-    debt: 'USDL',
+    debt: 'USDFL',
     view_cdp: 'Manage Vault',
     view_cdp_mobile: 'Manage',
     total_collateral_locked: 'total collateral locked',
-    total_dai_debt: 'total USDL debt',
-    get_started_title: 'Open your first Vault to start generating USDL.',
+    total_dai_debt: 'total USDFL debt',
+    get_started_title: 'Open your first Vault to start generating USDFL.',
     select_another_wallet: 'Select another wallet',
     connect_ledgers_choice: 'Connect {0} or {1}',
     no_vaults: 'Address {0} has no Vaults.',
@@ -367,16 +368,16 @@ export default {
     no_wallet: 'Not connected',
     save_details: {
       title: 'Save Details',
-      total_savings_dai: 'Total USDL in DSR',
-      total_dai_supply: 'Total USDL Supply',
-      dai_savings_rate: 'USDL Savings Rate'
+      total_savings_dai: 'Total USDFL in DSR',
+      total_dai_supply: 'Total USDFL Supply',
+      dai_savings_rate: 'USDFL Savings Rate'
     }
   },
   cdp_create: {
     screen_titles: {
       select_collateral: 'Select Collateral',
       vault_management: 'Vault Management',
-      generate_dai: 'Generate USDL',
+      generate_dai: 'Generate USDFL',
       confirmation: 'Confirmation'
     },
     set_allowance: 'Set Allowance',
@@ -397,20 +398,20 @@ export default {
     setup_proxy_proxy_button: 'Setup',
     setup_proxy_allowance_button: 'Set',
     setup_vault: 'Setup Vault',
-    max_dai_available_to_generate: 'Max USDL available to Generate',
+    max_dai_available_to_generate: 'Max USDFL available to Generate',
 
-    deposit_title: 'Deposit {0} and Generate USDL',
+    deposit_title: 'Deposit {0} and Generate USDFL',
     deposit_text:
       'Different collateral types have different risk parameters and collateralization ratios.',
     // "deposit_sidebar_title": "{0} Risk Parameters",
     deposit_form_field1_title:
       'How much {0} would you like to lock in your Vault?',
     deposit_form_field1_text:
-      'The amount of {0} you lock up determines how much USDL you can generate.',
+      'The amount of {0} you lock up determines how much USDFL you can generate.',
     // "deposit_form_field2_title": "What target collateralization ratio would you like to stay above?",
     // "deposit_form_field2_text": "If your Vault drops below this target it will be considered {0} risk.",
     // "deposit_form_field2_after": "Suggested:",
-    deposit_form_field3_title: 'How much USDL would you like to generate?',
+    deposit_form_field3_title: 'How much USDFL would you like to generate?',
     deposit_form_field3_text:
       'Generate an amount that the liquidation ratio.',
     // "deposit_form_field3_after1": "Max at target ratio",
@@ -426,17 +427,17 @@ export default {
     has_understood_stability_fee:
       'I understand that the Stability Fee is not fixed and is likely to change over time',
     collateralization_warning:
-      'The amount of USDL you are generating is putting your Vault at risk of liquidation',
+      'The amount of USDFL you are generating is putting your Vault at risk of liquidation',
     draw_too_much_dai: 'Vault below liquidation threshold',
-    below_dust_limit: 'A Vault requires a minimum of {0} USDL to be generated',
+    below_dust_limit: 'A Vault requires a minimum of {0} USDFL to be generated',
     dust_max_payback:
-      'You can repay all your outstanding debt, or a maximum of {0} USDL',
+      'You can repay all your outstanding debt, or a maximum of {0} USDFL',
     dust_payback_below_limit:
       'Due to your Vault being below the minimum, you must repay all of your outstanding debt',
     stability_fee_description:
       'The fee which is calulated based on the outstanding debt of your Vault. This amount is then continuously added to your existing debt.',
     liquidation_ratio_description:
-      'The collateral-to-USDL ratio at which the Vault becomes vulnerable to liquidation.',
+      'The collateral-to-USDFL ratio at which the Vault becomes vulnerable to liquidation.',
     liquidation_penalty_description:
       'This is the additional fee that you will pay on top of your debt when if you position is liquidated. There might be other potential costs involved depending on the price at which your collateral was sold.',
     waiting_for_comfirmations: 'Waiting for confirmations... {0} of {1}',
@@ -459,21 +460,21 @@ export default {
   cdp_migrate: {
     select_title: 'Select Vault to Migrate',
     select_text:
-      'Select a Vault and pay back the stability fee in USDL or FL to migrate it to Multi-collateral USDL and the new CDP Portal.',
+      'Select a Vault and pay back the stability fee in USDFL or FL to migrate it to Multi-collateral USDFL and the new CDP Portal.',
     current_ratio: 'Current Ratio',
-    dai_debt: 'USDL debt',
-    fee_in_dai: 'Fee in USDL',
+    dai_debt: 'USDFL debt',
+    fee_in_dai: 'Fee in USDFL',
     fee_in_mkr: 'Fee in FL',
     migrate: 'Migrate',
     payment: 'Payment',
-    trust_site_with_dai: 'Trust this site with my USDL',
+    trust_site_with_dai: 'Trust this site with my USDFL',
     pay_and_migrate: 'Pay and Migrate',
     migrate_in_progress_header: 'Your CDP is being migrated',
     migrate_in_progress_text:
       'The estimated time is 8 minutes. You can safely leave this page and return.',
     migrate_complete_header: 'CDP Migration complete',
     migrate_complete_text:
-      'CDP #{0} has been successfully migrated to Multi-collateral USDL and the new CDP Portal.',
+      'CDP #{0} has been successfully migrated to Multi-collateral USDFL and the new CDP Portal.',
     view_transaction_details: 'View transaction details',
     migrate_another_cdp: 'Migrate another CDP',
     exit_to_cdp_portal: 'Exit to CDP Portal'
@@ -481,11 +482,11 @@ export default {
   dsr_deposit: {
     screen_titles: {
       open_vault: 'Manage Proxy',
-      deposit_dai: 'Deposit USDL',
+      deposit_dai: 'Deposit USDFL',
       confirmation: 'Confirmation'
     },
     setup_header: 'Deploy Proxy',
-    open_vault: 'Earn savings on your USDL by locking into Freeliquid Save',
+    open_vault: 'Earn savings on your USDFL by locking into Freeliquid Save',
     deposit_form_title: 'Enter the amount you would like to deposit.',
     setup_proxy_text:
       'Setting up your proxy will bundle multiple transactions into one, saving transaction time and gas costs. This only has to be done once.',
@@ -514,11 +515,11 @@ export default {
   event_history: {
     open: 'Opened a new Vault with id #{0}',
     deposit: 'Deposited {0} {1} into Vault',
-    dsr_deposit: 'Deposited {0} USDL',
+    dsr_deposit: 'Deposited {0} USDFL',
     withdraw: 'Withdrew {0} {1} from Vault',
-    dsr_withdraw: 'Withdrew {0} USDL',
-    generate: 'Generated {0} new USDL from Vault',
-    pay_back: 'Repaid {0} USDL to Vault',
+    dsr_withdraw: 'Withdrew {0} USDFL',
+    generate: 'Generated {0} new USDFL from Vault',
+    pay_back: 'Repaid {0} USDFL to Vault',
     give: 'Vault given to {0} by {1}',
     migrate: 'Vault upgraded from SCD',
     bite: 'Auctioned {0} {1} from Vault',
@@ -532,19 +533,19 @@ export default {
     withdraw_description: 'How much {0} would you like to withdraw?',
     withdraw_warning:
       'The amount of collateral you are withdrawing puts your Vault at risk of liquidation',
-    generate_title: 'Generate USDL',
-    generate_description: 'How much USDL would you like to generate?',
+    generate_title: 'Generate USDFL',
+    generate_description: 'How much USDFL would you like to generate?',
     generate_warning:
-      'The amount of USDL you are generating puts your Vault at risk of liquidation',
+      'The amount of USDFL you are generating puts your Vault at risk of liquidation',
     generate_threshold:
-      'The amount of USDL you are trying to generate exceeds the amount of USDL available. Please enter less than {0} USDL',
-    payback_title: 'Pay Back USDL',
-    payback_description: 'How much USDL would you like to pay back?',
+      'The amount of USDFL you are trying to generate exceeds the amount of USDFL available. Please enter less than {0} USDFL',
+    payback_title: 'Pay Back USDFL',
+    payback_description: 'How much USDFL would you like to pay back?',
     cdp_below_threshold: 'Vault below liquidation threshold',
     insufficient_balance: 'Insufficient {0} balance',
     cannot_payback_more_than_owed: 'Cannot pay back more than owed',
-    dai_balance: 'Your USDL balance',
-    dai_debt: 'USDL debt',
+    dai_balance: 'Your USDFL balance',
+    dai_debt: 'USDFL debt',
     locked_dsr: 'Locked in DSR',
     unlock_token: 'Unlock {0} to continue',
     unlocking_token: 'Unlocking {0}...',
@@ -570,28 +571,28 @@ export default {
     invalid_address: 'This is not a valid address',
     invalid_allowance: 'Amount is higher than your allowance for {0}',
     negative_debt_avail:
-      'Debt ceiling has been reached. There is currently no USDL available for this collateral type.'
+      'Debt ceiling has been reached. There is currently no USDFL available for this collateral type.'
   },
   save: {
     title: 'Savings',
-    dai_savings_rate: 'USDL Savings rate',
+    dai_savings_rate: 'USDFL Savings rate',
     description:
-      'Receive savings on your USDL. Deposit or withdraw at any time.',
+      'Receive savings on your USDFL. Deposit or withdraw at any time.',
     deposit_amount: 'Deposit amount',
     withdraw_amount: 'Withdraw amount',
-    deposit_dai: 'Deposit USDL',
+    deposit_dai: 'Deposit USDFL',
     deposit_dai_subheading:
       'Start earning as soon as your deposit is confirmed.',
-    get_started_title: 'Start earning {0} on your USDL today',
+    get_started_title: 'Start earning {0} on your USDFL today',
     start_earning:
-      'Deposit USDL to see your first transaction and start earning',
+      'Deposit USDFL to see your first transaction and start earning',
     tx_history: 'History',
     savings_earned_to_date: 'Savings earned to date',
     estimated_savings: 'Estimated savings',
-    dai_locked_dsr: 'USDL locked in DSR',
+    dai_locked_dsr: 'USDFL locked in DSR',
     deposit_withdraw: 'Deposit and withdraw',
-    deposit_btn_cta: 'Receive savings on your USDL. Deposit at any time',
-    withdraw_btn_cta: 'Safely withdraw your USDL at any time',
+    deposit_btn_cta: 'Receive savings on your USDFL. Deposit at any time',
+    withdraw_btn_cta: 'Safely withdraw your USDFL at any time',
     no_savings:
       "This address either doesn't exist or has no DSR account history"
   },
@@ -614,8 +615,8 @@ export default {
     unlocking_token: 'Unlocking {0}',
     setting_up_proxy: 'Setting up proxy',
     creating_cdp: 'Creating Vault',
-    generate_dai: 'Generating {0} USDL',
-    pay_back_dai: 'Paying back {0} USDL',
+    generate_dai: 'Generating {0} USDFL',
+    pay_back_dai: 'Paying back {0} USDFL',
     withdrawing_gem: 'Withdrawing {0}',
     depositing_gem: 'Depositing {0}',
     claiming_collateral: 'Claiming collateral',
@@ -626,8 +627,8 @@ export default {
     unlocking_token: 'Unlocked {0}',
     setting_up_proxy: 'Set up proxy',
     creating_cdp: 'Created Vault',
-    generate_dai: 'Generated {0} USDL',
-    pay_back_dai: 'Paid back {0} USDL',
+    generate_dai: 'Generated {0} USDFL',
+    pay_back_dai: 'Paid back {0} USDFL',
     withdrawing_gem: 'Withdrew {0}',
     depositing_gem: 'Deposited {0}',
     claiming_collateral: 'Claimed collateral',
@@ -670,7 +671,7 @@ export default {
   stability_fee: 'Stability Fee',
   liquidation_penalty: 'Liquidation Fee',
   collateral_debt_ceiling: 'Debt ceiling',
-  dai_available: 'USDL Available',
+  dai_available: 'USDFL Available',
   returned_auction: 'returned from the auction',
   liquidated_event: 'Your Vault has been liquidated',
   liquidation_ratio: 'Liquidation Ratio',
@@ -721,7 +722,7 @@ export default {
     non_savings_owner:
       'You are currently viewing the savings of another address ({0})',
     emergency_shutdown_active:
-      'Emergency shutdown has been initiated on {0}. This dashboard is currently read-only. If you have any vaults or USDL, please go to {1}. For more information you can read more {2}',
+      'Emergency shutdown has been initiated on {0}. This dashboard is currently read-only. If you have any vaults or USDFL, please go to {1}. For more information you can read more {2}',
     vault_below_next_price:
       'Your {0} Vault has entered the liquidation phase and your collateral will be auctioned at {1}. You can still avoid auction by depositing at least {2} or repaying {3}',
     vault_below_current_price:
@@ -729,6 +730,6 @@ export default {
     vault_is_liquidated:
       'Your Vault was recently liquidated and {0} was made available for Auction. Please check back here for more details.',
     vault_under_dust_limit:
-      'This Vault is currently under the required minimum amount by approximately {0} USDL which has resulted in reduced functionality. For full access again, you need to Payback the full Outstanding USDL Debt amount, or Deposit additional collateral and Generate at least {1} USDL'
+      'This Vault is currently under the required minimum amount by approximately {0} USDFL which has resulted in reduced functionality. For full access again, you need to Payback the full Outstanding USDFL Debt amount, or Deposit additional collateral and Generate at least {1} USDFL'
   }
 };
