@@ -18,7 +18,6 @@ import RatioDisplay, { RatioDisplayTypes } from 'components/RatioDisplay';
 import BigNumber from 'bignumber.js';
 import { getColor } from 'styles/theme';
 
-
 function OpenCDPForm({
   selectedIlk,
   cdpParams,
@@ -38,30 +37,22 @@ function OpenCDPForm({
   } = ilkData;
   collateralDebtAvailable = collateralDebtAvailable?.toBigNumber();
 
-
   function convertAmountToValue(amount) {
-    if (amount == 0)
-      return BigNumber(0);
-    const r =  collateralValueForAmount(BigNumber(amount));
+    if (amount == 0) return BigNumber(0);
+    const r = collateralValueForAmount(BigNumber(amount));
 
-    if (r == undefined)
-      return BigNumber(0);
+    if (r == undefined) return BigNumber(0);
 
     return r;
   }
 
   function convertValueToAmount(value) {
-    if (value == 0)
-      return BigNumber(0);
-    const r =  collateralAmountByValue(BigNumber(value));
+    if (value == 0) return BigNumber(0);
+    const r = collateralAmountByValue(BigNumber(value));
 
-    if (r == undefined)
-      return BigNumber(0);
+    if (r == undefined) return BigNumber(0);
     return r;
   }
-
-
-
 
   const daiAvailable = calculateMaxDai(BigNumber(cdpParams.gemsToLock || '0'));
   const daiAvailableToGenerate = daiAvailable.gt(collateralDebtAvailable)
@@ -100,7 +91,6 @@ function OpenCDPForm({
     });
   }
 
-
   const fields = [
     [
       lang.formatString(
@@ -115,7 +105,7 @@ function OpenCDPForm({
         style={{ fontSize: '14px', color: getColor('whiteText') }}
         key="collinput"
         name="valueToLock"
-        after={"USD"}
+        after={'USD'}
         type="number"
         value={prettifyNumber(convertAmountToValue(cdpParams.gemsToLock))}
         onChange={handleValueChange}
@@ -154,8 +144,7 @@ function OpenCDPForm({
             });
           }}
         >
-          {prettifyNumber(userBalanceValue)}{' '}
-          {"USD"}
+          {prettifyNumber(userBalanceValue)} {'USD'}
         </Text>
       </Box>
     ],
@@ -394,7 +383,8 @@ const CDPCreateDeposit = ({
           py={{ s: 'm', m: 'l' }}
           style={{
             backgroundColor: getColor('cardBg'),
-            borderColor: getColor('border')
+            borderColor: getColor('cardBg'),
+            borderRadius: '13px'
           }}
         >
           <OpenCDPForm
@@ -411,7 +401,8 @@ const CDPCreateDeposit = ({
           py={{ s: 'm', m: 'l' }}
           style={{
             backgroundColor: getColor('cardBg'),
-            borderColor: getColor('border')
+            borderColor: getColor('cardBg'),
+            borderRadius: '13px'
           }}
         >
           <CDPCreateDepositSidebar
