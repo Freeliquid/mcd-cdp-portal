@@ -99,7 +99,10 @@ function Save({ viewedAddress }) {
         >
           {viewedAddress === account?.address ? (
             <>
-              <Text style={{fontSize:'20px', color: getColor('greyText')}} mb="26px">
+              <Text
+                style={{ fontSize: '20px', color: getColor('greyText') }}
+                mb="26px"
+              >
                 {lang.formatString(
                   lang.save.get_started_title,
                   `${
@@ -121,18 +124,18 @@ function Save({ viewedAddress }) {
                   })
                 }
               >
-                 <FilledButton>{lang.actions.get_started}</FilledButton>
+                <FilledButton>{lang.actions.get_started}</FilledButton>
               </Link>
             </>
           ) : (
-            <Text.p  mb="s">
-              {lang.save.no_savings}
-            </Text.p>
+            <Text.p mb="s">{lang.save.no_savings}</Text.p>
           )}
         </Flex>
       ) : savings && savings.fetchedSavings ? (
         <>
-          <Text style={{fontSize:'24px', color: getColor('whiteText')}}>{lang.save.title}</Text>
+          <Text style={{ fontSize: '24px', color: getColor('whiteText') }}>
+            {lang.save.title}
+          </Text>
           <Grid
             py="m"
             gridColumnGap="l"

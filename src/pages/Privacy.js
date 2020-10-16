@@ -6,7 +6,7 @@ import LegalTextLayout from '../layouts/LegalTextLayout';
 
 const Privacy = () => (
   <MarketingLayout>
-    <LegalTextLayout>
+    <LegalTextLayout style={{ padding: '20px' }}>
       <h1>Privacy Policy</h1>
       <div className="subheading">Last updated: 30 May 2020</div>
       <p>

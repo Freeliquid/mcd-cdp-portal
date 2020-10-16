@@ -197,7 +197,7 @@ export const useDaiSavingsRate = () => {
 const DaiAmount = (() => {
   const GradientValue = styled(Text.h1)`
     display: inline;
-    background: ${getColor('greyText')};
+    background: ${getColor('whiteText')};
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   `;

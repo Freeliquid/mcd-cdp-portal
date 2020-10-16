@@ -335,27 +335,31 @@ export default function({
             backgroundColor: getColor('cardBg')
           }}
         >
-          <Flex alignItems="flex-end" mt="s" mb="xs">
+          <TextBlock fontSize="l" style={{ color: getColor('whiteText') }}>
+            {lang.cdp_page.liquidation_price_info}
+          </TextBlock>
+          {/* <Flex alignItems="flex-end" mt="s" mb="xs">
             <AmountDisplay amount={liquidationPrice} denomination="USD" />
             <ExtraInfo>({gem}/USD)</ExtraInfo>
           </Flex>
           <InfoContainerRow
             title={
               <TextBlock fontSize="l" style={{ color: getColor('greyText') }}>
+                
                 {lang.cdp_page.current_price_info}
                 <ExtraInfo ml="2xs">{`(${gem}/USD)`}</ExtraInfo>
               </TextBlock>
             }
             value={`${formatter(vault.collateralTypePrice)} USD`}
-          />
-          <InfoContainerRow
+          /> */}
+          {/* <InfoContainerRow
             title={lang.cdp_page.liquidation_penalty}
             value={
               formatter(vault.liquidationPenalty, {
                 percentage: true
               }) + '%'
             }
-          />
+          /> */}
         </CdpViewCard>
 
         <CdpViewCard title={lang.cdp_page.collateralization_ratio}>

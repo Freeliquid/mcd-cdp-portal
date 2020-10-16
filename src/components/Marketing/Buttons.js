@@ -7,11 +7,11 @@ const Button = styled(Box)`
   color: ${getColor('cardBg')};
   border: 1px solid ${getColor('cayn')};
   display: inline-flex;
-  padding: 13px 35px 13px;
+  padding: 13px 0px 13px;
   align-items: center;
   justify-content: center;
   font-style: normal;
-  font-size: 16px;
+  font-size: 1em;
   line-height: 18px;
   text-align: center;
   letter-spacing: 0.5px;
@@ -20,7 +20,7 @@ const Button = styled(Box)`
 `;
 
 const FilledButton = styled(Button)`
-  background-color:${getColor('cayn')};
+  background-color: ${getColor('cayn')};
   color: ${getColor('cardBg')};
   font-weight: bold;
   :hover {
@@ -28,14 +28,14 @@ const FilledButton = styled(Button)`
     color: ${getColor('cayn')};
   }
   @media (max-width: 767px) {
-    background-color:${getColor('cayn')}!important;
+    background-color: ${getColor('cayn')}!important;
     color: ${getColor('cardBg')}!important;
     font-weight: bold;
-    }
-    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-      background-color:${getColor('cayn')}!important;
-      color: ${getColor('cardBg')}!important;
-    }
+  }
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    background-color: ${getColor('cayn')}!important;
+    color: ${getColor('cardBg')}!important;
+  }
 `;
 
 export { FilledButton };

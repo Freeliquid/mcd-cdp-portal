@@ -70,6 +70,12 @@ const DSRDepositCheckProxy = ({ dispatch, onClose }) => {
         setAllowance={setAllowance}
         hasAllowance={hasAllowance}
         isSettingAllowance={isSettingAllowance}
+        style={{
+          color: getColor('greyText'),
+          backgroundColor: getColor('cardBg'),
+          borderColor: getColor('cardBg'),
+          borderRadius: '13px'
+        }}
       />
       <ScreenFooter
         onNext={() => dispatch({ type: 'increment-step' })}

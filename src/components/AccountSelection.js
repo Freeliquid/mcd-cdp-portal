@@ -284,7 +284,7 @@ function AccountSelection({ buttonWidth = '240px', ...props }) {
           show={isMobile ? isOpen : undefined}
           trigger={
             <FilledButton
-              marginLeft="15px"
+              marginLeft="10px"
               width={buttonWidth}
               height="44px"
               onClick={() => {

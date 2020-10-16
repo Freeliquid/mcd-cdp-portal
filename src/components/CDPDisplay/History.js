@@ -91,14 +91,14 @@ export default function({
           width="100%"
           variant="normal"
           css={`
-            td span{
+            td span {
             }
             th {
               padding-right: 10px;
-              color: ${getColor('tableTh')}
+              color: ${getColor('whiteText')};
             }
             tr {
-              border-bottom: 1px solid ${getColor('dashBorder')}
+              border-bottom: 1px solid ${getColor('border')};
             }
           `}
         >
@@ -106,7 +106,7 @@ export default function({
             <tr>
               <th>{lang.table.activity}</th>
               <th>{lang.table.date}</th>
-              <th >{lang.table.tx_hash}</th>
+              <th>{lang.table.tx_hash}</th>
             </tr>
           </thead>
           <tbody>

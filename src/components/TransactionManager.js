@@ -27,16 +27,16 @@ const ActionButton = ({ children, ...rest }) => (
     variant="secondary-outline"
     px="0"
     py="0"
-    lineHeight="initial"
-    height="23px"
+    lineHeight="12px"
+    height="22px"
     {...rest}
   >
     <Text
       display="inline-block"
-      px="4px"
-      py="0px"
+      px="5px"
+      py="4px"
       t="smallCaps"
-      lineHeight="20px"
+      lineHeight="12px"
       fontWeight="600"
     >
       {children}
@@ -311,10 +311,9 @@ const TransactionManager = ({
                                 target="_blank"
                                 rel="noopener"
                                 href={etherscanLink(hash, network)}
-                                m="2px 0 2px 0"
                               >
-                                {lang.view}&nbsp;
-                                <ExternalLinkIcon fill="${getColor('subText')}" />
+                                {lang.view}
+                                {/* <ExternalLinkIcon fill="#00DCDC" /> */}
                               </ActionButton>
                             ) : null}
                           </Flex>

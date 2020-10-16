@@ -17,51 +17,21 @@ import ScreenHeader from '../ScreenHeader';
 import RatioDisplay, { RatioDisplayTypes } from 'components/RatioDisplay';
 import BigNumber from 'bignumber.js';
 import { getColor } from 'styles/theme';
-
-
 function OpenCDPForm({
   selectedIlk,
   cdpParams,
   collateralizationRatio,
   handleInputChange,
-  ilkData,
-  dispatch
+  ilkData
 }) {
   const { lang } = useLanguage();
   let {
     calculateMaxDai,
     liquidationRatio,
     debtFloor,
-    collateralDebtAvailable,
-    collateralValueForAmount,
-    collateralAmountByValue
+    collateralDebtAvailable
   } = ilkData;
   collateralDebtAvailable = collateralDebtAvailable?.toBigNumber();
-
-
-  function convertAmountToValue(amount) {
-    if (amount == 0)
-      return BigNumber(0);
-    const r =  collateralValueForAmount(BigNumber(amount));
-
-    if (r == undefined)
-      return BigNumber(0);
-
-    return r;
-  }
-
-  function convertValueToAmount(value) {
-    if (value == 0)
-      return BigNumber(0);
-    const r =  collateralAmountByValue(BigNumber(value));
-
-    if (r == undefined)
-      return BigNumber(0);
-    return r;
-  }
-
-
-
 
   const daiAvailable = calculateMaxDai(BigNumber(cdpParams.gemsToLock || '0'));
   const daiAvailableToGenerate = daiAvailable.gt(collateralDebtAvailable)
@@ -86,21 +56,6 @@ function OpenCDPForm({
     BigNumber(cdpParams.daiToDraw === '' ? '0' : cdpParams.daiToDraw)
   );
 
-  const userBalanceValue = convertAmountToValue(selectedIlk.userGemBalance);
-
-  function handleValueChange({ target }) {
-    if (parseFloat(target.value) < 0) return;
-
-    const name = target.name;
-    const val = convertValueToAmount(target.value);
-
-    dispatch({
-      type: `form/set-gemsToLock`,
-      payload: { value: val }
-    });
-  }
-
-
   const fields = [
     [
       lang.formatString(
@@ -114,11 +69,11 @@ function OpenCDPForm({
       <Input
         style={{ fontSize: '14px', color: getColor('whiteText') }}
         key="collinput"
-        name="valueToLock"
-        after={"USD"}
+        name="gemsToLock"
+        after={selectedIlk.gem}
         type="number"
-        value={prettifyNumber(convertAmountToValue(cdpParams.gemsToLock))}
-        onChange={handleValueChange}
+        value={cdpParams.gemsToLock}
+        onChange={handleInputChange}
         width={300}
         borderColor="#323B4F"
         failureMessage={
@@ -154,8 +109,10 @@ function OpenCDPForm({
             });
           }}
         >
-          {prettifyNumber(userBalanceValue)}{' '}
-          {"USD"}
+          {selectedIlk.gem === 'USDC'
+            ? prettifyNumber(selectedIlk.userGemBalance, { truncate: true })
+            : prettifyNumber(selectedIlk.userGemBalance)}{' '}
+          {selectedIlk.gem}
         </Text>
       </Box>
     ],
@@ -213,7 +170,7 @@ function OpenCDPForm({
           ratio={formatter(collateralizationRatio)}
           ilkLiqRatio={formatter(liquidationRatio, { percentage: true })}
           onlyWarnings={true}
-          t="caption"
+          style={{ color: getColor('greyText') }}
         />
       </Grid>
     ]
@@ -298,8 +255,13 @@ const CDPCreateDepositSidebar = ({
             ilkLiqRatio={formatter(ilkData.liquidationRatio, {
               percentage: true
             })}
-            t="caption"
+            style={{ color: getColor('greyText') }}
           />
+        ],
+        [lang.liquidation_price, `$${liquidationPriceDisplay}`],
+        [
+          lang.formatString(lang.current_ilk_price, selectedIlk.gem),
+          `$${formatter(collateralTypePrice)}`
         ],
         [
           lang.stability_fee,
@@ -394,7 +356,8 @@ const CDPCreateDeposit = ({
           py={{ s: 'm', m: 'l' }}
           style={{
             backgroundColor: getColor('cardBg'),
-            borderColor: getColor('border')
+            borderColor: getColor('cardBg'),
+            borderRadius: '13px'
           }}
         >
           <OpenCDPForm
@@ -403,7 +366,6 @@ const CDPCreateDeposit = ({
             selectedIlk={selectedIlk}
             ilkData={ilkData}
             collateralizationRatio={collateralizationRatio}
-            dispatch={dispatch}
           />
         </Card>
         <Card
@@ -411,7 +373,8 @@ const CDPCreateDeposit = ({
           py={{ s: 'm', m: 'l' }}
           style={{
             backgroundColor: getColor('cardBg'),
-            borderColor: getColor('border')
+            borderColor: getColor('cardBg'),
+            borderRadius: '13px'
           }}
         >
           <CDPCreateDepositSidebar

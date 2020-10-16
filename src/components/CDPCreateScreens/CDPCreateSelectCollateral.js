@@ -20,19 +20,11 @@ import { getColor } from 'styles/theme';
 const CDPCreateSelectCollateralSidebar = () => {
   const { lang } = useLanguage();
   return (
-    <Box
-      px="l"
-      py="m"
-      style={{
-        color: getColor('greyText'),
-        background: getColor('cardBg'),
-        borderColor: getColor('border'),
-
-      }}
-    >
+    <Box px="l" py="m">
       <Grid
-        gridTemplateRow={{ s: 'minmax(0, 1fr)', l: '1fr 1fr 1fr' }}
+        gridTemplateColumns={{ s: 'minmax(0, 1fr)', l: '1fr 1fr 1fr' }}
         gridGap="m"
+        gridColumnGap="50px"
         my="l"
       >
         {[
@@ -150,20 +142,17 @@ const CDPCreateSelectCollateral = ({
   const hasAllowanceAndProxy = hasAllowance && !!proxyAddress;
 
   return (
-    <Box
-      maxWidth="1040px"
-      style={{
-        background: getColor('cardBg'),
-        borderColor: getColor('border'),
-        padding: '30px',
-        borderRadius: '20px'
-      }}
-    >
+    <Box maxWidth="1040px">
       <ScreenHeader
         title={lang.cdp_create.select_title}
         text={lang.cdp_create.select_text}
       />
       <Grid
+        style={{
+          background: getColor('cardBg'),
+          padding: '30px',
+          borderRadius: '13px'
+        }}
         gridTemplateColumns={{ s: 'minmax(0, 1fr)', l: '1fr' }}
         gridGap="m"
         my="l"

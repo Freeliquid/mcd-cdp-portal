@@ -9,6 +9,7 @@ import mixpanel from 'mixpanel-browser';
 import { Routes } from 'utils/constants';
 import useLanguage from 'hooks/useLanguage';
 import { getColor, marketingTheme } from 'styles/theme';
+import AnimationLottie from './AnimateConvas';
 
 import { ReactComponent as BorrowIcon } from 'images/landing/borrow_block.svg';
 import { ReactComponent as SaveIcon } from 'images/landing/save_block.svg';
@@ -18,8 +19,6 @@ import { ReactComponent as CommunityIcon } from 'images/landing/land_com.svg';
 import { ReactComponent as ImgPoolsUsdl } from 'images/landing/pools_to_usdl_full.svg';
 
 import { Box, Flex, Text } from '@makerdao/ui-components-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
 const Content = ({ children }) => (
   <Box p={{ s: `0 ${marketingTheme.mobilePaddingX}`, l: '0 32px' }}>
@@ -224,7 +223,7 @@ const Blocks2 = styled(Flex)`
 `;
 const BlockBorder = styled.div`
   width: 1px;
-  height: 240px;
+  height: 260px;
   border-left: 1px solid ${getColor('border')};
   @media only screen and (min-device-width: 769px) and (max-device-width: 1024px) {
     display: block;
@@ -306,61 +305,71 @@ const BlocksDiv2 = styled.div`
 `;
 
 const BlockPoolsUsdl = styled.div`
-display: flex;
-background: ${getColor('cardBg')};
-border-radius: 40px;
-flex-direction: row;
-align-items: center;
-justify-content: center;
-margin-bottom: 80px;
-.block_img{width:49%};
-.block_text{
-  width:49%;
-  padding: 0px 120px 0px 120px;
-  text-align: left;
-  font-size: 18px;
-  color: ${getColor('greyText')};
-};
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-  flex-direction:row;
-  padding: 20px 0px 30px 0px;
-  .block_img svg {
-    width: 100%;
+  display: flex;
+  background: ${getColor('cardBg')};
+  border-radius: 40px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 80px;
+  .block_img {
+    width: 47%;
   }
-  .block_img{width:49%;
-  
+  .block_text {
+    width: 49%;
+    padding: 0px 100px 0px 100px;
+    text-align: left;
+    font-size: 18px;
+    line-height: 32px;
+    color: ${getColor('greyText')};
   }
-  .block_text{width:49%;
-    padding: 0px 30px 0px 30px;
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    flex-direction: row;
+    padding: 20px 0px 30px 0px;
+    .block_img svg {
+      width: 100%;
+    }
+    .block_img {
+      width: 49%;
+    }
+    .block_text {
+      width: 49%;
+      padding: 0px 30px 0px 30px;
+    }
   }
-}
-@media (max-width: 767px) {
-  width: 100%;
-  .block_img svg {
+  @media (max-width: 767px) {
     width: 100%;
-    margin-top: -50px;
-}
-  .block_img{width:100%};
-  .block_text{width:100%;
-    padding: 15px 40px 55px;
-    text-align: center;
-  };
-  flex-direction:column;
-
-  @media (min-width: 736px) {
-    width: 100%;
-
-    .block_img{width:100%};
-    .block_text{width:100%;
+    .block_img svg {
+      width: 100%;
+      margin-top: -50px;
+    }
+    .block_img {
+      width: 100%;
+    }
+    .block_text {
+      width: 100%;
       padding: 15px 40px 55px;
       text-align: center;
-    };
+    }
+    flex-direction: column;
+
+    @media (min-width: 736px) {
+      width: 100%;
+
+      .block_img {
+        width: 100%;
+      }
+      .block_text {
+        width: 100%;
+        padding: 15px 40px 55px;
+        text-align: center;
+      }
+    }
   }
-}
 `;
 
 const ButtonFlex = styled.div`
-font-size: 18px;
+  font-size: 18px;
 
   @media (max-width: 768px) {
     justify-content: space-between;
@@ -375,102 +384,95 @@ const TitleCard = styled.div`
   color: ${getColor('whiteText')};
 `;
 const VideoBg = styled.div`
-align-items: center;
+  align-items: center;
   display: flex;
   justify-content: center;
-.shape {
+  .shape {
     position: absolute;
-    background: #4E26FF;
+    background: #4e26ff;
     animation: morph 7s ease-in infinite;
     border-radius: 30% 60% 70% 30% / 40% 60% 30% 70%;
     height: 250px;
-    
+
     width: 270px;
     z-index: 5;
   }
-  
+
   .shape2 {
     position: absolute;
-    background: #2A1980;
+    background: #2a1980;
     animation: morph2 6s ease-in-out infinite;
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     height: 360px;
-    
+
     width: 330px;
     z-index: 5;
   }
-  
+
   .shape3 {
     position: absolute;
-    background: #12102C;
+    background: #12102c;
     animation: morph3 4s ease-in-out infinite;
     border-radius: 55% 45% 44% 66% / 13% 46% 67% 23%;
     height: 390px;
-   
+
     width: 440px;
     z-index: 5;
   }
-  
+
   @keyframes morph {
     0% {
       border-radius: 40% 60% 70% 30% / 40% 60% 30% 50%;
-      background: #4E26FF;
-     
+      background: #4e26ff;
     }
     50% {
       border-radius: 60% 40% 60% 40% / 50% 60% 40% 60%;
-      background: #4E26FF;
-      
+      background: #4e26ff;
     }
     100% {
       border-radius: 40% 60% 70% 30% / 40% 60% 30% 50%;
-      background: #4E26FF;
-      
+      background: #4e26ff;
     }
   }
   @keyframes morph2 {
     0% {
       border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-      background: #2A1980;
-      
+      background: #2a1980;
     }
     50% {
       border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-      background: #2A1980;
+      background: #2a1980;
     }
     100% {
       border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-      background: #2A1980;
+      background: #2a1980;
     }
   }
   @keyframes morph3 {
     0% {
-     
       border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-      background: #12102C;
+      background: #12102c;
     }
     50% {
       border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-      background: #12102C;
-   
+      background: #12102c;
     }
     100% {
-    
       border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-      background: #12102C;
+      background: #12102c;
     }
   }
-  
-  .link_vdo_wrap{
+
+  .link_vdo_wrap {
     position: absolute;
-     z-index: 5;
+    z-index: 5;
   }
   .link_vdo_wrap a {
     color: #000;
     font-size: 72px;
-}
-    .link_vdo_wrap a:hover{
-    color: #00DCDC;
+  }
+  .link_vdo_wrap a:hover {
+    color: #00dcdc;
   }
 `;
 function Landing() {
@@ -495,27 +497,24 @@ function Landing() {
               <ButtonFlex>
                 <div className="buttonContainer">
                   <Link href="/borrow" className="button-link">
-                    <FilledButton>{lang.landing_page.get_start}</FilledButton>
+                    <FilledButton className="button_p">
+                      {lang.landing_page.get_start}
+                    </FilledButton>
                   </Link>
                 </div>
               </ButtonFlex>
             </BlocksDiv>
             <BlocksDiv2 style={{ textAlign: 'center' }}>
-                <VideoBg>
-                <div className="shape3"></div>
-                <div className="shape2"></div>
-                <div className="shape"></div>
-                <div className="link_vdo_wrap">
-                    <a href="#"><FontAwesomeIcon icon={faPlay} /></a>
-                </div>
-        </VideoBg>
+              <div className="animation">
+                <AnimationLottie />
+              </div>
             </BlocksDiv2>
           </Blocks>
         </FadeIn>
         <FadeIn moveDistance="40px">
           <BlockPoolsUsdl>
             <div className="block_img">
-            <ImgPoolsUsdl />
+              <ImgPoolsUsdl />
             </div>
             <BlockBorder />
             <div className="block_text">

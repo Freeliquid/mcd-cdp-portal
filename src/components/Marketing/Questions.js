@@ -11,8 +11,8 @@ const QuestionAndAnswerStyle = styled.div`
   position: relative;
 
   .question-row {
-    padding-top: 16px;
-    padding-bottom: 12px;
+    padding-top: 24px;
+    padding-bottom: 24px;
     letter-spacing: 0.007em;
     position: relative;
     border-bottom: 1px solid ${separatorColor};
@@ -125,7 +125,9 @@ const QuestionAndAnswer = ({ question, answer, onClick, isSelected }) => {
     >
       <div className="question-row">
         <div style={{ cursor: 'pointer' }} onClick={onClick}>
-          <Text.h4 className="question">{question}</Text.h4>
+          <Text style={{ color: getColor('whiteText') }} className="question">
+            {question}
+          </Text>
           <div className="plus-minus-toggle" />
         </div>
       </div>
@@ -190,7 +192,7 @@ const Links = styled(Flex)`
   @media (min-width: ${props => props.theme.breakpoints.m}) {
     flex-direction: row;
     a {
-      margin-bottom: inherit;
+      margin-bottom: 15px;
     }
   }
 `;

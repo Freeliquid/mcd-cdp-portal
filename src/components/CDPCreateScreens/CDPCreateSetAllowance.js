@@ -52,10 +52,6 @@ const CDPCreateSetAllowance = ({ selectedIlk, isFirstVault, dispatch }) => {
     <Box
       maxWidth="71.8rem"
       style={{
-        background: getColor('cardBg'),
-        borderColor: getColor('border'),
-        borderRadius: '20px',
-        padding: '20px 0px',
         textAlign: 'center'
       }}
     >
@@ -63,12 +59,20 @@ const CDPCreateSetAllowance = ({ selectedIlk, isFirstVault, dispatch }) => {
         style={{
           fontSize: '22px',
           color: getColor('whiteText'),
-          textAlign: 'center'
+          textAlign: 'center',
+          lineHeight: '3.5'
         }}
       >
         {lang.cdp_create.setup_proxy_title}
       </Text>
       <ProxyAllowanceCheck
+        style={{
+          background: getColor('cardBg'),
+          border: "1px solid ${getColor('border')}",
+          borderRadius: '20px',
+          padding: '20px 0px',
+          textAlign: 'center'
+        }}
         proxyAddress={proxyAddress}
         deployProxy={setupProxy}
         labels={labels}

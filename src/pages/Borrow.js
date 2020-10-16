@@ -59,8 +59,6 @@ const HeroBackground = (() => {
   );
 })();
 
-
-
 // disableConnect is for testing
 function Borrow({ disableConnect = false }) {
   const { account } = useMaker();
@@ -110,102 +108,110 @@ function Borrow({ disableConnect = false }) {
 
   return (
     <BorrowBg>
-    <StyledPageContentLayout>
-      
-      <PageHead
-        title={lang.borrow_landing.meta.title}
-        description={lang.borrow_landing.meta.description}
-      />
-      <FixedHeaderTrigger >
-        <ConnectHero className="borrow_block1">
-          <HeroBackground />
-          <ThickUnderline 
-          >
-            <Text style={{fontSize:'20px', color: getColor('cayn') }} >{lang.borrow_landing.page_name}</Text>
-          </ThickUnderline>
-          <Text.h1 className="headline" style={{fontSize: '48px'}}>{lang.borrow_landing.headline}</Text.h1>
-          <Box minHeight="91px" maxWidth="645px">
-            <Text style={{fontSize: '20px', color: getColor('greyText')}}>{lang.borrow_landing.subheadline}</Text>
+      <StyledPageContentLayout>
+        <PageHead
+          title={lang.borrow_landing.meta.title}
+          description={lang.borrow_landing.meta.description}
+        />
+        <FixedHeaderTrigger>
+          <ConnectHero className="borrow_block1">
+            <HeroBackground />
+            <ThickUnderline>
+              <Text style={{ fontSize: '20px', color: getColor('cayn') }}>
+                {lang.borrow_landing.page_name}
+              </Text>
+            </ThickUnderline>
+            <Text.h1 className="headline" style={{ fontSize: '48px' }}>
+              {lang.borrow_landing.headline}
+            </Text.h1>
+            <Box minHeight="91px" maxWidth="645px">
+              <Text style={{ fontSize: '20px', color: getColor('greyText') }}>
+                {lang.borrow_landing.subheadline}
+              </Text>
+            </Box>
+            <Text fontSize="17px" color="#A3B2CF" className="connect-to-start">
+              {lang.borrow_landing.connect_to_start}
+            </Text>
+            <AccountSelection style={{ width: '260px' }} className="button" />
+          </ConnectHero>
+        </FixedHeaderTrigger>
+        <GradientBox mt="26px">
+          <Box m="30px 15px 0">
+            <Text.h2 mb="16px">{lang.borrow_landing.calc_heading}</Text.h2>
+            <Text style={{ fontSize: '20px', color: getColor('greyText') }}>
+              {lang.borrow_landing.calc_subheading}
+            </Text>
+            {prices?.length && cdpTypesList?.length ? (
+              <BorrowCalculator
+                mt="40px"
+                prices={prices}
+                cdpTypesList={cdpTypesList}
+              />
+            ) : null}
           </Box>
-          <Text fontSize="17px" color="#A3B2CF" className="connect-to-start">
-            {lang.borrow_landing.connect_to_start}
-          </Text>
-          <AccountSelection style={{width:'260px'}} className="button"  />
-        </ConnectHero>
-      </FixedHeaderTrigger>
-      <GradientBox mt="26px">
-        <Box m="30px 15px 0">
-          <Text.h2 mb="16px">{lang.borrow_landing.calc_heading}</Text.h2>
-          <Text style={{fontSize:'20px', color: getColor('greyText') }}>{lang.borrow_landing.calc_subheading}</Text>
-          {prices?.length && cdpTypesList?.length ? (
-            <BorrowCalculator
-              mt="40px"
-              prices={prices}
-              cdpTypesList={cdpTypesList}
+        </GradientBox>
+        <Box maxWidth="1140px" m="104px 15px 0">
+          <Box maxWidth="777px" m="0 auto">
+            <Text.h2 mb="34px">{lang.borrow_markets.heading}</Text.h2>
+            <Text style={{ fontSize: '17px', color: getColor('greyText') }}>
+              {lang.borrow_markets.subheading}
+            </Text>
+          </Box>
+          <Box
+            mt={{ s: '54px', m: '87px' }}
+            css={`
+              overflow-x: scroll;
+              overflow-y: hidden;
+              &::-webkit-scrollbar {
+                display: none;
+              }
+              -ms-overflow-style: none;
+            `}
+          >
+            <MarketsTable
+              cdpTypesList={cdpTypesList.filter(symbol =>
+                ['USDTUSDC'].includes(symbol.split('-')[0])
+              )}
             />
-          ) : null}
-        </Box>
-      </GradientBox>
-      <Box maxWidth="1140px" m="104px 15px 0">
-        <Box maxWidth="777px" m="0 auto">
-          <Text.h2 mb="34px">{lang.borrow_markets.heading}</Text.h2>
-          <Text style={{fontSize:'17px', color: getColor('greyText') }}>{lang.borrow_markets.subheading}</Text>
-        </Box>
-        <Box
-          mt={{ s: '54px', m: '87px' }}
-          css={`
-            overflow-x: scroll;
-            overflow-y: hidden;
-            &::-webkit-scrollbar {
-              display: none;
-            }
-            -ms-overflow-style: none;
-          `}
-        >
-          <MarketsTable
-            cdpTypesList={cdpTypesList.filter(symbol =>
-              ['USDTUSDC'].includes(symbol.split('-')[0])
-            )}
-          />
-        </Box>
-        <Box
-          textAlign="left"
-          mt={{ s: '20px', m: '35px' }}
-          pl={{ s: '6px', m: '37px' }}
-        >
-          {/* <Link
+          </Box>
+          <Box
+            textAlign="left"
+            mt={{ s: '20px', m: '35px' }}
+            pl={{ s: '6px', m: '37px' }}
+          >
+            {/* <Link
             href={`/${Routes.BORROW}/markets`}
             style={{ textDecoration: 'underline' }}
           >
             {lang.borrow_landing.markets_link}
           </Link> */}
+          </Box>
         </Box>
-      </Box>
-      <QuestionsWrapper mt="147px" style={{padding: '5px 0px'}}>
-        <Text.h2>{lang.landing_page.questions_title}</Text.h2>
-        <Questions
-          questions={buildQuestionsFromLangObj(
-            lang.borrow_landing.questions,
-            lang
-          )}
-          links={
-            <>
-              <Link
-                style={{ color: '#00C4C4' }}
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {lang.borrow_landing.questions.bottom_link1}
-              </Link>
-              <Box display={{ s: 'none', m: 'inline-block' }}>
-                <SeparatorDot mx="24px" />
-              </Box>
-            </>
-          }
-        />
-      </QuestionsWrapper>
-    </StyledPageContentLayout>
+        <QuestionsWrapper mt="147px" style={{ padding: '5px 0px' }}>
+          <Text.h2>{lang.landing_page.questions_title}</Text.h2>
+          <Questions
+            questions={buildQuestionsFromLangObj(
+              lang.borrow_landing.questions,
+              lang
+            )}
+            /* links={
+              <>
+                <Link
+                  style={{ color: '#00C4C4' }}
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {lang.borrow_landing.questions.bottom_link1}
+                </Link>
+                <Box display={{ s: 'none', m: 'inline-block' }}>
+                  <SeparatorDot mx="24px" />
+                </Box>
+              </>
+            } */
+          />
+        </QuestionsWrapper>
+      </StyledPageContentLayout>
     </BorrowBg>
   );
 }

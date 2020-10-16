@@ -87,10 +87,6 @@ const CdpContainer = styled(Flex)`
   flex-direction: ${props => (props.mobile ? 'row' : 'column')};
   flex-wrap: ${props => (props.mobile ? 'wrap' : undefined)};
   overflow: auto;
-  height: ${props => props.cdpsLength >= 4 && !props.mobile && '275px'};
-  ::-webkit-scrollbar {
-    width: 0px;
-  }
 `;
 
 const CDPList = memo(function({
@@ -195,7 +191,7 @@ const CDPList = memo(function({
         </DirectionalButton>
       )}
       <Box
-        bg={account ? '#131824' : '#131824'}
+        bg={mobile ? '#131824' : '#131824'}
         height="100%"
         width={mobile ? '100vw' : `${getMeasurement('navbarWidth')}px`}
         px={mobile ? '15px' : '5px'}

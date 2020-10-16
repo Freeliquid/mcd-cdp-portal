@@ -32,7 +32,6 @@ import BgSave from 'images/landing/save/save_block1.png';
 import { Link } from 'react-navi';
 import { useDaiSavingsRate } from '../components/Marketing/Calculators';
 
-
 const HeroBackground = (() => {
   return () => (
     <Box
@@ -126,93 +125,110 @@ function SaveOverview() {
   }, [account, navigation, network]);
   return (
     <SaveBg>
-    <StyledPageContentLayout>
-      <PageHead
-        title={lang.save_landing.meta.title}
-        description={lang.save_landing.meta.description}
-      />
-      <FixedHeaderTrigger>
-        <ConnectHero className="save_block1">
-          <HeroBackground/>
-          <ThickUnderline>
-            <Text style={{fontSize:'20px', color: getColor('cayn') }} >{lang.save_landing.page_name}</Text>
-          </ThickUnderline>
-          <Text.h1
-            className="headline"
-            style={{ marginBottom: '17px', fontSize:'48px'}}
-            maxWidth="600px"
-          >
-            {lang.save_landing.headline}
-          </Text.h1>
-          <Box minHeight="81px" maxWidth="600px">
-            <Text style={{ fontSize: '20px', color: getColor('greyText') }}>{lang.save_landing.subheadline}</Text>
-          </Box>
-          <Text fontSize="s" className="connect-to-start" style={{ fontSize: '17px', color: getColor('greyText') }}>
-            {lang.save_landing.connect_to_start}
-          </Text>
-          <AccountSelection className="button" />
-        </ConnectHero>
-      </FixedHeaderTrigger>
-      <GradientBox mt="141px">
-        <QuotesFadeIn>
-          <StyledQuotes
-            title={lang.save_landing.quotes_block.title}
-            body={<Box mb="95px" style={{fontSize: '17px', color: getColor('greyText')}}>{lang.save_landing.quotes_block.body}</Box>}
-            quote={lang.save_landing.quotes_block.quote1}
-            author={<Box style={{fontSize: '17px', color: getColor('greyText')}}>{lang.save_landing.quotes_block.author1}</Box>}
-            url="https://dsr.fyi/0xb277d98b101af4f1a1c7fe6d443f6993f1904237"
-          />
-        </QuotesFadeIn>
-        {dsr > 0 && (
-          <Box m="256px 15px 0" maxWidth="813px">
-            <Text.h2 mb="16px">{lang.save_landing.calc_heading}</Text.h2>
-            <Text>{lang.save_landing.calc_subheading}</Text>
-            <Box position="relative">
-              <Parallaxed
-                initialOffset={1750}
-                style={{
-                  position: 'absolute',
-                  top: '177px',
-                  width: '100%',
-                  height: '400px'
-                }}
-              >
-              </Parallaxed>
-              <SaveCalculator mt="40px" />
-            </Box>
-          </Box>
-        )}
-      </GradientBox>
-      <Features
-        mt={{ s: '158px', m: '200px' }}
-        features={[<Feat1 />, <Feat2 />, <Feat3 />, <Feat4 />].map(
-          (img, index) => ({
-            img: img,
-            title: lang.save_landing[`feature${index + 1}_heading`],
-            content: lang.save_landing[`feature${index + 1}_content`]
-          })
-        )}
-      />
-      <QuestionsWrapper>
-        <Text.h2>{lang.landing_page.questions_title}</Text.h2>
-        <Questions
-          questions={buildQuestionsFromLangObj(
-            lang.save_landing.questions,
-            lang
-          )}
-          links={
-            <Link
-              style={{ color: '#00C4C4' }}
-              href="https://community-development.makerdao.com/makerdao-mcd-faqs/faqs/dsr"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {lang.save_landing.questions.bottom_link1}
-            </Link>
-          }
+      <StyledPageContentLayout>
+        <PageHead
+          title={lang.save_landing.meta.title}
+          description={lang.save_landing.meta.description}
         />
-      </QuestionsWrapper>
-    </StyledPageContentLayout>
+        <FixedHeaderTrigger>
+          <ConnectHero className="save_block1">
+            <HeroBackground />
+            <ThickUnderline>
+              <Text style={{ fontSize: '20px', color: getColor('cayn') }}>
+                {lang.save_landing.page_name}
+              </Text>
+            </ThickUnderline>
+            <Text.h1
+              className="headline"
+              style={{ marginBottom: '17px', fontSize: '48px' }}
+              maxWidth="600px"
+            >
+              {lang.save_landing.headline}
+            </Text.h1>
+            <Box minHeight="81px" maxWidth="600px">
+              <Text style={{ fontSize: '20px', color: getColor('greyText') }}>
+                {lang.save_landing.subheadline}
+              </Text>
+            </Box>
+            <Text
+              fontSize="s"
+              className="connect-to-start"
+              style={{ fontSize: '17px', color: getColor('greyText') }}
+            >
+              {lang.save_landing.connect_to_start}
+            </Text>
+            <AccountSelection className="button" />
+          </ConnectHero>
+        </FixedHeaderTrigger>
+        <GradientBox mt="141px">
+          <QuotesFadeIn>
+            <StyledQuotes
+              title={lang.save_landing.quotes_block.title}
+              body={
+                <Box
+                  mb="95px"
+                  style={{ fontSize: '17px', color: getColor('greyText') }}
+                >
+                  {lang.save_landing.quotes_block.body}
+                </Box>
+              }
+              quote={lang.save_landing.quotes_block.quote1}
+              author={
+                <Box style={{ fontSize: '17px', color: getColor('greyText') }}>
+                  {lang.save_landing.quotes_block.author1}
+                </Box>
+              }
+            />
+          </QuotesFadeIn>
+          {dsr > 0 && (
+            <Box m="256px 15px 0" maxWidth="813px">
+              <Text.h2 mb="16px">{lang.save_landing.calc_heading}</Text.h2>
+              <Text>{lang.save_landing.calc_subheading}</Text>
+              <Box position="relative">
+                <Parallaxed
+                  initialOffset={1750}
+                  style={{
+                    position: 'absolute',
+                    top: '177px',
+                    width: '100%',
+                    height: '400px'
+                  }}
+                ></Parallaxed>
+                <SaveCalculator mt="40px" />
+              </Box>
+            </Box>
+          )}
+        </GradientBox>
+        <Features
+          mt={{ s: '158px', m: '200px' }}
+          features={[<Feat1 />, <Feat2 />, <Feat3 />, <Feat4 />].map(
+            (img, index) => ({
+              img: img,
+              title: lang.save_landing[`feature${index + 1}_heading`],
+              content: lang.save_landing[`feature${index + 1}_content`]
+            })
+          )}
+        />
+        <QuestionsWrapper>
+          <Text.h2>{lang.landing_page.questions_title}</Text.h2>
+          <Questions
+            questions={buildQuestionsFromLangObj(
+              lang.save_landing.questions,
+              lang
+            )}
+            /* links={
+              <Link
+                style={{ color: '#00C4C4' }}
+                href="https://community-development.makerdao.com/makerdao-mcd-faqs/faqs/dsr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {lang.save_landing.questions.bottom_link1}
+              </Link>
+            } */
+          />
+        </QuestionsWrapper>
+      </StyledPageContentLayout>
     </SaveBg>
   );
 }
