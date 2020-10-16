@@ -45,12 +45,11 @@ const CDPCreateConfirmSummary = ({
   const [hasReadTOS, setHasReadTOS] = useState(false);
   const [hasUnderstoodSF, setHasUnderstoodSF] = useState(false);
 
-  const { liquidationPenalty, liquidationRatio, annualStabilityFee } = ilkData;
-
+  const { liquidationPenalty, liquidationRatio, annualStabilityFee, collateralValueForAmount } = ilkData;
   const rows = [
     [
       lang.verbs.depositing,
-      `${prettifyNumber(cdpParams.gemsToLock)} ${selectedIlk.gem}`
+      `${prettifyNumber(collateralValueForAmount(cdpParams.gemsToLock))} ${"USD"}`
     ],
     [lang.verbs.generating, `${prettifyNumber(cdpParams.daiToDraw)} USDL`],
     [
@@ -65,15 +64,6 @@ const CDPCreateConfirmSummary = ({
     [
       lang.liquidation_ratio,
       `${formatter(liquidationRatio, { percentage: true })}%`
-    ],
-    [
-      lang.liquidation_price,
-      `$${formatter(
-        ilkData.calculateliquidationPrice(
-          BigNumber(cdpParams.gemsToLock),
-          USDL(cdpParams.daiToDraw)
-        )
-      )}`
     ],
     [
       lang.liquidation_penalty,
@@ -102,8 +92,7 @@ const CDPCreateConfirmSummary = ({
         style={{
           color: getColor('greyText'),
           backgroundColor: getColor('cardBg'),
-          borderColor: getColor('cardBg'),
-          borderRadius: '13px'
+          borderColor: getColor('border')
         }}
       >
         <Grid>
@@ -144,7 +133,7 @@ const CDPCreateConfirmSummary = ({
               setHasReadTOS(state => !state);
             }}
           />
-          <Text style={{ color: getColor('greyText') }} ml="s">
+          <Text style={{color: getColor('greyText')}} ml="s">
             {lang.formatString(
               lang.terms_of_service_text,
               <Link href="/terms" target="_blank" color="#00DCDC">
@@ -156,7 +145,7 @@ const CDPCreateConfirmSummary = ({
             checked={hasUnderstoodSF}
             onChange={() => setHasUnderstoodSF(state => !state)}
           />
-          <Text style={{ color: getColor('greyText') }} ml="s">
+          <Text style={{color: getColor('greyText')}} ml="s">
             {lang.cdp_create.has_understood_stability_fee}
           </Text>
         </Grid>
@@ -252,24 +241,15 @@ const CDPCreateConfirmed = ({ hash, isFirstVault, onClose, txState }) => {
                   trackBtnClick('TxDetails', { isFirstVault });
                 }}
               >
-                <Button
-                  variant="secondary"
-                  style={{
-                    background: getColor('cardBg'),
-                    borderColor: getColor('border')
-                  }}
-                >
-                  <Text style={{ color: getColor('whiteText') }} mr="xs">
-                    {lang.cdp_create.view_tx_details}
-                  </Text>
-                  <StyledExternalLink color="aqua" ml="4px" />
+                <Button variant="secondary" style={{background: getColor('cardBg'), borderColor: getColor('border') }}>
+                  <Text style={{color: getColor('whiteText')}} mr="xs">{lang.cdp_create.view_tx_details}</Text>
+                  <StyledExternalLink  color="aqua" ml="4px" />
                 </Button>
               </Link>
             )}
           </Box>
           <Flex textAlign="center" justifyContent="center">
-            <Button
-              className="btn"
+            <Button className="btn"
               onClick={() => {
                 trackBtnClick('Exit', { isFirstVault });
                 onClose();
