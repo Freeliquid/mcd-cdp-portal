@@ -1,7 +1,7 @@
 export default {
   cdp_page: {
     liquidation_price: 'Liquidation price',
-    liquidation_price_info:'Liquidation is temporarily not available in this version',
+    liquidation_price_info:'The liquidation function will be available if volatile tokens are used for issuing USDFL.',
     // "liquidation_ratio": "Liquidation ratio",
     collateralization_ratio: 'Collateralization ratio',
     // "current_price_information": "Current price information",
