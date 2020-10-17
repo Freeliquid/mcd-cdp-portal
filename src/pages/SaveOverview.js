@@ -160,45 +160,7 @@ function SaveOverview() {
             <AccountSelection className="button" />
           </ConnectHero>
         </FixedHeaderTrigger>
-        <GradientBox mt="141px">
-          <QuotesFadeIn>
-            <StyledQuotes
-              title={lang.save_landing.quotes_block.title}
-              body={
-                <Box
-                  mb="95px"
-                  style={{ fontSize: '17px', color: getColor('greyText') }}
-                >
-                  {lang.save_landing.quotes_block.body}
-                </Box>
-              }
-              quote={lang.save_landing.quotes_block.quote1}
-              author={
-                <Box style={{ fontSize: '17px', color: getColor('greyText') }}>
-                  {lang.save_landing.quotes_block.author1}
-                </Box>
-              }
-            />
-          </QuotesFadeIn>
-          {dsr > 0 && (
-            <Box m="256px 15px 0" maxWidth="813px">
-              <Text.h2 mb="16px">{lang.save_landing.calc_heading}</Text.h2>
-              <Text>{lang.save_landing.calc_subheading}</Text>
-              <Box position="relative">
-                <Parallaxed
-                  initialOffset={1750}
-                  style={{
-                    position: 'absolute',
-                    top: '177px',
-                    width: '100%',
-                    height: '400px'
-                  }}
-                ></Parallaxed>
-                <SaveCalculator mt="40px" />
-              </Box>
-            </Box>
-          )}
-        </GradientBox>
+        
         <Features
           mt={{ s: '158px', m: '200px' }}
           features={[<Feat1 />, <Feat2 />, <Feat3 />, <Feat4 />].map(

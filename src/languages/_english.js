@@ -77,7 +77,7 @@ export default {
     question2: 'What is USDFL?',
     answer2:
       'USDFL is the world’s first unbiased currency and leading decentralized stablecoin soft-pegged to the US Dollar. Learn more about USDFL {0}.',
-    answer2_link1_url: 'https://makerdao.com/en/',
+    answer2_link1_url: '#',
     answer2_link1_text: 'here',
     question3: 'Do I need an account?',
     answer3:
@@ -227,34 +227,31 @@ export default {
     calc_total_dai: 'Total USD you will have',
     calc_footnote:
       'The above figure assumes an average USD Savings Rate of {dsr}%',
-    feature1_heading: 'A smarter, better money',
+    feature1_heading: 'Smart version of money',
     feature1_content:
-      'Manage your savings from anywhere, at anytime. Freeliquid is a decentralized application meaning that you are the only person that controls it.',
-    feature2_heading: 'Less volatility, no uncertainty',
+      'Freeliquid - gives you ability to manage your assets at any time, in any place convenient for you, with a completely decentralized system for managing your funds.',
+    feature2_heading: 'Avoiding volatility with stablecoins',
     feature2_content:
-      'USDFL is designed to be stable, just like cash. Stay in the crypto ecosystem without the volatility.',
+      'The idea behind USDFL is to create a stablecoin backed by cryptoassets that are much more stable in price than ether. This will allow us to reduce the associated risks and avoid fluctuations in the price of our token.',
     feature3_heading: 'Honest and transparent rate',
     feature3_content:
-      'The USDFL Savings Rate is governed by FL holders and is set based on the supply and demand of USDFL on exchanges.',
+      'The USDFL Savings Rate is governed by FL holders and is set based on the supply and demand of USDFL on exchanges',
     feature4_heading: 'Secure from the ground up',
     feature4_content:
-      'Freeliquid regularly undergoes security audits and checks. Built by the developers of the MakerDAO protocol.',
+      'Freeliquid regularly undergoes security audits and checks. Built by the developers of the Freeliquid protocol.',
     questions: {
       question1: 'How is the USDFL Savings Rate determined?',
       answer1:
-        'The USDFL Savings Rate is determined through governance of the Maker Protocol by FL token holders. The rate which is chosen based on a number of parameters including, but not limited to the current supply and demand of USDFL, and the current stability fees charged on Vaults.',
+        'The USDFL Savings Rate is determined through governance of the Freeliquid Protocol by FL token holders. The rate which is chosen based on a number of parameters including, but not limited to the current supply and demand of USDFL, and the current stability fees charged on Vaults.',
       question2: 'Where does the earned USDFL come from?',
       answer2:
-        'The earnings you receive from the USDFL Savings Rate come directly from the Maker Protocol. Your USDFL is never leant out, instead USDFL is taken from the Maker Protocol where it charges fees for generating USDFL from Vaults (known as Stability Fees).',
+        'The earnings you receive from the USDFL Savings Rate come directly from the Freeliquid Protocol. Your USDFL is never leant out, instead USDFL is taken from the Freeliquid Protocol where it charges fees for generating USDFL from Vaults (known as Stability Fees).',
       question3: 'How much does it cost to use the USDFL Savings Rate?',
       answer3:
         "There are no fees to pay for using the USDFL Savings Rate other than the transaction, or Gas, fee's for using the Ethereum Network. The actual costs of these transaction fees varies depending on how busy the network is.",
       question4: 'Can anyone else withdraw my USDFL after I deposited it?',
       answer4:
         "No. Providing you don't share your wallet or private key with anyone else, only you are able to control and access the USDFL deposited into Freeliquid Save. For this reason, it is also very important to backup your wallet, as there is no way to return your USDFL if you lose access to your wallet.",
-      question5: 'What are the risks involved?',
-      answer5:
-        'As with all forms of digital, online technology, there is a risk of bugs and errors with the code. The Maker Protocol smart contracts, which run the USDFL Savings Rate, have been through thorough testing, and multiple third party audits to address these risks. The biggest risk is often down to you and how you control your wallet - you should ensure you never share your private key or seed phrase with anyone else, and always make sure you keep a secure backup in case you need to restore your wallet in the future.',
       bottom_link1: 'Full list of Freeliquid Save FAQs'
     }
   },
@@ -617,6 +614,7 @@ export default {
     creating_cdp: 'Creating Vault',
     generate_dai: 'Generating {0} USDFL',
     pay_back_dai: 'Paying back {0} USDFL',
+    get_reward: 'Your reward {0} FL',
     withdrawing_gem: 'Withdrawing {0}',
     depositing_gem: 'Depositing {0}',
     claiming_collateral: 'Claiming collateral',
