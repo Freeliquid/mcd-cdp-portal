@@ -405,12 +405,7 @@ const BorrowCalculator = ({ prices, cdpTypesList, ...props }) => {
                   mb={{ s: '24px', m: '23px' }}
                   ml={{ s: '3px', m: '0' }}
                 >
-                  {getDaiAvailable(
-                    interfaceLocale,
-                    collateralAmount,
-                    selectedIlk.price,
-                    selectedIlk.colRatio
-                  )}
+              {((parseInt(collateralAmount * 90)) / 100)}
                 </DaiAmount>
               )
             })}
