@@ -6,7 +6,8 @@ import { TextBlock } from 'components/Typography';
 import {
   formatCollateralizationRatio,
   prettifyNumber,
-  formatter
+  formatter,
+  prettifyCurrency
 } from 'utils/ui';
 import { cdpParamsAreValid } from '../../utils/cdp';
 import useTokenAllowance from 'hooks/useTokenAllowance';
@@ -107,7 +108,7 @@ function OpenCDPForm({
         name="valueToLock"
         after={'USD'}
         type="number"
-        value={prettifyNumber(convertAmountToValue(cdpParams.gemsToLock))}
+        value={prettifyCurrency(convertAmountToValue(cdpParams.gemsToLock))}
         onChange={handleValueChange}
         width={300}
         borderColor="#323B4F"
