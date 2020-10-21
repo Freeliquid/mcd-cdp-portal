@@ -157,7 +157,7 @@ export default function({
             lang.notifications.vault_below_current_price,
             vaultType,
             `${formatter(currentCollateralNeeded)} ${gem}`,
-            `${formatter(currentDebtNeeded)} USDL`
+            `${formatter(currentDebtNeeded)} USDFL`
           ),
           level: SAFETY_LEVELS.DANGER
         });
@@ -338,28 +338,6 @@ export default function({
           <TextBlock fontSize="l" style={{ color: getColor('whiteText') }}>
             {lang.cdp_page.liquidation_price_info}
           </TextBlock>
-          {/* <Flex alignItems="flex-end" mt="s" mb="xs">
-            <AmountDisplay amount={liquidationPrice} denomination="USD" />
-            <ExtraInfo>({gem}/USD)</ExtraInfo>
-          </Flex>
-          <InfoContainerRow
-            title={
-              <TextBlock fontSize="l" style={{ color: getColor('greyText') }}>
-                
-                {lang.cdp_page.current_price_info}
-                <ExtraInfo ml="2xs">{`(${gem}/USD)`}</ExtraInfo>
-              </TextBlock>
-            }
-            value={`${formatter(vault.collateralTypePrice)} USD`}
-          /> */}
-          {/* <InfoContainerRow
-            title={lang.cdp_page.liquidation_penalty}
-            value={
-              formatter(vault.liquidationPenalty, {
-                percentage: true
-              }) + '%'
-            }
-          /> */}
         </CdpViewCard>
 
         <CdpViewCard title={lang.cdp_page.collateralization_ratio}>
@@ -388,7 +366,6 @@ export default function({
         <CdpViewCard title={`${gem} ${lang.cdp_page.locked.toLowerCase()}`}>
           <ActionContainerRow
             title={`${gem} ${lang.cdp_page.locked.toLowerCase()}`}
-            /* value={`${formatter(vault.collateralAmount)} ${gem}`} */
             conversion={`${formatter(vault.collateralValue)} USD`}
             button={
               <ActionButton
@@ -407,7 +384,6 @@ export default function({
           />
           <ActionContainerRow
             title={lang.cdp_page.able_withdraw}
-           /*  value={`${formatter(vault.collateralAvailableAmount)} ${gem}`} */
             conversion={`${formatter(vault.collateralAvailableValue)} USD`}
             button={
               <ActionButton
@@ -429,7 +405,7 @@ export default function({
         <CdpViewCard title={lang.cdp_page.outstanding_dai_debt}>
           <ActionContainerRow
             title={lang.cdp_page.outstanding_dai_debt}
-            value={formatter(vault.debtValue) + ' USDL'}
+            value={formatter(vault.debtValue) + ' USDFL'}
             button={
               <ActionButton
                 disabled={disablePayback}
@@ -447,7 +423,7 @@ export default function({
           />
           <ActionContainerRow
             title={lang.cdp_page.available_generate}
-            value={`${formatter(vault.daiAvailable)} USDL`}
+            value={`${formatter(vault.daiAvailable)} USDFL`}
             button={
               <ActionButton
                 disabled={disableGenerate}
