@@ -109,7 +109,7 @@ function Overview({ viewedAddress }) {
                   });
                 }}
               >
-                <FilledButton>{lang.actions.get_started}</FilledButton>
+                <FilledButton className="button_p">{lang.actions.get_started}</FilledButton>
               </Link>
             </>
           ) : (
