@@ -70,6 +70,7 @@ export const ActionContainerRow = ({ title, value, conversion, button }) => {
               grid-row: 2;
               grid-column: 2;
               color: ${getColor('subText')};
+              padding: 12px;
             `}
             justifySelf="end"
           >

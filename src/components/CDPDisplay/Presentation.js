@@ -388,7 +388,7 @@ export default function({
         <CdpViewCard title={`${gem} ${lang.cdp_page.locked.toLowerCase()}`}>
           <ActionContainerRow
             title={`${gem} ${lang.cdp_page.locked.toLowerCase()}`}
-            value={`${formatter(vault.collateralAmount)} ${gem}`}
+            /* value={`${formatter(vault.collateralAmount)} ${gem}`} */
             conversion={`${formatter(vault.collateralValue)} USD`}
             button={
               <ActionButton
@@ -407,7 +407,7 @@ export default function({
           />
           <ActionContainerRow
             title={lang.cdp_page.able_withdraw}
-            value={`${formatter(vault.collateralAvailableAmount)} ${gem}`}
+           /*  value={`${formatter(vault.collateralAvailableAmount)} ${gem}`} */
             conversion={`${formatter(vault.collateralAvailableValue)} USD`}
             button={
               <ActionButton
