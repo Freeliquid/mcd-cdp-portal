@@ -7,7 +7,8 @@ import {
   formatCollateralizationRatio,
   prettifyNumber,
   formatter,
-  prettifyCurrency
+  prettifyCurrency,
+  prettifyFloat
 } from 'utils/ui';
 import { cdpParamsAreValid } from '../../utils/cdp';
 import useTokenAllowance from 'hooks/useTokenAllowance';
@@ -40,7 +41,7 @@ function OpenCDPForm({
 
   function convertAmountToValue(amount) {
     if (amount == 0) return BigNumber(0);
-    const r = collateralValueForAmount(BigNumber(amount));
+    const r = collateralValueForAmount(BigNumber(amount)).toFixed(3);
 
     if (r == undefined) return BigNumber(0);
 
@@ -136,14 +137,6 @@ function OpenCDPForm({
           style={{ fontSize: '14px', color: getColor('whiteText') }}
           display="inline-block"
           ml="s"
-          onClick={() => {
-            handleInputChange({
-              target: {
-                name: 'gemsToLock',
-                value: selectedIlk.userGemBalance
-              }
-            });
-          }}
         >
           {prettifyNumber(userBalanceValue)} {'USD'}
         </Text>
@@ -156,7 +149,7 @@ function OpenCDPForm({
         style={{ fontSize: '14px', color: getColor('whiteText') }}
         key="daiToDraw"
         name="daiToDraw"
-        after="USDL"
+        after="USDFL"
         width={300}
         borderColor="#323B4F"
         type="number"
@@ -185,14 +178,7 @@ function OpenCDPForm({
             display="inline-block"
             ml="s"
             style={{ fontSize: '14px', color: getColor('whiteText') }}
-            onClick={() => {
-              handleInputChange({
-                target: {
-                  name: 'daiToDraw',
-                  value: formatter(daiAvailableToGenerate)
-                }
-              });
-            }}
+            
           >
             {formatter(daiAvailableToGenerate)} USDL
           </Text>
@@ -300,7 +286,7 @@ const CDPCreateDepositSidebar = ({
         ],
         [
           lang.cdp_create.max_dai_available_to_generate,
-          `${formatter(maxDaiAvailableToGenerate)} USDL`
+          `${formatter(maxDaiAvailableToGenerate)} USDFL`
         ]
       ].map(([title, value]) => (
         <Grid gridRowGap="xs" key={title}>
