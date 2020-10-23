@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js';
 import { createCurrencyRatio } from '@makerdao/currency';
 import { RAY, WAD } from './constants';
-import { USDL, USD } from './index';
+import { USDFL, USD } from './index';
 
 // NOTE: When a function below has an argument with the same name as a function
 // defined earlier in the file, that means it expects that argument's value to
@@ -12,7 +12,7 @@ import { USDL, USD } from './index';
 // ilk math
 
 export function debtCeiling(line) {
-  return USDL.rad(line);
+  return USDFL.rad(line);
 }
 
 export function liquidationPenalty(chop) {
@@ -23,7 +23,7 @@ export function liquidationPenalty(chop) {
 }
 
 export function liquidationRatio(mat) {
-  const ratio = createCurrencyRatio(USD, USDL);
+  const ratio = createCurrencyRatio(USD, USDFL);
   return ratio(new BigNumber(mat.toString()).dividedBy(RAY).toString());
 }
 
@@ -62,13 +62,13 @@ export function collateralAmountByValue(collateralValue, price) {
 
 
 export function debtValue(art, rate) {
-  art = USDL.wei(art);
+  art = USDFL.wei(art);
   return art.times(rate).shiftedBy(-27);
 }
 
 export function collateralizationRatio(collateralValue, debtValue) {
   if (debtValue.eq(0)) {
-    const ratio = createCurrencyRatio(USD, USDL);
+    const ratio = createCurrencyRatio(USD, USDFL);
     return ratio(Infinity);
   }
   return collateralValue.div(debtValue);
@@ -93,6 +93,6 @@ export function minSafeCollateralAmount(debtValue, liquidationRatio, price) {
 export function daiAvailable(collateralValue, debtValue, liquidationRatio) {
   const maxSafeDebtValue = collateralValue.div(liquidationRatio);
   return debtValue.lt(maxSafeDebtValue)
-    ? USDL(maxSafeDebtValue.minus(debtValue))
-    : USDL(0);
+    ? USDFL(maxSafeDebtValue.minus(debtValue))
+    : USDFL(0);
 }

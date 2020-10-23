@@ -4,7 +4,7 @@ import McdPlugin, {
   ETH,
   USDTUSDC,
   USD,
-  USDL,
+  USDFL,
   SAI,
   defaultCdpTypes
 } from './libs/dai-plugin-mcd/src/index.js';
@@ -118,4 +118,4 @@ export async function instantiateMaker({
   return maker;
 }
 
-export { USD, USDL, ETH, USDTUSDC, SAI };
+export { USD, USDFL, ETH, USDTUSDC, SAI };

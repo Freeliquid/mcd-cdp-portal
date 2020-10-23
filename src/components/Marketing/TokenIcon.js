@@ -28,7 +28,7 @@ const iconsByToken = {
   MANA: ManaIcon,
   PAX: PaxIcon,
   TUSD: TusdIcon,
-  USDL: UsdlIcon,
+  USDFL: UsdlIcon,
   USDT: UsdtIcon,
   LPG: LpgIcon,
   USDC: UsdcIcon,

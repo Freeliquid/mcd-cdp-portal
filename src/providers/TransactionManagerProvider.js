@@ -95,27 +95,27 @@ const formatTxMessage = (lang, { metadata, ...tx }, state) => {
     case 'approve':
       return lang.formatString(
         `${lang[langKey].unlocking_token}${suffix}`,
-        metadata.contract === 'MCD_DAI' ? 'USDL' : 'token'
+        metadata.contract === 'MCD_DAI' ? 'USDFL' : 'token'
       );
     case 'join':
       if (metadata.contract === 'PROXY_ACTIONS_DSR')
         return lang.formatString(
           `${lang[langKey].depositing_gem}${suffix}`,
-          'USDL'
+          'USDFL'
         );
       else return '?';
     case 'exit':
       if (metadata.contract === 'PROXY_ACTIONS_DSR')
         return lang.formatString(
           `${lang[langKey].withdrawing_gem}${suffix}`,
-          'USDL'
+          'USDFL'
         );
       else return '?';
     case 'exitAll':
       if (metadata.contract === 'PROXY_ACTIONS_DSR')
         return lang.formatString(
           `${lang[langKey].withdrawing_gem}${suffix}`,
-          'all USDL'
+          'all USDFL'
         );
       else return '?';
     case 'frob':

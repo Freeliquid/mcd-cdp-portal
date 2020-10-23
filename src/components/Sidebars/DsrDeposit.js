@@ -9,7 +9,7 @@ import useValidatedInput from 'hooks/useValidatedInput';
 import useLanguage from 'hooks/useLanguage';
 import useAnalytics from 'hooks/useAnalytics';
 import ProxyAllowanceToggle from 'components/ProxyAllowanceToggle';
-import { USDL } from '../../libs/dai-plugin-mcd/src/index.js';
+import { USDFL } from '../../libs/dai-plugin-mcd/src/index.js';
 import SetMax from 'components/SetMax';
 import { safeToFixed } from '../../utils/ui';
 import { getColor } from '../../styles/theme';
@@ -19,11 +19,11 @@ const DsrDeposit = ({ savings, reset }) => {
   const { lang } = useLanguage();
   const { maker } = useMaker();
 
-  const { symbol } = USDL;
+  const { symbol } = USDFL;
   const displaySymbol = 'USDFL';
 
   const { daiLockedInDsr } = savings;
-  const { USDL: daiBalance } = useWalletBalances();
+  const { USDFL: daiBalance } = useWalletBalances();
   const { hasAllowance, hasSufficientAllowance } = useTokenAllowance(symbol);
 
   const [
@@ -58,7 +58,7 @@ const DsrDeposit = ({ savings, reset }) => {
   }, [daiBalance, setDepositAmount]);
 
   const deposit = () => {
-    maker.service('mcd:savings').join(USDL(depositAmount));
+    maker.service('mcd:savings').join(USDFL(depositAmount));
     reset();
   };
 
@@ -105,7 +105,7 @@ const DsrDeposit = ({ savings, reset }) => {
         </div>
       </Grid>
       <ProxyAllowanceToggle
-        token="USDL"
+        token="USDFL"
         onlyShowAllowance={true}
         trackBtnClick={trackBtnClick}
       />

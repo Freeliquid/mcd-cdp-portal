@@ -65,7 +65,7 @@ export const USD_ETH = createCurrencyRatio(USD, ETH);
 export const WETH = createCurrency('WETH');
 
 // Casting for savings dai
-export const DSR_USDL = createCurrency('DSR-USDL');
+export const DSR_USDFL = createCurrency('DSR-USDFL');
 
 export const USDT = createCurrency('USDT');
 
@@ -83,7 +83,7 @@ export const WBTC = createCurrency('WBTC');
 export const TUSD = createCurrency('TUSD');
 export const MANA = createCurrency('MANA');
 export const FL = createCurrency('FL');
-export const USDL = createCurrency('USDL');
+export const USDFL = createCurrency('USDFL');
 
 export const defaultCdpTypes = [{ currency: USDTUSDC, ilk: 'USDTUSDC-A' }];
 
@@ -96,10 +96,10 @@ export const ALLOWANCE_AMOUNT = BigNumber(
 export const defaultTokens = [
   ...new Set([
     ...defaultCdpTypes.map(type => type.currency),
-    USDL,
+    USDFL,
     WETH,
     SAI,
-    DSR_USDL
+    DSR_USDFL
   ])
 ];
 
@@ -135,7 +135,7 @@ export const McdPlugin = {
       smartContract: { addContracts },
       token: {
         erc20: [
-          { currency: USDL, address: addContracts.MCD_DAI.address },
+          { currency: USDFL, address: addContracts.MCD_DAI.address },
           // { currency: WETH, address: addContracts.ETH.address, abi: wethAbi },
           ...tokens
         ]

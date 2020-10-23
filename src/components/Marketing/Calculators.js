@@ -543,7 +543,7 @@ const SaveCalculator = (() => {
               value={initialDeposit}
               onChange={value => setInitialDeposit(value)}
               displayValue={value =>
-                `${prettifyCurrency(locale, value, 0)} USDL`
+                `${prettifyCurrency(locale, value, 0)} USDFL`
               }
             />
           </SliderAndLabel>
@@ -556,7 +556,7 @@ const SaveCalculator = (() => {
               value={monthlyContribution}
               onChange={value => setMonthlyContribution(value)}
               displayValue={value =>
-                `${prettifyCurrency(locale, value, 0)} USDL`
+                `${prettifyCurrency(locale, value, 0)} USDFL`
               }
             />
           </SliderAndLabel>

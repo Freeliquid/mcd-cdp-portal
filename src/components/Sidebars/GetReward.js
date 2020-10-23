@@ -1,6 +1,6 @@
 import React from 'react';
 import BigNumber from 'bignumber.js';
-import { USDL } from '../../libs/dai-plugin-mcd/src/index.js';
+import { USDFL } from '../../libs/dai-plugin-mcd/src/index.js';
 import {
   Text,
   Grid,

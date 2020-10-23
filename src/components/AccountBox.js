@@ -77,7 +77,7 @@ const TokenBalance = ({
           `$${prettifyNumber(amount.times(usdRatio.toNumber()), true, 2)}`) ||
           '--'}
       </Text>
-      
+
     </Flex>
   );
 };
@@ -126,11 +126,11 @@ const WalletBalances = ({ hasActiveAccount, closeSidebarDrawer }) => {
     () =>
       showWalletTokens.reduceRight((acc, token) => {
         const balanceGtZero = !!(balances[token] && balances[token].gt(0));
-        if (token !== 'ETH' && token !== 'USDL' && !balanceGtZero) return acc;
+        if (token !== 'ETH' && token !== 'USDFL' && !balanceGtZero) return acc;
         const symbol = token;
 
         const tokenIsDaiOrDsr =
-          token === 'USDL' || token === 'SAI' || token === 'DSR';
+          token === 'USDFL' || token === 'SAI' || token === 'DSR';
         const usdRatio = tokenIsDaiOrDsr
           ? new BigNumber(1)
           : token === 'WETH'

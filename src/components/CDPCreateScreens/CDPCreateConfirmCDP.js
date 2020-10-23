@@ -9,7 +9,7 @@ import {
   Button,
   Link
 } from '@makerdao/ui-components-core';
-import { USDL } from '../../libs/dai-plugin-mcd/src/index.js';
+import { USDFL } from '../../libs/dai-plugin-mcd/src/index.js';
 import useMaker from 'hooks/useMaker';
 import useLanguage from 'hooks/useLanguage';
 import useAnalytics from 'hooks/useAnalytics';
@@ -58,13 +58,13 @@ const CDPCreateConfirmSummary = ({
         collateralValueForAmount(cdpParams.gemsToLock)
       )} ${'USD'}`
     ],
-    [lang.verbs.generating, `${prettifyNumber(cdpParams.daiToDraw)} USDL`],
+    [lang.verbs.generating, `${prettifyNumber(cdpParams.daiToDraw)} USDFL`],
     [
       lang.collateralization,
       `${formatter(
         ilkData.calculateCollateralizationRatio(
           BigNumber(cdpParams.gemsToLock),
-          USDL(cdpParams.daiToDraw)
+          USDFL(cdpParams.daiToDraw)
         )
       )}%`
     ],

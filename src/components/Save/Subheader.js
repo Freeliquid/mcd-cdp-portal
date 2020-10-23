@@ -12,7 +12,7 @@ const Subheader = () => {
         justifyContent="space-between"
         alignItems="center"
       >
-        <Text t="h5">Savings USDL</Text>
+        <Text t="h5">Savings USDFL</Text>
         <Flex
           p="xs"
           border="1px solid lightgray"

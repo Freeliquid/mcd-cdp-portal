@@ -1,6 +1,6 @@
 import React from 'react';
 import BigNumber from 'bignumber.js';
-import { USDL } from '../../libs/dai-plugin-mcd/src/index.js';
+import { USDFL } from '../../libs/dai-plugin-mcd/src/index.js';
 import { Text, Input, Grid, Button } from '@makerdao/ui-components-core';
 import Info from './shared/Info';
 import InfoContainer from './shared/InfoContainer';
@@ -76,7 +76,7 @@ const Generate = ({ vault, reset }) => {
   const undercollateralized = daiAvailable.lt(amountToGenerate);
 
   const generate = () => {
-    maker.service('mcd:cdpManager').draw(vault.id, vaultType, USDL(amount));
+    maker.service('mcd:cdpManager').draw(vault.id, vaultType, USDFL(amount));
     reset();
   };
 

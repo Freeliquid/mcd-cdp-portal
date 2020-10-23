@@ -17,7 +17,7 @@ import ScreenFooter from '../ScreenFooter';
 import ScreenHeader from '../ScreenHeader';
 import { prettifyNumber } from 'utils/ui';
 import { TxLifecycle } from 'utils/constants';
-import { USDL } from '../../libs/dai-plugin-mcd/src/index.js';
+import { USDFL } from '../../libs/dai-plugin-mcd/src/index.js';
 
 import { ReactComponent as ExternalLinkIcon } from 'images/external-link.svg';
 import { ReactComponent as SpaceshipIllustration } from 'images/spaceship.svg';
@@ -32,7 +32,7 @@ const DSRDepositConfirmSummary = ({
   const [hasReadTOS, setHasReadTOS] = useState(false);
 
   const rows = [
-    [lang.save.deposit_amount, `${prettifyNumber(depositAmount)} USDL`]
+    [lang.save.deposit_amount, `${prettifyNumber(depositAmount)} USDFL`]
   ];
   return (
     <Box
@@ -198,7 +198,7 @@ const DSRDepositConfirm = ({ dispatch, onClose, depositAmount, txState }) => {
     const { type } = payload;
     if (type !== 'increment-step') return dispatch(payload);
 
-    const txObject = maker.service('mcd:savings').join(USDL(depositAmount));
+    const txObject = maker.service('mcd:savings').join(USDFL(depositAmount));
 
     const txMgr = maker.service('transactionManager');
     txMgr.listen(txObject, {

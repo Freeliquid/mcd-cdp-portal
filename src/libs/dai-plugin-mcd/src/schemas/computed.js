@@ -7,7 +7,7 @@ import {
   liquidationPrice as calcLiquidationPrice,
   minSafeCollateralAmount as calcMinSafeCollateralAmount
 } from '../math';
-import { USD, USDL, DSR_USDL, defaultCdpTypes, ALLOWANCE_AMOUNT } from '../';
+import { USD, USDFL, DSR_USDFL, defaultCdpTypes, ALLOWANCE_AMOUNT } from '../';
 import BigNumber from 'bignumber.js';
 import {
   DEBT_CEILING,
@@ -171,7 +171,7 @@ export const debtValue = {
       [DEBT_SCALING_FACTOR, [VAULT_TYPE, id]]
     ],
     computed: (encumberedDebt, debtScalingFactor) => {
-      return USDL(encumberedDebt).times(debtScalingFactor);
+      return USDFL(encumberedDebt).times(debtScalingFactor);
     }
   })
 };
@@ -443,7 +443,7 @@ export const daiLockedInDsr = {
       [SAVINGS_RATE_ACCUMULATOR]
     ],
     computed: (savingsDai, savingsRateAccumulator) => {
-      return DSR_USDL(savingsDai.times(savingsRateAccumulator));
+      return DSR_USDFL(savingsDai.times(savingsRateAccumulator));
     }
   }),
   validate: {
@@ -455,7 +455,7 @@ export const totalDaiLockedInDsr = {
   generate: () => ({
     dependencies: [[TOTAL_SAVINGS_DAI], [SAVINGS_RATE_ACCUMULATOR]],
     computed: (totalSavingsDai, savingsRateAccumulator) => {
-      return DSR_USDL(totalSavingsDai.times(savingsRateAccumulator));
+      return DSR_USDFL(totalSavingsDai.times(savingsRateAccumulator));
     }
   })
 };
@@ -463,7 +463,7 @@ export const totalDaiLockedInDsr = {
 export const balance = {
   generate: (symbol, address) => ({
     dependencies: () => {
-      if (symbol === 'DSR-USDL') {
+      if (symbol === 'DSR-USDFL') {
         return [[DAI_LOCKED_IN_DSR, address]];
       }
       return [[TOKEN_BALANCE, address, symbol]];
@@ -561,7 +561,7 @@ export const collateralDebt = {
       [DEBT_SCALING_FACTOR, collateralTypeName]
     ],
     computed: (totalEncumberedDebt, debtScalingFactor) => {
-      return USDL(totalEncumberedDebt).times(debtScalingFactor);
+      return USDFL(totalEncumberedDebt).times(debtScalingFactor);
     }
   })
 };

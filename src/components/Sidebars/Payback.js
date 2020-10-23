@@ -1,5 +1,5 @@
 import React from 'react';
-import { USDL } from '../../libs/dai-plugin-mcd/src/index.js';
+import { USDFL } from '../../libs/dai-plugin-mcd/src/index.js';
 import { Text, Input, Grid, Button } from '@makerdao/ui-components-core';
 import debug from 'debug';
 import { getColor } from '../../styles/theme';
@@ -32,9 +32,9 @@ const Payback = ({ vault, reset }) => {
   const { lang } = useLanguage();
   const { maker } = useMaker();
   const balances = useWalletBalances();
-  const daiBalance = balances.USDL;
+  const daiBalance = balances.USDFL;
 
-  const { hasAllowance, hasSufficientAllowance } = useTokenAllowance('USDL');
+  const { hasAllowance, hasSufficientAllowance } = useTokenAllowance('USDFL');
   const { hasProxy } = useProxy();
 
   let { debtValue, debtFloor, collateralAmount } = vault;
@@ -96,7 +96,7 @@ const Payback = ({ vault, reset }) => {
     else log('Calling wipe()');
     wipeAll
       ? cdpManager.wipeAll(vault.id, owner)
-      : cdpManager.wipe(vault.id, USDL(amount), owner);
+      : cdpManager.wipe(vault.id, USDFL(amount), owner);
     reset();
   };
 
@@ -106,12 +106,12 @@ const Payback = ({ vault, reset }) => {
   const liquidationPrice = undercollateralized
     ? BigNumber(0)
     : vault.calculateLiquidationPrice({
-        debtValue: USDL(debtValue.minus(amountToPayback))
+        debtValue: USDFL(debtValue.minus(amountToPayback))
       });
   const collateralizationRatio = undercollateralized
     ? Infinity
     : vault.calculateCollateralizationRatio({
-        debtValue: USDL(debtValue.minus(amountToPayback))
+        debtValue: USDFL(debtValue.minus(amountToPayback))
       });
   return (
     <Grid gridRowGap="m">
@@ -146,7 +146,7 @@ const Payback = ({ vault, reset }) => {
         />
         </div>
       </Grid>
-      <ProxyAllowanceToggle token="USDL" trackBtnClick={trackBtnClick} />
+      <ProxyAllowanceToggle token="USDFL" trackBtnClick={trackBtnClick} />
       <Grid gridTemplateColumns="1fr 1fr" gridColumnGap="s">
         <Button className="btn"
           disabled={!valid}

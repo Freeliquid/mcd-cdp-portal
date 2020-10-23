@@ -1,7 +1,7 @@
 import { PublicService } from '@makerdao/services-core';
 import { RAD, RAY, ServiceRoles, SECONDS_PER_YEAR } from './constants';
 import BigNumber from 'bignumber.js';
-import { USDL } from './index';
+import { USDFL } from './index';
 
 export default class SystemDataService extends PublicService {
   constructor(name = ServiceRoles.SYSTEM_DATA) {
@@ -40,11 +40,11 @@ export default class SystemDataService extends PublicService {
       this.vat.dai(vowAddr),
       this.vat.sin(vowAddr)
     ]);
-    return USDL.rad(dai).minus(USDL.rad(sin));
+    return USDFL.rad(dai).minus(USDFL.rad(sin));
   }
 
   async getTotalDai() {
-    return USDL.rad(await this.vat.debt());
+    return USDFL.rad(await this.vat.debt());
   }
 
   // Helpers ----------------------------------------------

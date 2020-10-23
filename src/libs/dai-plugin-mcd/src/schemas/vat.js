@@ -1,5 +1,5 @@
 import { toHex, fromRay, fromRad, fromWei } from '../utils';
-import { USDL } from '..';
+import { USDFL } from '..';
 
 import {
   TOTAL_ENCUMBERED_DEBT,
@@ -27,7 +27,7 @@ export const vatIlks = {
     [TOTAL_ENCUMBERED_DEBT, fromWei],
     [DEBT_SCALING_FACTOR, fromRay],
     [PRICE_WITH_SAFETY_MARGIN, fromRay],
-    [DEBT_CEILING, v => USDL(v, 'rad')],
+    [DEBT_CEILING, v => USDFL(v, 'rad')],
     [DEBT_FLOOR, fromRad]
   ]
 };
@@ -38,7 +38,7 @@ export const vatDebt = {
     contract: 'MCD_VAT',
     call: ['debt()(uint256)']
   }),
-  returns: [[TOTAL_DAI_SUPPLY, v => USDL(v, 'rad')]]
+  returns: [[TOTAL_DAI_SUPPLY, v => USDFL(v, 'rad')]]
 };
 
 export const vatUrns = {
@@ -68,7 +68,7 @@ export const vatLine = {
     contract: 'MCD_VAT',
     call: ['Line()(uint256)']
   }),
-  returns: [[GLOBAL_DEBT_CEILING, v => USDL(v, 'rad')]]
+  returns: [[GLOBAL_DEBT_CEILING, v => USDFL(v, 'rad')]]
 };
 
 export default {

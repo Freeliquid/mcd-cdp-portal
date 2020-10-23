@@ -23,7 +23,7 @@ function DepositDaiForm({
 
   const fields = [
     [
-      lang.formatString(lang.dsr_deposit.deposit_form_title, 'USDL'),
+      lang.formatString(lang.dsr_deposit.deposit_form_title, 'USDFL'),
       <Input
         style={{ fontSize: '14px', color: getColor('greyText') }}
         key="daiinput"
@@ -34,7 +34,7 @@ function DepositDaiForm({
         onChange={onDepositAmountChange}
         failureMessage={depositAmountErrors}
         min="0"
-        placeholder="0 USDL"
+        placeholder="0 USDFL"
       />,
       <Box key="ba">
         <Text style={{ fontSize: '14px', color: getColor('greyText') }}>
@@ -45,7 +45,7 @@ function DepositDaiForm({
           display="inline-block"
           ml="s"
         >
-          {prettifyNumber(daiBalance)} {'USDL'}
+          {prettifyNumber(daiBalance)} {'USDFL'}
         </Text>
       </Box>
     ]
@@ -88,9 +88,9 @@ function DepositDaiForm({
 const DSRDepositCreate = ({ dispatch, onClose }) => {
   const { lang } = useLanguage();
   const balances = useWalletBalances();
-  const { USDL } = balances;
-  const daiBalance = USDL.toFixed(6);
-  const { hasSufficientAllowance } = useTokenAllowance('USDL');
+  const { USDFL } = balances;
+  const daiBalance = USDFL.toFixed(6);
+  const { hasSufficientAllowance } = useTokenAllowance('USDFL');
 
   const [
     depositAmount,
@@ -102,26 +102,26 @@ const DSRDepositCreate = ({ dispatch, onClose }) => {
     {
       isFloat: true,
       minFloat: 0.0,
-      maxFloat: USDL && USDL.toNumber(),
+      maxFloat: USDFL && USDFL.toNumber(),
       custom: {
         allowanceInvalid: value => !hasSufficientAllowance(value)
       }
     },
     {
       maxFloat: () =>
-        lang.formatString(lang.action_sidebar.insufficient_balance, 'USDL'),
+        lang.formatString(lang.action_sidebar.insufficient_balance, 'USDFL'),
       allowanceInvalid: () =>
-        lang.formatString(lang.action_sidebar.invalid_allowance, 'USDL')
+        lang.formatString(lang.action_sidebar.invalid_allowance, 'USDFL')
     }
   );
 
   const setDepositMax = useCallback(() => {
-    if (USDL) {
-      setDepositAmount(USDL.toNumber().toString());
+    if (USDFL) {
+      setDepositAmount(USDFL.toNumber().toString());
     } else {
       setDepositAmount('0');
     }
-  }, [USDL, setDepositAmount]);
+  }, [USDFL, setDepositAmount]);
   return (
     <Box
       maxWidth="1040px"

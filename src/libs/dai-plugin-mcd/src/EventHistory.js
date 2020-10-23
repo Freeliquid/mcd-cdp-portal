@@ -359,7 +359,7 @@ export async function getDsrEventHistory(service, address, cache) {
               block,
               txHash,
               amount: parseWeiNumeric(adapterTopics[3]),
-              gem: 'USDL'
+              gem: 'USDFL'
             });
             return acc;
           },
@@ -393,7 +393,7 @@ export async function getDsrEventHistory(service, address, cache) {
               block,
               txHash,
               amount: parseWeiNumeric(adapterTopics[3]),
-              gem: 'USDL'
+              gem: 'USDFL'
             });
             return acc;
           },

@@ -9,7 +9,7 @@ import useWalletBalances from 'hooks/useWalletBalances';
 import useTokenAllowance from 'hooks/useTokenAllowance';
 import Info from './shared/Info';
 import InfoContainer from './shared/InfoContainer';
-import { USDL } from '../../libs/dai-plugin-mcd/src/index.js';
+import { USDFL } from '../../libs/dai-plugin-mcd/src/index.js';
 import { getCurrency } from 'utils/cdp';
 import BigNumber from 'bignumber.js';
 import { decimalRules } from '../../styles/constants';
@@ -21,8 +21,8 @@ const { long, medium } = decimalRules;
 export function calcDaiAvailable(collateralValue, debtValue, liquidationRatio) {
   const maxSafeDebtValue = collateralValue.div(liquidationRatio);
   return debtValue.lt(maxSafeDebtValue)
-    ? USDL(maxSafeDebtValue.minus(debtValue))
-    : USDL(0);
+    ? USDFL(maxSafeDebtValue.minus(debtValue))
+    : USDFL(0);
 }
 
 const DepositAndGenerate = ({ vault, reset }) => {
@@ -150,7 +150,7 @@ const DepositAndGenerate = ({ vault, reset }) => {
         vault.id,
         vaultType,
         currency(depositAmount),
-        USDL(generateAmount)
+        USDFL(generateAmount)
       );
     reset();
   };
@@ -187,7 +187,7 @@ const DepositAndGenerate = ({ vault, reset }) => {
           value={generateAmount}
           min="0"
           onChange={onGenerateAmountChange}
-          placeholder="0.00 USDL"
+          placeholder="0.00 USDFL"
           failureMessage={generateFailureMessage}
         />
         </div>
@@ -216,7 +216,7 @@ const DepositAndGenerate = ({ vault, reset }) => {
           title={lang.action_sidebar.maximum_available_to_generate}
           body={`${formatter(calculatedDaiAvailable, {
             precision: long
-          })} USDL`}
+          })} USDFL`}
         />
         <Info
           title={lang.action_sidebar.new_collateralization_ratio}

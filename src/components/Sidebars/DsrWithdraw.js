@@ -9,7 +9,7 @@ import useValidatedInput from 'hooks/useValidatedInput';
 import useLanguage from 'hooks/useLanguage';
 import useAnalytics from 'hooks/useAnalytics';
 import ProxyAllowanceToggle from 'components/ProxyAllowanceToggle';
-import { USDL } from '../../libs/dai-plugin-mcd/src/index.js';
+import { USDFL } from '../../libs/dai-plugin-mcd/src/index.js';
 import SetMax from 'components/SetMax';
 import { BigNumber } from 'bignumber.js';
 import { safeToFixed } from '../../utils/ui';
@@ -20,12 +20,12 @@ const DsrWithdraw = ({ savings, reset }) => {
   const { lang } = useLanguage();
   const { maker } = useMaker();
 
-  const displaySymbol = USDL.symbol;
+  const displaySymbol = USDFL.symbol;
 
   const { daiLockedInDsr } = savings;
-  const { USDL: daiBalance } = useWalletBalances();
+  const { USDFL: daiBalance } = useWalletBalances();
   const { hasAllowance, hasSufficientAllowance } = useTokenAllowance(
-    USDL.symbol
+    USDFL.symbol
   );
   const [withdrawMaxFlag, setWithdrawMaxFlag] = useState(false);
 
@@ -68,7 +68,7 @@ const DsrWithdraw = ({ savings, reset }) => {
     if (withdrawMaxFlag || new BigNumber(withdrawAmount).eq(daiLockedInDsr)) {
       maker.service('mcd:savings').exitAll();
     } else {
-      maker.service('mcd:savings').exit(USDL(withdrawAmount));
+      maker.service('mcd:savings').exit(USDFL(withdrawAmount));
     }
     reset();
   };
@@ -116,7 +116,7 @@ const DsrWithdraw = ({ savings, reset }) => {
         </div>
       </Grid>
       <ProxyAllowanceToggle
-        token="USDL"
+        token="USDFL"
         onlyShowAllowance={true}
         trackBtnClick={trackBtnClick}
       />

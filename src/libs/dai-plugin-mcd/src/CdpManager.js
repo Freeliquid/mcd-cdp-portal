@@ -14,7 +14,7 @@ import {
 } from './utils';
 import has from 'lodash/has';
 import padStart from 'lodash/padStart';
-import { USDL, ETH, GNT } from './index';
+import { USDFL, ETH, GNT } from './index';
 import getEventHistoryImpl from './EventHistory';
 const { CDP_MANAGER, CDP_TYPE, SYSTEM_DATA } = ServiceRoles;
 
@@ -129,13 +129,13 @@ export default class CdpManager extends LocalService {
   }
 
   @tracksTransactionsWithOptions({ numArguments: 5 })
-  async lockAndDraw(id, ilk, lockAmount, drawAmount = USDL(0), { promise }) {
+  async lockAndDraw(id, ilk, lockAmount, drawAmount = USDFL(0), { promise }) {
     assert(lockAmount && drawAmount, 'both amounts must be specified');
     assert(
       lockAmount instanceof Currency,
       'lockAmount must be a Currency value'
     );
-    drawAmount = castAsCurrency(drawAmount, USDL);
+    drawAmount = castAsCurrency(drawAmount, USDFL);
     const proxyAddress = await this.get('proxy').ensureProxy({ promise });
     const jugAddress = this.get('smartContract').getContractAddress('MCD_JUG');
     const isEth = ETH.isInstance(lockAmount);
@@ -145,7 +145,7 @@ export default class CdpManager extends LocalService {
       this._managerAddress,
       jugAddress,
       this._adapterAddress(ilk),
-      this._adapterAddress('USDL'),
+      this._adapterAddress('USDFL'),
       id || stringToBytes(ilk),
       !isEth && lockAmount.toFixed(this._precision(lockAmount, ilk)),
       drawAmount.toFixed('wei'),
@@ -206,21 +206,21 @@ export default class CdpManager extends LocalService {
     return this.proxyActions.draw(
       this._managerAddress,
       this.get('smartContract').getContractAddress('MCD_JUG'),
-      this._adapterAddress('USDL'),
+      this._adapterAddress('USDFL'),
       this.getIdBytes(id),
-      castAsCurrency(drawAmount, USDL).toFixed('wei'),
+      castAsCurrency(drawAmount, USDFL).toFixed('wei'),
       { dsProxy: true, promise, metadata: { id, ilk, drawAmount } }
     );
   }
 
   @tracksTransactionsWithOptions({ numArguments: 5 })
-  wipeAndFree(id, ilk, wipeAmount = USDL(0), freeAmount, { promise }) {
+  wipeAndFree(id, ilk, wipeAmount = USDFL(0), freeAmount, { promise }) {
     const isEth = ETH.isInstance(freeAmount);
     const method = isEth ? 'wipeAndFreeETH' : 'wipeAndFreeGem';
     return this.proxyActions[method](
       this._managerAddress,
       this._adapterAddress(ilk),
-      this._adapterAddress('USDL'),
+      this._adapterAddress('USDFL'),
       this.getIdBytes(id),
       freeAmount.toFixed(this._precision(freeAmount, ilk)),
       wipeAmount.toFixed('wei'),
@@ -233,7 +233,7 @@ export default class CdpManager extends LocalService {
     if (!owner) owner = await this.getOwner(id);
     return this.proxyActions.safeWipe(
       this._managerAddress,
-      this._adapterAddress('USDL'),
+      this._adapterAddress('USDFL'),
       this.getIdBytes(id),
       wipeAmount.toFixed('wei'),
       owner,
@@ -245,7 +245,7 @@ export default class CdpManager extends LocalService {
   unsafeWipe(id, wipeAmount, { promise }) {
     return this.proxyActions.wipe(
       this._managerAddress,
-      this._adapterAddress('USDL'),
+      this._adapterAddress('USDFL'),
       this.getIdBytes(id),
       wipeAmount.toFixed('wei'),
       { dsProxy: true, promise, metadata: { id, wipeAmount } }
@@ -257,7 +257,7 @@ export default class CdpManager extends LocalService {
     if (!owner) owner = await this.getOwner(id);
     return this.proxyActions.safeWipeAll(
       this._managerAddress,
-      this._adapterAddress('USDL'),
+      this._adapterAddress('USDFL'),
       this.getIdBytes(id),
       owner,
       { dsProxy: true, promise, metadata: { id } }
@@ -268,7 +268,7 @@ export default class CdpManager extends LocalService {
   unsafeWipeAll(id, { promise } = {}) {
     return this.proxyActions.wipeAll(
       this._managerAddress,
-      this._adapterAddress('USDL'),
+      this._adapterAddress('USDFL'),
       this.getIdBytes(id),
       { dsProxy: true, promise, metadata: { id } }
     );
@@ -281,7 +281,7 @@ export default class CdpManager extends LocalService {
     return this.proxyActions[method](
       this._managerAddress,
       this._adapterAddress(ilk),
-      this._adapterAddress('USDL'),
+      this._adapterAddress('USDFL'),
       this.getIdBytes(id),
       freeAmount.toFixed(this._precision(freeAmount, ilk)),
       { dsProxy: true, promise, metadata: { id, ilk, freeAmount } }
