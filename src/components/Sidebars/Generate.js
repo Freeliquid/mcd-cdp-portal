@@ -107,7 +107,7 @@ const Generate = ({ vault, reset }) => {
           value={amount}
           min="0"
           onChange={onAmountChange}
-          placeholder="0.00 USDL"
+          placeholder="0.00 USDFL"
           failureMessage={failureMessage}
         />
         </div>
@@ -147,13 +147,7 @@ const Generate = ({ vault, reset }) => {
       <InfoContainer>
         <Info
           title={lang.action_sidebar.maximum_available_to_generate}
-          body={`${formatter(daiAvailable, { precision: long })} USDL`}
-        />
-        <Info
-          title={lang.action_sidebar.new_liquidation_price}
-          body={`${formatter(liquidationPrice, {
-            infinity: BigNumber(0).toFixed(medium)
-          })} USD/${symbol}`}
+          body={`${formatter(daiAvailable, { precision: long })} USDFL`}
         />
         <Info
           title={lang.action_sidebar.new_collateralization_ratio}

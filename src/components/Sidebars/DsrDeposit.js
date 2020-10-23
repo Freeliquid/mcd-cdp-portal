@@ -20,7 +20,7 @@ const DsrDeposit = ({ savings, reset }) => {
   const { maker } = useMaker();
 
   const { symbol } = USDL;
-  const displaySymbol = 'USDL';
+  const displaySymbol = 'USDFL';
 
   const { daiLockedInDsr } = savings;
   const { USDL: daiBalance } = useWalletBalances();
@@ -43,9 +43,9 @@ const DsrDeposit = ({ savings, reset }) => {
     },
     {
       maxFloat: () =>
-        lang.formatString(lang.action_sidebar.insufficient_balance, 'USDL'),
+        lang.formatString(lang.action_sidebar.insufficient_balance, 'USDFL'),
       allowanceInvalid: () =>
-        lang.formatString(lang.action_sidebar.invalid_allowance, 'USDL')
+        lang.formatString(lang.action_sidebar.invalid_allowance, 'USDFL')
     }
   );
 
@@ -84,7 +84,7 @@ const DsrDeposit = ({ savings, reset }) => {
           disabled={!hasAllowance}
           type="number"
           min="0"
-          placeholder="0 USDL"
+          placeholder="0 USDFL"
           value={depositAmount}
           onChange={onDepositAmountChange}
           error={depositAmountErrors}

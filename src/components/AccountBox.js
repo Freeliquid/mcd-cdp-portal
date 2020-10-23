@@ -28,9 +28,7 @@ import theme from '../styles/theme';
 import FullScreenAction from './CDPDisplay/FullScreenAction';
 import useCdpTypes from '../hooks/useCdpTypes';
 import { watch } from 'hooks/useObservable';
-import { background } from 'styled-system';
 
-const migrateUrl = 'https://freeliquid.io/trade/account';
 
 const StyledCardBody = styled(CardBody)`
   cursor: pointer;
@@ -69,7 +67,8 @@ const TokenBalance = ({
         {symbol}
       </Text>
       <Text fontWeight="semibold" t="p5" textAlign="left" width="15%">
-        {(hasActiveAccount && amount && prettifyNumber(amount, true)) || '--'}
+        {(hasActiveAccount && amount && usdRatio &&
+          `$${prettifyNumber(amount.times(usdRatio.toNumber()), true, 2)}`) || '--'}
       </Text>
       <Text fontWeight="semibold" t="p5" textAlign="left" width="15%">
         {(hasActiveAccount &&
@@ -78,9 +77,7 @@ const TokenBalance = ({
           `$${prettifyNumber(amount.times(usdRatio.toNumber()), true, 2)}`) ||
           '--'}
       </Text>
-      <Flex width="15%" justifyContent="flex-end">
-        {button}
-      </Flex>
+      
     </Flex>
   );
 };
@@ -174,7 +171,6 @@ const WalletBalances = ({ hasActiveAccount, closeSidebarDrawer }) => {
           <Text color="steel" fontWeight="bold" t="smallCaps" width="15%">
             {lang.sidebar.usd}
           </Text>
-          <Box width="15%" />
         </Flex>
 
         <StripedRows>
@@ -207,7 +203,7 @@ const WalletBalances = ({ hasActiveAccount, closeSidebarDrawer }) => {
                         onClick={() => trackBtnClick('Migrate')}
                         as="a"
                         target="_blank"
-                        href={migrateUrl}
+                        href="#"
                       >
                         {lang.sidebar.migrate}
                       </ActionButton>

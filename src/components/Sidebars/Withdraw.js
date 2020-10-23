@@ -158,17 +158,6 @@ const Withdraw = ({ vault, reset }) => {
           })} ${symbol}`}
         />
         <Info
-          title={lang.formatString(
-            lang.action_sidebar.gem_usd_price_feed,
-            symbol
-          )}
-          body={`${formatter(collateralTypePrice)} USD/${symbol}`}
-        />
-        <Info
-          title={lang.action_sidebar.new_liquidation_price}
-          body={`${formatter(liquidationPrice)} USD/${symbol}`}
-        />
-        <Info
           title={lang.action_sidebar.new_collateralization_ratio}
           body={
             <RatioDisplay

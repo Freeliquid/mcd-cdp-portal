@@ -11,6 +11,7 @@ import BigNumber from 'bignumber.js';
 import SetMax from '../SetMax';
 import { isValidAddressString, calculateGasCost } from '../../utils/ethereum';
 import { getColor } from 'styles/theme';
+import { prettifyCurrency, prettifyNumber } from 'utils/ui';
 
 const PasteLink = styled(Link)``;
 
@@ -25,6 +26,7 @@ const StyledPaste = styled(PasteIcon)`
     }
   }
 `;
+
 
 const ZERO = BigNumber(0);
 
@@ -182,7 +184,7 @@ const Send = ({ token, trackBtnClick, reset }) => {
             {lang.action_sidebar.your_balance}
           </Text>
           <Text style={{ color: getColor('whiteText') }}>
-            {(balance && balance.toFixed(3)) || '--'} {displayToken}
+            {(balance && balance.toFixed(10)) || '--'} {displayToken}
           </Text>
         </Grid>
 

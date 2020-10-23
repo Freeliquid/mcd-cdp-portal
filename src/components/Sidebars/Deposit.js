@@ -28,8 +28,33 @@ const Deposit = ({ vault, reset }) => {
     vaultType,
     collateralTypePrice,
     collateralValue,
-    collateralAmount
+    collateralAmount,
+    collateralValueForAmount,
+    collateralAmountByValue
   } = vault;
+
+  function convertAmountToValue(amount) {
+    if (amount == 0)
+      return BigNumber(0);
+    const r =  collateralValueForAmount(BigNumber(amount));
+
+    if (r == undefined)
+      return BigNumber(0);
+
+    return r;
+  }
+
+  function convertValueToAmount(value) {
+    if (value == 0)
+      return BigNumber(0);
+    const r =  collateralAmountByValue(BigNumber(value));
+
+    if (r == undefined)
+      return BigNumber(0);
+    return r;
+  }
+
+
 
   const symbol = collateralAmount?.symbol;
   const { hasAllowance, hasSufficientAllowance } = useTokenAllowance(symbol);
@@ -128,20 +153,7 @@ const Deposit = ({ vault, reset }) => {
       <InfoContainer>
         <Info
           title={lang.action_sidebar.current_account_balance}
-          body={`${formatter(gemBalance, { precision: long })} ${symbol}`}
-        />
-        <Info
-          title={lang.formatString(
-            lang.action_sidebar.gem_usd_price_feed,
-            symbol
-          )}
-          body={`${formatter(collateralTypePrice)} USD/${symbol}`}
-        />
-        <Info
-          title={lang.action_sidebar.new_liquidation_price}
-          body={`${formatter(liquidationPrice, {
-            infinity: BigNumber(0).toFixed(medium)
-          })} USD/${symbol}`}
+          body={`${formatter(gemBalance, { precision: medium })} ${symbol}`}
         />
         <Info
           title={lang.action_sidebar.new_collateralization_ratio}

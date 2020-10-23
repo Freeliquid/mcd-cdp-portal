@@ -62,7 +62,7 @@ const Payback = ({ vault, reset }) => {
     {
       maxFloat: amount => {
         return greaterThan(amount, daiBalance)
-          ? lang.formatString(lang.action_sidebar.insufficient_balance, 'USDL')
+          ? lang.formatString(lang.action_sidebar.insufficient_balance, 'USDFL')
           : lang.action_sidebar.cannot_payback_more_than_owed;
       },
       dustLimit: () =>
@@ -73,7 +73,7 @@ const Payback = ({ vault, reset }) => {
               subtract(debtValue, debtFloor)
             ),
       allowanceInvalid: () =>
-        lang.formatString(lang.action_sidebar.invalid_allowance, 'USDL')
+        lang.formatString(lang.action_sidebar.invalid_allowance, 'USDFL')
     }
   );
 
@@ -129,7 +129,7 @@ const Payback = ({ vault, reset }) => {
           value={amount}
           min="0"
           onChange={onAmountChange}
-          placeholder="0.00 USDL"
+          placeholder="0.00 USDFL"
           failureMessage={amountErrors}
           data-testid="payback-input"
           after={
@@ -174,17 +174,11 @@ const Payback = ({ vault, reset }) => {
         <Info
           title={lang.action_sidebar.dai_balance}
           body={`${daiBalance &&
-            formatter(daiBalance, { precision: long })} USDL`}
+            formatter(daiBalance, { precision: long })} USDFL`}
         />
         <Info
           title={lang.action_sidebar.dai_debt}
-          body={`${formatter(debtValue, { precision: long })} USDL`}
-        />
-        <Info
-          title={lang.action_sidebar.new_liquidation_price}
-          body={`${formatter(liquidationPrice, {
-            infinity: BigNumber(0).toFixed(medium)
-          })} USD/${symbol}`}
+          body={`${formatter(debtValue, { precision: long })} USDFL`}
         />
         <Info
           title={lang.action_sidebar.new_collateralization_ratio}

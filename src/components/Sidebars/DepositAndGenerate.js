@@ -219,12 +219,6 @@ const DepositAndGenerate = ({ vault, reset }) => {
           })} USDL`}
         />
         <Info
-          title={lang.action_sidebar.new_liquidation_price}
-          body={`${formatter(calculatedLiquidationPrice, {
-            infinity: BigNumber(0).toFixed(medium)
-          })} USD/${symbol}`}
-        />
-        <Info
           title={lang.action_sidebar.new_collateralization_ratio}
           body={
             <RatioDisplay
