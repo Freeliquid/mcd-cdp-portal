@@ -331,6 +331,7 @@ export default {
   navbar: {
     save: 'Save',
     borrow: 'Borrow',
+    reward: 'Reward',
     governance: 'Governance',
     privacy: 'Privacy',
     terms: 'Terms',
@@ -365,7 +366,7 @@ export default {
     no_wallet: 'Not connected',
     save_details: {
       title: 'Save Details',
-      total_savings_dai: 'Total USDFL in DSR',
+      total_savings_dai: 'Total USDFL in USDFLSR',
       total_dai_supply: 'Total USDFL Supply',
       dai_savings_rate: 'USDFL Savings Rate'
     }
@@ -543,7 +544,7 @@ export default {
     cannot_payback_more_than_owed: 'Cannot pay back more than owed',
     dai_balance: 'Your USDFL balance',
     dai_debt: 'USDFL debt',
-    locked_dsr: 'Locked in DSR',
+    locked_dsr: 'Locked in USDFLSR',
     unlock_token: 'Unlock {0} to continue',
     unlocking_token: 'Unlocking {0}...',
     token_unlocked: '{0} unlocked',
@@ -586,12 +587,35 @@ export default {
     tx_history: 'History',
     savings_earned_to_date: 'Savings earned to date',
     estimated_savings: 'Estimated savings',
-    dai_locked_dsr: 'USDFL locked in DSR',
+    dai_locked_dsr: 'USDFL locked in USDFLSR',
     deposit_withdraw: 'Deposit and withdraw',
     deposit_btn_cta: 'Receive savings on your USDFL. Deposit at any time',
     withdraw_btn_cta: 'Safely withdraw your USDFL at any time',
     no_savings:
-      "This address either doesn't exist or has no DSR account history"
+      "This address either doesn't exist or has no USDFLSR account history"
+  },
+  reward: {
+    title: 'Rewards',
+    reward_rate: 'FL Reward',
+    description:
+      'Receive rewards on your FL. Deposit or withdraw at any time.',
+    deposit_amount: 'Deposit amount',
+    withdraw_amount: 'Withdraw amount',
+    deposit_dai: 'Deposit FL',
+    deposit_dai_subheading:
+      'Start earning as soon as your deposit is confirmed.',
+    get_started_title: 'Start earning {0} on your FL today',
+    start_earning:
+      'Deposit FL to see your first transaction and start earning',
+    tx_history: 'History',
+    rewards_earned_to_date: 'Savings earned to date',
+    estimated_rewards: 'Estimated reward',
+    dai_locked_dsr: 'FL balace',
+    deposit_withdraw: 'Deposit and withdraw',
+    deposit_btn_cta: 'Receive savings on your FL. Deposit at any time',
+    withdraw_btn_cta: 'Safely withdraw your FL at any time',
+    no_rewards:
+      "This address either doesn't exist or has no USDFLSR account history"
   },
   verbs: {
     depositing: 'Depositing',

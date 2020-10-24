@@ -1,6 +1,7 @@
 import React from 'react';
 import SaveNav from 'components/SaveNav';
 import BorrowNav from 'components/BorrowNav';
+import RewardNav from 'components/RewardNav';
 import { Flex, Grid, Box } from '@makerdao/ui-components-core';
 import useMaker from 'hooks/useMaker';
 import { getColor } from 'styles/theme';
@@ -19,6 +20,7 @@ const Navbar = ({ viewedAddress }) => {
         justifyContent: 'center',
         margin: 'auto',
         marginBottom: '50px'}} />
+        <RewardNav account={account} />
         <SaveNav account={account} />
         <BorrowNav viewedAddress={viewedAddress} account={account} />
       </Grid>

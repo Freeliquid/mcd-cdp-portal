@@ -11,8 +11,8 @@ import Borrow from 'pages/Borrow';
 import BorrowWBTCLanding from 'pages/BorrowWBTCLanding';
 import BorrowMarkets from 'pages/BorrowMarkets';
 import Save from 'pages/Save';
+import Reward from 'pages/Reward';
 import SaveOverview from 'pages/SaveOverview';
-import TradeLanding from 'pages/TradeLanding';
 import Privacy from 'pages/Privacy';
 import Terms from 'pages/Terms';
 import CDPDisplay from 'components/CDPDisplay';
@@ -28,6 +28,7 @@ import config from 'references/config';
 import MobileNav from 'components/MobileNav';
 //import { userSnapInit } from 'utils/analytics';
 import { Routes } from 'utils/constants';
+import RewardNav from 'components/RewardNav';
 
 const { networkNames, defaultNetwork } = config;
 
@@ -145,10 +146,16 @@ export default mount({
     })
   ),
 
-  [`/${Routes.TRADE}`]: compose(
-    withView(marketingLayoutView),
-    withView(() => <TradeLanding />)
+  [`/${Routes.REWARD}/owner/:viewedAddress`]: withDashboardLayout(
+    route(request => {
+      const { viewedAddress } = request.params;
+      return {
+        title: 'Reward',
+        view: <Reward viewedAddress={viewedAddress} />
+      };
+    })
   ),
+
 
   [`/${Routes.PRIVACY}`]: route(() => ({
     title: 'Freeliquid - Privacy Policy',
