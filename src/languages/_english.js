@@ -328,6 +328,11 @@ export default {
     vault_unavailable: 'Sorry, this vault is unavailable',
     loading_vaults: 'Loading Vaults...'
   },
+  reward_page:{
+    title: 'Reward',
+    total_fl_debt: 'total FL debt',
+    get_started_title: 'Open your first Vault to start generating USDFL.',
+  },
   navbar: {
     save: 'Save',
     borrow: 'Borrow',

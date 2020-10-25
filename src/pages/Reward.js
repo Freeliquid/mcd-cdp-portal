@@ -1,52 +1,91 @@
-import React, { useCallback, useState, useEffect } from 'react';
-import {
-  Flex,
-  Grid,
-  Text,
-  Button,
-  Address
-} from '@makerdao/ui-components-core';
-
-import theme from '../styles/theme';
+import React, { useEffect } from 'react';
+import { hot } from 'react-hot-loader/root';
 import PageContentLayout from 'layouts/PageContentLayout';
 import LoadingLayout from 'layouts/LoadingLayout';
 import {
-  ActionButton,
-  ActionContainerRow,
-  CdpViewCard
-} from 'components/CDPDisplay/subcomponents';
-import FullScreenAction from 'components/CDPDisplay/FullScreenAction';
-import History from 'components/CDPDisplay/History';
-import DRRInfo from 'components/DRRInfo';
-import useMaker from 'hooks/useMaker';
-import useLanguage from 'hooks/useLanguage';
-import useDsrEventHistory from 'hooks/useDsrEventHistory';
-import useModal from 'hooks/useModal';
-import useAnalytics from 'hooks/useAnalytics';
-import useSidebar from 'hooks/useSidebar';
-import useSavings from 'hooks/useSavings';
-import useNotification from 'hooks/useNotification';
-import { watch } from 'hooks/useObservable';
-import useEmergencyShutdown from 'hooks/useEmergencyShutdown';
-import { getColor } from 'styles/theme';
-import { FadeIn, FilledButton, PageHead } from 'components/Marketing';
+  Text,
+  Grid,
+  Card,
+  Table,
+  Box,
+  Button,
+  Address,
+  Flex
+} from '@makerdao/ui-components-core';
 import { Link, useCurrentRoute } from 'react-navi';
+import useMaker from 'hooks/useMaker';
+import RatioDisplay from '../components/RatioDisplay';
+import { getColor } from 'styles/theme';
+import useLanguage from 'hooks/useLanguage';
+import useModal from '../hooks/useModal';
+import useNotification from 'hooks/useNotification';
+import useAnalytics from 'hooks/useAnalytics';
+import useVaults from 'hooks/useVaults';
+import useEmergencyShutdown from 'hooks/useEmergencyShutdown';
+import { NotificationList, Routes, SAFETY_LEVELS } from 'utils/constants';
+import { FilledButton } from 'components/Marketing';
 
-import { FeatureFlags } from 'utils/constants';
-import { NotificationList, SAFETY_LEVELS } from 'utils/constants';
+const InfoCard = ({ title, amount, denom }) => (
+  <Card
+    py={{ s: 'm', xl: 'l' }}
+    px="m"
+    minWidth="22.4rem"
+    style={{
+      borderColor: getColor('border'),
+      backgroundColor: getColor('cardBg')
+    }}
+  >
+    <Grid gridRowGap="s">
+      <Text
+        justifySelf={{ s: 'left', xl: 'center' }}
+        t="subheading"
+        css={`
+          white-space: nowrap;
+          color: ${getColor('greyText')};
+        `}
+      >
+        {title.toUpperCase()}
+      </Text>
+      <Box justifySelf={{ s: 'left', xl: 'center' }}>
+        <Box display={{ s: 'none', xl: 'unset' }}>
+          <Flex alignSelf="end" alignItems="flex-end">
+            <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
+              {amount}
+            </Text>
+            &nbsp;
+            <Text style={{ fontSize: '18px', color: getColor('whiteText') }}>
+              {denom}
+            </Text>
+          </Flex>
+        </Box>
+        <Text
+          style={{ fontSize: '20px', color: getColor('whiteText') }}
+          display={{ s: 'unset', xl: 'none' }}
+        >
+          {amount} {denom}
+        </Text>
+      </Box>
+    </Grid>
+  </Card>
+);
 
-function Save({ viewedAddress }) {
+function Reward({ viewedAddress }) {
+  const { trackBtnClick } = useAnalytics('Table');
+  const { account } = useMaker();
+  const { viewedAddressVaults } = useVaults();
+  const { url } = useCurrentRoute();
   const { lang } = useLanguage();
-  const { account, network } = useMaker();
-  const { addNotification, deleteNotifications } = useNotification();
   const { emergencyShutdownActive } = useEmergencyShutdown();
-
+  const { addNotification, deleteNotifications } = useNotification();
   useEffect(() => {
-    if (account && viewedAddress && viewedAddress !== account.address) {
+    if (
+      account &&
+      viewedAddress.toLowerCase() !== account.address.toLowerCase()
+    ) {
       addNotification({
         id: NotificationList.NON_OVERVIEW_OWNER,
         content: lang.formatString(
-          lang.notifications.non_savings_owner,
+          lang.notifications.non_overview_owner,
           <Address full={viewedAddress} shorten={true} expandable={false} />
         ),
         level: SAFETY_LEVELS.WARNING
@@ -56,155 +95,255 @@ function Save({ viewedAddress }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [viewedAddress, account]);
 
-  const viewedProxyAddress = watch.proxyAddress(viewedAddress);
-  const savings = useSavings(viewedAddress);
-
-  const { trackBtnClick } = useAnalytics('DsrView');
-
-  const { events, isLoading } = FeatureFlags.FF_DSR_HISTORY
-    ? useDsrEventHistory(viewedProxyAddress) // eslint-disable-line react-hooks/rules-of-hooks
-    : {};
-
-  const [showOnboarding, setShowOnboarding] = useState(true);
-  const hideOnboarding = useCallback(() => {
-    setShowOnboarding(false);
-  }, [setShowOnboarding]);
-
   const { show } = useModal();
+  if (!viewedAddressVaults) {
+    return <LoadingLayout background={getColor('cardBg')} />;
+  }
 
-  const emSize = parseInt(getComputedStyle(document.body).fontSize);
-  const pxBreakpoint = parseInt(theme.breakpoints.l) * emSize;
-  const isMobile = document.documentElement.clientWidth < pxBreakpoint;
-
-  const { show: showSidebar } = useSidebar();
-  const [actionShown, setActionShown] = useState(null);
-  const showAction = props => {
-    if (isMobile) {
-      setActionShown(props);
-    } else {
-      showSidebar(props);
-    }
-  };
-  const annualDaiSavingsRate = watch.annualDaiSavingsRate();
-  return (
-    <PageContentLayout>
-      {viewedProxyAddress === undefined ? (
-        <LoadingLayout />
-      ) : viewedProxyAddress === null && showOnboarding ? (
+  if (viewedAddressVaults && !viewedAddressVaults.length) {
+    return (
+      <PageContentLayout>
         <Flex
           height="70vh"
           justifyContent="center"
           alignItems="center"
           flexDirection="column"
         >
-          {viewedAddress === account?.address ? (
+          {account && account.address === viewedAddress ? (
             <>
               <Text
                 style={{ fontSize: '20px', color: getColor('greyText') }}
                 mb="26px"
               >
-                {lang.formatString(
-                  lang.save.get_started_title,
-                  `${
-                    annualDaiSavingsRate
-                      ? annualDaiSavingsRate.toFixed(2)
-                      : '0.00'
-                  }%`
-                )}
+                {lang.reward_page.get_started_title}
               </Text>
               <Link
                 disabled={emergencyShutdownActive}
                 p="s"
                 css={{ cursor: 'pointer' }}
-                onClick={() =>
+                onClick={() => {
+                  trackBtnClick('CreateFirst');
                   show({
-                    modalType: 'dsrdeposit',
-                    modalTemplate: 'fullscreen',
-                    modalProps: { hideOnboarding }
-                  })
-                }
+                    modalType: 'cdpcreate',
+                    modalTemplate: 'fullscreen'
+                  });
+                }}
               >
-                <FilledButton>{lang.actions.get_started}</FilledButton>
+                <FilledButton className="button_p">
+                  {lang.actions.get_started}
+                </FilledButton>
               </Link>
             </>
           ) : (
-            <Text.p mb="s">{lang.save.no_savings}</Text.p>
+            <Text style={{ fontSize: '20px', color: getColor('greyText') }}>
+              {lang.formatString(
+                lang.overview_page.no_vaults,
+                <Address
+                  full={viewedAddress}
+                  shorten={true}
+                  expandable={false}
+                />
+              )}
+            </Text>
           )}
         </Flex>
-      ) : savings && savings.fetchedSavings ? (
-        <>
-          <Text style={{ fontSize: '24px', color: getColor('whiteText') }}>
-            {lang.reward.title}
-          </Text>
+      </PageContentLayout>
+    );
+  }
+
+  return (
+    <PageContentLayout>
+      <Text.h2 pr="m" mb="m" color="white">
+        {lang.reward_page.title}
+      </Text.h2>
+      {viewedAddressVaults && (
+        <Grid gridRowGap={{ s: 'm', xl: 'l' }}>
           <Grid
-            py="m"
-            gridColumnGap="l"
-            gridTemplateColumns={{
-              0: '1fr',
-              1: '1fr',
-              xl: '1fr 1fr'
-            }}
+            gridTemplateColumns={{ s: '1fr', xl: 'auto auto 1fr' }}
+            gridColumnGap="m"
+            gridRowGap="s"
           >
-            <DRRInfo
-              key={`${viewedAddress}.${savings.proxyAddress}`}
-              isMobile={isMobile}
-              savings={savings}
+            <InfoCard
+              title={lang.overview_page.total_collateral_locked}
+              amount={`$${viewedAddressVaults
+                .reduce(
+                  (acc, { collateralValue }) => collateralValue.plus(acc),
+                  0
+                )
+                .toBigNumber()
+                .toFixed(2)}`}
+              denom={'USD'}
             />
-            <CdpViewCard title={lang.save.deposit_withdraw}>
-              <ActionContainerRow
-                title={lang.save.deposit_btn_cta}
-                button={
-                  <ActionButton
-                    data-testid={'sidebar-deposit-button'}
-                    disabled={
-                      !account ||
-                      viewedAddress !== account?.address ||
-                      emergencyShutdownActive
-                    }
-                    onClick={() => {
-                      trackBtnClick('Deposit');
-                      showAction({ type: 'dsrdeposit', props: { savings } });
-                    }}
-                  >
-                    {lang.actions.deposit}
-                  </ActionButton>
-                }
-              />
-              <ActionContainerRow
-                title={lang.save.withdraw_btn_cta}
-                button={
-                  <ActionButton
-                    disabled={!account || viewedAddress !== account?.address}
-                    data-testid={'sidebar-withdraw-button'}
-                    onClick={() => {
-                      trackBtnClick('Withdraw');
-                      showAction({ type: 'dsrwithdraw', props: { savings } });
-                    }}
-                  >
-                    {lang.actions.withdraw}
-                  </ActionButton>
-                }
-              />
-            </CdpViewCard>
+            <InfoCard
+              title={lang.reward_page.total_fl_debt}
+              amount={`${viewedAddressVaults
+                .reduce((acc, { debtValue }) => debtValue.plus(acc), 0)
+                .toBigNumber()
+                .toFixed(2)}`}
+              denom={'FL'}
+            />
           </Grid>
-          {FeatureFlags.FF_DSR_HISTORY && (
-            <History
-              title={lang.save.tx_history}
-              rows={events}
-              network={network}
-              isLoading={isLoading}
-              emptyTableMessage={lang.save.start_earning}
-            />
-          )}
-        </>
-      ) : (
-        <LoadingLayout />
-      )}
-      {actionShown && (
-        <FullScreenAction {...actionShown} reset={() => setActionShown(null)} />
+          <Box>
+            <Text style={{ fontSize: '20px', color: getColor('greyText') }}>
+              {lang.overview_page.your_cdps}
+            </Text>
+            <Card
+              px={{ s: 'm', xl: 'l' }}
+              pt="m"
+              pb="s"
+              my="m"
+              css={`
+                overflow-x: none;
+                background: ${getColor('cardBg')};
+                border-color: ${getColor('border')};
+              `}
+            >
+              <Table
+                width="100%"
+                variant="cozy"
+                css={`
+                  td,
+                  th {
+                    white-space: nowrap;
+                    color: ${getColor('whiteText')};
+                  }
+                  td:not(:last-child),
+                  th:not(:last-child) {
+                    padding-right: 10px;
+                  }
+                `}
+              >
+                <Table.thead>
+                  <Table.tr>
+                    <Table.th>{lang.overview_page.token}</Table.th>
+                    <Table.th>{lang.overview_page.id}</Table.th>
+                    <Table.th display={{ s: 'table-cell', xl: 'none' }}>
+                      {lang.overview_page.ratio_mobile}
+                    </Table.th>
+                    <Table.th display={{ s: 'none', xl: 'table-cell' }}>
+                      {lang.overview_page.ratio}
+                    </Table.th>
+                    <Table.th display={{ s: 'none', xl: 'table-cell' }}>
+                      {lang.overview_page.deposited}
+                    </Table.th>
+                    <Table.th display={{ s: 'none', xl: 'table-cell' }}>
+                      {lang.overview_page.withdraw}
+                    </Table.th>
+                    <Table.th display={{ s: 'none', xl: 'table-cell' }}>
+                      {lang.overview_page.debt}
+                    </Table.th>
+                    <Table.th />
+                  </Table.tr>
+                </Table.thead>
+                <tbody>
+                  {viewedAddressVaults.map(
+                    ({
+                      id,
+                      collateralizationRatio,
+                      liquidationRatio,
+                      collateralAmount,
+                      collateralAvailableAmount,
+                      debtValue
+                    }) => (
+                      <Table.tr key={id}>
+                        <Table.td>
+                          <Text
+                            t="body"
+                            fontSize={{ s: '1.7rem', xl: 'm' }}
+                            fontWeight={{ s: 'medium', xl: 'normal' }}
+                            color="white"
+                          >
+                            {collateralAmount.symbol}
+                          </Text>
+                        </Table.td>
+                        <Table.td>
+                          <Text
+                            t="body"
+                            fontSize={{ s: '1.7rem', xl: 'm' }}
+                            color={{ s: 'grey', xl: 'white' }}
+                          >
+                            {id}
+                          </Text>
+                        </Table.td>
+                        <Table.td>
+                          {isFinite(collateralizationRatio.toNumber()) ? (
+                            <RatioDisplay
+                              fontSize={{ s: '1.7rem', xl: '1.3rem' }}
+                              ratio={collateralizationRatio
+                                .toBigNumber()
+                                .dp(4)
+                                .times(100)}
+                              ilkLiqRatio={liquidationRatio
+                                .toBigNumber()
+                                .dp(4)
+                                .times(100)}
+                            />
+                          ) : (
+                            <Text fontSize={{ s: '1.7rem', xl: '1.3rem' }}>
+                              N/A
+                            </Text>
+                          )}
+                        </Table.td>
+                        <Table.td display={{ s: 'none', xl: 'table-cell' }}>
+                          <Text t="caption">{collateralAmount.toString()}</Text>
+                        </Table.td>
+                        <Table.td display={{ s: 'none', xl: 'table-cell' }}>
+                          <Text t="caption">
+                            {collateralAvailableAmount.toString()}
+                          </Text>
+                        </Table.td>
+                        <Table.td display={{ s: 'none', xl: 'table-cell' }}>
+                          <Text t="caption">
+                            {debtValue.toBigNumber().toFixed(2)} USDFL
+                          </Text>
+                        </Table.td>
+                        <Table.td>
+                          <Flex justifyContent="flex-end">
+                            <Button
+                              variant="secondary-outline"
+                              px="s"
+                              py="2xs"
+                              borderColor="steel"
+                              onClick={() => {
+                                trackBtnClick('Manage', {
+                                  collateral: collateralAmount.symbol,
+                                  vaultId: id
+                                });
+                              }}
+                            >
+                              <Link
+                                href={`/${Routes.REWARD}/${id}${url.search}`}
+                                prefetch={true}
+                              >
+                                <Text
+                                  fontSize="1.3rem"
+                                  color="steel"
+                                  css={`
+                                    white-space: nowrap;
+                                  `}
+                                >
+                                  <Box display={{ s: 'none', xl: 'inline' }}>
+                                    {lang.overview_page.view_cdp}
+                                  </Box>
+                                  <Box display={{ s: 'inline', xl: 'none' }}>
+                                    {lang.overview_page.view_cdp_mobile}
+                                  </Box>
+                                </Text>
+                              </Link>
+                            </Button>
+                          </Flex>
+                        </Table.td>
+                      </Table.tr>
+                    )
+                  )}
+                </tbody>
+              </Table>
+            </Card>
+          </Box>
+        </Grid>
       )}
     </PageContentLayout>
   );
 }
 
-export default Save;
+export default hot(Reward);
