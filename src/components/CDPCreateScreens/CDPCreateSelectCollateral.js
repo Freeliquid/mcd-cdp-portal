@@ -134,7 +134,8 @@ const CDPCreateSelectCollateral = ({
   proxyAddress,
   balances,
   collateralTypesData,
-  dispatch
+  dispatch,
+  onClose
 }) => {
   const { trackBtnClick } = useAnalytics('SelectCollateral', 'VaultCreate');
   const { lang } = useLanguage();
@@ -227,10 +228,9 @@ const CDPCreateSelectCollateral = ({
           });
         }}
         onBack={() => {
-          trackBtnClick('Back', { isFirstVault });
-          dispatch({ type: 'decrement-step' });
+          onClose();
         }}
-        canGoBack={false}
+        canGoBack={true}
         canProgress={!!selectedIlk.symbol}
       />
     </Box>
