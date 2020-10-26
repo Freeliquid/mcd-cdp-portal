@@ -66,7 +66,7 @@ const GetReward = ({ rewardAmount }) => {
             {lang.sidebar.reward_info}
           </Text>
           <Text fontSize="1.4rem" style={{ color: getColor('greyText') }}>
-            {`${formatter(setInterval(rewardAmount, 100), { precision: short })} FL`}
+            {`${formatter(rewardAmount, { precision: long })} FL`}
           </Text>
         </Flex>
       </CardBody>
