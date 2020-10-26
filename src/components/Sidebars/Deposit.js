@@ -9,16 +9,16 @@ import useWalletBalances from 'hooks/useWalletBalances';
 import useValidatedInput from 'hooks/useValidatedInput';
 import useLanguage from 'hooks/useLanguage';
 import useAnalytics from 'hooks/useAnalytics';
-import { formatCollateralizationRatio, formatter } from 'utils/ui';
+import { formatCollateralizationRatio, formatter, prettifyCurrency, prettifyNumber } from 'utils/ui';
 import { multiply } from 'utils/bignumber';
 import { getCurrency } from 'utils/cdp';
 import ProxyAllowanceToggle from 'components/ProxyAllowanceToggle';
 import BigNumber from 'bignumber.js';
 import { decimalRules } from '../../styles/constants';
 import { getColor } from '../../styles/theme';
-const { long, medium } = decimalRules;
+const { short } = decimalRules;
 
-const Deposit = ({ vault, reset }) => {
+const Deposit = ({ vault, reset, dispatch }) => {
   const { trackBtnClick } = useAnalytics('Deposit', 'Sidebar');
   const { lang } = useLanguage();
   const { maker } = useMaker();
@@ -53,15 +53,14 @@ const Deposit = ({ vault, reset }) => {
       return BigNumber(0);
     return r;
   }
-
-
+  
 
   const symbol = collateralAmount?.symbol;
   const { hasAllowance, hasSufficientAllowance } = useTokenAllowance(symbol);
   const gemBalances = useWalletBalances();
   const gemBalance = gemBalances[symbol] || 0;
 
-  const [amount, , onAmountChange, amountErrors] = useValidatedInput(
+  const [amount, onAmountChange, amountErrors] = useValidatedInput(
     '',
     {
       maxFloat: gemBalance,
@@ -94,13 +93,20 @@ const Deposit = ({ vault, reset }) => {
 
   const valueDiff = multiply(amountToDeposit, collateralTypePrice.toNumber());
 
-  const liquidationPrice = vault.calculateLiquidationPrice({
-    collateralAmount: collateralAmount.plus(amountToDeposit)
-  });
-
   const collateralizationRatio = vault.calculateCollateralizationRatio({
     collateralValue: collateralValue.plus(valueDiff)
   });
+ 
+  function handleValueChange({ target }) {
+    if (parseFloat(target.value) < 0) return;
+
+    const val = convertValueToAmount(target.value);
+
+    dispatch({
+      type: `form/set-${target.name}`,
+      payload: { value: val }
+    });
+  }
 
   return (
     <Grid gridRowGap="m">
@@ -116,11 +122,13 @@ const Deposit = ({ vault, reset }) => {
         <div className="input_border">
         <Input
           style={{ color: getColor('whiteText') }}
+          name="valueToLock"
           type="number"
           min="0"
-          value={amount}
-          onChange={onAmountChange}
-          placeholder={`0.00 ${symbol}`}
+          value={prettifyCurrency(convertAmountToValue(amount))}
+          onChange={handleValueChange}
+          placeholder={`0.00`}
+          after={'USD'}
           failureMessage={amountErrors}
           data-testid="deposit-input"
         />
@@ -153,7 +161,7 @@ const Deposit = ({ vault, reset }) => {
       <InfoContainer>
         <Info
           title={lang.action_sidebar.current_account_balance}
-          body={`${formatter(gemBalance, { precision: medium })} ${symbol}`}
+          body={`${formatter(convertAmountToValue(gemBalance), { precision: short })} USD`}
         />
         <Info
           title={lang.action_sidebar.new_collateralization_ratio}

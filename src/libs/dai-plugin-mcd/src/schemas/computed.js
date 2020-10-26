@@ -404,6 +404,12 @@ export const vault = {
           liquidationRatio
         );
       },
+      collateralValueForAmount(amount) {
+        return calcCollateralValue(amount, collateralTypePrice.toBigNumber());
+      },
+      collateralAmountByValue(value) {
+        return calcCollateralAmountByValue(value, collateralTypePrice.toBigNumber());
+      },
       calculateCollateralizationRatio({
         collateralValue = this.collateralValue,
         debtValue = this.debtValue

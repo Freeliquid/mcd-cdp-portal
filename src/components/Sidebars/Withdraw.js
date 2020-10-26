@@ -11,13 +11,14 @@ import useLanguage from 'hooks/useLanguage';
 import useAnalytics from 'hooks/useAnalytics';
 import useValidatedInput from 'hooks/useValidatedInput';
 import { greaterThan, multiply } from 'utils/bignumber';
-import { formatCollateralizationRatio, formatter } from 'utils/ui';
+import { formatCollateralizationRatio, formatter, prettifyCurrency } from 'utils/ui';
 import { getCurrency } from 'utils/cdp';
 import { decimalRules } from '../../styles/constants';
 import { getColor } from '../../styles/theme';
-const { long } = decimalRules;
+import { ShortType } from 'three';
+const { short } = decimalRules;
 
-const Withdraw = ({ vault, reset }) => {
+const Withdraw = ({ vault, reset, dispatch }) => {
   const { trackBtnClick } = useAnalytics('Withdraw', 'Sidebar');
   const { lang } = useLanguage();
   const { maker } = useMaker();
@@ -30,12 +31,36 @@ const Withdraw = ({ vault, reset }) => {
     collateralAmount,
     collateralValue,
     encumberedCollateral,
+    collateralValueForAmount,
+    collateralAmountByValue,
     encumberedDebt: debtAmount
   } = vault;
   BigNumber.set({ ROUNDING_MODE: BigNumber.ROUND_DOWN });
   collateralAvailableAmount = collateralAvailableAmount.toBigNumber();
   collateralValue = collateralValue.toBigNumber();
 
+  function convertAmountToValue(amount) {
+    if (amount == 0)
+      return BigNumber(0);
+    const r =  collateralValueForAmount(BigNumber(amount));
+
+    if (r == undefined)
+      return BigNumber(0);
+
+    return r;
+  }
+
+  function convertValueToAmount(value) {
+    if (value == 0)
+      return BigNumber(0);
+    const r =  collateralAmountByValue(BigNumber(value));
+
+    if (r == undefined)
+      return BigNumber(0);
+    return r;
+  }
+  
+  
   const symbol = collateralAmount?.symbol;
 
   const [amount, setAmount, onAmountChange, amountErrors] = useValidatedInput(
@@ -81,6 +106,17 @@ const Withdraw = ({ vault, reset }) => {
       : currency(0)
   });
 
+  function handleValueChange({ target }) {
+    if (parseFloat(target.value) < 0) return;
+
+    const val = convertValueToAmount(target.value);
+
+    dispatch({
+      type: `form/set-${target.name}`,
+      payload: { value: val }
+    });
+  }
+
   return (
     <Grid gridRowGap="m">
       <Grid gridRowGap="s" className="input_des">
@@ -97,10 +133,11 @@ const Withdraw = ({ vault, reset }) => {
         <Input
           style={{ color: getColor('whiteText') }}
           type="number"
-          placeholder={`0.00 ${symbol}`}
-          value={amount}
+          placeholder={`0.00`}
+          after={'USD'}
+          value={prettifyCurrency(convertAmountToValue(amount))}
           min="0"
-          onChange={onAmountChange}
+          onChange={handleValueChange}
           after={
             parseFloat(debtAmount) === 0 ? (
               <SetMax style={{ color: getColor('greyText') }}
@@ -153,9 +190,9 @@ const Withdraw = ({ vault, reset }) => {
       <InfoContainer>
         <Info
           title={lang.action_sidebar.maximum_available_to_withdraw}
-          body={`${formatter(collateralAvailableAmount, {
-            precision: long
-          })} ${symbol}`}
+          body={`${formatter(convertAmountToValue(collateralAvailableAmount), {
+            precision: short
+          })} USD`}
         />
         <Info
           title={lang.action_sidebar.new_collateralization_ratio}
