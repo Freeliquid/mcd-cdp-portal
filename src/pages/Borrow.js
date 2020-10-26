@@ -135,21 +135,7 @@ function Borrow({ disableConnect = false }) {
             <AccountSelection style={{ width: '260px' }} className="button" />
           </ConnectHero>
         </FixedHeaderTrigger>
-        <GradientBox mt="26px">
-          <Box m="30px 15px 0">
-            <Text.h2 mb="16px">{lang.borrow_landing.calc_heading}</Text.h2>
-            <Text style={{ fontSize: '20px', color: getColor('greyText') }}>
-              {lang.borrow_landing.calc_subheading}
-            </Text>
-            {prices?.length && cdpTypesList?.length ? (
-              <BorrowCalculator
-                mt="40px"
-                prices={prices}
-                cdpTypesList={cdpTypesList}
-              />
-            ) : null}
-          </Box>
-        </GradientBox>
+        
         <Box maxWidth="1140px" m="104px 15px 0">
           <Box maxWidth="777px" m="0 auto">
             <Text.h2 mb="34px">{lang.borrow_markets.heading}</Text.h2>
