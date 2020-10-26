@@ -20,7 +20,7 @@ import { add, greaterThan } from 'utils/bignumber';
 import { formatCollateralizationRatio, formatter } from 'utils/ui';
 import { decimalRules } from '../../styles/constants';
 import { getColor } from '../../styles/theme';
-const { short } = decimalRules;
+const { long, medium } = decimalRules;
 
 const GetReward = ({ rewardAmount }) => {
   const { trackBtnClick } = useAnalytics('GetReward', 'Sidebar');
