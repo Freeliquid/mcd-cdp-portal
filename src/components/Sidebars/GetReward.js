@@ -1,6 +1,7 @@
 import React from 'react';
 import BigNumber from 'bignumber.js';
 import { USDFL } from '../../libs/dai-plugin-mcd/src/index.js';
+import { hot } from 'react-hot-loader/root';
 import {
   Text,
   Grid,
@@ -19,7 +20,7 @@ import { add, greaterThan } from 'utils/bignumber';
 import { formatCollateralizationRatio, formatter } from 'utils/ui';
 import { decimalRules } from '../../styles/constants';
 import { getColor } from '../../styles/theme';
-const { long, medium } = decimalRules;
+const { short } = decimalRules;
 
 const GetReward = ({ rewardAmount }) => {
   const { trackBtnClick } = useAnalytics('GetReward', 'Sidebar');
@@ -65,7 +66,7 @@ const GetReward = ({ rewardAmount }) => {
             {lang.sidebar.reward_info}
           </Text>
           <Text fontSize="1.4rem" style={{ color: getColor('greyText') }}>
-            {`${formatter(rewardAmount, { precision: long })} FL`}
+            {`${formatter(setInterval(rewardAmount, 100), { precision: short })} FL`}
           </Text>
         </Flex>
       </CardBody>
@@ -90,4 +91,4 @@ const GetReward = ({ rewardAmount }) => {
     </Card>
   );
 };
-export default GetReward;
+export default hot(GetReward);
