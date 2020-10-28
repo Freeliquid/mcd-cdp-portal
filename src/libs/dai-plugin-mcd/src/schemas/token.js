@@ -1,7 +1,12 @@
 import { getMcdToken } from '../utils';
+import { fromWei } from '../utils';
 import BigNumber from 'bignumber.js';
 
-import { TOKEN_BALANCE, TOKEN_ALLOWANCE_BASE } from './_constants';
+import {
+  TOKEN_BALANCE,
+  TOKEN_ALLOWANCE_BASE,
+  REWARD_TOKEN_ALLOWANCE_BY_ADDRESS
+} from './_constants';
 import { validateAddress } from './_validators';
 
 export const ALLOWANCE_AMOUNT = BigNumber(
@@ -62,7 +67,14 @@ export const tokenAllowanceBase = {
 
     const currencyToken = getMcdToken(symbol);
     const contract =
-      symbol === 'USDFL' ? 'MCD_DAI' : symbol === 'WETH' ? 'ETH' : symbol;
+      symbol === 'FL'
+        ? 'MCD_GOV'
+        : symbol === 'USDFL'
+        ? 'MCD_DAI'
+        : symbol === 'WETH'
+        ? 'ETH'
+        : symbol;
+
     if (!currencyToken)
       throw new Error(`${symbol} token is not part of the default tokens list`);
 
@@ -114,9 +126,30 @@ export const adapterBalance = {
   })
 };
 
+export const tokenAllowanceByAddress = {
+  generate: (address, proxyAddress, tokenAddress) => {
+    // console.log("tokenAllowanceByAddress", address, proxyAddress, tokenAddress);
+
+    var res = {
+      id: `allowanceByAddress.${tokenAddress}.${address}`,
+      call: ['allowance(address,address)(uint256)', address, proxyAddress]
+    };
+
+    if (tokenAddress == 0) {
+      //stub to prevent exception
+      res['contract'] = 'MCD_GOV';
+    } else {
+      res['target'] = tokenAddress;
+    }
+    return res;
+  },
+  returns: [[REWARD_TOKEN_ALLOWANCE_BY_ADDRESS, fromWei]]
+};
+
 export default {
   tokenBalance,
   tokenAllowanceBase,
+  tokenAllowanceByAddress,
 
   // computed
   adapterBalance,

@@ -7,7 +7,14 @@ import {
   liquidationPrice as calcLiquidationPrice,
   minSafeCollateralAmount as calcMinSafeCollateralAmount
 } from '../math';
-import { USD, USDFL, DSR_USDFL, defaultCdpTypes, ALLOWANCE_AMOUNT } from '../';
+import {
+  USD,
+  USDFL,
+  DSR_USDFL,
+  FL,
+  defaultCdpTypes,
+  ALLOWANCE_AMOUNT
+} from '../';
 import BigNumber from 'bignumber.js';
 import {
   DEBT_CEILING,
@@ -56,7 +63,17 @@ import {
   COLLATERAL_TYPE_COLLATERALIZATION,
   COLLATERAL_TYPE_DATA,
   COLLATERAL_DEBT_AVAILABLE,
-  REWARD_AMOUNT
+  REWARD_TOKEN_ALLOWANCE_BY_ADDRESS,
+  REWARD_PAIRINFO,
+  REWARD_WALLET_REWARD_PAIR_INFO,
+  REWARD_PAIRINFO_GEM,
+  REWARD_PAIRINFO_AVAIL,
+  REWARD_PAIRINFO_LOCKED,
+  REWARD_PAIRINFO_LOCKEDVALUE,
+  REWARD_PAIRINFO_REWARDPERHOUR,
+  REWARD_AMOUNT,
+  REWARD_GOV_TOKEN_CONTRACT,
+  REWARD_REWARD_CONTRACT
 } from './_constants';
 import { validateAddress, validateVaultId } from './_validators';
 
@@ -92,8 +109,6 @@ export const collateralTypesPrices = {
   })
 };
 
-
-
 export const defaultCollateralTypesPrices = {
   generate: () => ({
     dependencies: () =>
@@ -117,10 +132,8 @@ export const vaultTypeAndAddress = {
 
 export const vaultExternalOwner = {
   generate: id => ({
-    dependencies: [
-      [PROXY_OWNER, [VAULT_OWNER, id]]
-    ],
-    computed: (owner) => owner
+    dependencies: [[PROXY_OWNER, [VAULT_OWNER, id]]],
+    computed: owner => owner
   })
 };
 
@@ -302,7 +315,10 @@ export const collateralTypeData = {
         return calcCollateralValue(amount, collateralTypePrice.toBigNumber());
       },
       collateralAmountByValue(value) {
-        return calcCollateralAmountByValue(value, collateralTypePrice.toBigNumber());
+        return calcCollateralAmountByValue(
+          value,
+          collateralTypePrice.toBigNumber()
+        );
       }
     })
   })
@@ -408,7 +424,10 @@ export const vault = {
         return calcCollateralValue(amount, collateralTypePrice.toBigNumber());
       },
       collateralAmountByValue(value) {
-        return calcCollateralAmountByValue(value, collateralTypePrice.toBigNumber());
+        return calcCollateralAmountByValue(
+          value,
+          collateralTypePrice.toBigNumber()
+        );
       },
       calculateCollateralizationRatio({
         collateralValue = this.collateralValue,
@@ -426,13 +445,10 @@ export const vault = {
   }
 };
 
-
 export const walletRewardAmount = {
   generate: address => ({
-    dependencies: [
-      [REWARD_AMOUNT, [PROXY_ADDRESS, address]]
-    ],
-    computed: (amount) => {
+    dependencies: [[REWARD_AMOUNT, [PROXY_ADDRESS, address]]],
+    computed: amount => {
       return amount;
     }
   }),
@@ -441,6 +457,64 @@ export const walletRewardAmount = {
   }
 };
 
+export const rewardContract = {
+  generate: hiRisk => ({
+    dependencies: ({ get }) => [
+      [
+        async () => {
+          const contractAddress = await get('smartContract').getContractAddress(
+            hiRisk ? 'FL_REWARDER_GOV_USD_HOLDER' : 'FL_REWARDER_STABLES_HOLDER'
+          );
+          return contractAddress;
+        }
+      ]
+    ],
+    computed: address => address
+  })
+};
+
+export const walletRewardPairInfo = {
+  generate: (name, address, hiRisk) => ({
+    dependencies: [
+      [REWARD_PAIRINFO_GEM, name, address, hiRisk],
+      [REWARD_PAIRINFO_AVAIL, name, address, hiRisk],
+      [REWARD_PAIRINFO_LOCKED, name, address, hiRisk],
+      [REWARD_PAIRINFO_LOCKEDVALUE, name, address, hiRisk],
+      [REWARD_PAIRINFO_REWARDPERHOUR, name, address, hiRisk],
+      [
+        REWARD_TOKEN_ALLOWANCE_BY_ADDRESS,
+        address,
+        [REWARD_REWARD_CONTRACT, hiRisk],
+        [REWARD_PAIRINFO_GEM, name, address, hiRisk]
+      ]
+    ],
+
+    computed: (gem, avail, locked, lockedvalue, perhour, allowance) => {
+      return {
+        name,
+        hiRisk,
+        gem,
+        avail,
+        locked,
+        lockedvalue,
+        perhour,
+        allowance
+      };
+    }
+  })
+};
+
+export const walletRewardPairInfos = {
+  generate: (rewardList, address, hiRisk) => ({
+    dependencies: rewardList.map(name => [
+      REWARD_WALLET_REWARD_PAIR_INFO,
+      name,
+      address,
+      hiRisk
+    ]),
+    computed: (...infos) => infos
+  })
+};
 
 export const daiLockedInDsr = {
   generate: address => ({
@@ -710,5 +784,8 @@ export default {
   collateralTypesData,
   collateralDebtCeilings,
   collateralDebtAvailable,
-  walletRewardAmount
+  walletRewardAmount,
+  walletRewardPairInfo,
+  walletRewardPairInfos,
+  rewardContract
 };

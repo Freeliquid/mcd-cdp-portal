@@ -100,3 +100,12 @@ export const TOKEN_PRICE_LAST_UPDATE = 'tokenPriceLastUpdate';
 
 // rewarder
 export const REWARD_AMOUNT = 'rewardAmount';
+export const REWARD_PAIRINFO = 'rewardPairInfo';
+export const REWARD_PAIRINFO_GEM = 'rewardGem';
+export const REWARD_PAIRINFO_AVAIL = 'rewardAvail';
+export const REWARD_PAIRINFO_LOCKED = 'rewardLocked';
+export const REWARD_PAIRINFO_LOCKEDVALUE = 'rewardLockedValue';
+export const REWARD_PAIRINFO_REWARDPERHOUR = 'rewardPerHour';
+export const REWARD_WALLET_REWARD_PAIR_INFO = 'walletRewardPairInfo';
+export const REWARD_REWARD_CONTRACT = 'rewardContract';
+export const REWARD_TOKEN_ALLOWANCE_BY_ADDRESS = 'tokenAllowanceByAddress';

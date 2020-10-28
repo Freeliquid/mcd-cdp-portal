@@ -97,6 +97,7 @@ export const defaultTokens = [
   ...new Set([
     ...defaultCdpTypes.map(type => type.currency),
     USDFL,
+    FL,
     WETH,
     SAI,
     DSR_USDFL

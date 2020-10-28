@@ -2,6 +2,13 @@ import React, { useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
 import PageContentLayout from 'layouts/PageContentLayout';
 import LoadingLayout from 'layouts/LoadingLayout';
+import { cutMiddle } from 'utils/ui';
+import BigNumber from 'bignumber.js';
+import { USD, USDFL } from '../libs/dai-plugin-mcd/src/index.js';
+import rewardList from '../references/rewardList';
+
+import { Currency } from '@makerdao/currency';
+
 import {
   Text,
   Grid,
@@ -21,6 +28,7 @@ import useModal from '../hooks/useModal';
 import useNotification from 'hooks/useNotification';
 import useAnalytics from 'hooks/useAnalytics';
 import useVaults from 'hooks/useVaults';
+import { watch } from 'hooks/useObservable';
 import useEmergencyShutdown from 'hooks/useEmergencyShutdown';
 import { NotificationList, Routes, SAFETY_LEVELS } from 'utils/constants';
 import { FilledButton } from 'components/Marketing';
@@ -72,11 +80,34 @@ const InfoCard = ({ title, amount, denom }) => (
 function Reward({ viewedAddress }) {
   const { trackBtnClick } = useAnalytics('Table');
   const { account } = useMaker();
-  const { viewedAddressVaults } = useVaults();
+  var { viewedAddressVaults } = useVaults();
   const { url } = useCurrentRoute();
   const { lang } = useLanguage();
   const { emergencyShutdownActive } = useEmergencyShutdown();
+  const { maker } = useMaker();
   const { addNotification, deleteNotifications } = useNotification();
+
+  const rewardPairInfosHiRisk = watch.walletRewardPairInfos(
+    rewardList,
+    account?.address,
+    true
+  );
+  const rewardPairInfosLowRisk = watch.walletRewardPairInfos(
+    rewardList,
+    account?.address,
+    false
+  );
+  const rewardPairInfos =
+    rewardPairInfosHiRisk && rewardPairInfosLowRisk
+      ? [...rewardPairInfosHiRisk, ...rewardPairInfosLowRisk].filter(
+          item => item.gem != 0
+        )
+      : [];
+
+  // console.log("rewardPairInfos");
+  // console.log(rewardList);
+  // console.log(rewardPairInfos);
+
   useEffect(() => {
     if (
       account &&
@@ -96,60 +127,63 @@ function Reward({ viewedAddress }) {
   }, [viewedAddress, account]);
 
   const { show } = useModal();
-  if (!viewedAddressVaults) {
+  if (!rewardPairInfos) {
     return <LoadingLayout background={getColor('cardBg')} />;
   }
 
   if (viewedAddressVaults && !viewedAddressVaults.length) {
-    return (
-      <PageContentLayout>
-        <Flex
-          height="70vh"
-          justifyContent="center"
-          alignItems="center"
-          flexDirection="column"
-        >
-          {account && account.address === viewedAddress ? (
-            <>
-              <Text
-                style={{ fontSize: '20px', color: getColor('greyText') }}
-                mb="26px"
-              >
-                {lang.reward_page.get_started_title}
-              </Text>
-              <Link
-                disabled={emergencyShutdownActive}
-                p="s"
-                css={{ cursor: 'pointer' }}
-                onClick={() => {
-                  trackBtnClick('CreateFirst');
-                  show({
-                    modalType: 'cdpcreate',
-                    modalTemplate: 'fullscreen'
-                  });
-                }}
-              >
-                <FilledButton className="button_p">
-                  {lang.actions.get_started}
-                </FilledButton>
-              </Link>
-            </>
-          ) : (
-            <Text style={{ fontSize: '20px', color: getColor('greyText') }}>
-              {lang.formatString(
-                lang.overview_page.no_vaults,
-                <Address
-                  full={viewedAddress}
-                  shorten={true}
-                  expandable={false}
-                />
-              )}
-            </Text>
-          )}
-        </Flex>
-      </PageContentLayout>
-    );
+    viewedAddressVaults = [
+      {
+        collateralValue: USD(0),
+        debtValue: USD(0)
+      }
+    ];
   }
+
+  const rewardPairInfosEx = rewardPairInfos.map(item => {
+    const { avail, locked, lockedvalue, allowance } = item;
+    return {
+      ...item,
+      approveDisabled: avail.toNumber() <= allowance.toNumber(),
+      lockDisabled:
+        avail.toNumber() <= 0 || allowance.toNumber() < avail.toNumber(),
+      unlockDisabled: locked.toNumber() <= 0
+    };
+  });
+
+  console.log('rewardPairInfosEx', rewardPairInfosEx);
+
+  const conv = amount => {
+    const c = new Currency(amount);
+    return c.toFixed('wei');
+  };
+
+  const lockPool = (selectedGem, avail, hiRisk) => {
+    console.log('lockPool', selectedGem, avail.toNumber(), conv(avail), hiRisk);
+    maker.service('mcd:rewards').lockPool(conv(avail), selectedGem, hiRisk);
+  };
+
+  const unlockPool = (selectedGem, locked, hiRisk) => {
+    console.log(
+      'unlockPool',
+      selectedGem,
+      locked.toNumber(),
+      conv(locked),
+      hiRisk
+    );
+    maker.service('mcd:rewards').unlockPool(conv(locked), selectedGem, hiRisk);
+  };
+
+  const poolApprove = (selectedGem, avail, allowance, hiRisk) => {
+    console.log(
+      'poolApprove',
+      selectedGem,
+      avail.toNumber(),
+      allowance.toNumber(),
+      hiRisk
+    );
+    maker.service('mcd:rewards').poolApprove(conv(avail), selectedGem, hiRisk);
+  };
 
   return (
     <PageContentLayout>
@@ -174,18 +208,10 @@ function Reward({ viewedAddress }) {
                 .toFixed(2)}`}
               denom={'USD'}
             />
-            <InfoCard
-              title={lang.reward_page.total_fl_debt}
-              amount={`${viewedAddressVaults
-                .reduce((acc, { debtValue }) => debtValue.plus(acc), 0)
-                .toBigNumber()
-                .toFixed(2)}`}
-              denom={'FL'}
-            />
           </Grid>
           <Box>
             <Text style={{ fontSize: '20px', color: getColor('greyText') }}>
-              {lang.overview_page.your_cdps}
+              {'Participating pools'}
             </Text>
             <Card
               px={{ s: 'm', xl: 'l' }}
@@ -216,44 +242,51 @@ function Reward({ viewedAddress }) {
                 <Table.thead>
                   <Table.tr>
                     <Table.th>{lang.overview_page.token}</Table.th>
-                    <Table.th>{lang.overview_page.id}</Table.th>
-                    <Table.th display={{ s: 'table-cell', xl: 'none' }}>
-                      {lang.overview_page.ratio_mobile}
+                    <Table.th display={{ s: 'none', xl: 'table-cell' }}>
+                      {'address'}
                     </Table.th>
                     <Table.th display={{ s: 'none', xl: 'table-cell' }}>
-                      {lang.overview_page.ratio}
+                      {'On wallet'}
                     </Table.th>
                     <Table.th display={{ s: 'none', xl: 'table-cell' }}>
-                      {lang.overview_page.deposited}
+                      {'Locked'}
                     </Table.th>
                     <Table.th display={{ s: 'none', xl: 'table-cell' }}>
-                      {lang.overview_page.withdraw}
+                      {'Locked value'}
                     </Table.th>
                     <Table.th display={{ s: 'none', xl: 'table-cell' }}>
-                      {lang.overview_page.debt}
+                      {'FL/h distributed'}
+                    </Table.th>
+                    <Table.th display={{ s: 'none', xl: 'table-cell' }}>
+                      {'Allowance'}
                     </Table.th>
                     <Table.th />
                   </Table.tr>
                 </Table.thead>
                 <tbody>
-                  {viewedAddressVaults.map(
+                  {rewardPairInfosEx.map(
                     ({
-                      id,
-                      collateralizationRatio,
-                      liquidationRatio,
-                      collateralAmount,
-                      collateralAvailableAmount,
-                      debtValue
+                      name,
+                      hiRisk,
+                      gem,
+                      avail,
+                      locked,
+                      lockedvalue,
+                      perhour,
+                      allowance,
+                      approveDisabled,
+                      lockDisabled,
+                      unlockDisabled
                     }) => (
-                      <Table.tr key={id}>
+                      <Table.tr key={gem}>
                         <Table.td>
                           <Text
                             t="body"
                             fontSize={{ s: '1.7rem', xl: 'm' }}
                             fontWeight={{ s: 'medium', xl: 'normal' }}
-                            color="white"
+                            color={hiRisk ? 'red' : 'white'}
                           >
-                            {collateralAmount.symbol}
+                            {name}
                           </Text>
                         </Table.td>
                         <Table.td>
@@ -262,74 +295,66 @@ function Reward({ viewedAddress }) {
                             fontSize={{ s: '1.7rem', xl: 'm' }}
                             color={{ s: 'grey', xl: 'white' }}
                           >
-                            {id}
-                          </Text>
-                        </Table.td>
-                        <Table.td>
-                          {isFinite(collateralizationRatio.toNumber()) ? (
-                            <RatioDisplay
-                              fontSize={{ s: '1.7rem', xl: '1.3rem' }}
-                              ratio={collateralizationRatio
-                                .toBigNumber()
-                                .dp(4)
-                                .times(100)}
-                              ilkLiqRatio={liquidationRatio
-                                .toBigNumber()
-                                .dp(4)
-                                .times(100)}
-                            />
-                          ) : (
-                            <Text fontSize={{ s: '1.7rem', xl: '1.3rem' }}>
-                              N/A
-                            </Text>
-                          )}
-                        </Table.td>
-                        <Table.td display={{ s: 'none', xl: 'table-cell' }}>
-                          <Text t="caption">{collateralAmount.toString()}</Text>
-                        </Table.td>
-                        <Table.td display={{ s: 'none', xl: 'table-cell' }}>
-                          <Text t="caption">
-                            {collateralAvailableAmount.toString()}
+                            {cutMiddle(gem, 7, 5)}
                           </Text>
                         </Table.td>
                         <Table.td display={{ s: 'none', xl: 'table-cell' }}>
-                          <Text t="caption">
-                            {debtValue.toBigNumber().toFixed(2)} USDFL
-                          </Text>
+                          <Text t="caption">{avail.toFixed(8)}</Text>
+                        </Table.td>
+                        <Table.td display={{ s: 'none', xl: 'table-cell' }}>
+                          <Text t="caption">{locked.toFixed(8)}</Text>
+                        </Table.td>
+                        <Table.td display={{ s: 'none', xl: 'table-cell' }}>
+                          <Text t="caption">{lockedvalue.toFixed(2)}</Text>
+                        </Table.td>
+                        <Table.td display={{ s: 'none', xl: 'table-cell' }}>
+                          <Text t="caption">{perhour.toFixed(2)}</Text>
+                        </Table.td>
+                        <Table.td display={{ s: 'none', xl: 'table-cell' }}>
+                          <Flex justifyContent="flex-end">
+                            <Button
+                              // variant="secondary-outline"
+                              className="btn btn_center"
+                              style={{ margin: '1px auto', fontSize: '12px' }}
+                              borderColor="steel"
+                              disabled={approveDisabled}
+                              onClick={() => {
+                                poolApprove(gem, avail, allowance, hiRisk);
+                              }}
+                            >
+                              Approve
+                            </Button>
+                          </Flex>
                         </Table.td>
                         <Table.td>
                           <Flex justifyContent="flex-end">
                             <Button
-                              variant="secondary-outline"
-                              px="s"
-                              py="2xs"
+                              // variant="secondary-outline"
+                              className="btn btn_center"
+                              style={{ margin: '1px auto', fontSize: '12px' }}
                               borderColor="steel"
+                              disabled={lockDisabled}
                               onClick={() => {
-                                trackBtnClick('Manage', {
-                                  collateral: collateralAmount.symbol,
-                                  vaultId: id
-                                });
+                                lockPool(gem, avail, hiRisk);
                               }}
                             >
-                              <Link
-                                href={`/${Routes.REWARD}/${id}${url.search}`}
-                                prefetch={true}
-                              >
-                                <Text
-                                  fontSize="1.3rem"
-                                  color="steel"
-                                  css={`
-                                    white-space: nowrap;
-                                  `}
-                                >
-                                  <Box display={{ s: 'none', xl: 'inline' }}>
-                                    {lang.overview_page.view_cdp}
-                                  </Box>
-                                  <Box display={{ s: 'inline', xl: 'none' }}>
-                                    {lang.overview_page.view_cdp_mobile}
-                                  </Box>
-                                </Text>
-                              </Link>
+                              Lock
+                            </Button>
+                          </Flex>
+                        </Table.td>
+                        <Table.td>
+                          <Flex justifyContent="flex-end">
+                            <Button
+                              // variant="secondary-outline"
+                              className="btn btn_center"
+                              style={{ margin: '1px auto', fontSize: '12px' }}
+                              borderColor="steel"
+                              disabled={unlockDisabled}
+                              onClick={() => {
+                                unlockPool(gem, locked, hiRisk);
+                              }}
+                            >
+                              Unlock
                             </Button>
                           </Flex>
                         </Table.td>
