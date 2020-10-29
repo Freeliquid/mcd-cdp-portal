@@ -16,7 +16,7 @@ class AnimationLottie extends Component {
       }
     };
 
-    return <Lottie options={defaultOptions} height={400} width={400} />;
+    return <Lottie options={defaultOptions} height={400} width={400} isClickToPauseDisabled={true} />;
   }
 }
 

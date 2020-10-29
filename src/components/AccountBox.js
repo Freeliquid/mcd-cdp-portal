@@ -63,14 +63,14 @@ const TokenBalance = ({
       py="xs"
       {...props}
     >
-      <Text fontWeight="semibold" t="p5" textAlign="left" width="30%">
+      <Text fontWeight="semibold" t="p5" textAlign="left" width="40%">
         {symbol}
       </Text>
-      <Text fontWeight="semibold" t="p5" textAlign="left" width="15%">
+      <Text fontWeight="semibold" t="p5" textAlign="left" width="30%">
         {(hasActiveAccount && amount && usdRatio &&
           `$${prettifyNumber(amount.times(usdRatio.toNumber()), true, 2)}`) || '--'}
       </Text>
-      <Text fontWeight="semibold" t="p5" textAlign="left" width="15%">
+      <Text fontWeight="semibold" t="p5" textAlign="left" width="30%">
         {(hasActiveAccount &&
           amount &&
           usdRatio &&
@@ -162,13 +162,13 @@ const WalletBalances = ({ hasActiveAccount, closeSidebarDrawer }) => {
           <Text t="large">{lang.sidebar.wallet_balances}</Text>
         </Box>
         <Flex justifyContent="space-between" px="s" mb="4px">
-          <Text color="steel" fontWeight="bold" t="smallCaps" width="30%">
+          <Text color="steel" fontWeight="bold" t="smallCaps" width="40%">
             {lang.sidebar.asset}
           </Text>
-          <Text color="steel" fontWeight="bold" t="smallCaps" width="15%">
+          <Text color="steel" fontWeight="bold" t="smallCaps" width="30%">
             {lang.sidebar.balance}
           </Text>
-          <Text color="steel" fontWeight="bold" t="smallCaps" width="15%">
+          <Text color="steel" fontWeight="bold" t="smallCaps" width="30%">
             {lang.sidebar.usd}
           </Text>
         </Flex>

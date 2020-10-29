@@ -93,7 +93,7 @@ const MarketsTable = ({ cdpTypesList, ...props }) => {
         <Table.tr>
           <Table.th width={{ s: '0' }} />
           <Table.th width={{ s: '30px', m: '49px' }} />
-          <Table.th>{lang.overview_page.token}</Table.th>
+          <Table.th display={{ s: 'none', m: 'inline' }}>{lang.overview_page.token}</Table.th>
           <Table.th width={{ s: 'unset', xl: '220px' }}>
             {lang.stability_fee}
           </Table.th>
@@ -139,13 +139,10 @@ const MarketsTable = ({ cdpTypesList, ...props }) => {
                 <Table.td style={{ padding: '10px 15px 5px 35px' }}>
                   <TokenIcon symbol={gem} size={50} />
                 </Table.td>
-                <Table.td>
-                  <Text display={{ s: 'none', m: 'inline' }}>
+                <Table.td display={{ s: 'none', m: 'inline' }}>
+                  <Text >
                     {tokenNames[gem]}
                   </Text>
-                  {/* <Text ml="8px" className="gem">
-                    {gem}
-                  </Text> */}
                 </Table.td>
                 <Table.td>
                   <Number>{formatter(minFee, { percentage: true })}%</Number>
