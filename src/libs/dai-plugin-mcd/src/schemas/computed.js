@@ -70,7 +70,6 @@ import {
   REWARD_PAIRINFO_AVAIL,
   REWARD_PAIRINFO_LOCKED,
   REWARD_PAIRINFO_LOCKEDVALUE,
-  REWARD_PAIRINFO_REWARDPERHOUR,
   REWARD_AMOUNT,
   REWARD_GOV_TOKEN_CONTRACT,
   REWARD_REWARD_CONTRACT
@@ -480,7 +479,6 @@ export const walletRewardPairInfo = {
       [REWARD_PAIRINFO_AVAIL, name, address, hiRisk],
       [REWARD_PAIRINFO_LOCKED, name, address, hiRisk],
       [REWARD_PAIRINFO_LOCKEDVALUE, name, address, hiRisk],
-      [REWARD_PAIRINFO_REWARDPERHOUR, name, address, hiRisk],
       [
         REWARD_TOKEN_ALLOWANCE_BY_ADDRESS,
         address,
@@ -489,7 +487,7 @@ export const walletRewardPairInfo = {
       ]
     ],
 
-    computed: (gem, avail, locked, lockedvalue, perhour, allowance) => {
+    computed: (gem, avail, locked, lockedvalue, allowance) => {
       return {
         name,
         hiRisk,
@@ -497,7 +495,6 @@ export const walletRewardPairInfo = {
         avail,
         locked,
         lockedvalue,
-        perhour,
         allowance
       };
     }

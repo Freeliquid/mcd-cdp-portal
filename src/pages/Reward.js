@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import { hot } from 'react-hot-loader/root';
 import PageContentLayout from 'layouts/PageContentLayout';
 import LoadingLayout from 'layouts/LoadingLayout';
@@ -6,6 +6,7 @@ import { cutMiddle } from 'utils/ui';
 import BigNumber from 'bignumber.js';
 import { USD, USDFL } from '../libs/dai-plugin-mcd/src/index.js';
 import rewardList from '../references/rewardList';
+import { formatDate } from 'utils/ui';
 
 import { Currency } from '@makerdao/currency';
 
@@ -33,54 +34,83 @@ import useEmergencyShutdown from 'hooks/useEmergencyShutdown';
 import { NotificationList, Routes, SAFETY_LEVELS } from 'utils/constants';
 import { FilledButton } from 'components/Marketing';
 
-const InfoCard = ({ title, amount, denom }) => (
-  <Card
-    py={{ s: 'm', xl: 'l' }}
-    px="m"
-    minWidth="22.4rem"
-    style={{
-      borderColor: getColor('border'),
-      backgroundColor: getColor('cardBg')
-    }}
-  >
-    <Grid gridRowGap="s">
-      <Text
-        justifySelf={{ s: 'left', xl: 'center' }}
-        t="subheading"
-        css={`
-          white-space: nowrap;
-          color: ${getColor('greyText')};
-        `}
+const GlobalRewardInfo = ({ info }) => {
+  const { lang } = useLanguage();
+  const {
+    rewardPerHourHiRisk,
+    rewardPerHourLowRisk,
+    rewardNextStartTime
+  } = info;
+
+  const params = [
+    [
+      lang.overview_page.reward_next_start_time,
+      formatDate(new Date(rewardNextStartTime * 1000)),
+      ''
+    ],
+    [
+      lang.overview_page.reward_per_hour_hirisk,
+      rewardPerHourHiRisk ? rewardPerHourHiRisk.toFixed(2) : 0,
+      'FL'
+    ],
+    [
+      lang.overview_page.reward_per_hour_lowrisk,
+      rewardPerHourLowRisk ? rewardPerHourLowRisk.toFixed(2) : 0,
+      'FL'
+    ]
+  ];
+
+  return (
+    <Fragment>
+      <Card
+        css={'overflow:hidden;'}
+        pt="sm"
+        style={{
+          background: getColor('cardBg'),
+          borderColor: getColor('border')
+        }}
       >
-        {title.toUpperCase()}
-      </Text>
-      <Box justifySelf={{ s: 'left', xl: 'center' }}>
-        <Box display={{ s: 'none', xl: 'unset' }}>
-          <Flex alignSelf="end" alignItems="flex-end">
-            <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
-              {amount}
-            </Text>
-            &nbsp;
-            <Text style={{ fontSize: '18px', color: getColor('whiteText') }}>
-              {denom}
-            </Text>
-          </Flex>
-        </Box>
-        <Text
-          style={{ fontSize: '20px', color: getColor('whiteText') }}
-          display={{ s: 'unset', xl: 'none' }}
+        <Flex
+          justifyContent="space-between"
+          alignContent="center"
+          px="s"
+          pb="s2"
         >
-          {amount} {denom}
-        </Text>
-      </Box>
-    </Grid>
-  </Card>
-);
+          <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
+            {lang.overview_page.reward_global_info}
+          </Text>
+        </Flex>
+        {params.map(([param, value, denom], idx) => (
+          <Flex
+            key={`system_${param}`}
+            justifyContent="space-between"
+            alignItems="baseline"
+            width="100%"
+            py="xs"
+            px="s"
+            bg={idx % 2 ? '#1c2334' : '#1c2334'}
+          >
+            <Text fontWeight="semibold" t="smallCaps" color="#A3B2CF">
+              {param}
+            </Text>
+            <Box>
+              <Text
+                fontSize="s"
+                style={{ marginLeft: 15, color: getColor('greyText') }}
+              >
+                {`${value}`} {`${denom}`}
+              </Text>
+            </Box>
+          </Flex>
+        ))}
+      </Card>
+    </Fragment>
+  );
+};
 
 function Reward({ viewedAddress }) {
   const { trackBtnClick } = useAnalytics('Table');
   const { account } = useMaker();
-  var { viewedAddressVaults } = useVaults();
   const { url } = useCurrentRoute();
   const { lang } = useLanguage();
   const { emergencyShutdownActive } = useEmergencyShutdown();
@@ -103,6 +133,28 @@ function Reward({ viewedAddress }) {
           item => item.gem != 0
         )
       : [];
+
+  const rewardPerHourHiRisk = watch.rewardPerHour(true);
+  const rewardPerHourLowRisk = watch.rewardPerHour(false);
+
+  const rewardFirstStageDuration = watch.rewardFirstStageDuration();
+  const rewardStartTime = watch.rewardStartTime();
+
+  const rewardNextStartTime =
+    rewardFirstStageDuration && rewardStartTime
+      ? parseInt(rewardFirstStageDuration) + parseInt(rewardStartTime)
+      : 0;
+
+  const timestamp = Math.round(new Date().getTime() / 1000);
+  // if (rewardFirstStageDuration && rewardStartTime)
+  //   console.log(
+  //     'rewardNextStartTime',
+  //     rewardNextStartTime,
+  //     rewardFirstStageDuration.toFixed(0),
+  //     rewardStartTime.toFixed(0),
+  //     timestamp,
+  //     formatDate(new Date(rewardNextStartTime * 1000))
+  //   );
 
   // console.log("rewardPairInfos");
   // console.log(rewardList);
@@ -131,22 +183,15 @@ function Reward({ viewedAddress }) {
     return <LoadingLayout background={getColor('cardBg')} />;
   }
 
-  if (viewedAddressVaults && !viewedAddressVaults.length) {
-    viewedAddressVaults = [
-      {
-        collateralValue: USD(0),
-        debtValue: USD(0)
-      }
-    ];
-  }
-
   const rewardPairInfosEx = rewardPairInfos.map(item => {
     const { avail, locked, lockedvalue, allowance } = item;
     return {
       ...item,
       approveDisabled: avail.toNumber() <= allowance.toNumber(),
       lockDisabled:
-        avail.toNumber() <= 0 || allowance.toNumber() < avail.toNumber(),
+        avail.toNumber() <= 0 ||
+        allowance.toNumber() < avail.toNumber() ||
+        rewardNextStartTime >= timestamp,
       unlockDisabled: locked.toNumber() <= 0
     };
   });
@@ -190,23 +235,19 @@ function Reward({ viewedAddress }) {
       <Text.h2 pr="m" mb="m" color="white">
         {lang.reward_page.title}
       </Text.h2>
-      {viewedAddressVaults && (
+      {
         <Grid gridRowGap={{ s: 'm', xl: 'l' }}>
           <Grid
             gridTemplateColumns={{ s: '1fr', xl: 'auto auto 1fr' }}
             gridColumnGap="m"
             gridRowGap="s"
           >
-            <InfoCard
-              title={lang.overview_page.total_collateral_locked}
-              amount={`$${viewedAddressVaults
-                .reduce(
-                  (acc, { collateralValue }) => collateralValue.plus(acc),
-                  0
-                )
-                .toBigNumber()
-                .toFixed(2)}`}
-              denom={'USD'}
+            <GlobalRewardInfo
+              info={{
+                rewardPerHourHiRisk,
+                rewardPerHourLowRisk,
+                rewardNextStartTime
+              }}
             />
           </Grid>
           <Box>
@@ -255,9 +296,6 @@ function Reward({ viewedAddress }) {
                       {'Locked value'}
                     </Table.th>
                     <Table.th display={{ s: 'none', xl: 'table-cell' }}>
-                      {'FL/h distributed'}
-                    </Table.th>
-                    <Table.th display={{ s: 'none', xl: 'table-cell' }}>
                       {'Allowance'}
                     </Table.th>
                     <Table.th />
@@ -272,7 +310,6 @@ function Reward({ viewedAddress }) {
                       avail,
                       locked,
                       lockedvalue,
-                      perhour,
                       allowance,
                       approveDisabled,
                       lockDisabled,
@@ -306,9 +343,6 @@ function Reward({ viewedAddress }) {
                         </Table.td>
                         <Table.td display={{ s: 'none', xl: 'table-cell' }}>
                           <Text t="caption">{lockedvalue.toFixed(2)}</Text>
-                        </Table.td>
-                        <Table.td display={{ s: 'none', xl: 'table-cell' }}>
-                          <Text t="caption">{perhour.toFixed(2)}</Text>
                         </Table.td>
                         <Table.td display={{ s: 'none', xl: 'table-cell' }}>
                           <Flex justifyContent="flex-end">
@@ -366,7 +400,7 @@ function Reward({ viewedAddress }) {
             </Card>
           </Box>
         </Grid>
-      )}
+      }
     </PageContentLayout>
   );
 }

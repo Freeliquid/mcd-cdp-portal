@@ -6,6 +6,8 @@ import { validateAddress } from './_validators';
 
 import {
   REWARD_AMOUNT,
+  REWARD_FIRST_STAGE_DURATION,
+  REWARD_START_TIME,
   REWARD_PAIRINFO,
   REWARD_PAIRINFO_GEM,
   REWARD_PAIRINFO_AVAIL,
@@ -16,7 +18,7 @@ import {
 
 export const rewardAmount = {
   generate: address => ({
-    id: `FL_REWARDER.amnt`,
+    id: `FL_REWARDER.amnt(${address})`,
     contract: 'FL_REWARDER',
     call: ['earned(address)(uint256)', address]
   }),
@@ -28,10 +30,10 @@ export const rewardAmount = {
 
 export const rewardPairInfo = {
   generate: (name, address, hiRisk) => ({
-    id: `FL_REWARD_PAIRINFO.get`,
+    id: `FL_REWARD_PAIRINFO(${name},${address},${hiRisk})`,
     contract: hiRisk ? 'FL_REWARDER_GOV_USD' : 'FL_REWARDER_STABLES',
     call: [
-      'getPairInfo(bytes32,address)(address,uint,uint,uint,uint)',
+      'getPairInfo(bytes32,address)(address,uint,uint,uint)',
       toHex(name),
       address
     ]
@@ -40,12 +42,41 @@ export const rewardPairInfo = {
     [REWARD_PAIRINFO_GEM],
     [REWARD_PAIRINFO_AVAIL, fromWei],
     [REWARD_PAIRINFO_LOCKED, fromWei],
-    [REWARD_PAIRINFO_LOCKEDVALUE, fromWei],
-    [REWARD_PAIRINFO_REWARDPERHOUR, fromWei]
+    [REWARD_PAIRINFO_LOCKEDVALUE, fromWei]
   ]
+};
+
+export const rewardPerHour = {
+  generate: hiRisk => ({
+    id: `FL_REWARD_PER_HOUR.${hiRisk}`,
+    contract: hiRisk ? 'FL_REWARDER_GOV_USD' : 'FL_REWARDER_STABLES',
+    call: ['getRewardPerHour()(uint256)']
+  }),
+  returns: [[REWARD_PAIRINFO_REWARDPERHOUR, fromWei]]
+};
+
+export const rewardStartTime = {
+  generate: () => ({
+    id: `FL_REWARD_STARTTIME`,
+    contract: 'FL_REWARDER',
+    call: ['starttime()(uint256)']
+  }),
+  returns: [[REWARD_START_TIME, v => BigNumber(v)]]
+};
+
+export const rewardFirstStageDuration = {
+  generate: () => ({
+    id: `FL_REWARD_FIRST_STAGE_DURATION`,
+    contract: 'FL_REWARDER',
+    call: ['duration()(uint256)']
+  }),
+  returns: [[REWARD_FIRST_STAGE_DURATION, v => BigNumber(v)]]
 };
 
 export default {
   rewardAmount,
-  rewardPairInfo
+  rewardPairInfo,
+  rewardPerHour,
+  rewardStartTime,
+  rewardFirstStageDuration
 };
