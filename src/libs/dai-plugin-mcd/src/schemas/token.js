@@ -20,7 +20,13 @@ export const tokenBalance = {
 
     const currencyToken = getMcdToken(symbol);
     const contract =
-      symbol === 'USDFL' ? 'MCD_DAI' : symbol === 'WETH' ? 'ETH' : symbol;
+      symbol === 'FL'
+        ? 'MCD_GOV'
+        : symbol === 'USDFL'
+        ? 'MCD_DAI'
+        : symbol === 'WETH'
+        ? 'ETH'
+        : symbol;
     if (!currencyToken)
       throw new Error(`${symbol} token is not part of the default tokens list`);
     if (symbol === 'DSR-USDFL')
