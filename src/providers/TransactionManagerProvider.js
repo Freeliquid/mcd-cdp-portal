@@ -44,6 +44,11 @@ const formatTxMessage = (lang, { metadata, ...tx }, state) => {
         `${lang[langKey].generate_dai}${suffix}`,
         <ValueText>{formatAmount(metadata.drawAmount)}</ValueText>
       );
+    case 'claimReward':
+        return lang.formatString(
+          `${lang[langKey].get_reward}${suffix}`,
+          <ValueText></ValueText>
+        );
     case 'safeLockETH':
     case 'safeLockGem':
       return lang.formatString(

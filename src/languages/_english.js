@@ -651,7 +651,7 @@ export default {
     creating_cdp: 'Creating Vault',
     generate_dai: 'Generating {0} USDFL',
     pay_back_dai: 'Paying back {0} USDFL',
-    get_reward: 'Your reward {0} FL',
+    get_reward: 'Getting reward {0} FL',
     withdrawing_gem: 'Withdrawing {0}',
     depositing_gem: 'Depositing {0}',
     claiming_collateral: 'Claiming collateral',
