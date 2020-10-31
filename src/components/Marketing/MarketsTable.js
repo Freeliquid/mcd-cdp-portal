@@ -139,7 +139,7 @@ const MarketsTable = ({ cdpTypesList, ...props }) => {
                 <Table.td style={{ padding: '10px 15px 5px 35px' }}>
                   <TokenIcon symbol={gem} size={50} />
                 </Table.td>
-                <Table.td display={{ s: 'none', m: 'inline' }}>
+                <Table.td display={{ s: 'none', m: 'table-cell' }}>
                   <Text >
                     {tokenNames[gem]}
                   </Text>
