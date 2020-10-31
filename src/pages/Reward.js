@@ -232,7 +232,7 @@ function Reward({ viewedAddress }) {
   }
 
   const rewardPairInfosEx = rewardPairInfos.map(item => {
-    const { avail, locked, lockedvalue, allowance } = item;
+    const { avail, locked, allowance } = item;
     return {
       ...item,
       approveDisabled: avail.toNumber() <= allowance.toNumber(),
@@ -311,7 +311,7 @@ function Reward({ viewedAddress }) {
           </Grid>
           <Box>
             <Text style={{ fontSize: '20px', color: getColor('greyText') }}>
-              {'Participating pools'}
+              {lang.reward_page.participating_pools}
             </Text>
             <Card
               px={{ s: 'm', xl: 'l' }}
@@ -343,19 +343,16 @@ function Reward({ viewedAddress }) {
                   <Table.tr>
                     <Table.th>{lang.overview_page.token}</Table.th>
                     <Table.th display={{ s: 'none', xl: 'table-cell' }}>
-                      {'address'}
+                      {lang.reward_page.address}
                     </Table.th>
                     <Table.th display={{ s: 'none', xl: 'table-cell' }}>
-                      {'On wallet'}
+                      {lang.reward_page.on_wallet}
                     </Table.th>
                     <Table.th display={{ s: 'none', xl: 'table-cell' }}>
-                      {'Locked'}
+                      {lang.reward_page.locked}
                     </Table.th>
                     <Table.th display={{ s: 'none', xl: 'table-cell' }}>
-                      {'Locked value'}
-                    </Table.th>
-                    <Table.th display={{ s: 'none', xl: 'table-cell' }}>
-                      {'Allowance'}
+                      {lang.reward_page.allowance}
                     </Table.th>
                     <Table.th />
                   </Table.tr>
@@ -368,7 +365,6 @@ function Reward({ viewedAddress }) {
                       gem,
                       avail,
                       locked,
-                      lockedvalue,
                       allowance,
                       approveDisabled,
                       lockDisabled,
@@ -401,9 +397,6 @@ function Reward({ viewedAddress }) {
                           <Text t="caption">{locked.toFixed(8)}</Text>
                         </Table.td>
                         <Table.td display={{ s: 'none', xl: 'table-cell' }}>
-                          <Text t="caption">{lockedvalue.toFixed(2)}</Text>
-                        </Table.td>
-                        <Table.td display={{ s: 'none', xl: 'table-cell' }}>
                           <Flex justifyContent="flex-end">
                             <Button
                               // variant="secondary-outline"
@@ -415,7 +408,7 @@ function Reward({ viewedAddress }) {
                                 poolApprove(gem, avail, allowance, hiRisk);
                               }}
                             >
-                              Approve
+                              {lang.reward_page.button_approve}
                             </Button>
                           </Flex>
                         </Table.td>
@@ -431,7 +424,7 @@ function Reward({ viewedAddress }) {
                                 lockPool(gem, avail, hiRisk);
                               }}
                             >
-                              Lock
+                              {lang.reward_page.button_lock}
                             </Button>
                           </Flex>
                         </Table.td>
@@ -447,7 +440,7 @@ function Reward({ viewedAddress }) {
                                 unlockPool(gem, locked, hiRisk);
                               }}
                             >
-                              Unlock
+                              {lang.reward_page.button_unlock}
                             </Button>
                           </Flex>
                         </Table.td>

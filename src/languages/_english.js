@@ -339,6 +339,14 @@ export default {
     title: 'Reward',
     total_fl_debt: 'total FL debt',
     get_started_title: 'Open your first Vault to start generating USDFL.',
+    address:'address',
+    on_wallet:'On wallet',
+    locked:'Locked',
+    allowance:'Allowance',
+    participating_pools:'Participating pools',
+    button_lock:'Lock',
+    button_unlock:'Unlock',
+    button_approve:'Approve'
   },
   navbar: {
     save: 'Save',
