@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-//import SidebarFeeds from 'components/SidebarFeeds';
+import { hot } from 'react-hot-loader/root';
 import SidebarSystem from 'components/SidebarSystem';
 import SidebarDetails from 'components/SidebarDetails';
 import GetReward from './GetReward';
@@ -20,9 +20,6 @@ const SidebarGlobalPanel = () => {
   const annualDaiSavingsRate = watch.annualDaiSavingsRate();
   const systemCollateralization = watch.systemCollateralization(cdpTypesList);
 
-  const { account } = useMaker();
-  const rewardAmount = watch.walletRewardAmount(account?.address);
-
   const { url } = useCurrentRoute();
   const routeIsBorrow = url.pathname.startsWith(`/${Routes.BORROW}`);
   const routeIsSave = url.pathname.startsWith(`/${Routes.SAVE}`);
@@ -31,7 +28,7 @@ const SidebarGlobalPanel = () => {
     return (
       <Box>
         <Grid gridRowGap="s">
-          {routeIsBorrow && <GetReward rewardAmount={rewardAmount} />}
+          {routeIsBorrow && <GetReward />}
           {/* {routeIsBorrow && <SidebarFeeds feeds={prices} />} */}
           {routeIsBorrow && (
             <SidebarSystem
@@ -66,4 +63,4 @@ const SidebarGlobalPanel = () => {
   ]);
 };
 
-export default SidebarGlobalPanel;
+export default hot(SidebarGlobalPanel);

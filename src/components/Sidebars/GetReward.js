@@ -20,9 +20,10 @@ import { add, greaterThan } from 'utils/bignumber';
 import { formatCollateralizationRatio, formatter } from 'utils/ui';
 import { decimalRules } from '../../styles/constants';
 import { getColor } from '../../styles/theme';
+import { watch } from 'hooks/useObservable';
 const { long, medium } = decimalRules;
 
-const GetReward = ({ rewardAmount }) => {
+const GetReward = () => {
   const { lang } = useLanguage();
   const { maker } = useMaker();
 
@@ -31,6 +32,9 @@ const GetReward = ({ rewardAmount }) => {
   const generate = () => {
     maker.service('mcd:rewards').claimReward();
   };
+
+  const { account } = useMaker();
+  const rewardAmount = watch.walletRewardAmount(account?.address);
 
   return (
     <Card
