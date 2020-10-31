@@ -2,6 +2,7 @@ import React, { useEffect, Fragment } from 'react';
 import { hot } from 'react-hot-loader/root';
 import PageContentLayout from 'layouts/PageContentLayout';
 import LoadingLayout from 'layouts/LoadingLayout';
+import { formatter } from 'utils/ui';
 import { cutMiddle } from 'utils/ui';
 import BigNumber from 'bignumber.js';
 import { USD, USDFL } from '../libs/dai-plugin-mcd/src/index.js';
@@ -33,6 +34,10 @@ import { watch } from 'hooks/useObservable';
 import useEmergencyShutdown from 'hooks/useEmergencyShutdown';
 import { NotificationList, Routes, SAFETY_LEVELS } from 'utils/constants';
 import { FilledButton } from 'components/Marketing';
+
+import { decimalRules } from '../styles/constants';
+
+const { long, medium, short } = decimalRules;
 
 const RewardInfo = ({ params, title }) => {
   return (
@@ -118,6 +123,8 @@ function Reward({ viewedAddress }) {
   const earnedRewardHiRisk = watch.rewardEarnedEx(account?.address, true);
   const earnedRewardLowRisk = watch.rewardEarnedEx(account?.address, false);
 
+  const walletAmount = watch.tokenBalance(account?.address, 'FL');
+
   const rewardNextStartTime =
     rewardFirstStageDuration && rewardStartTime
       ? parseInt(rewardFirstStageDuration) + parseInt(rewardStartTime)
@@ -146,12 +153,16 @@ function Reward({ viewedAddress }) {
     ],
     [
       lang.overview_page.reward_per_hour_hirisk,
-      rewardPerHourHiRisk ? rewardPerHourHiRisk.toFixed(2) : 0,
+      formatter(rewardPerHourHiRisk ? rewardPerHourHiRisk : 0.0, {
+        precision: short
+      }),
       'FL'
     ],
     [
       lang.overview_page.reward_per_hour_lowrisk,
-      rewardPerHourLowRisk ? rewardPerHourLowRisk.toFixed(2) : 0,
+      formatter(rewardPerHourLowRisk ? rewardPerHourLowRisk : 0.0, {
+        precision: short
+      }),
       'FL'
     ]
   ];
@@ -159,12 +170,23 @@ function Reward({ viewedAddress }) {
   const yourInfoParams = [
     [
       lang.overview_page.reward_earned_hirisk,
-      earnedRewardHiRisk ? earnedRewardHiRisk.toFixed(2) : 0,
+      formatter(earnedRewardHiRisk ? earnedRewardHiRisk : 0.0, {
+        precision: short
+      }),
       'FL'
     ],
     [
       lang.overview_page.reward_earned_lowrisk,
-      earnedRewardLowRisk ? earnedRewardLowRisk.toFixed(2) : 0,
+      formatter(earnedRewardLowRisk ? earnedRewardLowRisk : 0.0, {
+        precision: short
+      }),
+      'FL'
+    ],
+    [
+      lang.sidebar.reward_on_wallet,
+      formatter(walletAmount ? walletAmount : 0.0, {
+        precision: short
+      }),
       'FL'
     ]
   ];
