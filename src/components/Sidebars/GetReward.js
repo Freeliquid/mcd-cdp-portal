@@ -23,17 +23,13 @@ import { getColor } from '../../styles/theme';
 const { long, medium } = decimalRules;
 
 const GetReward = ({ rewardAmount }) => {
-  const { trackBtnClick } = useAnalytics('GetReward', 'Sidebar');
   const { lang } = useLanguage();
   const { maker } = useMaker();
 
   BigNumber.set({ ROUNDING_MODE: BigNumber.ROUND_DOWN });
 
-  const reset = () => {};
-
   const generate = () => {
     maker.service('mcd:rewards').claimReward();
-    reset();
   };
 
   return (
@@ -66,7 +62,7 @@ const GetReward = ({ rewardAmount }) => {
             {lang.sidebar.reward_info}
           </Text>
           <Text fontSize="1.4rem" style={{ color: getColor('greyText') }}>
-            {`${formatter(rewardAmount, { precision: long })} FL`}
+            {`${rewardAmount ? rewardAmount.toFixed(2) : '0.00'}`} FL
           </Text>
         </Flex>
       </CardBody>
@@ -80,14 +76,6 @@ const GetReward = ({ rewardAmount }) => {
       >
         {lang.sidebar.reward_button}
       </Button>
-      {/* <Button className="btn"
-          variant="secondary-outline"
-          onClick={() => {
-            reset();
-          }}
-        >
-          {lang.cancel}
-        </Button> */}
     </Card>
   );
 };
