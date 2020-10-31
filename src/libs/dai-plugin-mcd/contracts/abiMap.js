@@ -50,5 +50,6 @@ module.exports = {
   FL_REWARDER_GOV_USD: require('./abis/StakingRewardsDecay.json'),
   FL_REWARDER_STABLES: require('./abis/StakingRewardsDecay.json'),
   FL_REWARDER_GOV_USD_HOLDER: require('./abis/StakingRewardsDecayHolder.json'),
-  FL_REWARDER_STABLES_HOLDER: require('./abis/StakingRewardsDecayHolder.json')
+  FL_REWARDER_STABLES_HOLDER: require('./abis/StakingRewardsDecayHolder.json'),
+  FL_REWARD_AGGREGATOR: require('./abis/RewardDecayAggregator.json')
 };

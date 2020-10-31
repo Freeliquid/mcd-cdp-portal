@@ -39,7 +39,7 @@ import { decimalRules } from '../styles/constants';
 
 const { long, medium, short } = decimalRules;
 
-const RewardInfo = ({ params, title }) => {
+const RewardInfo = ({ params, title, button }) => {
   return (
     <Fragment>
       <Card
@@ -83,6 +83,23 @@ const RewardInfo = ({ params, title }) => {
             </Box>
           </Flex>
         ))}
+        {button && (
+          <Flex
+            justifyContent="space-between"
+            alignContent="right"
+            px="s"
+            pb="s2"
+          >
+            <Button
+              className="btn btn"
+              style={{ margin: '5px auto', fontSize: '14px' }}
+              disabled={false}
+              onClick={button.onClick}
+            >
+              {button.text}
+            </Button>
+          </Flex>
+        )}
       </Card>
     </Fragment>
   );
@@ -261,6 +278,13 @@ function Reward({ viewedAddress }) {
     maker.service('mcd:rewards').poolApprove(conv(avail), selectedGem, hiRisk);
   };
 
+  const getRewardButton = {
+    text: lang.sidebar.reward_button,
+    onClick: () => {
+      maker.service('mcd:rewards').claimRewardEx();
+    }
+  };
+
   return (
     <PageContentLayout>
       <Text.h2 pr="m" mb="m" color="white">
@@ -276,11 +300,13 @@ function Reward({ viewedAddress }) {
             <RewardInfo
               params={globalParams}
               title={lang.overview_page.reward_global_info}
+              button={null}
             />
 
             <RewardInfo
               params={yourInfoParams}
               title={lang.overview_page.reward_your_info}
+              button={getRewardButton}
             />
           </Grid>
           <Box>
