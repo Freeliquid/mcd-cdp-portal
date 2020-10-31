@@ -24,6 +24,7 @@ import useVaults from 'hooks/useVaults';
 import useEmergencyShutdown from 'hooks/useEmergencyShutdown';
 import { NotificationList, Routes, SAFETY_LEVELS } from 'utils/constants';
 import { FadeIn, FilledButton, PageHead } from 'components/Marketing';
+import { formatter } from 'utils/ui';
 
 const InfoCard = ({ title, amount, denom }) => (
   <Card py={{ s: 'm', xl: 'l' }} px="m" minWidth="22.4rem" style={{borderColor: getColor('border'), backgroundColor: getColor('cardBg')}}>
@@ -222,7 +223,10 @@ function Overview({ viewedAddress }) {
                       liquidationRatio,
                       collateralAmount,
                       collateralAvailableAmount,
-                      debtValue
+                      debtValue,
+                      collateralValue,
+                      collateralAvailableValue
+
                     }) => (
                       <Table.tr key={id}>
                         <Table.td>
@@ -265,12 +269,12 @@ function Overview({ viewedAddress }) {
                         </Table.td>
                         <Table.td display={{ s: 'none', xl: 'table-cell' }}>
                           <Text t="caption" >
-                            {collateralAmount.toString()}
+                          {`${formatter(collateralValue)} USD`}
                           </Text>
                         </Table.td>
                         <Table.td display={{ s: 'none', xl: 'table-cell' }}>
                           <Text t="caption" >
-                            {collateralAvailableAmount.toString()}
+                            {`${formatter(collateralAvailableValue)} USD`}
                           </Text>
                         </Table.td>
                         <Table.td display={{ s: 'none', xl: 'table-cell' }}>
