@@ -34,32 +34,7 @@ import useEmergencyShutdown from 'hooks/useEmergencyShutdown';
 import { NotificationList, Routes, SAFETY_LEVELS } from 'utils/constants';
 import { FilledButton } from 'components/Marketing';
 
-const GlobalRewardInfo = ({ info }) => {
-  const { lang } = useLanguage();
-  const {
-    rewardPerHourHiRisk,
-    rewardPerHourLowRisk,
-    rewardNextStartTime
-  } = info;
-
-  const params = [
-    [
-      lang.overview_page.reward_next_start_time,
-      formatDate(new Date(rewardNextStartTime * 1000)),
-      ''
-    ],
-    [
-      lang.overview_page.reward_per_hour_hirisk,
-      rewardPerHourHiRisk ? rewardPerHourHiRisk.toFixed(2) : 0,
-      'FL'
-    ],
-    [
-      lang.overview_page.reward_per_hour_lowrisk,
-      rewardPerHourLowRisk ? rewardPerHourLowRisk.toFixed(2) : 0,
-      'FL'
-    ]
-  ];
-
+const RewardInfo = ({ params, title }) => {
   return (
     <Fragment>
       <Card
@@ -77,7 +52,7 @@ const GlobalRewardInfo = ({ info }) => {
           pb="s2"
         >
           <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
-            {lang.overview_page.reward_global_info}
+            {title}
           </Text>
         </Flex>
         {params.map(([param, value, denom], idx) => (
@@ -140,6 +115,9 @@ function Reward({ viewedAddress }) {
   const rewardFirstStageDuration = watch.rewardFirstStageDuration();
   const rewardStartTime = watch.rewardStartTime();
 
+  const earnedRewardHiRisk = watch.rewardEarnedEx(account?.address, true);
+  const earnedRewardLowRisk = watch.rewardEarnedEx(account?.address, false);
+
   const rewardNextStartTime =
     rewardFirstStageDuration && rewardStartTime
       ? parseInt(rewardFirstStageDuration) + parseInt(rewardStartTime)
@@ -159,6 +137,37 @@ function Reward({ viewedAddress }) {
   // console.log("rewardPairInfos");
   // console.log(rewardList);
   // console.log(rewardPairInfos);
+
+  const globalParams = [
+    [
+      lang.overview_page.reward_next_start_time,
+      formatDate(new Date(rewardNextStartTime * 1000)),
+      ''
+    ],
+    [
+      lang.overview_page.reward_per_hour_hirisk,
+      rewardPerHourHiRisk ? rewardPerHourHiRisk.toFixed(2) : 0,
+      'FL'
+    ],
+    [
+      lang.overview_page.reward_per_hour_lowrisk,
+      rewardPerHourLowRisk ? rewardPerHourLowRisk.toFixed(2) : 0,
+      'FL'
+    ]
+  ];
+
+  const yourInfoParams = [
+    [
+      lang.overview_page.reward_earned_hirisk,
+      earnedRewardHiRisk ? earnedRewardHiRisk.toFixed(2) : 0,
+      'FL'
+    ],
+    [
+      lang.overview_page.reward_earned_lowrisk,
+      earnedRewardLowRisk ? earnedRewardLowRisk.toFixed(2) : 0,
+      'FL'
+    ]
+  ];
 
   useEffect(() => {
     if (
@@ -242,12 +251,14 @@ function Reward({ viewedAddress }) {
             gridColumnGap="m"
             gridRowGap="s"
           >
-            <GlobalRewardInfo
-              info={{
-                rewardPerHourHiRisk,
-                rewardPerHourLowRisk,
-                rewardNextStartTime
-              }}
+            <RewardInfo
+              params={globalParams}
+              title={lang.overview_page.reward_global_info}
+            />
+
+            <RewardInfo
+              params={yourInfoParams}
+              title={lang.overview_page.reward_your_info}
             />
           </Grid>
           <Box>

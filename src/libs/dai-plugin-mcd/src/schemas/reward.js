@@ -8,6 +8,7 @@ import {
   REWARD_AMOUNT,
   REWARD_FIRST_STAGE_DURATION,
   REWARD_START_TIME,
+  REWARD_EARNED_EX,
   REWARD_PAIRINFO,
   REWARD_PAIRINFO_GEM,
   REWARD_PAIRINFO_AVAIL,
@@ -18,7 +19,7 @@ import {
 
 export const rewardAmount = {
   generate: address => ({
-    id: `FL_REWARDER.amnt(${address})`,
+    id: `FL_REWARDER(${address})`,
     contract: 'FL_REWARDER',
     call: ['earned(address)(uint256)', address]
   }),
@@ -30,7 +31,7 @@ export const rewardAmount = {
 
 export const rewardPairInfo = {
   generate: (name, address, hiRisk) => ({
-    id: `FL_REWARD_PAIRINFO(${name},${address},${hiRisk})`,
+    id: `FL_REWARD_PAIRINFO(${name},${hiRisk},${address})`,
     contract: hiRisk ? 'FL_REWARDER_GOV_USD' : 'FL_REWARDER_STABLES',
     call: [
       'getPairInfo(bytes32,address)(address,uint,uint,uint)',
@@ -73,10 +74,20 @@ export const rewardFirstStageDuration = {
   returns: [[REWARD_FIRST_STAGE_DURATION, v => BigNumber(v)]]
 };
 
+export const rewardEarnedEx = {
+  generate: (address, hiRisk) => ({
+    id: `FL_EARNED_REWARD_EX(${hiRisk},${address})`,
+    contract: hiRisk ? 'FL_REWARDER_GOV_USD' : 'FL_REWARDER_STABLES',
+    call: ['earned(address)(uint256)', address]
+  }),
+  returns: [[REWARD_EARNED_EX, fromWei]]
+};
+
 export default {
   rewardAmount,
   rewardPairInfo,
   rewardPerHour,
   rewardStartTime,
+  rewardEarnedEx,
   rewardFirstStageDuration
 };
