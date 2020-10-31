@@ -64,4 +64,11 @@ export default class RewardService extends PublicService {
       promise
     });
   }
+
+  @tracksTransactions
+  async claimRewardEx({ promise }) {
+    return this.get('smartContract')
+      .getContract('FL_REWARD_AGGREGATOR')
+      .claimReward({ dsProxy: false, promise });
+  }
 }
