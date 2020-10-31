@@ -21,7 +21,7 @@ import { formatCollateralizationRatio, formatter } from 'utils/ui';
 import { decimalRules } from '../../styles/constants';
 import { getColor } from '../../styles/theme';
 import { watch } from 'hooks/useObservable';
-const { long, medium } = decimalRules;
+const { long, medium, short } = decimalRules;
 
 const GetReward = () => {
   const { lang } = useLanguage();
@@ -35,6 +35,7 @@ const GetReward = () => {
 
   const { account } = useMaker();
   const rewardAmount = watch.walletRewardAmount(account?.address);
+  const walletAmount = watch.tokenBalance(account?.address, 'FL');
 
   return (
     <Card
@@ -66,7 +67,30 @@ const GetReward = () => {
             {lang.sidebar.reward_info}
           </Text>
           <Text fontSize="1.4rem" style={{ color: getColor('greyText') }}>
-            {`${rewardAmount ? rewardAmount.toFixed(2) : '0.00'}`} FL
+            {`${formatter(rewardAmount ? rewardAmount : 0.0, {
+              precision: short
+            })}`}{' '}
+            FL
+          </Text>
+        </Flex>
+        <Flex
+          justifyContent="space-between"
+          alignItems="baseline"
+          width="100%"
+          py="xs"
+          px="s"
+          bg={'#1c2334'}
+          color="#A3B2CF"
+        >
+          <Text fontWeight="semibold" t="smallCaps" color="#A3B2CF">
+            {lang.sidebar.reward_on_wallet}
+          </Text>
+
+          <Text fontSize="1.4rem" style={{ color: getColor('greyText') }}>
+            {`${formatter(walletAmount ? walletAmount : 0.0, {
+              precision: short
+            })}`}{' '}
+            FL
           </Text>
         </Flex>
       </CardBody>

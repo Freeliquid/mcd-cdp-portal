@@ -354,6 +354,7 @@ export default {
     // "read_only_mode": "Read-Only Mode",
     reward:'Reward',
     reward_info:'REWARD TO CLAIM',
+    reward_on_wallet:'ON WALLET',
     reward_button:'Get Reward',
     price_feeds: 'Price Feeds',
     system_info: 'System Info',
