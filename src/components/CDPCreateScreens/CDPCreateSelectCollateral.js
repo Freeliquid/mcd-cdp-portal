@@ -86,7 +86,7 @@ function IlkTableRow({
 
   return (
     <tr
-      style={disabled ? { color: '#6F7A96' } : { whiteSpace: 'nowrap' }}
+      style={disabled ? { color: '#6F7A96', borderColor: getColor('border') } : { whiteSpace: 'nowrap', borderColor: getColor('border') }}
       onClick={() => !disabled && selectIlk()}
     >
       <td>
