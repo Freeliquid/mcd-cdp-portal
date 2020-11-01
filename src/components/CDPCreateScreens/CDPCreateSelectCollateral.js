@@ -65,7 +65,7 @@ function IlkTableRow({
   ilkData
 }) {
   const { trackInputChange } = useAnalytics('SelectCollateral', 'VaultCreate');
-  const { annualStabilityFee, liquidationRatio, liquidationPenalty } = ilkData;
+  const { annualStabilityFee, liquidationRatio, liquidationPenalty, collateralValueForAmount } = ilkData;
 
   async function selectIlk() {
     trackInputChange('CollateralType', {
@@ -86,7 +86,11 @@ function IlkTableRow({
 
   return (
     <tr
-      style={disabled ? { color: '#6F7A96', borderColor: getColor('border') } : { whiteSpace: 'nowrap', borderColor: getColor('border') }}
+      style={
+        disabled
+          ? { color: '#6F7A96', borderColor: getColor('border') }
+          : { whiteSpace: 'nowrap', borderColor: getColor('border') }
+      }
       onClick={() => !disabled && selectIlk()}
     >
       <td>
@@ -118,10 +122,10 @@ function IlkTableRow({
       <td>{formatter(liquidationRatio, { percentage: true })} %</td>
       <td>{formatter(liquidationPenalty, { percentage: true })} %</td>
       <td css="text-align: right">
-        {ilk.gem === 'USDC'
-          ? prettifyNumber(gemBalance, { truncate: true })
-          : prettifyNumber(gemBalance)}{' '}
-        {ilk.gem}
+        {/* Здесь не переводил USDTDAI, просто показал что можно некоторые пары не переводить */}
+        {ilk.gem === 'USDTDAI'
+          ? `${prettifyNumber(gemBalance, { truncate: false })} ${ilk.gem}`
+          : `${prettifyNumber(collateralValueForAmount(gemBalance))} USD`}
       </td>
     </tr>
   );
