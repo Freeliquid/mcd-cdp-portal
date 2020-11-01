@@ -1,22 +1,27 @@
 import React from 'react';
 
-import { ReactComponent as BatIcon } from 'images/oasis-tokens/bat.svg';
-import { ReactComponent as CompIcon } from 'images/oasis-tokens/comp.svg';
-import { ReactComponent as DaiIcon } from 'images/oasis-tokens/dai.svg';
-import { ReactComponent as EthIcon } from 'images/oasis-tokens/eth.svg';
-import { ReactComponent as KncIcon } from 'images/oasis-tokens/knc.svg';
-import { ReactComponent as LinkIcon } from 'images/oasis-tokens/link.svg';
-import { ReactComponent as ManaIcon } from 'images/oasis-tokens/mana.svg';
-import { ReactComponent as PaxIcon } from 'images/oasis-tokens/pax.svg';
-import { ReactComponent as TusdIcon } from 'images/oasis-tokens/tusd.svg';
-import { ReactComponent as UsdlIcon } from 'images/oasis-tokens/usdl.svg';
-import { ReactComponent as UsdtIcon } from 'images/oasis-tokens/usdt.svg';
-import { ReactComponent as UsdcIcon } from 'images/oasis-tokens/usdc.svg';
-import { ReactComponent as WbtcIcon } from 'images/oasis-tokens/wbtc.svg';
-import { ReactComponent as ZrxIcon } from 'images/oasis-tokens/zrx.svg';
-import { ReactComponent as LpgIcon } from 'images/oasis-tokens/lpg.svg';
-import { ReactComponent as UsdtUsdc } from 'images/oasis-tokens/usdt_usdc.svg';
-import { ReactComponent as DefaultIcon } from 'images/oasis-tokens/default.svg';
+import { ReactComponent as BatIcon } from 'images/tokens/bat.svg';
+import { ReactComponent as CompIcon } from 'images/tokens/comp.svg';
+import { ReactComponent as DaiIcon } from 'images/tokens/dai.svg';
+import { ReactComponent as EthIcon } from 'images/tokens/eth.svg';
+import { ReactComponent as KncIcon } from 'images/tokens/knc.svg';
+import { ReactComponent as LinkIcon } from 'images/tokens/link.svg';
+import { ReactComponent as ManaIcon } from 'images/tokens/mana.svg';
+import { ReactComponent as PaxIcon } from 'images/tokens/pax.svg';
+import { ReactComponent as TusdIcon } from 'images/tokens/tusd.svg';
+import { ReactComponent as UsdlIcon } from 'images/tokens/usdl.svg';
+import { ReactComponent as UsdtIcon } from 'images/tokens/usdt.svg';
+import { ReactComponent as UsdcIcon } from 'images/tokens/usdc.svg';
+import { ReactComponent as WbtcIcon } from 'images/tokens/wbtc.svg';
+import { ReactComponent as ZrxIcon } from 'images/tokens/zrx.svg';
+import { ReactComponent as LpgIcon } from 'images/tokens/lpg.svg';
+import { ReactComponent as UsdtUsdc } from 'images/tokens/usdt_usdc.svg';
+import { ReactComponent as UsdtDai } from 'images/tokens/usdt_dai.svg';
+import { ReactComponent as UsdcDai } from 'images/tokens/usdc_dai.svg';
+import { ReactComponent as UsdcUsdn } from 'images/tokens/usdc_usdn.svg';
+import { ReactComponent as UsdnDai } from 'images/tokens/usdn_dai.svg';
+import { ReactComponent as UsdtUsdn } from 'images/tokens/usdt_usdn.svg';
+import { ReactComponent as DefaultIcon } from 'images/tokens/default.svg';
 
 const iconsByToken = {
   BAT: BatIcon,
@@ -35,11 +40,11 @@ const iconsByToken = {
   WBTC: WbtcIcon,
   ZRX: ZrxIcon,
   USDTUSDC: UsdtUsdc,
-  USDTDAI: UsdtUsdc,
-  USDCDAI: UsdtUsdc,
-  USDTUSDN: UsdtUsdc,
-  USDNDAI: UsdtUsdc,
-  USDCUSDN: UsdtUsdc
+  USDTDAI: UsdtDai,
+  USDCDAI: UsdcDai,
+  USDTUSDN: UsdtUsdn,
+  USDNDAI: UsdnDai,
+  USDCUSDN: UsdcUsdn
 };
 
 const TokenIcon = ({ symbol, size = 70, ...props }) => {
