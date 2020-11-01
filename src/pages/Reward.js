@@ -47,7 +47,10 @@ const RewardInfo = ({ params, title, button }) => {
         pt="sm"
         style={{
           background: getColor('cardBg'),
-          borderColor: getColor('border')
+          borderColor: getColor('border'),
+          paddingTop: '20px',
+          paddingLeft: '20px',
+          paddingRight: '20px'
         }}
       >
         <Flex
@@ -67,8 +70,8 @@ const RewardInfo = ({ params, title, button }) => {
             alignItems="baseline"
             width="100%"
             py="xs"
-            px="s"
-            bg={idx % 2 ? '#1c2334' : '#1c2334'}
+            px="sm"
+            
           >
             <Text fontWeight="semibold" t="smallCaps" color="#A3B2CF">
               {param}
@@ -293,7 +296,7 @@ function Reward({ viewedAddress }) {
       {
         <Grid gridRowGap={{ s: 'm', xl: 'l' }}>
           <Grid
-            gridTemplateColumns={{ s: '1fr', xl: 'auto auto 1fr' }}
+            gridTemplateColumns={{ s: '1fr', xl: 'auto auto' }}
             gridColumnGap="m"
             gridRowGap="s"
           >

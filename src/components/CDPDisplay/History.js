@@ -90,6 +90,7 @@ export default function({
         <Table
           width="100%"
           variant="normal"
+          overflow="scroll"
           css={`
             td span {
             }
