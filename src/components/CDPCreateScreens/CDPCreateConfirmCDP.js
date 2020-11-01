@@ -111,7 +111,7 @@ const CDPCreateConfirmSummary = ({
                 pt={!!index && 's'}
                 gridTemplateColumns="5fr 1fr"
                 justifyItems="start"
-                borderTop={index !== 0 ? '1px solid' : null}
+                borderTop={index !== 0 ? '1px solid #323B4F' : null}
               >
                 <Text style={{ color: getColor('greyText') }}>{title}</Text>
                 <Text
