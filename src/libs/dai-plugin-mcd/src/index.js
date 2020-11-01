@@ -70,6 +70,11 @@ export const DSR_USDFL = createCurrency('DSR-USDFL');
 export const USDT = createCurrency('USDT');
 
 export const USDTUSDC = createCurrency('USDTUSDC');
+export const USDTDAI = createCurrency('USDTDAI');
+export const USDCDAI = createCurrency('USDCDAI');
+export const USDTUSDN = createCurrency('USDTUSDN');
+export const USDNDAI = createCurrency('USDNDAI');
+export const USDCUSDN = createCurrency('USDCUSDN');
 
 export const REP = createCurrency('REP');
 export const ZRX = createCurrency('ZRX');
@@ -85,7 +90,11 @@ export const MANA = createCurrency('MANA');
 export const FL = createCurrency('FL');
 export const USDFL = createCurrency('USDFL');
 
-export const defaultCdpTypes = [{ currency: USDTUSDC, ilk: 'USDTUSDC-A' }];
+export const defaultCdpTypes = [
+  { currency: USDTUSDC, ilk: 'USDTUSDC-A' },
+  { currency: USDTDAI, ilk: 'USDTDAI-A' },
+  { currency: USDCDAI, ilk: 'USDCDAI-A' }
+];
 
 export const SAI = createCurrency('SAI');
 

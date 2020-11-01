@@ -95,12 +95,12 @@ function Borrow({ disableConnect = false }) {
     background-position: top right;
     @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
       background-position: top right;
-      
+
     }
     @media (max-width: 767px) {
       background-position: 60px 50px;
       padding: 0px 20px;
-      
+
       }
     }
   }
@@ -135,7 +135,7 @@ function Borrow({ disableConnect = false }) {
             <AccountSelection style={{ width: '260px' }} className="button" />
           </ConnectHero>
         </FixedHeaderTrigger>
-        
+
         <Box maxWidth="1140px" m="104px 15px 0">
           <Box maxWidth="777px" m="0 auto">
             <Text.h2 mb="34px">{lang.borrow_markets.heading}</Text.h2>
@@ -156,7 +156,9 @@ function Borrow({ disableConnect = false }) {
           >
             <MarketsTable
               cdpTypesList={cdpTypesList.filter(symbol =>
-                ['USDTUSDC'].includes(symbol.split('-')[0])
+                ['USDTUSDC', 'USDTDAI', 'USDCDAI'].includes(
+                  symbol.split('-')[0]
+                )
               )}
             />
           </Box>

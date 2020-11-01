@@ -16,11 +16,11 @@ const Number = styled(Text)`
 
 const tokenNames = {
   USDTUSDC: 'USDT/USDC',
-  /* BAT: 'USDT/USDN',
-  WBTC: 'USDT/DAI',
-  USDC: 'USDC/USDN',
-  MANA: 'USDC/DAI',
-  ZRX: 'USDN/DAI' */
+  USDTDAI: 'USDT/DAI',
+  USDCDAI: 'USDC/DAI',
+  USDTUSDN: 'USDT/USDN',
+  USDNDAI: 'USDN/DAI',
+  USDCUSDN: 'USDC/USDN'
 };
 
 const MarketsTableStyle = styled(Table)`
@@ -59,19 +59,18 @@ const MarketsTableStyle = styled(Table)`
   }
 
   ${Table.thead}, .summary:not(:nth-last-child(2)) {
-    border-bottom: 1px solid #323B4F;
+    border-bottom: 1px solid #323b4f;
   }
 
   ${Table.td} {
     padding-top: 14px;
     padding-bottom: 13px;
     text-align: center;
-    border-bottom: 1px solid #323B4F;
+    border-bottom: 1px solid #323b4f;
   }
 
   @media (max-width: ${props => props.theme.breakpoints.m}) {
     ${Table.td}, ${Table.th} {
-     
     }
   }
 `;
@@ -93,7 +92,9 @@ const MarketsTable = ({ cdpTypesList, ...props }) => {
         <Table.tr>
           <Table.th width={{ s: '0' }} />
           <Table.th width={{ s: '30px', m: '49px' }} />
-          <Table.th display={{ s: 'none', m: 'inline' }}>{lang.overview_page.token}</Table.th>
+          <Table.th display={{ s: 'none', m: 'inline' }}>
+            {lang.overview_page.token}
+          </Table.th>
           <Table.th width={{ s: 'unset', xl: '220px' }}>
             {lang.stability_fee}
           </Table.th>
@@ -140,9 +141,7 @@ const MarketsTable = ({ cdpTypesList, ...props }) => {
                   <TokenIcon symbol={gem} size={50} />
                 </Table.td>
                 <Table.td display={{ s: 'none', m: 'table-cell' }}>
-                  <Text >
-                    {tokenNames[gem]}
-                  </Text>
+                  <Text>{tokenNames[gem]}</Text>
                 </Table.td>
                 <Table.td>
                   <Number>{formatter(minFee, { percentage: true })}%</Number>

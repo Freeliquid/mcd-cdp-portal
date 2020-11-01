@@ -34,7 +34,12 @@ const iconsByToken = {
   USDC: UsdcIcon,
   WBTC: WbtcIcon,
   ZRX: ZrxIcon,
-  USDTUSDC: UsdtUsdc
+  USDTUSDC: UsdtUsdc,
+  USDTDAI: UsdtUsdc,
+  USDCDAI: UsdtUsdc,
+  USDTUSDN: UsdtUsdc,
+  USDNDAI: UsdtUsdc,
+  USDCUSDN: UsdtUsdc
 };
 
 const TokenIcon = ({ symbol, size = 70, ...props }) => {

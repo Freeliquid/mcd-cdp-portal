@@ -3,6 +3,11 @@ import Maker from './libs/dai/src/index.js';
 import McdPlugin, {
   ETH,
   USDTUSDC,
+  USDTDAI,
+  USDCDAI,
+  USDTUSDN,
+  USDNDAI,
+  USDCUSDN,
   USD,
   USDFL,
   SAI,
@@ -118,4 +123,15 @@ export async function instantiateMaker({
   return maker;
 }
 
-export { USD, USDFL, ETH, USDTUSDC, SAI };
+export {
+  USD,
+  USDFL,
+  ETH,
+  USDTUSDC,
+  USDTDAI,
+  USDCDAI,
+  USDTUSDN,
+  USDNDAI,
+  USDCUSDN,
+  SAI
+};
