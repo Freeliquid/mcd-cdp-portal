@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { prettifyCurrency } from 'utils/ui';
 import TokenIcon from './TokenIcon';
 import { ReactComponent as CaratDown } from 'images/carat-down-white.svg';
-import { ReactComponent as DaiImg } from 'images/oasis-tokens/usdl.svg';
+import { ReactComponent as DaiImg } from 'images/tokens/usdl.svg';
 import { getColor } from 'styles/theme';
 import useLanguage from 'hooks/useLanguage';
 import useMaker from 'hooks/useMaker';
