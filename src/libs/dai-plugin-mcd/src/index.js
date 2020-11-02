@@ -93,7 +93,10 @@ export const USDFL = createCurrency('USDFL');
 export const defaultCdpTypes = [
   { currency: USDTUSDC, ilk: 'USDTUSDC-A' },
   { currency: USDTDAI, ilk: 'USDTDAI-A' },
-  { currency: USDCDAI, ilk: 'USDCDAI-A' }
+  { currency: USDCDAI, ilk: 'USDCDAI-A' },
+  { currency: USDNDAI, ilk: 'USDNDAI-A' },
+  { currency: USDTUSDN, ilk: 'USDTUSDN-A' },
+  { currency: USDCUSDN, ilk: 'USDCUSDN-A' }
 ];
 
 export const SAI = createCurrency('SAI');

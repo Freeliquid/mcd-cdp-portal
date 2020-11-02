@@ -156,9 +156,14 @@ function Borrow({ disableConnect = false }) {
           >
             <MarketsTable
               cdpTypesList={cdpTypesList.filter(symbol =>
-                ['USDTUSDC', 'USDTDAI', 'USDCDAI'].includes(
-                  symbol.split('-')[0]
-                )
+                [
+                  'USDTUSDC',
+                  'USDTDAI',
+                  'USDCDAI',
+                  'USDNDAI',
+                  'USDTUSDN',
+                  'USDCUSDN'
+                ].includes(symbol.split('-')[0])
               )}
             />
           </Box>
