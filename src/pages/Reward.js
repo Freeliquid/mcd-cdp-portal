@@ -71,7 +71,6 @@ const RewardInfo = ({ params, title, button }) => {
             width="100%"
             py="xs"
             px="sm"
-            
           >
             <Text fontWeight="semibold" t="smallCaps" color="#A3B2CF">
               {param}
@@ -394,10 +393,10 @@ function Reward({ viewedAddress }) {
                           </Text>
                         </Table.td>
                         <Table.td display={{ s: 'none', xl: 'table-cell' }}>
-                          <Text t="caption">{avail.toFixed(8)}</Text>
+                          <Text t="caption">{avail.toFixed(14)}</Text>
                         </Table.td>
                         <Table.td display={{ s: 'none', xl: 'table-cell' }}>
-                          <Text t="caption">{locked.toFixed(8)}</Text>
+                          <Text t="caption">{locked.toFixed(14)}</Text>
                         </Table.td>
                         <Table.td display={{ s: 'none', xl: 'table-cell' }}>
                           <Flex justifyContent="flex-end">
