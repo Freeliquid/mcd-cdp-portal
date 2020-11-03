@@ -187,6 +187,7 @@ function Overview({ viewedAddress }) {
                     white-space: nowrap;
                     color: ${getColor('whiteText')};
                   }
+                  tbody, tr {border-color: ${getColor('border')} !important} 
                   td:not(:last-child),
                   th:not(:last-child) {
                     padding-right: 10px;

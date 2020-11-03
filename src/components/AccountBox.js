@@ -16,7 +16,7 @@ import useWalletBalances from 'hooks/useWalletBalances';
 import useSidebar from 'hooks/useSidebar';
 import useLanguage from 'hooks/useLanguage';
 import { showWalletTokens } from 'references/config';
-import { prettifyNumber } from 'utils/ui';
+import { prettifyNumber, formatter } from 'utils/ui';
 import { Toggles } from 'utils/constants';
 import useToggle from 'hooks/useToggle';
 import useAnalytics from 'hooks/useAnalytics';
@@ -32,6 +32,7 @@ import { watch } from 'hooks/useObservable';
 
 const StyledCardBody = styled(CardBody)`
   cursor: pointer;
+  border-top: 1px solid ${getColor('border')} !important;
 `;
 
 const ActionButton = ({ children, ...rest }) => (
@@ -63,12 +64,12 @@ const TokenBalance = ({
       py="xs"
       {...props}
     >
-      <Text fontWeight="semibold" t="p5" textAlign="left" width="50%">
+      <Text fontWeight="semibold" t="p5" textAlign="left" width="75%">
         {symbol}
       </Text>
-      <Text fontWeight="semibold" t="p5" textAlign="left" width="50%">
+      <Text fontWeight="semibold" t="p5" textAlign="left" width="25%">
         {(hasActiveAccount && amount && usdRatio &&
-          `$${prettifyNumber(amount.times(usdRatio.toNumber()), { truncate: true }, 2)}`) || '--'}
+          `$ ${prettifyNumber(amount.times(usdRatio.toNumber()), { truncate: true }, 2)}`) || '--'}
       </Text>
     </Flex>
   );
@@ -154,10 +155,10 @@ const WalletBalances = ({ hasActiveAccount, closeSidebarDrawer }) => {
           <Text t="large">{lang.sidebar.wallet_balances}</Text>
         </Box>
         <Flex justifyContent="space-between" px="s" mb="4px">
-          <Text color="steel" fontWeight="bold" t="smallCaps" width="50%">
+          <Text color="steel" fontWeight="bold" t="smallCaps" width="75%">
             {lang.sidebar.asset}
           </Text>
-          <Text color="steel" fontWeight="bold" t="smallCaps" width="50%">
+          <Text color="steel" fontWeight="bold" t="smallCaps" width="25%">
             {lang.sidebar.balance}
           </Text>
         </Flex>

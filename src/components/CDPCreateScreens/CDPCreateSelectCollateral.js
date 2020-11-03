@@ -127,7 +127,7 @@ function IlkTableRow({
       <td>{formatter(liquidationRatio, { percentage: true })} %</td>
       <td>{formatter(liquidationPenalty, { percentage: true })} %</td>
       <td css="text-align: right">
-        {`${prettifyNumber(collateralValueForAmount(gemBalance))} USD`}
+        {`${formatter(collateralValueForAmount(gemBalance))}  USD`}
       </td>
     </tr>
   );
