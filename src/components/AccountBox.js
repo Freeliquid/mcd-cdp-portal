@@ -64,10 +64,10 @@ const TokenBalance = ({
       py="xs"
       {...props}
     >
-      <Text fontWeight="semibold" t="p5" textAlign="left" width="75%">
+      <Text fontWeight="semibold" t="p5" textAlign="left" width="70%">
         {symbol}
       </Text>
-      <Text fontWeight="semibold" t="p5" textAlign="left" width="25%">
+      <Text fontWeight="semibold" t="p5" textAlign="left" width="30%">
         {(hasActiveAccount && amount && usdRatio &&
           `$ ${prettifyNumber(amount.times(usdRatio.toNumber()), { truncate: true }, 2)}`) || '--'}
       </Text>
@@ -155,10 +155,10 @@ const WalletBalances = ({ hasActiveAccount, closeSidebarDrawer }) => {
           <Text t="large">{lang.sidebar.wallet_balances}</Text>
         </Box>
         <Flex justifyContent="space-between" px="s" mb="4px">
-          <Text color="steel" fontWeight="bold" t="smallCaps" width="75%">
+          <Text color="steel" fontWeight="bold" t="smallCaps" width="70%">
             {lang.sidebar.asset}
           </Text>
-          <Text color="steel" fontWeight="bold" t="smallCaps" width="25%">
+          <Text color="steel" fontWeight="bold" t="smallCaps" width="30%">
             {lang.sidebar.balance}
           </Text>
         </Flex>
