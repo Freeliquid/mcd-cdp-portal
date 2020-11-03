@@ -49,6 +49,16 @@ const formatTxMessage = (lang, { metadata, ...tx }, state) => {
           `${lang[langKey].get_reward}${suffix}`,
           <ValueText></ValueText>
         );
+    case 'withdraw':
+          return lang.formatString(
+            `${lang[langKey].unlock_pool}${suffix}`,
+            <ValueText></ValueText>
+          );
+    case 'stake':
+            return lang.formatString(
+              `${lang[langKey].lock_pool}${suffix}`,
+              <ValueText></ValueText>
+            );
     case 'safeLockETH':
     case 'safeLockGem':
       return lang.formatString(

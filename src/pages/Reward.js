@@ -95,7 +95,7 @@ const RewardInfo = ({ params, title, button }) => {
             <Button
               className="btn btn"
               style={{ margin: '5px auto', fontSize: '14px' }}
-              disabled={false}
+              disabled={button.disable}
               onClick={button.onClick}
             >
               {button.text}
@@ -279,9 +279,10 @@ function Reward({ viewedAddress }) {
     );
     maker.service('mcd:rewards').poolApprove(conv(avail), selectedGem, hiRisk);
   };
-
+  const valid = formatter(earnedRewardHiRisk) == 0 && formatter(earnedRewardLowRisk) == 0;
   const getRewardButton = {
     text: lang.sidebar.reward_button,
+    disable: valid,
     onClick: () => {
       maker.service('mcd:rewards').claimRewardEx();
     }

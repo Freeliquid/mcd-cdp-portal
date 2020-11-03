@@ -36,6 +36,7 @@ const GetReward = () => {
   const { account } = useMaker();
   const rewardAmount = watch.walletRewardAmount(account?.address);
   const walletAmount = watch.tokenBalance(account?.address, 'FL');
+  const valid = formatter(rewardAmount) == 0;
 
   return (
     <Card
@@ -97,7 +98,7 @@ const GetReward = () => {
       <Button
         className="btn btn_center"
         style={{ margin: '20px auto', fontSize: '14px' }}
-        disabled={!rewardAmount}
+        disabled={valid}
         onClick={() => {
           generate();
         }}
