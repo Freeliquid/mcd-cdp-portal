@@ -74,13 +74,6 @@ const MainNav = ({ onLinkClicked, ...props }) => {
       >
         {lang.navbar.save}
       </Link>
-      <Link
-        //href={`/${Routes.Governance}`}
-        activeStyle={{ color: getColor('greyText'), fontWeight: 'bold' }}
-        //onClick={() => onLinkClicked && onLinkClicked()}
-      >
-        {lang.navbar.governance}
-      </Link>
     </MainNavStyle>
   );
 };
