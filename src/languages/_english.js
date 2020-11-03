@@ -342,6 +342,7 @@ export default {
     address:'address',
     on_wallet:'On wallet',
     locked:'Locked',
+    lockedValue:'Locked (USD)',
     allowance:'Allowance',
     participating_pools:'Participating pools',
     button_lock:'Lock',

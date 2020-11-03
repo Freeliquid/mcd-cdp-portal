@@ -354,6 +354,9 @@ function Reward({ viewedAddress }) {
                       {lang.reward_page.locked}
                     </Table.th>
                     <Table.th display={{ s: 'none', xl: 'table-cell' }}>
+                      {lang.reward_page.lockedValue}
+                    </Table.th>
+                    <Table.th display={{ s: 'none', xl: 'table-cell' }}>
                       {lang.reward_page.allowance}
                     </Table.th>
                     <Table.th />
@@ -367,6 +370,7 @@ function Reward({ viewedAddress }) {
                       gem,
                       avail,
                       locked,
+                      lockedvalue,
                       allowance,
                       approveDisabled,
                       lockDisabled,
@@ -397,6 +401,9 @@ function Reward({ viewedAddress }) {
                         </Table.td>
                         <Table.td display={{ s: 'none', xl: 'table-cell' }}>
                           <Text t="caption">{locked.toFixed(14)}</Text>
+                        </Table.td>
+                        <Table.td display={{ s: 'none', xl: 'table-cell' }}>
+                          <Text t="caption">{lockedvalue.toFixed(2)}</Text>
                         </Table.td>
                         <Table.td display={{ s: 'none', xl: 'table-cell' }}>
                           <Flex justifyContent="flex-end">
