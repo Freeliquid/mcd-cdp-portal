@@ -103,6 +103,7 @@ export const REWARD_AMOUNT = 'rewardAmount';
 export const REWARD_PAIRINFO = 'rewardPairInfo';
 export const REWARD_PAIRINFO_GEM = 'rewardGem';
 export const REWARD_PAIRINFO_AVAIL = 'rewardAvail';
+export const REWARD_PAIRINFO_AVAILVALUE = 'rewardAvailValue';
 export const REWARD_PAIRINFO_LOCKED = 'rewardLocked';
 export const REWARD_PAIRINFO_LOCKEDVALUE = 'rewardLockedValue';
 export const REWARD_PAIRINFO_REWARDPERHOUR = 'rewardPerHour';

@@ -14,6 +14,7 @@ import {
   REWARD_PAIRINFO_AVAIL,
   REWARD_PAIRINFO_LOCKED,
   REWARD_PAIRINFO_LOCKEDVALUE,
+  REWARD_PAIRINFO_AVAILVALUE,
   REWARD_PAIRINFO_REWARDPERHOUR
 } from './_constants';
 
@@ -34,7 +35,7 @@ export const rewardPairInfo = {
     id: `FL_REWARD_PAIRINFO(${name},${hiRisk},${address})`,
     contract: hiRisk ? 'FL_REWARDER_GOV_USD' : 'FL_REWARDER_STABLES',
     call: [
-      'getPairInfo(bytes32,address)(address,uint,uint,uint)',
+      'getPairInfo(bytes32,address)(address,uint,uint,uint,uint)',
       toHex(name),
       address
     ]
@@ -43,7 +44,8 @@ export const rewardPairInfo = {
     [REWARD_PAIRINFO_GEM],
     [REWARD_PAIRINFO_AVAIL, fromWei],
     [REWARD_PAIRINFO_LOCKED, fromWei],
-    [REWARD_PAIRINFO_LOCKEDVALUE, fromWei]
+    [REWARD_PAIRINFO_LOCKEDVALUE, fromWei],
+    [REWARD_PAIRINFO_AVAILVALUE, fromWei]
   ]
 };
 

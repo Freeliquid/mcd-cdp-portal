@@ -68,6 +68,7 @@ import {
   REWARD_WALLET_REWARD_PAIR_INFO,
   REWARD_PAIRINFO_GEM,
   REWARD_PAIRINFO_AVAIL,
+  REWARD_PAIRINFO_AVAILVALUE,
   REWARD_PAIRINFO_LOCKED,
   REWARD_PAIRINFO_LOCKEDVALUE,
   REWARD_AMOUNT,
@@ -477,6 +478,7 @@ export const walletRewardPairInfo = {
     dependencies: [
       [REWARD_PAIRINFO_GEM, name, address, hiRisk],
       [REWARD_PAIRINFO_AVAIL, name, address, hiRisk],
+      [REWARD_PAIRINFO_AVAILVALUE, name, address, hiRisk],
       [REWARD_PAIRINFO_LOCKED, name, address, hiRisk],
       [REWARD_PAIRINFO_LOCKEDVALUE, name, address, hiRisk],
       [
@@ -487,12 +489,13 @@ export const walletRewardPairInfo = {
       ]
     ],
 
-    computed: (gem, avail, locked, lockedvalue, allowance) => {
+    computed: (gem, avail, availvalue, locked, lockedvalue, allowance) => {
       return {
         name,
         hiRisk,
         gem,
         avail,
+        availvalue,
         locked,
         lockedvalue,
         allowance

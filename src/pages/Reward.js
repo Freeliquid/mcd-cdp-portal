@@ -349,13 +349,10 @@ function Reward({ viewedAddress }) {
                       {lang.reward_page.address}
                     </Table.th>
                     <Table.th display={{ s: 'none', xl: 'table-cell' }}>
-                      {lang.reward_page.on_wallet}
+                      {lang.reward_page.on_wallet_value}
                     </Table.th>
                     <Table.th display={{ s: 'none', xl: 'table-cell' }}>
-                      {lang.reward_page.locked}
-                    </Table.th>
-                    <Table.th display={{ s: 'none', xl: 'table-cell' }}>
-                      {lang.reward_page.lockedValue}
+                      {lang.reward_page.locked_value}
                     </Table.th>
                     <Table.th display={{ s: 'none', xl: 'table-cell' }}>
                       {lang.reward_page.allowance}
@@ -370,6 +367,7 @@ function Reward({ viewedAddress }) {
                       hiRisk,
                       gem,
                       avail,
+                      availvalue,
                       locked,
                       lockedvalue,
                       allowance,
@@ -403,13 +401,14 @@ function Reward({ viewedAddress }) {
                           </Text>
                         </Table.td>
                         <Table.td display={{ s: 'none', xl: 'table-cell' }}>
-                          <Text t="caption">{avail.toFixed(14)}</Text>
+                          <Text t="caption">
+                            {formatter(availvalue, { precision: short })}
+                          </Text>
                         </Table.td>
                         <Table.td display={{ s: 'none', xl: 'table-cell' }}>
-                          <Text t="caption">{locked.toFixed(14)}</Text>
-                        </Table.td>
-                        <Table.td display={{ s: 'none', xl: 'table-cell' }}>
-                          <Text t="caption">{lockedvalue.toFixed(2)}</Text>
+                          <Text t="caption">
+                            {formatter(lockedvalue, { precision: short })}
+                          </Text>
                         </Table.td>
                         <Table.td display={{ s: 'none', xl: 'table-cell' }}>
                           <Flex justifyContent="flex-end">
