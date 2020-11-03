@@ -8,7 +8,7 @@ import BigNumber from 'bignumber.js';
 import { USD, USDFL } from '../libs/dai-plugin-mcd/src/index.js';
 import rewardList from '../references/rewardList';
 import { formatDate } from 'utils/ui';
-
+import ExternalLink from 'components/ExternalLink';
 import { Currency } from '@makerdao/currency';
 
 import {
@@ -335,6 +335,7 @@ function Reward({ viewedAddress }) {
                     white-space: nowrap;
                     color: ${getColor('whiteText')};
                   }
+                  tbody, tr {border-color: ${getColor('border')} !important} 
                   td:not(:last-child),
                   th:not(:last-child) {
                     padding-right: 10px;
@@ -393,7 +394,12 @@ function Reward({ viewedAddress }) {
                             fontSize={{ s: '1.7rem', xl: 'm' }}
                             color={{ s: 'grey', xl: 'white' }}
                           >
-                            {cutMiddle(gem, 7, 5)}
+                            <ExternalLink
+                              key={1}
+                              string={gem}
+                              network="kovan"
+                              arrowInheritsColorOnHover={true}
+                            />
                           </Text>
                         </Table.td>
                         <Table.td display={{ s: 'none', xl: 'table-cell' }}>
