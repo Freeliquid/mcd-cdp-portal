@@ -109,13 +109,12 @@ const RewardInfo = ({ params, title, button }) => {
 
 function Reward({ viewedAddress }) {
   const { trackBtnClick } = useAnalytics('Table');
-  const { account } = useMaker();
+  const { account, network } = useMaker();
   const { url } = useCurrentRoute();
   const { lang } = useLanguage();
   const { emergencyShutdownActive } = useEmergencyShutdown();
   const { maker } = useMaker();
   const { addNotification, deleteNotifications } = useNotification();
-
   const rewardPairInfosHiRisk = watch.walletRewardPairInfos(
     rewardList,
     account?.address,
@@ -132,7 +131,7 @@ function Reward({ viewedAddress }) {
           item => item.gem != 0
         )
       : [];
-
+  
   const rewardPerHourHiRisk = watch.rewardPerHour(true);
   const rewardPerHourLowRisk = watch.rewardPerHour(false);
 
@@ -242,7 +241,8 @@ function Reward({ viewedAddress }) {
         avail.toNumber() <= 0 ||
         allowance.toNumber() < avail.toNumber() ||
         rewardNextStartTime >= timestamp,
-      unlockDisabled: locked.toNumber() <= 0
+      unlockDisabled: locked.toNumber() <= 0,
+      network
     };
   });
 
@@ -373,7 +373,8 @@ function Reward({ viewedAddress }) {
                       allowance,
                       approveDisabled,
                       lockDisabled,
-                      unlockDisabled
+                      unlockDisabled,
+                      network
                     }) => (
                       <Table.tr key={gem}>
                         <Table.td>
@@ -391,13 +392,13 @@ function Reward({ viewedAddress }) {
                             t="body"
                             fontSize={{ s: '1.7rem', xl: 'm' }}
                             color={{ s: 'grey', xl: 'white' }}
-                          >
-                            <ExternalLink
-                              key={1}
-                              string={gem}
-                              network="kovan"
-                              arrowInheritsColorOnHover={true}
-                            />
+                          > 
+                           <ExternalLink
+                            key={1}
+                            string={gem}
+                            network={network}
+                            arrowInheritsColorOnHover={true}
+                          />
                           </Text>
                         </Table.td>
                         <Table.td display={{ s: 'none', xl: 'table-cell' }}>
