@@ -34,7 +34,7 @@ import { watch } from 'hooks/useObservable';
 import useEmergencyShutdown from 'hooks/useEmergencyShutdown';
 import { NotificationList, Routes, SAFETY_LEVELS } from 'utils/constants';
 import { FilledButton } from 'components/Marketing';
-import { distanceInWordsToNow } from 'date-fns'
+import { distanceInWordsToNow } from 'date-fns';
 
 import { decimalRules } from '../styles/constants';
 
@@ -149,7 +149,6 @@ function Reward({ viewedAddress }) {
       ? parseInt(rewardFirstStageDuration) + parseInt(rewardStartTime)
       : 0;
 
-
   const hiRiskEpoch = watch.rewardCurrentEpoch(true);
   const lowRiskEpoch = watch.rewardCurrentEpoch(false);
 
@@ -172,12 +171,11 @@ function Reward({ viewedAddress }) {
     new Date(rewardNextStartTime * 1000)
   );
 
-
   const globalParams = [
     [
       lang.overview_page.reward_next_start_time,
       formatDate(new Date(rewardNextStartTime * 1000)),
-      '('+timeTillStart+')'
+      '(' + timeTillStart + ')'
     ],
     [
       lang.overview_page.reward_per_hour_hirisk,
@@ -186,11 +184,7 @@ function Reward({ viewedAddress }) {
       }),
       'FL'
     ],
-    [
-      lang.overview_page.reward_epoch_hirisk,
-      hiRiskEpoch,
-      ''
-    ],
+    [lang.overview_page.reward_epoch_hirisk, hiRiskEpoch, ''],
     [
       lang.overview_page.reward_per_hour_lowrisk,
       formatter(rewardPerHourLowRisk ? rewardPerHourLowRisk : 0.0, {
@@ -198,11 +192,7 @@ function Reward({ viewedAddress }) {
       }),
       'FL'
     ],
-    [
-      lang.overview_page.reward_epoch_lowrisk,
-      lowRiskEpoch,
-      ''
-    ]
+    [lang.overview_page.reward_epoch_lowrisk, lowRiskEpoch, '']
   ];
 
   const yourInfoParams = [
@@ -299,7 +289,8 @@ function Reward({ viewedAddress }) {
     );
     maker.service('mcd:rewards').poolApprove(conv(avail), selectedGem, hiRisk);
   };
-  const valid = formatter(earnedRewardHiRisk) == 0 && formatter(earnedRewardLowRisk) == 0;
+  const valid =
+    formatter(earnedRewardHiRisk) == 0 && formatter(earnedRewardLowRisk) == 0;
   const getRewardButton = {
     text: lang.sidebar.reward_button,
     disable: valid,
@@ -356,7 +347,10 @@ function Reward({ viewedAddress }) {
                     white-space: nowrap;
                     color: ${getColor('whiteText')};
                   }
-                  tbody, tr {border-color: ${getColor('border')} !important}
+                  tbody,
+                  tr {
+                    border-color: ${getColor('border')} !important;
+                  }
                   td:not(:last-child),
                   th:not(:last-child) {
                     padding-right: 10px;
@@ -414,12 +408,12 @@ function Reward({ viewedAddress }) {
                             fontSize={{ s: '1.7rem', xl: 'm' }}
                             color={{ s: 'grey', xl: 'white' }}
                           >
-                           <ExternalLink
-                            key={1}
-                            string={gem}
-                            network={network}
-                            arrowInheritsColorOnHover={true}
-                          />
+                            <ExternalLink
+                              key={1}
+                              string={gem}
+                              network={network}
+                              arrowInheritsColorOnHover={true}
+                            />
                           </Text>
                         </Table.td>
                         <Table.td display={{ s: 'none', xl: 'table-cell' }}>
