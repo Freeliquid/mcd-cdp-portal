@@ -99,17 +99,6 @@ const Withdraw = ({ vault, reset }) => {
 
   const valueDiff = multiply(amountToWithdraw, collateralTypePrice.toNumber());
 
-  console.log("usdValue", formatter(value), convertValueToAmount(value).toNumber(), "value", value, "debtAmount", debtAmount.toNumber());
-
-  const liquidationPrice =
-    undercollateralized || debtAmount.eq(0)
-      ? BigNumber(0)
-      : vault.calculateLiquidationPrice({
-          collateralAmount: currency(
-            encumberedCollateral.minus(amountToWithdraw)
-          )
-        });
-
   const collateralizationRatio = vault.calculateCollateralizationRatio({
     collateralValue: collateralValue.minus(valueDiff).gte(0)
       ? currency(collateralValue.minus(valueDiff))
