@@ -7,7 +7,6 @@ import {
   formatCollateralizationRatio,
   prettifyNumber,
   formatter,
-  prettifyCurrency,
   prettifyFloat
 } from 'utils/ui';
 import { cdpParamsAreValid } from '../../utils/cdp';
@@ -109,7 +108,6 @@ function OpenCDPForm({
         name="valueToLock"
         after={'USD'}
         type="number"
-        value={prettifyCurrency(convertAmountToValue(cdpParams.gemsToLock))}
         onChange={handleValueChange}
         width={300}
         borderColor="#323B4F"
