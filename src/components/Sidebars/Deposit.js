@@ -9,12 +9,7 @@ import useWalletBalances from 'hooks/useWalletBalances';
 import useValidatedInput from 'hooks/useValidatedInput';
 import useLanguage from 'hooks/useLanguage';
 import useAnalytics from 'hooks/useAnalytics';
-import {
-  formatCollateralizationRatio,
-  formatter,
-  prettifyCurrency,
-  prettifyNumber
-} from 'utils/ui';
+import { formatCollateralizationRatio, formatter, prettifyCurrency, prettifyNumber } from 'utils/ui';
 import { multiply } from 'utils/bignumber';
 import { getCurrency } from 'utils/cdp';
 import ProxyAllowanceToggle from 'components/ProxyAllowanceToggle';
@@ -23,12 +18,11 @@ import { decimalRules } from '../../styles/constants';
 import { getColor } from '../../styles/theme';
 const { short } = decimalRules;
 
-const Deposit = ({ vault, reset }) => {
+const Deposit = ({ vault, reset, dispatch }) => {
   const { trackBtnClick } = useAnalytics('Deposit', 'Sidebar');
   const { lang } = useLanguage();
   const { maker } = useMaker();
   const { hasProxy } = useProxy();
-  const interfaceLocale = lang.getInterfaceLanguage();
 
   let {
     vaultType,
@@ -40,21 +34,26 @@ const Deposit = ({ vault, reset }) => {
   } = vault;
 
   function convertAmountToValue(amount) {
-    if (amount == 0) return BigNumber(0);
-    const r = collateralValueForAmount(BigNumber(amount));
+    if (amount == 0)
+      return BigNumber(0);
+    const r =  collateralValueForAmount(BigNumber(amount));
 
-    if (r == undefined) return BigNumber(0);
+    if (r == undefined)
+      return BigNumber(0);
 
     return r;
   }
 
   function convertValueToAmount(value) {
-    if (value == 0) return BigNumber(0);
-    const r = collateralAmountByValue(BigNumber(value));
+    if (value == 0)
+      return BigNumber(0);
+    const r =  collateralAmountByValue(BigNumber(value));
 
-    if (r == undefined) return BigNumber(0);
+    if (r == undefined)
+      return BigNumber(0);
     return r;
   }
+  
 
   const symbol = collateralAmount?.symbol;
   const { hasAllowance, hasSufficientAllowance } = useTokenAllowance(symbol);
@@ -97,11 +96,16 @@ const Deposit = ({ vault, reset }) => {
   const collateralizationRatio = vault.calculateCollateralizationRatio({
     collateralValue: collateralValue.plus(valueDiff)
   });
-
+ 
   function handleValueChange({ target }) {
     if (parseFloat(target.value) < 0) return;
 
     const val = convertValueToAmount(target.value);
+
+    dispatch({
+      type: `form/set-${target.name}`,
+      payload: { value: val }
+    });
   }
 
   return (
@@ -116,27 +120,23 @@ const Deposit = ({ vault, reset }) => {
           </Text>
         </p>
         <div className="input_border">
-          <Input
-            style={{ color: getColor('whiteText') }}
-            name="valueToLock"
-            type="number"
-            min="0"
-            value={prettifyCurrency(
-              interfaceLocale,
-              convertAmountToValue(amount)
-            )}
-            onChange={handleValueChange}
-            placeholder={`0.00`}
-            after={'USD'}
-            failureMessage={amountErrors}
-            data-testid="deposit-input"
-          />
+        <Input
+          style={{ color: getColor('whiteText') }}
+          name="valueToLock"
+          type="number"
+          min="0"
+          value={prettifyCurrency(convertAmountToValue(amount))}
+          onChange={handleValueChange}
+          placeholder={`0.00`}
+          after={'USD'}
+          failureMessage={amountErrors}
+          data-testid="deposit-input"
+        />
         </div>
       </Grid>
       <ProxyAllowanceToggle token={symbol} trackBtnClick={trackBtnClick} />
       <Grid gridTemplateColumns="1fr 1fr" gridColumnGap="s">
-        <Button
-          className="btn"
+        <Button className="btn"
           disabled={!valid}
           onClick={() => {
             trackBtnClick('Confirm', {
@@ -148,8 +148,7 @@ const Deposit = ({ vault, reset }) => {
         >
           {lang.actions.deposit}
         </Button>
-        <Button
-          className="btn"
+        <Button className="btn"
           variant="secondary-outline"
           onClick={() => {
             trackBtnClick('Cancel');
@@ -162,9 +161,7 @@ const Deposit = ({ vault, reset }) => {
       <InfoContainer>
         <Info
           title={lang.action_sidebar.current_account_balance}
-          body={`${formatter(convertAmountToValue(gemBalance), {
-            precision: short
-          })} USD`}
+          body={`${formatter(convertAmountToValue(gemBalance), { precision: short })} USD`}
         />
         <Info
           title={lang.action_sidebar.new_collateralization_ratio}
