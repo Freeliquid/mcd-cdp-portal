@@ -99,7 +99,7 @@ const Withdraw = ({ vault, reset }) => {
 
   const valueDiff = multiply(amountToWithdraw, collateralTypePrice.toNumber());
 
-  // console.log("usdValue", formatter(value), convertValueToAmount(value).toNumber(), "value", value, "debtAmount", debtAmount.toNumber());
+  console.log("usdValue", formatter(value), convertValueToAmount(value).toNumber(), "value", value, "debtAmount", debtAmount.toNumber());
 
   const liquidationPrice =
     undercollateralized || debtAmount.eq(0)
@@ -132,8 +132,7 @@ const Withdraw = ({ vault, reset }) => {
           <Input
             style={{ color: getColor('whiteText') }}
             type="number"
-            placeholder={`0.00`}
-            after={'USD'}
+            placeholder={`0.00 USD`}
             value={value}
             min="0"
             onChange={onAmountChange}

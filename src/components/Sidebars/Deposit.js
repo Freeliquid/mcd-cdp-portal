@@ -23,7 +23,7 @@ import { decimalRules } from '../../styles/constants';
 import { getColor } from '../../styles/theme';
 const { short } = decimalRules;
 
-const Deposit = ({ vault, reset, dispatch }) => {
+const Deposit = ({ vault, reset }) => {
   const { trackBtnClick } = useAnalytics('Deposit', 'Sidebar');
   const { lang } = useLanguage();
   const { maker } = useMaker();
@@ -37,6 +37,11 @@ const Deposit = ({ vault, reset, dispatch }) => {
     collateralValueForAmount,
     collateralAmountByValue
   } = vault;
+
+  const symbol = collateralAmount?.symbol;
+  const { hasAllowance, hasSufficientAllowance } = useTokenAllowance(symbol);
+  const gemBalances = useWalletBalances();
+  const gemBalance = gemBalances[symbol] || 0;
 
   function convertAmountToValue(amount) {
     if (amount == 0) return BigNumber(0);
@@ -55,15 +60,14 @@ const Deposit = ({ vault, reset, dispatch }) => {
     return r;
   }
 
-  const symbol = collateralAmount?.symbol;
-  const { hasAllowance, hasSufficientAllowance } = useTokenAllowance(symbol);
-  const gemBalances = useWalletBalances();
-  const gemBalance = gemBalances[symbol] || 0;
 
-  const [amount, onAmountChange, amountErrors] = useValidatedInput(
+  const depositBalance = convertAmountToValue(gemBalance);
+  console.log('deposit', depositBalance);
+
+  const [value, ,onAmountChange, amountErrors] = useValidatedInput(
     '',
     {
-      maxFloat: gemBalance,
+      maxFloat: depositBalance,
       minFloat: 0,
       isFloat: true,
       custom: {
@@ -77,11 +81,11 @@ const Deposit = ({ vault, reset, dispatch }) => {
         lang.formatString(lang.action_sidebar.invalid_allowance, symbol)
     }
   );
-  const valid = amount && !amountErrors && hasAllowance && hasProxy;
-  const amountToDeposit =
-    amount && !BigNumber(amount).isNegative()
-      ? BigNumber(amount)
-      : BigNumber(0);
+  
+  const valueToDeposit = value || BigNumber(0);
+  const amountToDeposit = convertValueToAmount(valueToDeposit);
+
+  const valid = value && !amountErrors && hasAllowance && hasProxy;
 
   const deposit = () => {
     const currency = getCurrency({ ilk: vaultType });
@@ -96,17 +100,6 @@ const Deposit = ({ vault, reset, dispatch }) => {
   const collateralizationRatio = vault.calculateCollateralizationRatio({
     collateralValue: collateralValue.plus(valueDiff)
   });
-
-  function handleValueChange({ target }) {
-    if (parseFloat(target.value) < 0) return;
-
-    const val = convertValueToAmount(target.value);
-
-    dispatch({
-      type: `form/set-${target.name}`,
-      payload: { value: val }
-    });
-  }
 
   return (
     <Grid gridRowGap="m">
@@ -125,10 +118,9 @@ const Deposit = ({ vault, reset, dispatch }) => {
             name="valueToLock"
             type="number"
             min="0"
-            value={prettifyCurrency(convertAmountToValue(amount))}
-            onChange={handleValueChange}
-            placeholder={`0.00`}
-            after={'USD'}
+            value={value}
+            onChange={onAmountChange}
+            placeholder={`0.00 USD`}
             failureMessage={amountErrors}
             data-testid="deposit-input"
           />
@@ -141,8 +133,8 @@ const Deposit = ({ vault, reset, dispatch }) => {
           disabled={!valid}
           onClick={() => {
             trackBtnClick('Confirm', {
-              amount,
-              fathom: { id: `${symbol}VaultDeposit`, amount }
+              value,
+              fathom: { id: `${symbol}VaultDeposit`, value }
             });
             deposit();
           }}
@@ -163,11 +155,9 @@ const Deposit = ({ vault, reset, dispatch }) => {
       <InfoContainer>
         <Info
           title={lang.action_sidebar.current_account_balance}
-          body={`${formatter(convertAmountToValue(gemBalance), {
-            precision: short
-          })} USD`}
+          body={`${formatter(depositBalance)} USD`}
         />
-        <Info
+       <Info
           title={lang.action_sidebar.new_collateralization_ratio}
           body={formatCollateralizationRatio(collateralizationRatio)}
         />
