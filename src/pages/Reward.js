@@ -132,7 +132,7 @@ function Reward({ viewedAddress }) {
           item => item.gem != 0
         )
       : [];
-  
+
   const rewardPerHourHiRisk = watch.rewardPerHour(true);
   const rewardPerHourLowRisk = watch.rewardPerHour(false);
 
@@ -356,7 +356,7 @@ function Reward({ viewedAddress }) {
                     white-space: nowrap;
                     color: ${getColor('whiteText')};
                   }
-                  tbody, tr {border-color: ${getColor('border')} !important} 
+                  tbody, tr {border-color: ${getColor('border')} !important}
                   td:not(:last-child),
                   th:not(:last-child) {
                     padding-right: 10px;
@@ -413,7 +413,7 @@ function Reward({ viewedAddress }) {
                             t="body"
                             fontSize={{ s: '1.7rem', xl: 'm' }}
                             color={{ s: 'grey', xl: 'white' }}
-                          > 
+                          >
                            <ExternalLink
                             key={1}
                             string={gem}
