@@ -9,8 +9,6 @@ import React, {
 } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as Plus } from '../images/plus.svg';
-import { ReactComponent as NavUp } from '../images/nav-up-icon.svg';
-import { ReactComponent as NavDown } from '../images/nav-down-icon.svg';
 import { Flex, Text, Box } from '@makerdao/ui-components-core';
 import RatioDisplay from './RatioDisplay';
 import { Link, useCurrentRoute } from 'react-navi';
@@ -187,7 +185,6 @@ const CDPList = memo(function({
           show={scrollTop > 0}
           bg={account ? '#191E2B' : '#191E2B'}
         >
-          <NavUp />
         </DirectionalButton>
       )}
       <Box
@@ -270,15 +267,7 @@ const CDPList = memo(function({
           )}
         </CdpContainer>
       </Box>
-      {userVaults.length >= 4 && !mobile && (
-        <DirectionalButton
-          onClick={() => onDirectionalClick('down')}
-          show={scrollTop < maxScrollTop}
-          bg={account ? '#0B0E15' : '#323B4F'}
-        >
-          <NavDown />
-        </DirectionalButton>
-      )}
+      {userVaults.length >= 4 && !mobile }
     </Fragment>
   ) : null;
 });

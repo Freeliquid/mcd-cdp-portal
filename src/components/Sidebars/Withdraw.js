@@ -150,6 +150,8 @@ const Withdraw = ({ vault, reset }) => {
           onlyWarnings={true}
           show={value !== '' && value > 0 && !undercollateralized}
           textAlign="center"
+          bg={ getColor('cardBg') }
+          borderColor={ getColor('border') }
         />
       </Grid>
       <Grid gridTemplateColumns="1fr 1fr" gridColumnGap="s">

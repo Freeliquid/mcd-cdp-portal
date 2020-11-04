@@ -45,21 +45,10 @@ export default function({
       rows?.length > 0
         ? rows.map(([actionMsg, dateOfAction, txHash], i) => (
             <RowFadeIn key={i}>
-              <td
-                css={`
-                  white-space: nowrap;
-                  max-width: 205px;
-                  text-overflow: ellipsis;
-                  overflow: hidden;
-                `}
-              >
+              <td>
                 <Text t="caption">{actionMsg}</Text>
               </td>
-              <td
-                css={`
-                  white-space: nowrap;
-                `}
-              >
+              <td>
                 <Text t="caption">{dateOfAction}</Text>
               </td>
               <td>

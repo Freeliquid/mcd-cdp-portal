@@ -32,7 +32,7 @@ const Features = ({ features, ...props }) => {
   return (
     <StyledGrid
       gridTemplateColumns={{ s: '1fr', l: '1fr 1fr' }}
-      maxWidth={{ s: '500px', l: '1120px' }}
+      maxWidth={{ s: '330px', l: '1120px' }}
       gridRowGap="118px"
       gridColumnGap="120px"
       pl={{ s: '23px', m: 0 }}

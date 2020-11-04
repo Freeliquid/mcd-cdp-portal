@@ -114,7 +114,7 @@ const MobileNav = ({ viewedAddress }) => {
         <Box
           ref={ref}
           ml="auto"
-          height={`calc(100vh - ${getMeasurement('mobileNavHeight')}px)`}
+          height="100vh"
           px="s"
           width="100vw"
           css={{ overflowY: 'scroll', paddingRight: 0 }}

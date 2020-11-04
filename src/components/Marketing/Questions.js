@@ -16,6 +16,9 @@ const QuestionAndAnswerStyle = styled.div`
     letter-spacing: 0.007em;
     position: relative;
     border-bottom: 1px solid ${separatorColor};
+    @media (max-width: ${props => props.theme.breakpoints.m}) {
+      padding-right: 10px;
+    }
   }
 
   .question {
@@ -24,6 +27,7 @@ const QuestionAndAnswerStyle = styled.div`
     font-size: 20px;
     @media (min-width: ${props => props.theme.breakpoints.m}) {
       line-height: 36px;
+      font-size: 18px;
     }
   }
 
@@ -52,7 +56,9 @@ const QuestionAndAnswerStyle = styled.div`
     right: 6px;
     top: calc(50% - 3px);
     z-index: 2;
-
+    @media (max-width: ${props => props.theme.breakpoints.m}) {
+      right: 0px;
+    }
     &:before,
     &:after {
       background: ${getColor('cayn')};

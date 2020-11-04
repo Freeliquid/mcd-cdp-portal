@@ -18,8 +18,6 @@ import {
   buildQuestionsFromLangObj,
   FixedHeaderTrigger,
   Parallaxed,
-  SeparatorDot,
-  BorrowCalculator,
   StyledPageContentLayout,
   PageHead,
   MarketsTable
@@ -146,9 +144,7 @@ function Borrow({ disableConnect = false }) {
           <Box
             mt={{ s: '54px', m: '87px' }}
             css={`
-              overflow-x: scroll;
-              overflow-y: hidden;
-              &::-webkit-scrollbar {
+              ::-webkit-scrollbar {
                 display: none;
               }
               -ms-overflow-style: none;
