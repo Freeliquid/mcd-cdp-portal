@@ -178,7 +178,6 @@ function OpenCDPForm({
             display="inline-block"
             ml="s"
             style={{ fontSize: '14px', color: getColor('whiteText') }}
-
           >
             {formatter(daiAvailableToGenerate)} USDFL
           </Text>
