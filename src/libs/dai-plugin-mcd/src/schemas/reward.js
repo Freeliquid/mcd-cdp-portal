@@ -15,6 +15,7 @@ import {
   REWARD_PAIRINFO_LOCKED,
   REWARD_PAIRINFO_LOCKEDVALUE,
   REWARD_PAIRINFO_AVAILVALUE,
+  REWARD_CURRENT_EPOCH,
   REWARD_PAIRINFO_REWARDPERHOUR
 } from './_constants';
 
@@ -85,11 +86,24 @@ export const rewardEarnedEx = {
   returns: [[REWARD_EARNED_EX, fromWei]]
 };
 
+
+export const rewardCurrentEpoch = {
+  generate: (hiRisk) => ({
+    id: `REWARD_CURRENT_EPOCH(${hiRisk})`,
+    contract: hiRisk ? 'FL_REWARDER_GOV_USD' : 'FL_REWARDER_STABLES',
+    call: ['calcCurrentEpoch()(uint256)']
+  }),
+  returns: [[REWARD_CURRENT_EPOCH]]
+};
+
+
+
 export default {
   rewardAmount,
   rewardPairInfo,
   rewardPerHour,
   rewardStartTime,
   rewardEarnedEx,
-  rewardFirstStageDuration
+  rewardFirstStageDuration,
+  rewardCurrentEpoch
 };

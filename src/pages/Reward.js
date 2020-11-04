@@ -149,6 +149,10 @@ function Reward({ viewedAddress }) {
       ? parseInt(rewardFirstStageDuration) + parseInt(rewardStartTime)
       : 0;
 
+
+  const hiRiskEpoch = watch.rewardCurrentEpoch(true);
+  const lowRiskEpoch = watch.rewardCurrentEpoch(false);
+
   const timestamp = Math.round(new Date().getTime() / 1000);
   // if (rewardFirstStageDuration && rewardStartTime)
   //   console.log(
@@ -183,11 +187,21 @@ function Reward({ viewedAddress }) {
       'FL'
     ],
     [
+      lang.overview_page.reward_epoch_hirisk,
+      hiRiskEpoch,
+      ''
+    ],
+    [
       lang.overview_page.reward_per_hour_lowrisk,
       formatter(rewardPerHourLowRisk ? rewardPerHourLowRisk : 0.0, {
         precision: short
       }),
       'FL'
+    ],
+    [
+      lang.overview_page.reward_epoch_lowrisk,
+      lowRiskEpoch,
+      ''
     ]
   ];
 

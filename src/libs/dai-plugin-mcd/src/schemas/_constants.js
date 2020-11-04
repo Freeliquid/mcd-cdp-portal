@@ -113,3 +113,4 @@ export const REWARD_WALLET_REWARD_PAIR_INFO = 'walletRewardPairInfo';
 export const REWARD_REWARD_CONTRACT = 'rewardContract';
 export const REWARD_TOKEN_ALLOWANCE_BY_ADDRESS = 'tokenAllowanceByAddress';
 export const REWARD_EARNED_EX = 'rewardEarnedEx';
+export const REWARD_CURRENT_EPOCH = 'rewardCurrentEpoch';
