@@ -11,14 +11,14 @@ import useLanguage from 'hooks/useLanguage';
 import useAnalytics from 'hooks/useAnalytics';
 import useValidatedInput from 'hooks/useValidatedInput';
 import { greaterThan, multiply } from 'utils/bignumber';
-import { formatCollateralizationRatio, formatter, prettifyCurrency } from 'utils/ui';
+import { formatCollateralizationRatio, formatter } from 'utils/ui';
 import { getCurrency } from 'utils/cdp';
 import { decimalRules } from '../../styles/constants';
 import { getColor } from '../../styles/theme';
 import { ShortType } from 'three';
 const { short } = decimalRules;
 
-const Withdraw = ({ vault, reset, dispatch }) => {
+const Withdraw = ({ vault, reset }) => {
   const { trackBtnClick } = useAnalytics('Withdraw', 'Sidebar');
   const { lang } = useLanguage();
   const { maker } = useMaker();
@@ -40,33 +40,32 @@ const Withdraw = ({ vault, reset, dispatch }) => {
   collateralValue = collateralValue.toBigNumber();
 
   function convertAmountToValue(amount) {
-    if (amount == 0)
-      return BigNumber(0);
-    const r =  collateralValueForAmount(BigNumber(amount));
+    if (amount == 0) return BigNumber(0);
+    const r = collateralValueForAmount(BigNumber(amount));
 
-    if (r == undefined)
-      return BigNumber(0);
+    if (r == undefined) return BigNumber(0);
 
     return r;
   }
 
   function convertValueToAmount(value) {
-    if (value == 0)
-      return BigNumber(0);
-    const r =  collateralAmountByValue(BigNumber(value));
+    if (value == 0) return BigNumber(0);
+    const r = collateralAmountByValue(BigNumber(value));
 
-    if (r == undefined)
-      return BigNumber(0);
+    if (r == undefined) return BigNumber(0);
     return r;
   }
-  
-  
+
   const symbol = collateralAmount?.symbol;
 
-  const [amount, setAmount, onAmountChange, amountErrors] = useValidatedInput(
+  const collateralAvailableValue = convertAmountToValue(
+    collateralAvailableAmount
+  );
+
+  const [value, setAmount, onAmountChange, amountErrors] = useValidatedInput(
     '',
     {
-      maxFloat: collateralAvailableAmount,
+      maxFloat: collateralAvailableValue,
       minFloat: 0,
       isFloat: true
     },
@@ -75,21 +74,32 @@ const Withdraw = ({ vault, reset, dispatch }) => {
     }
   );
 
-  const amountToWithdraw = amount || BigNumber(0);
+  const valueToWithdraw = value || BigNumber(0);
+  const amountToWithdraw = convertValueToAmount(valueToWithdraw);
   const undercollateralized =
-    amount && greaterThan(amount, collateralAvailableAmount);
+    value && greaterThan(value, collateralAvailableValue);
 
-  const setMax = () => setAmount(collateralAvailableAmount);
+  const setMax = () => setAmount(collateralAvailableValue);
 
   const currency = getCurrency({ ilk: vaultType });
+
   const withdraw = () => {
+    const d = amountToWithdraw
+      .dividedBy(collateralAvailableAmount)
+      .minus(BigNumber(1.0))
+      .absoluteValue();
+    const val = d.lt(BigNumber(0.001))
+      ? collateralAvailableAmount
+      : amountToWithdraw;
     maker
       .service('mcd:cdpManager')
-      .wipeAndFree(vault.id, vaultType, USDFL(0), currency(amountToWithdraw));
+      .wipeAndFree(vault.id, vaultType, USDFL(0), currency(val));
     reset();
   };
 
   const valueDiff = multiply(amountToWithdraw, collateralTypePrice.toNumber());
+
+  // console.log("usdValue", formatter(value), convertValueToAmount(value).toNumber(), "value", value, "debtAmount", debtAmount.toNumber());
 
   const liquidationPrice =
     undercollateralized || debtAmount.eq(0)
@@ -106,17 +116,6 @@ const Withdraw = ({ vault, reset, dispatch }) => {
       : currency(0)
   });
 
-  function handleValueChange({ target }) {
-    if (parseFloat(target.value) < 0) return;
-
-    const val = convertValueToAmount(target.value);
-
-    dispatch({
-      type: `form/set-${target.name}`,
-      payload: { value: val }
-    });
-  }
-
   return (
     <Grid gridRowGap="m">
       <Grid gridRowGap="s" className="input_des">
@@ -130,29 +129,30 @@ const Withdraw = ({ vault, reset, dispatch }) => {
           {lang.formatString(lang.action_sidebar.withdraw_description, symbol)}
         </Text>
         <div className="input_border">
-        <Input
-          style={{ color: getColor('whiteText') }}
-          type="number"
-          placeholder={`0.00`}
-          after={'USD'}
-          value={prettifyCurrency(convertAmountToValue(amount))}
-          min="0"
-          onChange={handleValueChange}
-          after={
-            parseFloat(debtAmount) === 0 ? (
-              <SetMax style={{ color: getColor('greyText') }}
-                onClick={() => {
-                  setMax();
-                  trackBtnClick('SetMax', {
-                    collateralAvailableAmount: collateralAvailableAmount.toString(),
-                    setMax: true
-                  });
-                }}
-              />
-            ) : null
-          }
-          failureMessage={amountErrors}
-        />
+          <Input
+            style={{ color: getColor('whiteText') }}
+            type="number"
+            placeholder={`0.00`}
+            after={'USD'}
+            value={value}
+            min="0"
+            onChange={onAmountChange}
+            after={
+              parseFloat(debtAmount) === 0 ? (
+                <SetMax
+                  style={{ color: getColor('greyText') }}
+                  onClick={() => {
+                    setMax();
+                    trackBtnClick('SetMax', {
+                      collateralAvailableAmount: collateralAvailableAmount.toString(),
+                      setMax: true
+                    });
+                  }}
+                />
+              ) : null
+            }
+            failureMessage={amountErrors}
+          />
         </div>
         <RatioDisplay
           type={RatioDisplayTypes.CARD}
@@ -160,24 +160,26 @@ const Withdraw = ({ vault, reset, dispatch }) => {
           ilkLiqRatio={formatter(liquidationRatio, { percentage: true })}
           text={lang.action_sidebar.withdraw_warning}
           onlyWarnings={true}
-          show={amount !== '' && amount > 0 && !undercollateralized}
+          show={value !== '' && value > 0 && !undercollateralized}
           textAlign="center"
         />
       </Grid>
       <Grid gridTemplateColumns="1fr 1fr" gridColumnGap="s">
-        <Button className="btn"
-          disabled={!amount || amountErrors}
+        <Button
+          className="btn"
+          disabled={!value || amountErrors}
           onClick={() => {
             trackBtnClick('Confirm', {
-              amount,
-              fathom: { id: `${symbol}VaultWithdraw`, amount }
+              value,
+              fathom: { id: `${symbol}VaultWithdraw`, value }
             });
             withdraw();
           }}
         >
           {lang.actions.withdraw}
         </Button>
-        <Button className="btn"
+        <Button
+          className="btn"
           variant="secondary-outline"
           onClick={() => {
             trackBtnClick('Cancel');
@@ -190,7 +192,7 @@ const Withdraw = ({ vault, reset, dispatch }) => {
       <InfoContainer>
         <Info
           title={lang.action_sidebar.maximum_available_to_withdraw}
-          body={`${formatter(convertAmountToValue(collateralAvailableAmount), {
+          body={`${formatter(collateralAvailableValue, {
             precision: short
           })} USD`}
         />
