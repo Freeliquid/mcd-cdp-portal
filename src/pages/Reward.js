@@ -34,6 +34,7 @@ import { watch } from 'hooks/useObservable';
 import useEmergencyShutdown from 'hooks/useEmergencyShutdown';
 import { NotificationList, Routes, SAFETY_LEVELS } from 'utils/constants';
 import { FilledButton } from 'components/Marketing';
+import { distanceInWordsToNow } from 'date-fns'
 
 import { decimalRules } from '../styles/constants';
 
@@ -163,11 +164,16 @@ function Reward({ viewedAddress }) {
   // console.log(rewardList);
   // console.log(rewardPairInfos);
 
+  const timeTillStart = distanceInWordsToNow(
+    new Date(rewardNextStartTime * 1000)
+  );
+
+
   const globalParams = [
     [
       lang.overview_page.reward_next_start_time,
       formatDate(new Date(rewardNextStartTime * 1000)),
-      ''
+      '('+timeTillStart+')'
     ],
     [
       lang.overview_page.reward_per_hour_hirisk,
