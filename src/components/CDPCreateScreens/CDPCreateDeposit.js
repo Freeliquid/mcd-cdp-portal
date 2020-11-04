@@ -29,6 +29,7 @@ function OpenCDPForm({
   dispatch
 }) {
   const { lang } = useLanguage();
+  const interfaceLocale = lang.getInterfaceLanguage();
   let {
     calculateMaxDai,
     liquidationRatio,
@@ -109,7 +110,10 @@ function OpenCDPForm({
         name="valueToLock"
         after={'USD'}
         type="number"
-        value={prettifyCurrency(convertAmountToValue(cdpParams.gemsToLock))}
+        value={prettifyCurrency(
+          interfaceLocale,
+          convertAmountToValue(cdpParams.gemsToLock)
+        )}
         onChange={handleValueChange}
         width={300}
         borderColor="#323B4F"
@@ -178,7 +182,6 @@ function OpenCDPForm({
             display="inline-block"
             ml="s"
             style={{ fontSize: '14px', color: getColor('whiteText') }}
-
           >
             {formatter(daiAvailableToGenerate)} USDFL
           </Text>
