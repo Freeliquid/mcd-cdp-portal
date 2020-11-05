@@ -71,20 +71,19 @@ const RewardInfo = ({ params, title, button }) => {
             justifyContent="space-between"
             alignItems="baseline"
             width="100%"
-            style={{padding: '7px 10px'}}
+            style={{ padding: '7px 10px' }}
           >
             <Text fontWeight="semibold" t="smallCaps" color="#A3B2CF">
               {param}
             </Text>
-            <Box style={{textAlign:'right', lineHeight: '15px'}}>
-              <Text
-                fontSize="s"
-                style={{ color: getColor('whiteText') }}
-              >
+            <Box style={{ textAlign: 'right', lineHeight: '15px' }}>
+              <Text fontSize="s" style={{ color: getColor('whiteText') }}>
                 {`${value}`} {`${denom}`}
               </Text>
               <br />
-              <Text style={{fontSize:'12px', color: getColor('greyText') }}>{`${info}`}</Text>
+              <Text
+                style={{ fontSize: '12px', color: getColor('greyText') }}
+              >{`${info}`}</Text>
             </Box>
           </Flex>
         ))}
@@ -178,7 +177,7 @@ function Reward({ viewedAddress }) {
       lang.overview_page.reward_next_start_time,
       formatDate(new Date(rewardNextStartTime * 1000)),
       '',
-      '(' + timeTillStart + ')',
+      timeTillStart
     ],
     [
       lang.overview_page.reward_per_hour_hirisk,

@@ -322,7 +322,7 @@ export default {
     total_collateral_locked: 'total collateral locked',
     reward_per_hour_hirisk: 'reward per hour for FL/USDFL pool',
     reward_per_hour_lowrisk: 'reward per hour for stable pool',
-    reward_epoch: 'EPOCH',
+    reward_epoch: 'epoch',
     reward_epoch_hirisk: 'reward epoch for FL/USDFL pool',
     reward_epoch_lowrisk: 'reward epoch for stable pool',
     reward_global_info: 'Global info',
