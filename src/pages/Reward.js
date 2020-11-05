@@ -51,7 +51,8 @@ const RewardInfo = ({ params, title, button }) => {
           borderColor: getColor('border'),
           paddingTop: '20px',
           paddingLeft: '20px',
-          paddingRight: '20px'
+          paddingRight: '20px',
+          paddingBottom: '20px'
         }}
       >
         <Flex
@@ -64,25 +65,26 @@ const RewardInfo = ({ params, title, button }) => {
             {title}
           </Text>
         </Flex>
-        {params.map(([param, value, denom], idx) => (
+        {params.map(([param, value, denom, info], idx) => (
           <Flex
             key={`system_${param}`}
             justifyContent="space-between"
             alignItems="baseline"
             width="100%"
-            py="xs"
-            px="sm"
+            style={{padding: '7px 10px'}}
           >
             <Text fontWeight="semibold" t="smallCaps" color="#A3B2CF">
               {param}
             </Text>
-            <Box>
+            <Box style={{textAlign:'right', lineHeight: '15px'}}>
               <Text
                 fontSize="s"
-                style={{ marginLeft: 15, color: getColor('greyText') }}
+                style={{ color: getColor('whiteText') }}
               >
                 {`${value}`} {`${denom}`}
               </Text>
+              <br />
+              <Text style={{fontSize:'12px', color: getColor('greyText') }}>{`${info}`}</Text>
             </Box>
           </Flex>
         ))}
@@ -95,7 +97,7 @@ const RewardInfo = ({ params, title, button }) => {
           >
             <Button
               className="btn btn"
-              style={{ margin: '5px auto', fontSize: '14px' }}
+              style={{ margin: '10px auto 0px', fontSize: '14px' }}
               disabled={button.disable}
               onClick={button.onClick}
             >
@@ -175,24 +177,25 @@ function Reward({ viewedAddress }) {
     [
       lang.overview_page.reward_next_start_time,
       formatDate(new Date(rewardNextStartTime * 1000)),
-      '(' + timeTillStart + ')'
+      '',
+      '(' + timeTillStart + ')',
     ],
     [
       lang.overview_page.reward_per_hour_hirisk,
       formatter(rewardPerHourHiRisk ? rewardPerHourHiRisk : 0.0, {
         precision: short
       }),
-      'FL'
+      'FL',
+      lang.overview_page.reward_epoch + ' ' + hiRiskEpoch
     ],
-    [lang.overview_page.reward_epoch_hirisk, hiRiskEpoch, ''],
     [
       lang.overview_page.reward_per_hour_lowrisk,
       formatter(rewardPerHourLowRisk ? rewardPerHourLowRisk : 0.0, {
         precision: short
       }),
-      'FL'
-    ],
-    [lang.overview_page.reward_epoch_lowrisk, lowRiskEpoch, '']
+      'FL',
+      lang.overview_page.reward_epoch + ' ' + lowRiskEpoch
+    ]
   ];
 
   const yourInfoParams = [
@@ -201,21 +204,24 @@ function Reward({ viewedAddress }) {
       formatter(earnedRewardHiRisk ? earnedRewardHiRisk : 0.0, {
         precision: short
       }),
-      'FL'
+      'FL',
+      ''
     ],
     [
       lang.overview_page.reward_earned_lowrisk,
       formatter(earnedRewardLowRisk ? earnedRewardLowRisk : 0.0, {
         precision: short
       }),
-      'FL'
+      'FL',
+      ''
     ],
     [
       lang.sidebar.reward_on_wallet,
       formatter(walletAmount ? walletAmount : 0.0, {
         precision: short
       }),
-      'FL'
+      'FL',
+      ''
     ]
   ];
 
@@ -316,7 +322,6 @@ function Reward({ viewedAddress }) {
               title={lang.overview_page.reward_global_info}
               button={null}
             />
-
             <RewardInfo
               params={yourInfoParams}
               title={lang.overview_page.reward_your_info}

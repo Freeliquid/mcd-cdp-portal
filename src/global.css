@@ -9,8 +9,28 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, Helvetica Neue,
   PT Root, Segoe UI, sans-serif;
   background-color: #0B0E15;
-  overflow-y: scroll;
   padding: 0;
+  margin: 0;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 2px;
+  display: block;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #0B0E15;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #131824;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #222B3F;
 }
 a {
   color: inherit;
