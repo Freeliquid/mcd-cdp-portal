@@ -283,8 +283,8 @@ const Footer = styled.footer`
     }
   }
   .social_icons svg{
-    width: 28px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     margin: 0px 5px;
     opacity: 0.6;
   }
