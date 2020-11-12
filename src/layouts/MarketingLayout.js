@@ -9,6 +9,10 @@ import { hot } from 'react-hot-loader/root';
 import { getColor, marketingTheme } from 'styles/theme';
 import { Box, Flex } from '@makerdao/ui-components-core';
 import { LogoLink, SeparatorDot, Hamburger } from 'components/Marketing';
+import { ReactComponent as Telegram } from 'images/social/telegram.svg';
+import { ReactComponent as Twitter } from 'images/social/twitter.svg';
+import { ReactComponent as Medium } from 'images/social/medium.svg';
+import { ReactComponent as Email } from 'images/social/email.svg';
 
 const MarketingLayoutStyle = styled.div`
   text-rendering: optimizeLegibility;
@@ -176,6 +180,10 @@ const Footer = styled.footer`
   ${centerContent};
   max-width: 1140px;
   padding: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row-reverse;
   letter-spacing: 0.3px;
   border-top: 1px solid ${getColor('border')};
   *,
@@ -183,7 +191,18 @@ const Footer = styled.footer`
   *:after {
     position: static;
   }
-
+  @media (max-width: 1024px) {
+    padding: 10px;
+  }
+  @media (max-width: 376px) {
+    flex-direction: column;
+    .navs {
+      margin-bottom: 20px;
+  }
+  .copyright {
+    padding-top: 15px;
+}
+  }
   .navs {
     display: inline-flex;
     align-items: center;
@@ -255,12 +274,22 @@ const Footer = styled.footer`
 
     @media (min-width: 375px) {
       font-size: 16px;
+      padding-top: 15px;
     }
 
     @media (min-width: ${centerFooterMaxWidth}) {
       text-align: left;
       padding-top: 0;
     }
+  }
+  .social_icons svg{
+    width: 28px;
+    height: 25px;
+    margin: 0px 5px;
+    opacity: 0.6;
+  }
+  .social_icons svg:hover{
+    opacity: 1
   }
 `;
 
@@ -369,6 +398,32 @@ const MarketingLayout = ({ showNavInFooter, children }) => {
             <Nav className="legal-nav">
               <Link href={`/${Routes.PRIVACY}`}>{lang.navbar.privacy}</Link>
             </Nav>
+          </div>
+          <div className="social_icons">
+              <Link
+              target="_blank"
+              href='https://t.me/freeliquidUSDL'
+              >
+                <Telegram />
+              </Link>
+              <Link
+              target="_blank" 
+              href='https://twitter.com/freeliquidUSDL'
+              >
+                <Twitter />
+              </Link>
+              <Link
+              target="_blank" 
+              href='#'
+              >
+                <Medium />
+              </Link>
+              <Link
+              target="_blank" 
+              href='mailto:support@freeliquid.info'
+              >
+                <Email />
+              </Link>
           </div>
           <div className="copyright">
             © {new Date().getFullYear()} Freeliquid.io
