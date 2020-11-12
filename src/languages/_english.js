@@ -28,16 +28,16 @@ export default {
         'Borrow and Save using USDFL. Place orders on the marketplace using Trade, generate USDFL, a stablecoin pegged to 1 USD, on Borrow and earn savings on your USDFL using Save. All on Freeliquid.io.'
     },
     title:'Freeliquid',
-    usdl_title:'Use up to 90% of your pools funds',
-    usdl_desc:'Freeliquid developed USDFL token — as long as your own liquidity is provided for you passive earnings',
+    usdl_title:'Get funding up to 90% of your liquidity pool size',
+    usdl_desc:'Lock liquidity pools with zero fees and receive loans in USDFL stablecoin',
     get_start:'Get started',
     play_video:'Play video',
-    block1_text:'Freeliquid makes it easy to receive USD stablecoins without any fees by collateralizing pools in DAI, USDT, USDC, USDN',
+    block1_text:'Freeliquid makes it easy to receive USD stablecoins without any fees by collateralizing pools in DAI, USDT, USDC, USDN.',
     block1_text2:'USDFL is a fully decentralized, censorship-resistant stablecoin available to any liquidity provider',
-    block3_title:'USDFL providing even greater financial freedom',
-    block3_text:'A USD stablecoin which is fully under your control. Get USDFL instantly and on your terms.',
-    block4_title:'FL - decentralized governance',
-    block4_text:'The distribution of USDFL is provided by smart contracts. The process is governed by the decentralized community of FL token holders.',
+    block3_title:'USDFL - providing even greater financial freedom',
+    block3_text:'A price-stable currency which is fully under your control. Get USDFL instantly and on your terms.',
+    block4_title:'FL - an instrument for decentralized governance',
+    block4_text:'The issuance of USDFL is provided by smart contracts. The process is governed by the decentralized community of FL token holders.',
     block5_title:'Community',
     block5_text:'Join us on social media to learn more about Freeliquid, connect with the team, and share your experience with other community members.',
     headline: 'Borrow and save using USDFL',
@@ -113,10 +113,10 @@ export default {
         "Lock your liquidity pools as collateral to generate USDFL, a decentralized stablecoin soft-pegged to 1 USD."
     },
     page_name: 'Freeliquid Borrow',
-    headline: 'Extra assets for work',
+    headline: 'Get extra assets for trading',
     subheadline:
       "Vaults make it easy to utilize your collateral by generating USDFL against it. Realize liquidity through a vault and ensure you don't lose long exposure to your collateral.",
-    connect_to_start: 'To open or manage a Vault, connect a crypto wallet.',
+    connect_to_start: 'Make your liquidity pools work for you, while keeping the original profits from them.',
     wbtc_notice: 'Bitcoin can now be used to open a Vault and generate USDFL.',
     quotes_block: {
       title: 'Maximize your opportunity',
@@ -149,17 +149,14 @@ export default {
     questions: {
       question1: 'What assets can I use as collateral?',
       answer1:
-        'Currently, Freeliquid Borrow supports Uniswap and Mooniswap pools: USDT/USDC, USDT/USDN, USDT/DAI, USDC/USDN, USDC/DAI, USDN/DAI. There are plans for more types of collateral.',
+        'Currently, Freeliquid Borrow supports following Uniswap pools: USDT/USDC, USDT/USDN, USDT/DAI, USDC/USDN, USDC/DAI, USDN/DAI. More types of collateral will be added in the future.',
       question2: 'How much does it cost?',
       answer2:
-        'The costs of generating USDFL against collateral varies depending on the collateral, and the risk profile. There are also other fees associated with the Freeliquid Protocol, including a Liquidation Penalty added in the event of a liquidation and each the user will have to pay Gas Fees with each transaction submitted.',
+        'The cost of generating USDFL depends on the collateral and the risk profile. As usual, each user also has to pay the gas fees when interacting with Freeliquid.',
       question3:
-        "What if I don't have a supported collateral, how can I get USDFL?",
+        "How can I get USDFL if my collateral is not supported?",
       answer3:
-        "If you don't have any of the supported collateral types, then you cannot use Freeliquid Borrow to generate USDFL. You can still get USDFL, but you would need to use an exchange to trade your collateral for USDFL. You can check Freeliquid Trade which supports more collateral types.",
-      question5: 'Do the rates and fees change, and if so how often?',
-      answer5:
-        "Yes, the fees, including Stability Fees and Liquidation Penalties are set by Maker Governance. These can be changed at any time due to continuous governance nature of the Maker Protocol. You can see more about Governance of the Maker Protocol at vote.makerdao.com. For Gas Fee's, these are determined by the activity on the Ethereum Network. In most cases, you have the option to set your Gas Fee, but if the network is busy, you will have to pay more for your transactions to go through in a timely manner.",
+        "To generate USDFL by using Freeliquid Borrow, you must provide a collateral that is supported. However, you can always buy USDFL on decentralized exchanges (i.e., Uniswap), where liquidity for respective pairs will be provided.",
       bottom_link1: 'Full list of Freeliquid Borrow FAQs →',
       bottom_link2: 'Glossary of terms'
     }
@@ -194,7 +191,7 @@ export default {
     },
     heading: 'Borrow Markets',
     subheading:
-      'The parameters and rates shown are subject to change at any time, even after a Vault has been opened. Keep an eye out for system updates and manage your Vault accordingly.',
+      'The parameters and rates shown below can change after community approval only. Please keep yourself informed about the latest system updates and manage your Vault accordingly.',
     min_col_ratio: 'Min collateral ratio'
   },
   save_landing: {
@@ -229,14 +226,14 @@ export default {
       'The above figure assumes an average USD Savings Rate of {dsr}%',
     feature1_heading: 'Smart version of money',
     feature1_content:
-      'Freeliquid - gives you ability to manage your assets at any time, in any place convenient for you, with a completely decentralized system for managing your funds.',
-    feature2_heading: 'Avoiding volatility with stablecoins',
+      'Freeliquid gives you ability to manage your assets at any time, in any place convenient for you, with a completely decentralized system for managing your funds.',
+    feature2_heading: 'Avoid volatility by using stablecoins',
     feature2_content:
       'The idea behind USDFL is to create a stablecoin backed by cryptoassets that are much more stable in price than ether. This will allow us to reduce the associated risks and avoid fluctuations in the price of our token.',
-    feature3_heading: 'Honest and transparent rate',
+    feature3_heading: 'Trusted and transparent rate',
     feature3_content:
       'The USDFL Savings Rate is governed by FL holders and is set based on the supply and demand of USDFL on exchanges',
-    feature4_heading: 'Secure from the ground up',
+    feature4_heading: 'Total security',
     feature4_content:
       'Freeliquid regularly undergoes security audits and checks. Built by the developers of the Freeliquid protocol.',
     questions: {
