@@ -79,7 +79,7 @@ const Withdraw = ({ vault, reset }) => {
   const undercollateralized =
     value && greaterThan(value, collateralAvailableValue);
 
-  const setMax = () => setAmount(collateralAvailableValue);
+  const setMax = () => setAmount(formatter(collateralAvailableValue));
 
   const currency = getCurrency({ ilk: vaultType });
 
