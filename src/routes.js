@@ -8,13 +8,11 @@ import MarketingLayout from './layouts/MarketingLayout';
 import Landing from 'pages/Landing';
 import Overview from 'pages/Overview';
 import Borrow from 'pages/Borrow';
-import BorrowWBTCLanding from 'pages/BorrowWBTCLanding';
-import BorrowMarkets from 'pages/BorrowMarkets';
 import Save from 'pages/Save';
 import Reward from 'pages/Reward';
 import SaveOverview from 'pages/SaveOverview';
 import Privacy from 'pages/Privacy';
-import Terms from 'pages/Terms';
+import Whitepaper from 'pages/Whitepaper';
 import CDPDisplay from 'components/CDPDisplay';
 import modals, { templates } from 'components/Modals';
 import { ModalProvider } from 'providers/ModalProvider';
@@ -118,18 +116,6 @@ export default mount({
     })
   ),
 
-  [`/${Routes.BORROW}/btc`]: compose(
-    withView(dappProvidersView),
-    withView(marketingLayoutView),
-    withView(() => <BorrowWBTCLanding />)
-  ),
-
-  [`/${Routes.BORROW}/markets`]: compose(
-    withView(dappProvidersView),
-    withView(marketingLayoutView),
-    withView(() => <BorrowMarkets />)
-  ),
-
   [`/${Routes.SAVE}`]: compose(
     withView(dappProvidersView),
     withView(marketingLayoutView),
@@ -162,9 +148,9 @@ export default mount({
     view: <Privacy />
   })),
 
-  [`/${Routes.TERMS}`]: route(() => ({
-    title: 'Freeliquid - Terms of Service',
-    view: <Terms />
+  [`/${Routes.WHITEPAPER}`]: route(() => ({
+    title: 'Freeliquid - Whitepaper',
+    view: <Whitepaper />
   }))
 });
 

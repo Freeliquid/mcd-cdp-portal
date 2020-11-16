@@ -357,7 +357,8 @@ export default {
     governance: 'Governance',
     privacy: 'Privacy',
     terms: 'Terms',
-    blog: 'Blog'
+    blog: 'Blog',
+    whitepaper: 'White paper'
   },
   sidebar: {
     wallet_balances: 'Wallet Pools Balances',

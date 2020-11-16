@@ -1,3 +1,4 @@
+
 export const SAFETY_LEVELS = {
   DANGER: 'danger',
   WARNING: 'warning',
@@ -28,7 +29,8 @@ export const Routes = {
   SAVE: 'save',
   REWARD: 'reward',
   PRIVACY: 'privacy',
-  TERMS: 'terms'
+  TERMS: 'terms',
+  WHITEPAPER: 'whitepaper'
 };
 
 export const Toggles = {

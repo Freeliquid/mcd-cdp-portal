@@ -127,7 +127,7 @@ const Header = styled.header`
   @media (max-width: 1139px) {
     padding: 20px 15px;
   }
-  
+
   @media (min-width: ${props => props.theme.breakpoints.m}) {
     margin-top: 0px;
 
@@ -198,10 +198,10 @@ const Footer = styled.footer`
     flex-direction: column;
     .navs {
       margin-bottom: 20px;
-  }
-  .copyright {
-    padding-top: 15px;
-}
+    }
+    .copyright {
+      padding-top: 15px;
+    }
   }
   .navs {
     display: inline-flex;
@@ -282,14 +282,14 @@ const Footer = styled.footer`
       padding-top: 0;
     }
   }
-  .social_icons svg{
+  .social_icons svg {
     width: 20px;
     height: 20px;
     margin: 0px 5px;
     opacity: 0.6;
   }
-  .social_icons svg:hover{
-    opacity: 1
+  .social_icons svg:hover {
+    opacity: 1;
   }
 `;
 
@@ -396,34 +396,23 @@ const MarketingLayout = ({ showNavInFooter, children }) => {
               </Flex>
             )}
             <Nav className="legal-nav">
-              <Link href={`/${Routes.PRIVACY}`}>{lang.navbar.privacy}</Link>
+              <Link href={`/${Routes.WHITEPAPER}`}>{lang.navbar.whitepaper}</Link>
+              <Link href={`/${Routes.PRIVACY}`}>{lang.navbar.privacy}</Link> 
             </Nav>
           </div>
           <div className="social_icons">
-              <Link
-              target="_blank"
-              href='https://t.me/freeliquidUSDL'
-              >
-                <Telegram />
-              </Link>
-              <Link
-              target="_blank" 
-              href='https://twitter.com/freeliquidUSDL'
-              >
-                <Twitter />
-              </Link>
-              <Link
-              target="_blank" 
-              href='#'
-              >
-                <Medium />
-              </Link>
-              <Link
-              target="_blank" 
-              href='mailto:support@freeliquid.info'
-              >
-                <Email />
-              </Link>
+            <Link target="_blank" href="https://t.me/freeliquidUSDL">
+              <Telegram />
+            </Link>
+            <Link target="_blank" href="https://twitter.com/freeliquidUSDL">
+              <Twitter />
+            </Link>
+            <Link target="_blank" href="#">
+              <Medium />
+            </Link>
+            <Link target="_blank" href="mailto:support@freeliquid.info">
+              <Email />
+            </Link>
           </div>
           <div className="copyright">
             © {new Date().getFullYear()} Freeliquid.io
