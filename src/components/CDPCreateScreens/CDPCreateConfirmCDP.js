@@ -133,13 +133,14 @@ const CDPCreateConfirmSummary = ({
           gridRowGap="s"
           gridTemplateColumns="auto auto"
         >
+          <label>
           <Checkbox
             checked={hasReadTOS}
             onChange={() => {
               trackBtnClick('Terms', { isFirstVault });
               setHasReadTOS(state => !state);
             }}
-          />
+            />
           <Text style={{ color: getColor('greyText') }} ml="s">
             {lang.formatString(
               lang.terms_of_service_text,
@@ -148,6 +149,9 @@ const CDPCreateConfirmSummary = ({
               </Link>
             )}
           </Text>
+          </label>
+          <br />
+          <label>
           <Checkbox
             checked={hasUnderstoodSF}
             onChange={() => setHasUnderstoodSF(state => !state)}
@@ -155,6 +159,7 @@ const CDPCreateConfirmSummary = ({
           <Text style={{ color: getColor('greyText') }} ml="s">
             {lang.cdp_create.has_understood_stability_fee}
           </Text>
+          </label>
         </Grid>
       </Card>
       <ScreenFooter
