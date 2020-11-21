@@ -33,10 +33,9 @@ import useVaults from 'hooks/useVaults';
 import { watch } from 'hooks/useObservable';
 import useEmergencyShutdown from 'hooks/useEmergencyShutdown';
 import { NotificationList, Routes, SAFETY_LEVELS } from 'utils/constants';
-import { FilledButton } from 'components/Marketing';
-import { distanceInWordsToNow } from 'date-fns';
 
 import { decimalRules } from '../styles/constants';
+import TimeAgo from 'timeago-react';
 
 const { long, medium, short } = decimalRules;
 
@@ -65,7 +64,7 @@ const RewardInfo = ({ params, title, button }) => {
             {title}
           </Text>
         </Flex>
-        {params.map(([param, value, denom, info], idx) => (
+        {params.map(([param, value, denom, info, timer], idx) => (
           <Flex
             key={`system_${param}`}
             justifyContent="space-between"
@@ -84,6 +83,13 @@ const RewardInfo = ({ params, title, button }) => {
               <Text
                 style={{ fontSize: '12px', color: getColor('greyText') }}
               >{`${info}`}</Text>
+              <Text
+                style={{ fontSize: '12px', color: getColor('greyText') }}
+              > {
+                timer === null? null: <TimeAgo datetime={timer} live={true}/>
+              }
+                </Text> 
+                
             </Box>
           </Flex>
         ))}
@@ -166,18 +172,15 @@ function Reward({ viewedAddress }) {
 
   // console.log("rewardPairInfos");
   // console.log(rewardList);
-  // console.log(rewardPairInfos);
-
-  const timeTillStart = distanceInWordsToNow(
-    new Date(rewardNextStartTime * 1000)
-  );
+ 
 
   const globalParams = [
     [
       lang.overview_page.reward_next_start_time,
       formatDate(new Date(rewardNextStartTime * 1000)),
       '',
-      timeTillStart
+      '',
+      formatDate(new Date(rewardNextStartTime * 1000)),
     ],
     [
       lang.overview_page.reward_per_hour_hirisk,
@@ -185,7 +188,8 @@ function Reward({ viewedAddress }) {
         precision: short
       }),
       'FL',
-      lang.overview_page.reward_epoch + ' ' + hiRiskEpoch
+      lang.overview_page.reward_epoch + ' ' + hiRiskEpoch,
+      null
     ],
     [
       lang.overview_page.reward_per_hour_lowrisk,
@@ -193,7 +197,8 @@ function Reward({ viewedAddress }) {
         precision: short
       }),
       'FL',
-      lang.overview_page.reward_epoch + ' ' + lowRiskEpoch
+      lang.overview_page.reward_epoch + ' ' + lowRiskEpoch,
+      null
     ]
   ];
 
@@ -204,7 +209,8 @@ function Reward({ viewedAddress }) {
         precision: short
       }),
       'FL',
-      ''
+      '',
+      null
     ],
     [
       lang.overview_page.reward_earned_lowrisk,
@@ -212,7 +218,8 @@ function Reward({ viewedAddress }) {
         precision: short
       }),
       'FL',
-      ''
+      '',
+      null
     ],
     [
       lang.sidebar.reward_on_wallet,
@@ -220,7 +227,8 @@ function Reward({ viewedAddress }) {
         precision: short
       }),
       'FL',
-      ''
+      '',
+      null
     ]
   ];
 
