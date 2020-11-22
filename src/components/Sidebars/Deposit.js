@@ -21,6 +21,7 @@ import ProxyAllowanceToggle from 'components/ProxyAllowanceToggle';
 import BigNumber from 'bignumber.js';
 import { decimalRules } from '../../styles/constants';
 import { getColor } from '../../styles/theme';
+import { watch } from 'hooks/useObservable';
 const { short } = decimalRules;
 
 const Deposit = ({ vault, reset }) => {
@@ -28,6 +29,7 @@ const Deposit = ({ vault, reset }) => {
   const { lang } = useLanguage();
   const { maker } = useMaker();
   const { hasProxy } = useProxy();
+  const { account } = useMaker();
 
   let {
     vaultType,
@@ -60,11 +62,23 @@ const Deposit = ({ vault, reset }) => {
     return r;
   }
 
+  const userVaultsList = watch.userVaultsList(account?.address);
+  const userVaultIds = userVaultsList
+    ? userVaultsList.map(({ vaultId }) => vaultId)
+    : [];
+
+  function fairDistribAllowToLockValue(addValue) {
+    const ids = userVaultIds;
+    const curTime = Math.round(new Date().getTime() / 1000);
+    const r = watch.fairDistribAllowToLockValue(ids, addValue, curTime);
+    if (r == undefined) return true;
+    return r;
+  }
 
   const depositBalance = convertAmountToValue(gemBalance);
   console.log('deposit', depositBalance);
 
-  const [value, ,onAmountChange, amountErrors] = useValidatedInput(
+  const [value, , onAmountChange, amountErrors] = useValidatedInput(
     '',
     {
       maxFloat: depositBalance,
@@ -81,11 +95,20 @@ const Deposit = ({ vault, reset }) => {
         lang.formatString(lang.action_sidebar.invalid_allowance, symbol)
     }
   );
-  
+
   const valueToDeposit = value || BigNumber(0);
   const amountToDeposit = convertValueToAmount(valueToDeposit);
 
-  const valid = value && !amountErrors && hasAllowance && hasProxy;
+  const fairDistribError = fairDistribAllowToLockValue(valueToDeposit)
+    ? null
+    : lang.cdp_create.fair_distrib_not_allow;
+
+  const valid =
+    value &&
+    fairDistribError == null &&
+    !amountErrors &&
+    hasAllowance &&
+    hasProxy;
 
   const deposit = () => {
     const currency = getCurrency({ ilk: vaultType });
@@ -121,7 +144,7 @@ const Deposit = ({ vault, reset }) => {
             value={value}
             onChange={onAmountChange}
             placeholder={`0.00 USD`}
-            failureMessage={amountErrors}
+            failureMessage={amountErrors || fairDistribError}
             data-testid="deposit-input"
           />
         </div>
@@ -157,7 +180,7 @@ const Deposit = ({ vault, reset }) => {
           title={lang.action_sidebar.current_account_balance}
           body={`${formatter(depositBalance)} USD`}
         />
-       <Info
+        <Info
           title={lang.action_sidebar.new_collateralization_ratio}
           body={formatCollateralizationRatio(collateralizationRatio)}
         />

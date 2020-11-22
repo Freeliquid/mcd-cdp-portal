@@ -446,7 +446,7 @@ export default {
     post_confirmed_title: 'Your Vault has been created',
     post_confirmed_text: 'You can safely leave this page.',
     insufficient_ilk_balance: 'Insufficient {0} balance',
-    fair_distrib_not_allow: 'Fair distribution rule is not allowed to lock more',
+    fair_distrib_not_allow: 'Fair distribution rule is not allowed to lock such value',
     has_understood_stability_fee:
       'I understand that the Stability Fee is not fixed and is likely to change over time',
     collateralization_warning:
