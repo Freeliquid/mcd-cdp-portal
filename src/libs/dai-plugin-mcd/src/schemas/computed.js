@@ -680,7 +680,7 @@ export const fairDistribAllowToLockValue = {
         locked.toNumber(),
         maxValue.toNumber()
       );
-      return BigNumber(addValue).plus(locked) < maxValue - 500;
+      return BigNumber(addValue).plus(locked) < maxValue - 100;
     }
   })
 };
