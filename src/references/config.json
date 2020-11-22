@@ -33,7 +33,7 @@
   },
   "defaultNetwork": "42",
   "exTestchainApiUrl": "http://localhost:4000/chain",
-  "showWalletTokens": ["USDFL", "USDTUSDC", "USDCDAI", "USDTDAI", "USDNDAI", "USDTUSDN", "USDCUSDN"],
+  "showWalletTokens": ["USDFL", "USDTUSDC", "USDCDAI", "USDTDAI", "USDNDAI", "USDTUSDN", "USDCUSDN", "TUSDUSDC"],
   "trackingPages": {
     "Overview": "Overview",
     "CDP": "Dashboard",

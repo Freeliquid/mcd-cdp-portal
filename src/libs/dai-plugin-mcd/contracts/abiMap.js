@@ -51,6 +51,7 @@ module.exports = {
   USDTUSDN: require('./abis/DSToken.json'),
   USDNDAI: require('./abis/DSToken.json'),
   USDCUSDN: require('./abis/DSToken.json'),
+  TUSDUSDC: require('./abis/DSToken.json'),
   FL_REWARDER: require('./abis/StakingRewards.json'),
   FL_REWARDER_GOV_USD: require('./abis/StakingRewardsDecay.json'),
   FL_REWARDER_STABLES: require('./abis/StakingRewardsDecay.json'),

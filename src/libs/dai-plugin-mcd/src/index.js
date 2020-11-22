@@ -75,6 +75,7 @@ export const USDCDAI = createCurrency('USDCDAI');
 export const USDTUSDN = createCurrency('USDTUSDN');
 export const USDNDAI = createCurrency('USDNDAI');
 export const USDCUSDN = createCurrency('USDCUSDN');
+export const TUSDUSDC = createCurrency('TUSDUSDC');
 
 export const REP = createCurrency('REP');
 export const ZRX = createCurrency('ZRX');
@@ -96,7 +97,8 @@ export const defaultCdpTypes = [
   { currency: USDCDAI, ilk: 'USDCDAI-A' },
   { currency: USDNDAI, ilk: 'USDNDAI-A' },
   { currency: USDTUSDN, ilk: 'USDTUSDN-A' },
-  { currency: USDCUSDN, ilk: 'USDCUSDN-A' }
+  { currency: USDCUSDN, ilk: 'USDCUSDN-A' },
+  { currency: TUSDUSDC, ilk: 'TUSDUSDC-A' }
 ];
 
 export const SAI = createCurrency('SAI');

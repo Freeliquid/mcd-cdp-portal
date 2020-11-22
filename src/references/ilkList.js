@@ -4,7 +4,8 @@ import {
   USDCDAI,
   USDTUSDN,
   USDNDAI,
-  USDCUSDN
+  USDCUSDN,
+  TUSDUSDC
 
 } from '../libs/dai-plugin-mcd/src/index.js';
 
@@ -55,6 +56,14 @@ export default [
     key: 'USDCUSDN-A', // the actual ilk name used in the vat
     gem: 'USDCUSDN', // the actual asset that's being locked
     currency: USDCUSDN, // the associated dai.js currency type
+    networks: ['kovan', 'mainnet', 'testnet', 'rinkeby', 'ropsten', 'goerli']
+  },
+  {
+    slug: 'tusdusdc-a', // URL param
+    symbol: 'TUSDUSDC-A', // how it's displayed in the UI
+    key: 'TUSDUSDC-A', // the actual ilk name used in the vat
+    gem: 'TUSDUSDC', // the actual asset that's being locked
+    currency: TUSDUSDC, // the associated dai.js currency type
     networks: ['kovan', 'mainnet', 'testnet', 'rinkeby', 'ropsten', 'goerli']
   }
 ];
