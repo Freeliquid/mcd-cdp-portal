@@ -25,7 +25,9 @@ function OpenCDPForm({
   collateralizationRatio,
   handleInputChange,
   ilkData,
-  dispatch
+  dispatch,
+  fairDistribAllow,
+  convertAmountToValue
 }) {
   const { lang } = useLanguage();
   let {
@@ -37,15 +39,6 @@ function OpenCDPForm({
     collateralAmountByValue
   } = ilkData;
   collateralDebtAvailable = collateralDebtAvailable?.toBigNumber();
-
-  function convertAmountToValue(amount) {
-    if (amount == 0) return BigNumber(0);
-    const r = collateralValueForAmount(BigNumber(amount)).toFixed(3);
-
-    if (r == undefined) return BigNumber(0);
-
-    return r;
-  }
 
   function convertValueToAmount(value) {
     if (value == 0) return BigNumber(0);
@@ -74,6 +67,7 @@ function OpenCDPForm({
     selectedIlk.userGemBalance,
     cdpParams.gemsToLock
   );
+
   const userCanDrawDaiAmount = daiAvailable?.gte(
     BigNumber(cdpParams.daiToDraw === '' ? '0' : cdpParams.daiToDraw)
   );
@@ -116,7 +110,9 @@ function OpenCDPForm({
             ? hasSufficientAllowance(
                 cdpParams.gemsToLock === '' ? 0 : cdpParams.gemsToLock
               )
-              ? null
+              ? fairDistribAllow
+                ? null
+                : lang.cdp_create.fair_distrib_not_allow
               : lang.formatString(
                   lang.action_sidebar.invalid_allowance,
                   selectedIlk.gem
@@ -309,7 +305,8 @@ const CDPCreateDeposit = ({
   hasSufficientAllowance,
   hasAllowance,
   collateralTypesData,
-  dispatch
+  dispatch,
+  fairDistribAllowToLockValue
 }) => {
   const { lang } = useLanguage();
   const { trackBtnClick } = useAnalytics('DepositGenerate', 'VaultCreate');
@@ -319,13 +316,26 @@ const CDPCreateDeposit = ({
   const ilkData = collateralTypesData.find(
     x => x.symbol === selectedIlk.symbol
   );
-  const { calculateMaxDai, debtFloor } = ilkData;
+  const { calculateMaxDai, debtFloor, collateralValueForAmount } = ilkData;
   const daiAvailable = calculateMaxDai(BigNumber(cdpParams.gemsToLock || '0'));
 
   const collateralizationRatio = ilkData.calculateCollateralizationRatio(
     BigNumber(cdpParams.gemsToLock || '0'),
     USDFL(cdpParams.daiToDraw || '0')
   );
+
+  function convertAmountToValue(amount) {
+    if (amount == 0) return BigNumber(0);
+    const r = collateralValueForAmount(BigNumber(amount)).toFixed(3);
+
+    if (r) return BigNumber(r);
+
+    return BigNumber(0);
+  }
+
+  const valueToLock = convertAmountToValue(cdpParams.gemsToLock);
+
+  const fairDistribAllow = fairDistribAllowToLockValue(valueToLock);
 
   function handleInputChange({ target }) {
     if (parseFloat(target.value) < 0) return;
@@ -341,7 +351,9 @@ const CDPCreateDeposit = ({
       selectedIlk.userGemBalance,
       debtFloor,
       daiAvailable
-    ) && hasSufficientAllowance(cdpParams.gemsToLock);
+    ) &&
+    hasSufficientAllowance(cdpParams.gemsToLock) &&
+    fairDistribAllow;
 
   return (
     <Box
@@ -378,6 +390,8 @@ const CDPCreateDeposit = ({
             ilkData={ilkData}
             collateralizationRatio={collateralizationRatio}
             dispatch={dispatch}
+            fairDistribAllow={fairDistribAllow}
+            convertAmountToValue={convertAmountToValue}
           />
         </Card>
         <Card

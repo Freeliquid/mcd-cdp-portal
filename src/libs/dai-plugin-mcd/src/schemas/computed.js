@@ -73,7 +73,11 @@ import {
   REWARD_PAIRINFO_LOCKEDVALUE,
   REWARD_AMOUNT,
   REWARD_GOV_TOKEN_CONTRACT,
-  REWARD_REWARD_CONTRACT
+  REWARD_REWARD_CONTRACT,
+  USER_VAULTS_LOCKED_VALUE,
+  REWARD_FAIR_DISTRIBUTION_MAX_VALUE,
+  REWARD_FAIR_DISTRIBUTION_TIME,
+  REWARD_START_TIME
 } from './_constants';
 import { validateAddress, validateVaultId } from './_validators';
 
@@ -634,6 +638,53 @@ export const userVaultsData = {
   })
 };
 
+export const userVaultsLockedValue = {
+  generate: ids => ({
+    dependencies: ids.map(id => [VAULT, id]),
+    computed: (...vaults) => {
+      return vaults.reduce(
+        (acc, { collateralValue }) =>
+          collateralValue ? acc.plus(collateralValue.toBigNumber()) : acc,
+        BigNumber(0)
+      );
+    }
+  })
+};
+
+export const fairDistribAllowToLockValue = {
+  generate: (ids, addValue, curTime) => ({
+    dependencies: () =>
+      [
+        [REWARD_FAIR_DISTRIBUTION_MAX_VALUE],
+        [REWARD_FAIR_DISTRIBUTION_TIME],
+        [REWARD_START_TIME]
+      ].concat(ids.map(id => [VAULT, id])),
+    computed: (maxValue, duration, startTime, ...vaults) => {
+      console.log(
+        'fairDistribAllowToLockValue time',
+        curTime,
+        duration.plus(startTime).toNumber(),
+        duration.toNumber(),
+        startTime.toNumber()
+      );
+      if (BigNumber(curTime) > duration.plus(startTime)) return true;
+
+      const locked = vaults.reduce(
+        (acc, { collateralValue }) =>
+          collateralValue ? acc.plus(collateralValue.toBigNumber()) : acc,
+        BigNumber(0)
+      );
+      console.log(
+        'fairDistribAllowToLockValue',
+        BigNumber(addValue).toNumber(),
+        locked.toNumber(),
+        maxValue.toNumber()
+      );
+      return BigNumber(addValue).plus(locked) < maxValue - 500;
+    }
+  })
+};
+
 export const collateralDebt = {
   generate: collateralTypeName => ({
     dependencies: [
@@ -787,5 +838,7 @@ export default {
   walletRewardAmount,
   walletRewardPairInfo,
   walletRewardPairInfos,
-  rewardContract
+  rewardContract,
+  userVaultsLockedValue,
+  fairDistribAllowToLockValue
 };

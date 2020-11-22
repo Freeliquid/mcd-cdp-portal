@@ -16,7 +16,9 @@ import {
   REWARD_PAIRINFO_LOCKEDVALUE,
   REWARD_PAIRINFO_AVAILVALUE,
   REWARD_CURRENT_EPOCH,
-  REWARD_PAIRINFO_REWARDPERHOUR
+  REWARD_PAIRINFO_REWARDPERHOUR,
+  REWARD_FAIR_DISTRIBUTION_MAX_VALUE,
+  REWARD_FAIR_DISTRIBUTION_TIME
 } from './_constants';
 
 export const rewardAmount = {
@@ -68,6 +70,24 @@ export const rewardStartTime = {
   returns: [[REWARD_START_TIME, v => BigNumber(v)]]
 };
 
+export const rewardFairDistributionMaxValue = {
+  generate: () => ({
+    id: `FL_REWARD_FAIR_DISTRIBUTION_MAX_VALUE`,
+    contract: 'FL_REWARDER',
+    call: ['fairDistributionMaxValue()(uint256)']
+  }),
+  returns: [[REWARD_FAIR_DISTRIBUTION_MAX_VALUE, fromWei]]
+};
+
+export const rewardFairDistributionTime = {
+  generate: () => ({
+    id: `FL_REWARD_FAIR_DISTRIBUTION_TIME`,
+    contract: 'FL_REWARDER',
+    call: ['fairDistributionTime()(uint256)']
+  }),
+  returns: [[REWARD_FAIR_DISTRIBUTION_TIME, v => BigNumber(v)]]
+};
+
 export const rewardFirstStageDuration = {
   generate: () => ({
     id: `FL_REWARD_FIRST_STAGE_DURATION`,
@@ -86,17 +106,14 @@ export const rewardEarnedEx = {
   returns: [[REWARD_EARNED_EX, fromWei]]
 };
 
-
 export const rewardCurrentEpoch = {
-  generate: (hiRisk) => ({
+  generate: hiRisk => ({
     id: `REWARD_CURRENT_EPOCH(${hiRisk})`,
     contract: hiRisk ? 'FL_REWARDER_GOV_USD' : 'FL_REWARDER_STABLES',
     call: ['calcCurrentEpoch()(uint256)']
   }),
   returns: [[REWARD_CURRENT_EPOCH]]
 };
-
-
 
 export default {
   rewardAmount,
@@ -105,5 +122,7 @@ export default {
   rewardStartTime,
   rewardEarnedEx,
   rewardFirstStageDuration,
-  rewardCurrentEpoch
+  rewardCurrentEpoch,
+  rewardFairDistributionMaxValue,
+  rewardFairDistributionTime
 };

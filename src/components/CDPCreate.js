@@ -82,14 +82,23 @@ function CDPCreate({ onClose }) {
   const { cdpTypesList } = useCdpTypes();
   const collateralTypesData = watch.collateralTypesData(cdpTypesList);
 
-  console.log("collateralTypesData");
+  const userVaultsList = watch.userVaultsList(account?.address);
+  const userVaultIds = userVaultsList
+    ? userVaultsList.map(({ vaultId }) => vaultId)
+    : [];
+
+  function fairDistribAllowToLockValue(addValue) {
+    const ids = userVaultIds;
+    const curTime = Math.round(new Date().getTime() / 1000);
+    const r = watch.fairDistribAllowToLockValue(ids, addValue, curTime);
+    if (r == undefined) return true;
+    return r;
+  }
 
   console.log(watch.collateralTypesData);
 
   console.log(cdpTypesList);
   console.log(collateralTypesData);
-
-  console.log("collateralTypesData---");
 
   const { hasAllowance, hasSufficientAllowance } = useTokenAllowance(
     selectedIlk?.currency?.symbol
@@ -132,11 +141,12 @@ function CDPCreate({ onClose }) {
     proxyAddress,
     balances,
     collateralTypesData,
-    onClose
+    onClose,
+    fairDistribAllowToLockValue
   };
 
   return (
-    <StepperUI 
+    <StepperUI
       step={step}
       steps={screens.map(([title]) => title)}
       renderStepperHeader={() => <StepperHeader onClose={onClose} />}

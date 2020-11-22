@@ -114,3 +114,7 @@ export const REWARD_REWARD_CONTRACT = 'rewardContract';
 export const REWARD_TOKEN_ALLOWANCE_BY_ADDRESS = 'tokenAllowanceByAddress';
 export const REWARD_EARNED_EX = 'rewardEarnedEx';
 export const REWARD_CURRENT_EPOCH = 'rewardCurrentEpoch';
+export const REWARD_FAIR_DISTRIBUTION_MAX_VALUE =
+  'rewardFairDistributionMaxValue';
+export const REWARD_FAIR_DISTRIBUTION_TIME = 'rewardFairDistributionTime';
+export const USER_VAULTS_LOCKED_VALUE = 'userVaultsLockedValue';
