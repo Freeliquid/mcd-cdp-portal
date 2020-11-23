@@ -435,7 +435,7 @@ export default {
     // "deposit_form_field2_after": "Suggested:",
     deposit_form_field3_title: 'How much USDFL would you like to generate?',
     deposit_form_field3_text:
-      'Generate an amount that the liquidation ratio.',
+      'Please enter an amount that ensures a safe collateralization ratio.',
     // "deposit_form_field3_after1": "Max at target ratio",
     deposit_form_field3_after2: 'Max available to generate',
 
@@ -446,7 +446,7 @@ export default {
     post_confirmed_title: 'Your Vault has been created',
     post_confirmed_text: 'You can safely leave this page.',
     insufficient_ilk_balance: 'Insufficient {0} balance',
-    fair_distrib_not_allow: 'Fair distribution rule is not allowed to lock such value',
+    fair_distrib_not_allow: 'The total value exceeds the maximum Fair Distribution limit',
     has_understood_stability_fee:
       'I understand that the Stability Fee is not fixed and is likely to change over time',
     collateralization_warning:
