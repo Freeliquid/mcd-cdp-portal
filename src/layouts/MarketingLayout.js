@@ -78,13 +78,10 @@ const MainNav = ({ onLinkClicked, ...props }) => {
       >
         {lang.navbar.save}
       </Link>
-      <Link 
-      href={`/${Routes.WHITEPAPER}`}
-      activeStyle={{ color: getColor('whiteText'), fontWeight: 'bold' }}
-      onClick={() => onLinkClicked && onLinkClicked()}
-      >
-        {lang.navbar.whitepaper}
-        </Link>
+      <a
+      href="/wp/Freeliquid_WP_English_v6.pdf"
+      download=""
+      >{lang.navbar.whitepaper}</a>
     </MainNavStyle>
   );
 };
@@ -403,8 +400,12 @@ const MarketingLayout = ({ showNavInFooter, children }) => {
               </Flex>
             )}
             <Nav className="legal-nav">
-              <Link href={`/${Routes.WHITEPAPER}`}>{lang.navbar.whitepaper}</Link>
-              <Link href={`/${Routes.PRIVACY}`}>{lang.navbar.privacy}</Link> 
+            <a
+              href="/wp/Freeliquid_WP_English_v6.pdf"
+              download=""
+              >{lang.navbar.whitepaper}
+            </a>
+              <Link href={`/${Routes.PRIVACY}`}>{lang.navbar.privacy}</Link>
             </Nav>
           </div>
           <div className="social_icons">
