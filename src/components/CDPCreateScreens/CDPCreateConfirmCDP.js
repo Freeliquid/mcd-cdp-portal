@@ -69,14 +69,6 @@ const CDPCreateConfirmSummary = ({
       )}%`
     ],
     [
-      lang.liquidation_ratio,
-      `${formatter(liquidationRatio, { percentage: true })}%`
-    ],
-    [
-      lang.liquidation_penalty,
-      `${formatter(liquidationPenalty, { percentage: true })}%`
-    ],
-    [
       lang.stability_fee,
       `${formatter(annualStabilityFee, {
         percentage: true,

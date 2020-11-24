@@ -78,6 +78,13 @@ const MainNav = ({ onLinkClicked, ...props }) => {
       >
         {lang.navbar.save}
       </Link>
+      <Link 
+      href={`/${Routes.WHITEPAPER}`}
+      activeStyle={{ color: getColor('whiteText'), fontWeight: 'bold' }}
+      onClick={() => onLinkClicked && onLinkClicked()}
+      >
+        {lang.navbar.whitepaper}
+        </Link>
     </MainNavStyle>
   );
 };
@@ -401,10 +408,10 @@ const MarketingLayout = ({ showNavInFooter, children }) => {
             </Nav>
           </div>
           <div className="social_icons">
-            <Link target="_blank" href="https://t.me/freeliquidUSDL">
+            <Link target="_blank" href="https://t.me/freeliquidUSDFL">
               <Telegram />
             </Link>
-            <Link target="_blank" href="https://twitter.com/freeliquidUSDL">
+            <Link target="_blank" href="https://twitter.com/freeliquidUSDFL">
               <Twitter />
             </Link>
             <Link target="_blank" href="#">
