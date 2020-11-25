@@ -82,7 +82,7 @@ const Payback = ({ vault, reset }) => {
   // Don't enter more than the user's balance if there isn't enough to cover the debt.
   const maxPaybackAmount =
     debtValue && daiBalance && minimum(debtValue, daiBalance);
-  const setMax = () => setAmount(maxPaybackAmount.toString());
+  const setMax = () => setAmount(formatter(maxPaybackAmount, { precision: long }).toString());
 
   const payback = async () => {
     const cdpManager = maker.service('mcd:cdpManager');
