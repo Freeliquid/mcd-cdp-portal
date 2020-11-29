@@ -82,7 +82,8 @@ const Payback = ({ vault, reset }) => {
   // Don't enter more than the user's balance if there isn't enough to cover the debt.
   const maxPaybackAmount =
     debtValue && daiBalance && minimum(debtValue, daiBalance);
-  const setMax = () => setAmount(formatter(maxPaybackAmount, { precision: long }).toString());
+  const setMax = () =>
+    setAmount(maxPaybackAmount.toString());
 
   const payback = async () => {
     const cdpManager = maker.service('mcd:cdpManager');
@@ -123,32 +124,33 @@ const Payback = ({ vault, reset }) => {
           {lang.action_sidebar.payback_description}
         </Text>
         <div className="input_border">
-        <Input
-          style={{ color: getColor('whiteText') }}
-          type="number"
-          value={amount}
-          min="0"
-          onChange={onAmountChange}
-          placeholder="0.00 USDFL"
-          failureMessage={amountErrors}
-          data-testid="payback-input"
-          after={
-            <SetMax
-              onClick={() => {
-                setMax();
-                trackBtnClick('SetMax', {
-                  maxAmount: maxPaybackAmount.toString(),
-                  setMax: true
-                });
-              }}
-            />
-          }
-        />
+          <Input
+            style={{ color: getColor('whiteText') }}
+            type="number"
+            value={amount}
+            min="0"
+            onChange={onAmountChange}
+            placeholder="0.00 USDFL"
+            failureMessage={amountErrors}
+            data-testid="payback-input"
+            after={
+              <SetMax
+                onClick={() => {
+                  setMax();
+                  trackBtnClick('SetMax', {
+                    maxAmount: maxPaybackAmount.toString(),
+                    setMax: true
+                  });
+                }}
+              />
+            }
+          />
         </div>
       </Grid>
       <ProxyAllowanceToggle token="USDFL" trackBtnClick={trackBtnClick} />
       <Grid gridTemplateColumns="1fr 1fr" gridColumnGap="s">
-        <Button className="btn"
+        <Button
+          className="btn"
           disabled={!valid}
           onClick={() => {
             trackBtnClick('Confirm', {
@@ -160,7 +162,8 @@ const Payback = ({ vault, reset }) => {
         >
           {lang.actions.pay_back}
         </Button>
-        <Button className="btn"
+        <Button
+          className="btn"
           variant="secondary-outline"
           onClick={() => {
             trackBtnClick('Cancel');
