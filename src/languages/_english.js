@@ -1,7 +1,7 @@
 export default {
   cdp_page: {
     liquidation_price: 'Liquidation price',
-    liquidation_price_info:'The liquidation function will be available later if volatile tokens will be used for issuing USDFL.',
+    liquidation_price_info:'The liquidation function will be available later if volatile tokens are used as collateral for issuing USDFL.',
     // "liquidation_ratio": "Liquidation ratio",
     collateralization_ratio: 'Collateralization ratio',
     // "current_price_information": "Current price information",
@@ -427,13 +427,13 @@ export default {
       'Different collateral types have different risk parameters and collateralization ratios.',
     // "deposit_sidebar_title": "{0} Risk Parameters",
     deposit_form_field1_title:
-      'How much {0} would you like to lock in your Vault?',
+      'How many {0} would you like to lock in your Vault?',
     deposit_form_field1_text:
-      'The amount of {0} you lock up determines how much USDFL you can generate.',
+      'The amount of {0} you lock up determines how many USDFL you can generate.',
     // "deposit_form_field2_title": "What target collateralization ratio would you like to stay above?",
     // "deposit_form_field2_text": "If your Vault drops below this target it will be considered {0} risk.",
     // "deposit_form_field2_after": "Suggested:",
-    deposit_form_field3_title: 'How much USDFL would you like to generate?',
+    deposit_form_field3_title: 'How many USDFL would you like to generate?',
     deposit_form_field3_text:
       'Please enter an amount that ensures a safe collateralization ratio.',
     // "deposit_form_field3_after1": "Max at target ratio",
