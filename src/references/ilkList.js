@@ -39,7 +39,7 @@ export default [
     key: 'USDNDAI-A', // the actual ilk name used in the vat
     gem: 'USDNDAI', // the actual asset that's being locked
     currency: USDNDAI, // the associated dai.js currency type
-    networks: ['kovan', 'mainnet', 'testnet', 'rinkeby', 'ropsten', 'goerli']
+    networks: ['kovan', 'mainnet']
   },
   {
     slug: 'usdtusdn-a', // URL param
@@ -55,6 +55,6 @@ export default [
     key: 'USDCUSDN-A', // the actual ilk name used in the vat
     gem: 'USDCUSDN', // the actual asset that's being locked
     currency: USDCUSDN, // the associated dai.js currency type
-    networks: ['kovan', 'mainnet', 'testnet', 'rinkeby', 'ropsten', 'goerli']
+    networks: ['kovan', 'testnet']
   }
 ];
