@@ -521,6 +521,7 @@ export default {
     continue: 'Continue',
     create_cdp: 'Open Vault',
     deposit: 'Deposit',
+    depositAll: 'Deposit all',
     withdraw: 'Withdraw',
     pay_back: 'Pay back',
     generate: 'Generate',

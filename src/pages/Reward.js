@@ -1,5 +1,6 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect, Fragment, useState } from 'react';
 import { hot } from 'react-hot-loader/root';
+import useSidebar from 'hooks/useSidebar';
 import PageContentLayout from 'layouts/PageContentLayout';
 import LoadingLayout from 'layouts/LoadingLayout';
 import { formatter } from 'utils/ui';
@@ -24,7 +25,7 @@ import {
 import { Link, useCurrentRoute } from 'react-navi';
 import useMaker from 'hooks/useMaker';
 import RatioDisplay from '../components/RatioDisplay';
-import { getColor } from 'styles/theme';
+import theme, { getColor } from 'styles/theme';
 import useLanguage from 'hooks/useLanguage';
 import useModal from '../hooks/useModal';
 import useNotification from 'hooks/useNotification';
@@ -83,13 +84,12 @@ const RewardInfo = ({ params, title, button }) => {
               <Text
                 style={{ fontSize: '12px', color: getColor('greyText') }}
               >{`${info}`}</Text>
-              <Text
-                style={{ fontSize: '12px', color: getColor('greyText') }}
-              > {
-                timer === null? null: <TimeAgo datetime={timer} live={true}/>
-              }
-                </Text> 
-                
+              <Text style={{ fontSize: '12px', color: getColor('greyText') }}>
+                {' '}
+                {timer === null ? null : (
+                  <TimeAgo datetime={timer} live={true} />
+                )}
+              </Text>
             </Box>
           </Flex>
         ))}
@@ -172,6 +172,7 @@ function Reward({ viewedAddress }) {
 
   // console.log("rewardPairInfos");
   // console.log(rewardList);
+
  
   const timeStart = rewardNextStartTime * 1000;
   
@@ -232,6 +233,20 @@ function Reward({ viewedAddress }) {
       null
     ]
   ];
+
+  const { show: showSidebar } = useSidebar();
+  const [actionShown, setActionShown] = useState(null);
+
+  const showAction = props => {
+    const emSize = parseInt(getComputedStyle(document.body).fontSize);
+    const pxBreakpoint = parseInt(theme.breakpoints.l) * emSize;
+    const isMobile = document.documentElement.clientWidth < pxBreakpoint;
+    if (isMobile) {
+      setActionShown(props);
+    } else {
+      showSidebar(props);
+    }
+  };
 
   useEffect(() => {
     if (
@@ -464,7 +479,16 @@ function Reward({ viewedAddress }) {
                               borderColor="steel"
                               disabled={lockDisabled}
                               onClick={() => {
-                                lockPool(gem, avail, hiRisk);
+                                showAction({
+                                  type: 'depositLPReward',
+                                  props: {
+                                    avail,
+                                    availValue: availvalue,
+                                    name,
+                                    gem,
+                                    hiRisk
+                                  }
+                                });
                               }}
                             >
                               {lang.reward_page.button_lock}

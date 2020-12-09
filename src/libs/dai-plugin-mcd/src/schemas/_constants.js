@@ -107,6 +107,7 @@ export const REWARD_PAIRINFO_AVAILVALUE = 'rewardAvailValue';
 export const REWARD_PAIRINFO_LOCKED = 'rewardLocked';
 export const REWARD_PAIRINFO_LOCKEDVALUE = 'rewardLockedValue';
 export const REWARD_PAIRINFO_REWARDPERHOUR = 'rewardPerHour';
+export const REWARD_PAIRINFO_GETPRICE = 'rewardPairInfoGetPrice';
 export const REWARD_START_TIME = 'rewardStartTime';
 export const REWARD_FIRST_STAGE_DURATION = 'rewardFirstStageDuration';
 export const REWARD_WALLET_REWARD_PAIR_INFO = 'walletRewardPairInfo';

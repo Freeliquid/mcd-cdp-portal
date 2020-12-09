@@ -18,7 +18,8 @@ import {
   REWARD_CURRENT_EPOCH,
   REWARD_PAIRINFO_REWARDPERHOUR,
   REWARD_FAIR_DISTRIBUTION_MAX_VALUE,
-  REWARD_FAIR_DISTRIBUTION_TIME
+  REWARD_FAIR_DISTRIBUTION_TIME,
+  REWARD_PAIRINFO_GETPRICE
 } from './_constants';
 
 export const rewardAmount = {
@@ -50,6 +51,15 @@ export const rewardPairInfo = {
     [REWARD_PAIRINFO_LOCKEDVALUE, fromWei],
     [REWARD_PAIRINFO_AVAILVALUE, fromWei]
   ]
+};
+
+export const rewardPairInfoGetPrice = {
+  generate: (name, hiRisk) => ({
+    id: `FL_REWARD_PAIRINFO_GETPRICE(${name},${hiRisk})`,
+    contract: hiRisk ? 'FL_REWARDER_GOV_USD' : 'FL_REWARDER_STABLES',
+    call: ['getPrice(bytes32)(uint256)', toHex(name)]
+  }),
+  returns: [[REWARD_PAIRINFO_GETPRICE]]
 };
 
 export const rewardPerHour = {
@@ -124,5 +134,6 @@ export default {
   rewardFirstStageDuration,
   rewardCurrentEpoch,
   rewardFairDistributionMaxValue,
-  rewardFairDistributionTime
+  rewardFairDistributionTime,
+  rewardPairInfoGetPrice
 };
