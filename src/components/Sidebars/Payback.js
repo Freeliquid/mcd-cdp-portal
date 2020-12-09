@@ -23,7 +23,7 @@ import SetMax from 'components/SetMax';
 import { BigNumber } from 'bignumber.js';
 import { decimalRules } from '../../styles/constants';
 
-const { long, medium } = decimalRules;
+const { long, medium, short } = decimalRules;
 
 const log = debug('maker:Sidebars/Payback');
 
@@ -38,7 +38,7 @@ const Payback = ({ vault, reset }) => {
   const { hasProxy } = useProxy();
 
   let { debtValue, debtFloor, collateralAmount } = vault;
-  debtValue = debtValue.toBigNumber().decimalPlaces(18);
+  debtValue = debtValue.toBigNumber().decimalPlaces(2);
   const symbol = collateralAmount?.symbol;
   const vaultUnderDustLimit = debtValue.gt(0) && debtValue.lt(debtFloor);
 
@@ -177,11 +177,11 @@ const Payback = ({ vault, reset }) => {
         <Info
           title={lang.action_sidebar.dai_balance}
           body={`${daiBalance &&
-            formatter(daiBalance, { precision: long })} USDFL`}
+            formatter(daiBalance, { precision: short })} USDFL`}
         />
         <Info
           title={lang.action_sidebar.dai_debt}
-          body={`${formatter(debtValue, { precision: long })} USDFL`}
+          body={`${formatter(debtValue, { precision: short })} USDFL`}
         />
         <Info
           title={lang.action_sidebar.new_collateralization_ratio}

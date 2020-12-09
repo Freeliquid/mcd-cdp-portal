@@ -13,7 +13,7 @@ import { add, greaterThan } from 'utils/bignumber';
 import { formatCollateralizationRatio, formatter } from 'utils/ui';
 import { decimalRules } from '../../styles/constants';
 import { getColor } from '../../styles/theme';
-const { long, medium } = decimalRules;
+const { long, medium, short } = decimalRules;
 
 const Generate = ({ vault, reset }) => {
   const { trackBtnClick } = useAnalytics('Generate', 'Sidebar');
@@ -31,7 +31,7 @@ const Generate = ({ vault, reset }) => {
     collateralDebtAvailable
   } = vault;
   BigNumber.set({ ROUNDING_MODE: BigNumber.ROUND_DOWN });
-  debtValue = debtValue.toBigNumber().decimalPlaces(18);
+  debtValue = debtValue.toBigNumber().decimalPlaces(2);
   collateralDebtAvailable = collateralDebtAvailable?.toBigNumber();
 
   const symbol = collateralAmount?.symbol;
@@ -147,7 +147,7 @@ const Generate = ({ vault, reset }) => {
       <InfoContainer>
         <Info
           title={lang.action_sidebar.maximum_available_to_generate}
-          body={`${formatter(daiAvailable, { precision: long })} USDFL`}
+          body={`${formatter(daiAvailable, { precision: short })} USDFL`}
         />
         <Info
           title={lang.action_sidebar.new_collateralization_ratio}
