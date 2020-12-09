@@ -173,14 +173,15 @@ function Reward({ viewedAddress }) {
   // console.log("rewardPairInfos");
   // console.log(rewardList);
  
-
+  const timeStart = rewardNextStartTime * 1000;
+  
   const globalParams = [
     [
       lang.overview_page.reward_next_start_time,
       formatDate(new Date(rewardNextStartTime * 1000)),
       '',
       '',
-      formatDate(new Date(rewardNextStartTime * 1000)),
+      timeStart,
     ],
     [
       lang.overview_page.reward_per_hour_hirisk,
