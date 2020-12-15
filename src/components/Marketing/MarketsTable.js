@@ -18,9 +18,7 @@ const tokenNames = {
   USDTUSDC: 'USDT/USDC',
   USDTDAI: 'USDT/DAI',
   USDCDAI: 'USDC/DAI',
-  USDTUSDN: 'USDT/USDN',
-  USDNDAI: 'USDN/DAI',
-  USDCUSDN: 'USDC/USDN'
+  USDTUSDN: 'USDT/USDN'
 };
 
 const MarketsTableStyle = styled(Table)`

@@ -156,9 +156,7 @@ function Borrow({ disableConnect = false }) {
                   'USDTUSDC',
                   'USDTDAI',
                   'USDCDAI',
-                  'USDNDAI',
-                  'USDTUSDN',
-                  'USDCUSDN'
+                  'USDTUSDN'
                 ].includes(symbol.split('-')[0])
               )}
             />
