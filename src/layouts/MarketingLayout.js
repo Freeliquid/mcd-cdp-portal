@@ -79,7 +79,7 @@ const MainNav = ({ onLinkClicked, ...props }) => {
         {lang.navbar.save}
       </Link>
       <a
-        href="https://github.com/Freeliquid/wp/raw/main/Freeliquid_WP_English.pdf"
+        href="/wp/Freeliquid_WP_English.pdf"
         download=""
       >
         {lang.navbar.whitepaper}
@@ -403,7 +403,7 @@ const MarketingLayout = ({ showNavInFooter, children }) => {
             )}
             <Nav className="legal-nav">
               <a
-                href="https://github.com/Freeliquid/wp/raw/main/Freeliquid_WP_English.pdf"
+                href="/wp/Freeliquid_WP_English.pdf"
                 download=""
               >
                 {lang.navbar.whitepaper}
