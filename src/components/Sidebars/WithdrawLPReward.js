@@ -21,7 +21,14 @@ import { Currency } from '@makerdao/currency';
 
 const { short } = decimalRules;
 
-const WithdrawLPReward = ({ locked, lockedValue, name, gem, hiRisk, reset }) => {
+const WithdrawLPReward = ({
+  locked,
+  lockedValue,
+  name,
+  gem,
+  hiRisk,
+  reset
+}) => {
   const { lang } = useLanguage();
   const { maker } = useMaker();
   const { hasProxy } = useProxy();
@@ -46,7 +53,6 @@ const WithdrawLPReward = ({ locked, lockedValue, name, gem, hiRisk, reset }) => 
     if (r == undefined) return BigNumber(0);
     return r;
   }
-
 
   const [value, , onAmountChange, amountErrors] = useValidatedInput(
     lockedValue,
@@ -119,7 +125,6 @@ const WithdrawLPReward = ({ locked, lockedValue, name, gem, hiRisk, reset }) => 
         </Button>
         <Button
           className="btn"
-          disabled={!valid}
           onClick={() => {
             withdrawAll();
           }}

@@ -118,7 +118,6 @@ const DepositLPReward = ({ avail, availValue, name, gem, hiRisk, reset }) => {
         </Button>
         <Button
           className="btn"
-          disabled={!valid}
           onClick={() => {
             depositAll();
           }}
