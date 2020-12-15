@@ -5,6 +5,9 @@
   box-sizing: border-box;
   flex-shrink: 0;
 }
+* {
+	outline: none;
+}
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, Helvetica Neue,
   PT Root, Segoe UI, sans-serif;
@@ -183,3 +186,36 @@ h4.text_center{
       padding: 15px;
     }
   }
+  button.close_btn {
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    border: none;
+    border-radius: 50%;
+    background: #222b3f;
+    color: #00dcdc;
+    padding: 4px 8px;
+}
+button.close_btn:hover{
+  background-color: rgb(45,57,83);
+  color: #F3F3F5;
+}
+.btn_vdo{
+  background: none;
+  border: 2px solid #00DCDC;
+  border-radius: 50%;
+  padding: 10px 11px 8px 15px;
+  text-align: center;
+  margin-left: 50px;
+
+}
+.btn_vdo:hover{
+  background: #131824;
+  color: #131824;
+}
+.btn_vdo svg{
+  width: 18px;
+}
+.btn_vdo:hover svg{
+  color: #0B0E15;
+}

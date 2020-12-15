@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ReactDOM from "react-dom";
 import { hot } from 'react-hot-loader/root';
 import styled from 'styled-components';
 import { Link, useCurrentRoute } from 'react-navi';
@@ -17,8 +18,12 @@ import { ReactComponent as UsdlIcon } from 'images/landing/land_usdl.svg';
 import { ReactComponent as LpgIcon } from 'images/landing/land_fl.svg';
 import { ReactComponent as CommunityIcon } from 'images/landing/land_com.svg';
 import { ReactComponent as ImgPoolsUsdl } from 'images/landing/pools_to_usdl_full.svg';
+import { ReactComponent as Play } from 'images/landing/pl_vdo.svg';
 
 import { Box, Flex, Text } from '@makerdao/ui-components-core';
+import Modal from 'react-modal';
+import { bottom } from 'styled-system';
+import ReactPlayer from 'react-player';
 
 const Content = ({ children }) => (
   <Box p={{ s: `0 ${marketingTheme.mobilePaddingX}`, l: '0 32px' }}>
@@ -370,12 +375,14 @@ const BlockPoolsUsdl = styled.div`
 
 const ButtonFlex = styled.div`
   font-size: 18px;
-
+  display: flex;
+  justify-content: start;
+  align-items: center;
   @media (max-width: 768px) {
     justify-content: space-between;
   }
   @media (min-width: 40em) {
-    justify-content: space-around;
+    justify-content: start;
   }
 `;
 const TitleCard = styled.div`
@@ -383,101 +390,13 @@ const TitleCard = styled.div`
   font-weight: bold;
   color: ${getColor('whiteText')};
 `;
-const VideoBg = styled.div`
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  .shape {
-    position: absolute;
-    background: #4e26ff;
-    animation: morph 7s ease-in infinite;
-    border-radius: 30% 60% 70% 30% / 40% 60% 30% 70%;
-    height: 250px;
 
-    width: 270px;
-    z-index: 5;
-  }
+Modal.setAppElement('#root');
 
-  .shape2 {
-    position: absolute;
-    background: #2a1980;
-    animation: morph2 6s ease-in-out infinite;
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    height: 360px;
-
-    width: 330px;
-    z-index: 5;
-  }
-
-  .shape3 {
-    position: absolute;
-    background: #12102c;
-    animation: morph3 4s ease-in-out infinite;
-    border-radius: 55% 45% 44% 66% / 13% 46% 67% 23%;
-    height: 390px;
-
-    width: 440px;
-    z-index: 5;
-  }
-
-  @keyframes morph {
-    0% {
-      border-radius: 40% 60% 70% 30% / 40% 60% 30% 50%;
-      background: #4e26ff;
-    }
-    50% {
-      border-radius: 60% 40% 60% 40% / 50% 60% 40% 60%;
-      background: #4e26ff;
-    }
-    100% {
-      border-radius: 40% 60% 70% 30% / 40% 60% 30% 50%;
-      background: #4e26ff;
-    }
-  }
-  @keyframes morph2 {
-    0% {
-      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-      background: #2a1980;
-    }
-    50% {
-      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-      background: #2a1980;
-    }
-    100% {
-      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-      background: #2a1980;
-    }
-  }
-  @keyframes morph3 {
-    0% {
-      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-      background: #12102c;
-    }
-    50% {
-      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-      background: #12102c;
-    }
-    100% {
-      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-      background: #12102c;
-    }
-  }
-
-  .link_vdo_wrap {
-    position: absolute;
-    z-index: 5;
-  }
-  .link_vdo_wrap a {
-    color: #000;
-    font-size: 72px;
-  }
-  .link_vdo_wrap a:hover {
-    color: #00dcdc;
-  }
-`;
 function Landing() {
   const { lang } = useLanguage();
-
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false);
   return (
     <MarketingLayout>
       <PageHead
@@ -501,6 +420,40 @@ function Landing() {
                       {lang.landing_page.get_start}
                     </FilledButton>
                   </Link>
+                </div>
+                <div className="modalVideo">
+                  <button 
+                  className="btn_vdo" 
+                  onClick={() => setModalIsOpen(true)}>
+                    <Play className="svg_vdo" />
+                  </button>
+                  <Modal 
+                  isOpen={modalIsOpen} 
+                  onRequestClose={() => setModalIsOpen(false)}
+                  style={{
+                    overlay: {
+                      background: 'rgba(0, 0, 0, 0.5)'
+                    },
+                    content: {
+                      background: '#131824',
+                      border: 'none',
+                      width: '80%',
+                      margin: 'auto'
+                    }
+                  }}
+                  >
+                  <ReactPlayer 
+                  width='100%'
+                  height='100%'
+                  controls
+                  playing='true'
+                  url='/images/tutorial_vdo.mp4' />
+                  <button
+                  className="close_btn"
+                  onClick={() => setModalIsOpen(false)}>
+                    &times;
+                  </button>
+                  </Modal>
                 </div>
               </ButtonFlex>
             </BlocksDiv>
