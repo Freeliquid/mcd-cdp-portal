@@ -523,6 +523,7 @@ export default {
     deposit: 'Deposit',
     depositAll: 'Deposit all',
     withdraw: 'Withdraw',
+    withdrawAll: 'Withdraw all',
     pay_back: 'Pay back',
     generate: 'Generate',
     send: 'Send',

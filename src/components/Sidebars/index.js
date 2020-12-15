@@ -9,6 +9,7 @@ import DsrWithdraw from './DsrWithdraw';
 import DepositAndGenerate from './DepositAndGenerate';
 import GetReward from './GetReward';
 import DepositLPReward from './DepositLPReward';
+import WithdrawLPReward from './WithdrawLPReward';
 
 export default {
   global: Global,
@@ -21,5 +22,6 @@ export default {
   dsrdeposit: DsrDeposit,
   dsrwithdraw: DsrWithdraw,
   depositAndGenerate: DepositAndGenerate,
-  depositLPReward: DepositLPReward
+  depositLPReward: DepositLPReward,
+  withdrawLPReward: WithdrawLPReward
 };

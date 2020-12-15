@@ -21,7 +21,7 @@ import { Currency } from '@makerdao/currency';
 
 const { short } = decimalRules;
 
-const DepositLPReward = ({ avail, availValue, name, gem, hiRisk, reset }) => {
+const WithdrawLPReward = ({ locked, lockedValue, name, gem, hiRisk, reset }) => {
   const { lang } = useLanguage();
   const { maker } = useMaker();
   const { hasProxy } = useProxy();
@@ -29,10 +29,10 @@ const DepositLPReward = ({ avail, availValue, name, gem, hiRisk, reset }) => {
   const usdPrice = watch.rewardPairInfoGetPrice(name, hiRisk) || BigNumber(0);
 
   console.log(
-    'DepositLPReward',
+    'WithdrawLPReward',
     usdPrice.toNumber(),
-    avail ? avail.toNumber() : 0,
-    availValue ? availValue.toNumber() : 0,
+    locked ? locked.toNumber() : 0,
+    lockedValue ? lockedValue.toNumber() : 0,
     name,
     gem,
     hiRisk
@@ -47,10 +47,11 @@ const DepositLPReward = ({ avail, availValue, name, gem, hiRisk, reset }) => {
     return r;
   }
 
+
   const [value, , onAmountChange, amountErrors] = useValidatedInput(
-    availValue,
+    lockedValue,
     {
-      maxFloat: availValue,
+      maxFloat: lockedValue,
       minFloat: 0,
       isFloat: true
     },
@@ -60,23 +61,23 @@ const DepositLPReward = ({ avail, availValue, name, gem, hiRisk, reset }) => {
     }
   );
 
-  const valueToDeposit = value || BigNumber(0);
-  const amountToDeposit = convertValueToAmount(valueToDeposit);
+  const valueToWithdraw = value || BigNumber(0);
+  const amountToWithdraw = convertValueToAmount(valueToWithdraw);
 
   const valid = value && !amountErrors && hasProxy;
 
-  const deposit = () => {
-    const v = amountToDeposit.integerValue(BigNumber.ROUND_DOWN).toFixed();
-    console.log('deposit', name, gem, amountToDeposit.toNumber(), v, hiRisk);
-    maker.service('mcd:rewards').lockPool(v, gem, hiRisk);
+  const withdraw = () => {
+    const v = amountToWithdraw.integerValue(BigNumber.ROUND_DOWN).toFixed();
+    console.log('withdraw', name, gem, amountToWithdraw.toNumber(), v, hiRisk);
+    maker.service('mcd:rewards').unlockPool(v, gem, hiRisk);
     reset();
   };
 
-  const depositAll = () => {
-    const c = new Currency(avail);
+  const withdrawAll = () => {
+    const c = new Currency(locked);
     const v = c.toFixed('wei');
-    console.log('depositAll', name, gem, avail.toNumber(), v, hiRisk);
-    maker.service('mcd:rewards').lockPool(v, gem, hiRisk);
+    console.log('withdrawAll', name, gem, locked.toNumber(), v, hiRisk);
+    maker.service('mcd:rewards').unlockPool(v, gem, hiRisk);
     reset();
   };
 
@@ -84,11 +85,11 @@ const DepositLPReward = ({ avail, availValue, name, gem, hiRisk, reset }) => {
     <Grid gridRowGap="m">
       <Grid gridRowGap="s">
         <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
-          {lang.formatString(lang.action_sidebar.deposit_title, name)}
+          {lang.formatString(lang.action_sidebar.withdraw_title, name)}
         </Text>
         <p>
           <Text style={{ fontSize: '16px', color: getColor('greyText') }}>
-            {lang.formatString(lang.action_sidebar.deposit_description, name)}
+            {lang.formatString(lang.action_sidebar.withdraw_description, name)}
           </Text>
         </p>
         <div className="input_border">
@@ -101,29 +102,29 @@ const DepositLPReward = ({ avail, availValue, name, gem, hiRisk, reset }) => {
             onChange={onAmountChange}
             placeholder={`0.00 USD`}
             failureMessage={amountErrors}
-            data-testid="deposit-input"
+            data-testid="withdraw-input"
           />
         </div>
       </Grid>
 
-      <Grid gridTemplateColumns="1fr" gridColumnGap="m" gridRowGap="s">
+      <Grid gridTemplateColumns="1fr" gridColumnGap="s" gridRowGap="s">
         <Button
           className="btn"
           disabled={!valid}
           onClick={() => {
-            deposit();
+            withdraw();
           }}
         >
-          {lang.actions.deposit}
+          {lang.actions.withdraw}
         </Button>
         <Button
           className="btn"
           disabled={!valid}
           onClick={() => {
-            depositAll();
+            withdrawAll();
           }}
         >
-          {lang.actions.depositAll}
+          {lang.actions.withdrawAll}
         </Button>
         <Button
           className="btn"
@@ -138,10 +139,10 @@ const DepositLPReward = ({ avail, availValue, name, gem, hiRisk, reset }) => {
       <InfoContainer>
         <Info
           title={lang.action_sidebar.current_account_balance}
-          body={`${formatter(availValue)} USD`}
+          body={`${formatter(lockedValue)} USD`}
         />
       </InfoContainer>
     </Grid>
   );
 };
-export default DepositLPReward;
+export default WithdrawLPReward;

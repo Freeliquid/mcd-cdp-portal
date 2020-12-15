@@ -504,7 +504,16 @@ function Reward({ viewedAddress }) {
                               borderColor="steel"
                               disabled={unlockDisabled}
                               onClick={() => {
-                                unlockPool(gem, locked, hiRisk);
+                                showAction({
+                                  type: 'withdrawLPReward',
+                                  props: {
+                                    locked,
+                                    lockedValue: lockedvalue,
+                                    name,
+                                    gem,
+                                    hiRisk
+                                  }
+                                });
                               }}
                             >
                               {lang.reward_page.button_unlock}
