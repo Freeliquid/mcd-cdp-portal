@@ -79,9 +79,11 @@ const MainNav = ({ onLinkClicked, ...props }) => {
         {lang.navbar.save}
       </Link>
       <a
-      href="https://github.com/Freeliquid/wp/blob/main/Freeliquid_WP_English.pdf"
-      download=""
-      >{lang.navbar.whitepaper}</a>
+        href="https://github.com/Freeliquid/wp/raw/main/Freeliquid_WP_English.pdf"
+        download=""
+      >
+        {lang.navbar.whitepaper}
+      </a>
     </MainNavStyle>
   );
 };
@@ -400,11 +402,12 @@ const MarketingLayout = ({ showNavInFooter, children }) => {
               </Flex>
             )}
             <Nav className="legal-nav">
-            <a
-              href="https://github.com/Freeliquid/wp/blob/main/Freeliquid_WP_English.pdf"
-              download=""
-              >{lang.navbar.whitepaper}
-            </a>
+              <a
+                href="https://github.com/Freeliquid/wp/raw/main/Freeliquid_WP_English.pdf"
+                download=""
+              >
+                {lang.navbar.whitepaper}
+              </a>
               <Link href={`/${Routes.PRIVACY}`}>{lang.navbar.privacy}</Link>
             </Nav>
           </div>
