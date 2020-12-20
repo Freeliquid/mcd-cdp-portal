@@ -63,7 +63,7 @@ const WithdrawLPReward = ({
     },
     {
       maxFloat: () =>
-        lang.formatString(lang.action_sidebar.insufficient_balance, name)
+        lang.formatString(lang.action_sidebar.cdp_below_threshold, name)
     }
   );
 
@@ -143,7 +143,7 @@ const WithdrawLPReward = ({
       </Grid>
       <InfoContainer>
         <Info
-          title={lang.action_sidebar.current_account_balance}
+          title={lang.action_sidebar.maximum_available_to_withdraw}
           body={`${formatter(lockedValue)} USD`}
         />
       </InfoContainer>

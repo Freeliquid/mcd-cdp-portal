@@ -397,7 +397,7 @@ function Reward({ viewedAddress }) {
                     <Table.th display={{ s: 'none', xl: 'table-cell' }}>
                       {lang.reward_page.locked_value}
                     </Table.th>
-                    <Table.th display={{ s: 'none', xl: 'table-cell' }}>
+                    <Table.th display={{ s: 'none', xl: 'table-cell' }} style={{textAlign: 'center'}}>
                       {lang.reward_page.allowance}
                     </Table.th>
                     <Table.th />
@@ -458,7 +458,7 @@ function Reward({ viewedAddress }) {
                           <Flex justifyContent="flex-end">
                             <Button
                               // variant="secondary-outline"
-                              className="btn btn_center"
+                              className="btn"
                               style={{ margin: '1px auto', fontSize: '12px' }}
                               borderColor="steel"
                               disabled={approveDisabled}
@@ -474,7 +474,7 @@ function Reward({ viewedAddress }) {
                           <Flex justifyContent="flex-end">
                             <Button
                               // variant="secondary-outline"
-                              className="btn btn_center"
+                              className="btn"
                               style={{ margin: '1px auto', fontSize: '12px' }}
                               borderColor="steel"
                               disabled={lockDisabled}
@@ -499,7 +499,7 @@ function Reward({ viewedAddress }) {
                           <Flex justifyContent="flex-end">
                             <Button
                               // variant="secondary-outline"
-                              className="btn btn_center"
+                              className="btn"
                               style={{ margin: '1px auto', fontSize: '12px' }}
                               borderColor="steel"
                               disabled={unlockDisabled}
