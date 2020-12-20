@@ -418,7 +418,7 @@ const MarketingLayout = ({ showNavInFooter, children }) => {
             <Link target="_blank" href="https://twitter.com/freeliquidUSDFL">
               <Twitter />
             </Link>
-            <Link target="_blank" href="#">
+            <Link target="_blank" href="https://freeliquid.medium.com/">
               <Medium />
             </Link>
             <Link target="_blank" href="mailto:support@freeliquid.info">
