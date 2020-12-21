@@ -742,7 +742,7 @@ export default {
   why_is_this: 'Why is this?',
   // "risk_parameters": "Risk Parameters",
   terms_of_service_text: 'I have read and accept the {0}',
-  terms_of_service: 'Terms of Service',
+  terms_of_service: 'Terms of Use',
   cookie_notice: 'By using this website you agree to our {0}',
   privacy_policy: 'privacy policy',
   see_how_it_works: 'See how it works',

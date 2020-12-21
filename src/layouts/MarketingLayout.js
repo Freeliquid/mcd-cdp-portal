@@ -402,12 +402,7 @@ const MarketingLayout = ({ showNavInFooter, children }) => {
               </Flex>
             )}
             <Nav className="legal-nav">
-              <a
-                href="/wp/Freeliquid_WP_English.pdf"
-                download=""
-              >
-                {lang.navbar.whitepaper}
-              </a>
+            <Link href={`/${Routes.TERMS}`}>{lang.navbar.terms}</Link>
               <Link href={`/${Routes.PRIVACY}`}>{lang.navbar.privacy}</Link>
             </Nav>
           </div>

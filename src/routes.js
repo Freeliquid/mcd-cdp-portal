@@ -12,6 +12,7 @@ import Save from 'pages/Save';
 import Reward from 'pages/Reward';
 import SaveOverview from 'pages/SaveOverview';
 import Privacy from 'pages/Privacy';
+import Terms from 'pages/Terms';
 import Whitepaper from 'pages/Whitepaper';
 import CDPDisplay from 'components/CDPDisplay';
 import modals, { templates } from 'components/Modals';
@@ -142,7 +143,11 @@ export default mount({
     })
   ),
 
-
+  [`/${Routes.TERMS}`]: route(() => ({
+    title: 'Freeliquid - Terms',
+    view: <Terms />
+  })),
+  
   [`/${Routes.PRIVACY}`]: route(() => ({
     title: 'Freeliquid - Privacy Policy',
     view: <Privacy />
