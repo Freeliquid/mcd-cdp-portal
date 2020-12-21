@@ -78,10 +78,7 @@ const MainNav = ({ onLinkClicked, ...props }) => {
       >
         {lang.navbar.save}
       </Link>
-      <a
-        href="/wp/Freeliquid_WP_English.pdf"
-        download=""
-      >
+      <a href="/wp/Freeliquid_WP_English.pdf" download="">
         {lang.navbar.whitepaper}
       </a>
     </MainNavStyle>
@@ -402,12 +399,12 @@ const MarketingLayout = ({ showNavInFooter, children }) => {
               </Flex>
             )}
             <Nav className="legal-nav">
-            <Link href={`/${Routes.TERMS}`}>{lang.navbar.terms}</Link>
+              <Link href={`/${Routes.TERMS}`}>{lang.navbar.terms}</Link>
               <Link href={`/${Routes.PRIVACY}`}>{lang.navbar.privacy}</Link>
             </Nav>
           </div>
           <div className="social_icons">
-            <Link target="_blank" href="https://t.me/freeliquidUSDFL">
+            <Link target="_blank" href="https://t.me/freeliquid">
               <Telegram />
             </Link>
             <Link target="_blank" href="https://twitter.com/freeliquidUSDFL">
