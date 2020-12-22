@@ -421,37 +421,40 @@ function Landing() {
                   </Link>
                 </div>
                 <div className="modalVideo">
-                  <button 
-                  className="btn_vdo" 
-                  onClick={() => setModalIsOpen(true)}>
+                  <button
+                    className="btn_vdo"
+                    onClick={() => setModalIsOpen(true)}
+                  >
                     <Play className="svg_vdo" />
                   </button>
-                  <Modal 
-                  isOpen={modalIsOpen} 
-                  onRequestClose={() => setModalIsOpen(false)}
-                  style={{
-                    overlay: {
-                      background: 'rgba(0, 0, 0, 0.5)'
-                    },
-                    content: {
-                      background: '#131824',
-                      border: 'none',
-                      width: '80%',
-                      margin: 'auto'
-                    }
-                  }}
+                  <Modal
+                    isOpen={modalIsOpen}
+                    onRequestClose={() => setModalIsOpen(false)}
+                    style={{
+                      overlay: {
+                        background: 'rgba(0, 0, 0, 0.5)'
+                      },
+                      content: {
+                        background: '#131824',
+                        border: 'none',
+                        width: '80%',
+                        margin: 'auto'
+                      }
+                    }}
                   >
-                  <ReactPlayer 
-                  width='100%'
-                  height='100%'
-                  controls
-                  playing='true'
-                  url='/images/tutorial_vdo.mp4' />
-                  <button
-                  className="close_btn"
-                  onClick={() => setModalIsOpen(false)}>
-                    &times;
-                  </button>
+                    <ReactPlayer
+                      width="100%"
+                      height="100%"
+                      controls
+                      playing="true"
+                      url="/images/tutorial_vdo.mp4"
+                    />
+                    <button
+                      className="close_btn"
+                      onClick={() => setModalIsOpen(false)}
+                    >
+                      &times;
+                    </button>
                   </Modal>
                 </div>
               </ButtonFlex>
@@ -481,7 +484,10 @@ function Landing() {
             <Text.h4>{lang.landing_page.block3_title}</Text.h4>
             <Text.h5>{lang.landing_page.block3_text}</Text.h5>
             <br />
-            <Text.h5>USDFL contract address: 0x2B4200A8D373d484993C37d63eE14AeE0096cd12</Text.h5>
+            <Text.h5>
+              USDFL contract address: <p style={{color: 'rgb(122 193 255)'
+              }}> 0x2B4200A8D373d484993C37d63eE14AeE0096cd12</p>
+            </Text.h5>
           </BlocksDiv>
           <BlocksDiv2>
             <ImgBox>
@@ -495,7 +501,11 @@ function Landing() {
             <Text.h4>{lang.landing_page.block4_title}</Text.h4>
             <Text.h5>{lang.landing_page.block4_text}</Text.h5>
             <br />
-            <Text.h5>FL contract address: 0xfFED56a180f23fD32Bc6A1d8d3c09c283aB594A8</Text.h5>
+            <Text.h5>
+              FL contract address: 
+              <p style={{color: '#00DCDC'
+              }}>0xfFED56a180f23fD32Bc6A1d8d3c09c283aB594A8</p>
+            </Text.h5>
           </BlocksDiv>
           <BlocksDiv2>
             <ImgBox>
