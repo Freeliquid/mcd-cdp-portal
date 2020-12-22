@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ReactDOM from "react-dom";
 import { hot } from 'react-hot-loader/root';
 import styled from 'styled-components';
 import { Link, useCurrentRoute } from 'react-navi';
@@ -481,6 +480,8 @@ function Landing() {
           <BlocksDiv>
             <Text.h4>{lang.landing_page.block3_title}</Text.h4>
             <Text.h5>{lang.landing_page.block3_text}</Text.h5>
+            <br />
+            <Text.h5>USDFL contract address: 0x2B4200A8D373d484993C37d63eE14AeE0096cd12</Text.h5>
           </BlocksDiv>
           <BlocksDiv2>
             <ImgBox>
@@ -493,6 +494,8 @@ function Landing() {
           <BlocksDiv>
             <Text.h4>{lang.landing_page.block4_title}</Text.h4>
             <Text.h5>{lang.landing_page.block4_text}</Text.h5>
+            <br />
+            <Text.h5>FL contract address: 0xfFED56a180f23fD32Bc6A1d8d3c09c283aB594A8</Text.h5>
           </BlocksDiv>
           <BlocksDiv2>
             <ImgBox>
