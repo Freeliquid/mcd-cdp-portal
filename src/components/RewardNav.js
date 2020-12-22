@@ -44,11 +44,9 @@ const RewardNav = ({ account, ...props }) => {
           ? 'none'
           : 'grayscale(1)';
 
-  const saveUrl = account?.address
-    ? `/${Routes.REWARD}/owner/${account?.address}${url.search}`
-    : `/${Routes.REWARD}${url.search}`;
+  const rewardUrl = `/${Routes.REWARD}/owner/${account?.address}${url.search}`;
   return (
-    <Link href={saveUrl}>
+    <Link href={rewardUrl}>
       <Flex
         bg={!account && selected && '#0B0E15'}
         flexDirection="column"
