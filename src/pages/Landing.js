@@ -19,10 +19,11 @@ import { ReactComponent as CommunityIcon } from 'images/landing/land_com.svg';
 import { ReactComponent as ImgPoolsUsdl } from 'images/landing/pools_to_usdl_full.svg';
 import { ReactComponent as Play } from 'images/landing/pl_vdo.svg';
 
-import { Box, Flex, Text } from '@makerdao/ui-components-core';
+import { Address, Box, Flex, Text } from '@makerdao/ui-components-core';
 import Modal from 'react-modal';
 import { bottom } from 'styled-system';
 import ReactPlayer from 'react-player';
+import ExternalLink from 'components/ExternalLink';
 
 const Content = ({ children }) => (
   <Box p={{ s: `0 ${marketingTheme.mobilePaddingX}`, l: '0 32px' }}>
@@ -223,6 +224,20 @@ const Blocks2 = styled(Flex)`
     text-align: center;
     flex-direction: column-reverse;
     padding: 0px 20px;
+  }
+  a.linkContract{
+    color: rgb(122 193 255);
+    text-transform: uppercase;
+  }
+  a.linkContract:hover{
+    color: #A3B2CF;
+  }
+  a.linkContract2{
+    color: #00DCDC;
+    text-transform: uppercase;
+  }
+  a.linkContract2:hover{
+    color: #A3B2CF;
   }
 `;
 const BlockBorder = styled.div`
@@ -485,8 +500,13 @@ function Landing() {
             <Text.h5>{lang.landing_page.block3_text}</Text.h5>
             <br />
             <Text.h5>
-              USDFL contract address: <p style={{color: 'rgb(122 193 255)'
-              }}> 0x2B4200A8D373d484993C37d63eE14AeE0096cd12</p>
+              USDFL contract address:{' '}
+              <a
+              className="linkContract"
+              href="https://etherscan.io/address/0x2B4200A8D373d484993C37d63eE14AeE0096cd12"
+              >
+                0x2B4200A8D373d484993C37d63eE14AeE0096cd12
+              </a>
             </Text.h5>
           </BlocksDiv>
           <BlocksDiv2>
@@ -502,9 +522,13 @@ function Landing() {
             <Text.h5>{lang.landing_page.block4_text}</Text.h5>
             <br />
             <Text.h5>
-              FL contract address: 
-              <p style={{color: '#00DCDC'
-              }}>0xfFED56a180f23fD32Bc6A1d8d3c09c283aB594A8</p>
+              FL contract address:{' '}
+              <a
+              className="linkContract2"
+              href="https://etherscan.io/address/0xfFED56a180f23fD32Bc6A1d8d3c09c283aB594A8"
+              >
+                0xfFED56a180f23fD32Bc6A1d8d3c09c283aB594A8
+              </a>
             </Text.h5>
           </BlocksDiv>
           <BlocksDiv2>
