@@ -13,6 +13,7 @@ import { ReactComponent as Telegram } from 'images/social/telegram.svg';
 import { ReactComponent as Twitter } from 'images/social/twitter.svg';
 import { ReactComponent as Medium } from 'images/social/medium.svg';
 import { ReactComponent as Email } from 'images/social/email.svg';
+import { ReactComponent as Github } from 'images/social/github.svg';
 
 const MarketingLayoutStyle = styled.div`
   text-rendering: optimizeLegibility;
@@ -415,6 +416,9 @@ const MarketingLayout = ({ showNavInFooter, children }) => {
             </Link>
             <Link target="_blank" href="mailto:support@freeliquid.info">
               <Email />
+            </Link>
+            <Link target="_blank" href="https://github.com/Freeliquid">
+              <Github />
             </Link>
           </div>
           <div className="copyright">
