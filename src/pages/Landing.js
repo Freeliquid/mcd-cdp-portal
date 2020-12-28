@@ -223,18 +223,20 @@ const Blocks2 = styled(Flex)`
     width: 100%;
     text-align: center;
     flex-direction: column-reverse;
-    padding: 0px 20px;
+    padding: 0px 10px;
   }
   a.linkContract {
     color: rgb(122 193 255);
-    text-transform: uppercase;
+    font-size: 13px;
+    text-transform: lowercase;
   }
   a.linkContract:hover {
     color: #a3b2cf;
   }
   a.linkContract2 {
     color: #00dcdc;
-    text-transform: uppercase;
+    font-size: 13px;
+    text-transform: lowercase;
   }
   a.linkContract2:hover {
     color: #a3b2cf;
@@ -256,13 +258,13 @@ const BlocksDiv = styled.div`
   padding: 40px 110px 40px 0px;
   justify-content: center;
   align-items: revert;
-  .btn_vdo svg{
+  .btn_vdo svg {
     cursor: pointer;
     transition: all 0.15s ease;
   }
-  .btn_vdo svg:hover{
+  .btn_vdo svg:hover {
     fill: #00dcdc;
-    transform: scale(1.2);    
+    transform: scale(1.2);
   }
   @media only screen and (min-device-width: 769px) and (max-device-width: 1024px) {
     padding: 20px 0px 30px 0px;
