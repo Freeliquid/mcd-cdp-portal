@@ -225,19 +225,19 @@ const Blocks2 = styled(Flex)`
     flex-direction: column-reverse;
     padding: 0px 20px;
   }
-  a.linkContract{
+  a.linkContract {
     color: rgb(122 193 255);
     text-transform: uppercase;
   }
-  a.linkContract:hover{
-    color: #A3B2CF;
+  a.linkContract:hover {
+    color: #a3b2cf;
   }
-  a.linkContract2{
-    color: #00DCDC;
+  a.linkContract2 {
+    color: #00dcdc;
     text-transform: uppercase;
   }
-  a.linkContract2:hover{
-    color: #A3B2CF;
+  a.linkContract2:hover {
+    color: #a3b2cf;
   }
 `;
 const BlockBorder = styled.div`
@@ -256,7 +256,14 @@ const BlocksDiv = styled.div`
   padding: 40px 110px 40px 0px;
   justify-content: center;
   align-items: revert;
-
+  .btn_vdo svg{
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .btn_vdo svg:hover{
+    fill: #00dcdc;
+    transform: scale(1.2);    
+  }
   @media only screen and (min-device-width: 769px) and (max-device-width: 1024px) {
     padding: 20px 0px 30px 0px;
   }
@@ -502,8 +509,8 @@ function Landing() {
             <Text.h5>
               USDFL contract address:{' '}
               <a
-              className="linkContract"
-              href="https://etherscan.io/address/0x2B4200A8D373d484993C37d63eE14AeE0096cd12"
+                className="linkContract"
+                href="https://etherscan.io/address/0x2B4200A8D373d484993C37d63eE14AeE0096cd12"
               >
                 0x2B4200A8D373d484993C37d63eE14AeE0096cd12
               </a>
@@ -524,8 +531,8 @@ function Landing() {
             <Text.h5>
               FL contract address:{' '}
               <a
-              className="linkContract2"
-              href="https://etherscan.io/address/0xfFED56a180f23fD32Bc6A1d8d3c09c283aB594A8"
+                className="linkContract2"
+                href="https://etherscan.io/address/0xfFED56a180f23fD32Bc6A1d8d3c09c283aB594A8"
               >
                 0xfFED56a180f23fD32Bc6A1d8d3c09c283aB594A8
               </a>
