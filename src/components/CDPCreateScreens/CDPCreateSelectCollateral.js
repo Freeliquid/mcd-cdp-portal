@@ -16,6 +16,7 @@ import ScreenFooter from '../ScreenFooter';
 import ScreenHeader from '../ScreenHeader';
 import BigNumber from 'bignumber.js';
 import { getColor } from 'styles/theme';
+import { ReactComponent as ExternalLinkIcon } from 'images/external-link.svg';
 
 const CDPCreateSelectCollateralSidebar = () => {
   const { lang } = useLanguage();
@@ -88,7 +89,7 @@ function IlkTableRow({
     });
   }
   const disabled = ilk.gem === 'TUSD';
-
+  
   return (
     <tr
       style={
@@ -111,6 +112,11 @@ function IlkTableRow({
       </td>
       <td>
         <div>{ilk.symbol}</div>
+        <div style={{color: '#00dcdc'}}><a
+        target="_blank"
+        href= {ilk.link}
+        >{ilk.platform}{' '}<ExternalLinkIcon style={{fill: '#00dcdc'}} /></a></div>
+        
         {disabled && (
           <div style={{ fontSize: '11px', paddingBottom: '5px' }}>
             Unavailable due to a token upgrade
@@ -152,8 +158,10 @@ const CDPCreateSelectCollateral = ({
     <Box maxWidth="1040px">
       <ScreenHeader
         title={lang.cdp_create.select_title}
+        title2={lang.cdp_create.select_title2}
         text={lang.cdp_create.select_text}
-      />
+      >
+      </ScreenHeader>
       <Grid
         style={{
           background: getColor('cardBg'),
