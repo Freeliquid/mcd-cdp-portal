@@ -46,9 +46,7 @@ const Privacy = () => (
       <h2>Audit</h2>
 
       <p>
-        The Freeliquid Protocol and its smart contracts have been audited by
-        Beosin Blockchain Security. The audit team has rated Freeliquid to be
-        secure with no safety issues found.
+      The Freeliquid Protocol and its smart contract have been audited by Beosin Blockchain Security. Freeliquid successfully passed all audit items with the smart contract rated as fully functional. The full report is available at <a target="_blank" href="https://beosin.com/vaasApi/report/download?num=19e334590140a7117f09ef7aa4df9943">the following link.</a>
       </p>
 
       <h2>Financial risks</h2>
