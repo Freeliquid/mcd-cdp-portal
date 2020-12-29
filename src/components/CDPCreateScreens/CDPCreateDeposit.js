@@ -7,7 +7,9 @@ import {
   formatCollateralizationRatio,
   prettifyNumber,
   formatter,
-  prettifyFloat
+  prettifyFloat,
+  prettifyCurrency,
+  formatCurrencyValue
 } from 'utils/ui';
 import { cdpParamsAreValid } from '../../utils/cdp';
 import useTokenAllowance from 'hooks/useTokenAllowance';
@@ -18,6 +20,8 @@ import ScreenHeader from '../ScreenHeader';
 import RatioDisplay, { RatioDisplayTypes } from 'components/RatioDisplay';
 import BigNumber from 'bignumber.js';
 import { getColor } from 'styles/theme';
+import SetMax from 'components/SetMax';
+import useValidatedInput from 'hooks/useValidatedInput';
 
 function OpenCDPForm({
   selectedIlk,
@@ -77,14 +81,16 @@ function OpenCDPForm({
   function handleValueChange({ target }) {
     if (parseFloat(target.value) < 0) return;
 
-    const name = target.name;
     const val = convertValueToAmount(target.value);
-
+    console.log('setMax' + val);
     dispatch({
       type: `form/set-gemsToLock`,
       payload: { value: val }
     });
   }
+ 
+  //console.log('Gem To Lock: ' + convertAmountToValue(cdpParams.gemsToLock));
+  //console.log('User balance: ' + userBalanceValue);
 
   const fields = [
     [
@@ -99,9 +105,10 @@ function OpenCDPForm({
       <Input
         style={{ fontSize: '14px', color: getColor('whiteText') }}
         key="collinput"
-        name="valueToLock"
+        name="gemsToLock"
         after={'USD'}
         type="number"
+        value={prettifyCurrency(convertAmountToValue(cdpParams.gemsToLock))}
         onChange={handleValueChange}
         width={300}
         borderColor="#323B4F"
@@ -131,8 +138,17 @@ function OpenCDPForm({
           style={{ fontSize: '14px', color: getColor('whiteText') }}
           display="inline-block"
           ml="s"
+          onClick={() => {
+            handleValueChange({
+              target: {
+                name: 'gemsToLock',
+                value: formatter(userBalanceValue)
+              }
+              
+            });
+          }}
         >
-          {prettifyNumber(userBalanceValue)} {'USD'}
+          {formatter(userBalanceValue)} {'USD'}
         </Text>
       </Box>
     ],
@@ -172,6 +188,14 @@ function OpenCDPForm({
             display="inline-block"
             ml="s"
             style={{ fontSize: '14px', color: getColor('whiteText') }}
+            onClick={() => {
+              handleInputChange({
+                target: {
+                  name: 'daiToDraw',
+                  value: formatter(daiAvailableToGenerate)
+                }
+              });
+            }}
           >
             {formatter(daiAvailableToGenerate)} USDFL
           </Text>
