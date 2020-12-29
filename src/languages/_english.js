@@ -408,7 +408,7 @@ export default {
     minutes_wait_time_plural: 'minutes',
     tx_hash: 'Transaction hash',
     view_tx_details: 'View transaction details',
-    select_title: 'Select a collateral type',
+    select_title: 'Select the collateral type (Uniswap pools only)',
     select_text:
       'Each collateral type has its own risk parameters. You can lock up additional collateral types later.',
 
