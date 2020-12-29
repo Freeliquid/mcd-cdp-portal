@@ -511,6 +511,7 @@ function Landing() {
             <Text.h5>
               USDFL contract address:{' '}
               <a
+                target="_blank"
                 className="linkContract"
                 href="https://etherscan.io/address/0x2B4200A8D373d484993C37d63eE14AeE0096cd12"
               >
@@ -533,6 +534,7 @@ function Landing() {
             <Text.h5>
               FL contract address:{' '}
               <a
+                target="_blank"
                 className="linkContract2"
                 href="https://etherscan.io/address/0xfFED56a180f23fD32Bc6A1d8d3c09c283aB594A8"
               >
