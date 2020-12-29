@@ -5,11 +5,7 @@ import { greaterThanOrEqual } from 'utils/bignumber';
 import { TextBlock } from 'components/Typography';
 import {
   formatCollateralizationRatio,
-  prettifyNumber,
-  formatter,
-  prettifyFloat,
-  prettifyCurrency,
-  formatCurrencyValue
+  formatter
 } from 'utils/ui';
 import { cdpParamsAreValid } from '../../utils/cdp';
 import useTokenAllowance from 'hooks/useTokenAllowance';
@@ -20,8 +16,6 @@ import ScreenHeader from '../ScreenHeader';
 import RatioDisplay, { RatioDisplayTypes } from 'components/RatioDisplay';
 import BigNumber from 'bignumber.js';
 import { getColor } from 'styles/theme';
-import SetMax from 'components/SetMax';
-import useValidatedInput from 'hooks/useValidatedInput';
 
 function OpenCDPForm({
   selectedIlk,
@@ -39,7 +33,6 @@ function OpenCDPForm({
     liquidationRatio,
     debtFloor,
     collateralDebtAvailable,
-    collateralValueForAmount,
     collateralAmountByValue
   } = ilkData;
   collateralDebtAvailable = collateralDebtAvailable?.toBigNumber();
@@ -82,15 +75,18 @@ function OpenCDPForm({
     if (parseFloat(target.value) < 0) return;
 
     const val = convertValueToAmount(target.value);
-    console.log('setMax' + val);
     dispatch({
       type: `form/set-gemsToLock`,
       payload: { value: val }
     });
   }
- 
-  //console.log('Gem To Lock: ' + convertAmountToValue(cdpParams.gemsToLock));
-  //console.log('User balance: ' + userBalanceValue);
+  function setMax({ target }) {
+    const val = convertValueToAmount(target.value);
+    dispatch({
+      type: `form/set-setMax`,
+      payload: { value: val }
+    });
+  }
 
   const fields = [
     [
@@ -105,10 +101,10 @@ function OpenCDPForm({
       <Input
         style={{ fontSize: '14px', color: getColor('whiteText') }}
         key="collinput"
-        name="gemsToLock"
+        name="valueToLock"
         after={'USD'}
         type="number"
-        value={prettifyCurrency(convertAmountToValue(cdpParams.gemsToLock))}
+        value={cdpParams.setMax? formatter(convertAmountToValue(cdpParams.gemsToLock)): null}
         onChange={handleValueChange}
         width={300}
         borderColor="#323B4F"
@@ -139,12 +135,11 @@ function OpenCDPForm({
           display="inline-block"
           ml="s"
           onClick={() => {
-            handleValueChange({
+            setMax({
               target: {
-                name: 'gemsToLock',
-                value: formatter(userBalanceValue)
+                name: 'setMax',
+                value: userBalanceValue
               }
-              
             });
           }}
         >

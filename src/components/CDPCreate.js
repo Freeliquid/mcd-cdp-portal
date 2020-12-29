@@ -26,6 +26,7 @@ const initialState = {
     symbol: undefined
   },
   gemsToLock: '',
+  setMax: false,
   daiToDraw: '',
   txState: ''
 };
@@ -59,9 +60,11 @@ function reducer(state, action) {
         selectedIlk: {}
       };
     case 'form/set-gemsToLock':
-      return { ...state, gemsToLock: payload.value };
+      return { ...state, gemsToLock: payload.value,  setMax: false };
+    case 'form/set-setMax':
+      return { ...state, gemsToLock: payload.value, setMax: true };
     case 'form/set-daiToDraw':
-      return { ...state, daiToDraw: payload.value };
+      return { ...state, daiToDraw: payload.value};
     case 'transaction-confirmed':
       return { ...state, txState: TxLifecycle.CONFIRMED };
     case 'reset':
