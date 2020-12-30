@@ -1,12 +1,9 @@
 import React from 'react';
-import { Box, Grid, Text, Input, Card } from '@makerdao/ui-components-core';
+import { Box, Grid, Text, Input, Card, Button } from '@makerdao/ui-components-core';
 import { USDFL } from '../../libs/dai-plugin-mcd/src/index.js';
 import { greaterThanOrEqual } from 'utils/bignumber';
 import { TextBlock } from 'components/Typography';
-import {
-  formatCollateralizationRatio,
-  formatter
-} from 'utils/ui';
+import { formatCollateralizationRatio, formatter } from 'utils/ui';
 import { cdpParamsAreValid } from '../../utils/cdp';
 import useTokenAllowance from 'hooks/useTokenAllowance';
 import useLanguage from 'hooks/useLanguage';
@@ -98,13 +95,22 @@ function OpenCDPForm({
         lang.cdp_create.deposit_form_field1_text,
         selectedIlk.gem
       ),
+      <Grid
+        gridTemplateColumns={{ s: 'minmax(0, 1fr)', l: '1fr 1fr' }}
+        gridGap="m"
+        style={{justifyItems: 'start', alignItems: 'start'}}
+      >
       <Input
         style={{ fontSize: '14px', color: getColor('whiteText') }}
         key="collinput"
         name="valueToLock"
         after={'USD'}
         type="number"
-        value={cdpParams.setMax? formatter(convertAmountToValue(cdpParams.gemsToLock)): null}
+        value={
+          cdpParams.setMax
+            ? formatter(convertAmountToValue(cdpParams.gemsToLock))
+            : null
+        }
         onChange={handleValueChange}
         width={300}
         borderColor="#323B4F"
@@ -125,7 +131,20 @@ function OpenCDPForm({
                 selectedIlk.gem
               )
         }
-      />,
+      />
+      <Button
+      className="btn_setmax"
+      variant="secondary-outline"
+      onClick={() => {
+        setMax({
+          target: {
+            name: 'setMax',
+            value: userBalanceValue
+          }
+        });
+      }}
+      >SET MAX</Button>
+      </Grid>,
       <Box key="ba">
         <Text style={{ fontSize: '14px', color: getColor('whiteText') }}>
           {lang.your_balance}{' '}
@@ -134,14 +153,6 @@ function OpenCDPForm({
           style={{ fontSize: '14px', color: getColor('whiteText') }}
           display="inline-block"
           ml="s"
-          onClick={() => {
-            setMax({
-              target: {
-                name: 'setMax',
-                value: userBalanceValue
-              }
-            });
-          }}
         >
           {formatter(userBalanceValue)} {'USD'}
         </Text>
@@ -150,6 +161,11 @@ function OpenCDPForm({
     [
       lang.cdp_create.deposit_form_field3_title,
       lang.cdp_create.deposit_form_field3_text,
+      <Grid
+        gridTemplateColumns={{ s: 'minmax(0, 1fr)', l: '1fr 1fr' }}
+        gridGap="m"
+        style={{justifyItems: 'start', alignItems: 'start'}}
+      >
       <Input
         style={{ fontSize: '14px', color: getColor('whiteText') }}
         key="daiToDraw"
@@ -173,7 +189,20 @@ function OpenCDPForm({
         }
         value={cdpParams.daiToDraw}
         onChange={handleInputChange}
-      />,
+      />
+      <Button
+      className="btn_setmax"
+      variant="secondary-outline"
+      onClick={() => {
+        handleInputChange({
+          target: {
+            name: 'daiToDraw',
+            value: formatter(daiAvailableToGenerate)
+          }
+        });
+      }}
+      >SET MAX</Button>
+      </Grid>,
       <Grid gridRowGap="xs" key="keytodrawinfo">
         <Box key="ba">
           <Text style={{ fontSize: '14px', color: getColor('whiteText') }}>
@@ -183,14 +212,6 @@ function OpenCDPForm({
             display="inline-block"
             ml="s"
             style={{ fontSize: '14px', color: getColor('whiteText') }}
-            onClick={() => {
-              handleInputChange({
-                target: {
-                  name: 'daiToDraw',
-                  value: formatter(daiAvailableToGenerate)
-                }
-              });
-            }}
           >
             {formatter(daiAvailableToGenerate)} USDFL
           </Text>

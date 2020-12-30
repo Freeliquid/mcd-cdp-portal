@@ -219,3 +219,14 @@ button.close_btn:hover{
 .btn_vdo:hover svg{
   color: #0B0E15;
 }
+.btn_setmax{
+  font-weight: normal !important;
+  font-size: 13px !important;
+  border: 1px solid #323B4F !important;
+  color: #00dcdc !important;
+  padding: 16px 22px !important;
+}
+.btn_setmax:hover{
+  background-color: #00DCDC !important;
+  color: #0B0E15 !important;
+}
