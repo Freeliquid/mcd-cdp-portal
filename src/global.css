@@ -73,7 +73,7 @@ h1, h2, h3, h4 {
   font-style: normal;
 }
 .btn {
-  border-radius: 8px !important;
+  border-radius: 10px !important;
   font-weight: 400 !important;
   border: 1px solid #405361 !important;
   padding: 10px 20px !important;
@@ -229,4 +229,9 @@ button.close_btn:hover{
 .btn_setmax:hover{
   background-color: #00DCDC !important;
   color: #0B0E15 !important;
+}
+@media (max-width: 768px) {
+  .btn {
+    padding: 10px 5px !important;
+  }
 }

@@ -356,7 +356,7 @@ function Reward({ viewedAddress }) {
               {lang.reward_page.participating_pools}
             </Text>
             <Card
-              px={{ s: 'm', xl: 'l' }}
+              px={{ s: 's', xl: 'l' }}
               pt="m"
               pb="s"
               my="m"
@@ -370,18 +370,24 @@ function Reward({ viewedAddress }) {
                 width="100%"
                 variant="cozy"
                 css={`
+                table{overflow-x: scroll;}
                   td,
                   th {
                     white-space: nowrap;
                     color: ${getColor('whiteText')};
+                    
                   }
+                  
                   tbody,
                   tr {
                     border-color: ${getColor('border')} !important;
                   }
                   td:not(:last-child),
                   th:not(:last-child) {
-                    padding-right: 10px;
+                    padding-right: 2px;
+                  }
+                  thead{
+                    overflow-x: auto;
                   }
                 `}
               >
@@ -423,7 +429,7 @@ function Reward({ viewedAddress }) {
                         <Table.td>
                           <Text
                             t="body"
-                            fontSize={{ s: '1.7rem', xl: 'm' }}
+                            fontSize={{ s: '1.2rem', xl: 'm' }}
                             fontWeight={{ s: 'medium', xl: 'normal' }}
                             color={hiRisk ? 'red' : 'white'}
                           >
@@ -433,7 +439,7 @@ function Reward({ viewedAddress }) {
                         <Table.td>
                           <Text
                             t="body"
-                            fontSize={{ s: '1.7rem', xl: 'm' }}
+                            fontSize={{ s: '1.2rem', xl: 'm' }}
                             color={{ s: 'grey', xl: 'white' }}
                           >
                             <ExternalLink
@@ -454,7 +460,7 @@ function Reward({ viewedAddress }) {
                             {formatter(lockedvalue, { precision: short })}
                           </Text>
                         </Table.td>
-                        <Table.td display={{ s: 'none', xl: 'table-cell' }}>
+                        <Table.td display={{ s: 'table-cell', xl: 'table-cell' }}>
                           <Flex justifyContent="flex-end">
                             <Button
                               // variant="secondary-outline"
