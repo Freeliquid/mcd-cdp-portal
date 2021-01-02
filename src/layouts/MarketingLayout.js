@@ -82,7 +82,7 @@ const MainNav = ({ onLinkClicked, ...props }) => {
       <a href="/wp/Freeliquid_WP_English.pdf" download="">
         {lang.navbar.whitepaper}
       </a>
-      <a href="https://beosin.com/vaasApi/report/download?num=19e334590140a7117f09ef7aa4df9943" download="">
+      <a href="/wp/Smart_contract_security_audit_report_freeliquid.pdf" download="">
       {lang.navbar.audit}
       </a>
     </MainNavStyle>
