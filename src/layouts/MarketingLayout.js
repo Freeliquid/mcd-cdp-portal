@@ -82,6 +82,9 @@ const MainNav = ({ onLinkClicked, ...props }) => {
       <a href="/wp/Freeliquid_WP_English.pdf" download="">
         {lang.navbar.whitepaper}
       </a>
+      <a href="https://beosin.com/vaasApi/report/download?num=19e334590140a7117f09ef7aa4df9943" download="">
+      {lang.navbar.audit}
+      </a>
     </MainNavStyle>
   );
 };
@@ -395,7 +398,7 @@ const MarketingLayout = ({ showNavInFooter, children }) => {
                 display={{ s: 'none', xl: 'inline-flex' }}
                 alignItems="center"
               >
-                <MainNav fontSize="16px" separation="52px" />
+                <MainNav fontSize="16px" separation="24px" />
                 <SeparatorDot m="0 38px" />
               </Flex>
             )}

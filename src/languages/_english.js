@@ -358,7 +358,8 @@ export default {
     privacy: 'Privacy',
     terms: 'Terms',
     blog: 'Blog',
-    whitepaper: 'White paper'
+    whitepaper: 'White paper',
+    audit: 'Audit'
   },
   sidebar: {
     wallet_balances: 'Wallet Pools Balances',
