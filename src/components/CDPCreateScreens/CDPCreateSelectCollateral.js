@@ -23,21 +23,13 @@ const CDPCreateSelectCollateralSidebar = () => {
   return (
     <Box px="l" py="m">
       <Grid
-        gridTemplateColumns={{ s: 'minmax(0, 1fr)', l: '1fr 1fr 1fr' }}
+        gridTemplateColumns={{ s: 'minmax(0, 1fr)', l: '1fr' }}
         gridGap="m"
         gridColumnGap="50px"
         my="l"
       >
         {[
-          [lang.stability_fee, lang.cdp_create.stability_fee_description],
-          [
-            lang.liquidation_ratio,
-            lang.cdp_create.liquidation_ratio_description
-          ],
-          [
-            lang.liquidation_penalty,
-            lang.cdp_create.liquidation_penalty_description
-          ]
+          [lang.stability_fee, lang.cdp_create.stability_fee_description]
         ].map(([title, text]) => (
           <Grid mb="m" key={title} gridColumnGap="xs">
             <TextBlock
@@ -112,10 +104,6 @@ function IlkTableRow({
       </td>
       <td>
         <div>{ilk.symbol}</div>
-        <div style={{color: '#00dcdc'}}><a
-        target="_blank"
-        href= {ilk.link}
-        >{ilk.platform}{' '}<ExternalLinkIcon style={{fill: '#00dcdc'}} /></a></div>
         
         {disabled && (
           <div style={{ fontSize: '11px', paddingBottom: '5px' }}>
@@ -124,14 +112,18 @@ function IlkTableRow({
         )}
       </td>
       <td>
+      <div style={{color: '#00dcdc'}}><a
+        target="_blank"
+        href= {ilk.link}
+        >{ilk.platform}{' '}<ExternalLinkIcon style={{fill: '#00dcdc'}} /></a></div>
+      </td>
+      <td>
         {formatter(annualStabilityFee, {
           percentage: true,
           rounding: BigNumber.ROUND_HALF_UP
         })}{' '}
         %
       </td>
-      <td>{formatter(liquidationRatio, { percentage: true })} %</td>
-      <td>{formatter(liquidationPenalty, { percentage: true })} %</td>
       <td css="text-align: right">
         {`${formatter(collateralValueForAmount(gemBalance))}  USD`}
       </td>
@@ -198,9 +190,8 @@ const CDPCreateSelectCollateral = ({
                   <tr css="white-space: nowrap;">
                     <th />
                     <th>{lang.collateral_type}</th>
+                    <th>{lang.link_pool}</th>
                     <th>{lang.stability_fee}</th>
-                    <th>{lang.liquidation_ratio_shortened}</th>
-                    <th>{lang.liquidation_penalty_shortened}</th>
                     <th css="text-align: right">{lang.your_balance}</th>
                   </tr>
                 </thead>

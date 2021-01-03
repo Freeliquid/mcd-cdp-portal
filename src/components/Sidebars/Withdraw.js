@@ -142,17 +142,6 @@ const Withdraw = ({ vault, reset }) => {
             failureMessage={amountErrors}
           />
         </div>
-        <RatioDisplay
-          type={RatioDisplayTypes.CARD}
-          ratio={formatter(collateralizationRatio)}
-          ilkLiqRatio={formatter(liquidationRatio, { percentage: true })}
-          text={lang.action_sidebar.withdraw_warning}
-          onlyWarnings={true}
-          show={value !== '' && value > 0 && !undercollateralized}
-          textAlign="center"
-          bg={ getColor('cardBg') }
-          borderColor={ getColor('border') }
-        />
       </Grid>
       <Grid gridTemplateColumns="1fr 1fr" gridColumnGap="s">
         <Button

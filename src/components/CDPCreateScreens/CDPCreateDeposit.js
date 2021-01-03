@@ -216,14 +216,6 @@ function OpenCDPForm({
             {formatter(daiAvailableToGenerate)} USDFL
           </Text>
         </Box>
-        <RatioDisplay
-          type={RatioDisplayTypes.TEXT}
-          text={lang.cdp_create.collateralization_warning}
-          ratio={formatter(collateralizationRatio)}
-          ilkLiqRatio={formatter(liquidationRatio, { percentage: true })}
-          onlyWarnings={true}
-          t="caption"
-        />
       </Grid>
     ]
   ];

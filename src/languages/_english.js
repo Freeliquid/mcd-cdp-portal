@@ -453,7 +453,7 @@ export default {
       'I understand that the Stability Fee is not fixed and is likely to change over time',
     collateralization_warning:
       'The amount of USDFL you are generating is putting your Vault at risk of liquidation',
-    draw_too_much_dai: 'Vault below liquidation threshold',
+    draw_too_much_dai: 'Vault below threshold',
     below_dust_limit: 'A Vault requires a minimum of {0} USDFL to be generated',
     dust_max_payback:
       'You can repay all your outstanding debt, or a maximum of {0} USDFL',
@@ -737,6 +737,7 @@ export default {
   // "liquidation_price_shortened": "Liq Price",
   collateral_type: 'Collateral Type',
   collateral_amount: 'Collateral Amount',
+  link_pool: 'Link pool',
   collateralization: 'Your Collateralization Ratio',
   collateralization_ratio: 'Collateralization ratio',
   current_ilk_price: 'Current {0} Price',

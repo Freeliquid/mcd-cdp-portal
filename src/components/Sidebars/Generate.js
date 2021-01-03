@@ -111,15 +111,6 @@ const Generate = ({ vault, reset }) => {
           failureMessage={failureMessage}
         />
         </div>
-        <RatioDisplay
-          type={RatioDisplayTypes.CARD}
-          ratio={collateralizationRatio}
-          ilkLiqRatio={formatter(liquidationRatio, { percentage: true })}
-          text={lang.action_sidebar.generate_warning}
-          onlyWarnings={true}
-          show={amount !== '' && amount > 0 && !undercollateralized}
-          textAlign="center"
-        />
       </Grid>
       <Grid gridTemplateColumns="1fr 1fr" gridColumnGap="s">
         <Button className="btn"
