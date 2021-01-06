@@ -28,22 +28,22 @@ const CDPCreateSelectCollateralSidebar = () => {
         gridColumnGap="50px"
         my="l"
       >
-        {[
-          [lang.stability_fee, lang.cdp_create.stability_fee_description]
-        ].map(([title, text]) => (
-          <Grid mb="m" key={title} gridColumnGap="xs">
-            <TextBlock
-              style={{ fontSize: '18px', color: getColor('whiteText') }}
-            >
-              {title}
-            </TextBlock>
-            <TextBlock
-              style={{ fontSize: '14px', color: getColor('greyText') }}
-            >
-              {text}
-            </TextBlock>
-          </Grid>
-        ))}
+        {[[lang.stability_fee, lang.cdp_create.stability_fee_description]].map(
+          ([title, text]) => (
+            <Grid mb="m" key={title} gridColumnGap="xs">
+              <TextBlock
+                style={{ fontSize: '18px', color: getColor('whiteText') }}
+              >
+                {title}
+              </TextBlock>
+              <TextBlock
+                style={{ fontSize: '14px', color: getColor('greyText') }}
+              >
+                {text}
+              </TextBlock>
+            </Grid>
+          )
+        )}
       </Grid>
     </Box>
   );
@@ -81,7 +81,7 @@ function IlkTableRow({
     });
   }
   const disabled = ilk.gem === 'TUSD';
-  
+
   return (
     <tr
       style={
@@ -104,7 +104,7 @@ function IlkTableRow({
       </td>
       <td>
         <div>{ilk.symbol}</div>
-        
+
         {disabled && (
           <div style={{ fontSize: '11px', paddingBottom: '5px' }}>
             Unavailable due to a token upgrade
@@ -112,10 +112,11 @@ function IlkTableRow({
         )}
       </td>
       <td>
-      <div style={{color: '#00dcdc'}}><a
-        target="_blank"
-        href= {ilk.link}
-        >{ilk.platform}{' '}<ExternalLinkIcon style={{fill: '#00dcdc'}} /></a></div>
+        <div style={{ color: '#00dcdc' }}>
+          <a target="_blank" href={`${ilk.link}${ilk.token1}/${ilk.token2}`}>
+            {ilk.platform} <ExternalLinkIcon style={{ fill: '#00dcdc' }} />
+          </a>
+        </div>
       </td>
       <td>
         {formatter(annualStabilityFee, {
@@ -152,8 +153,7 @@ const CDPCreateSelectCollateral = ({
         title={lang.cdp_create.select_title}
         title2={lang.cdp_create.select_title2}
         text={lang.cdp_create.select_text}
-      >
-      </ScreenHeader>
+      ></ScreenHeader>
       <Grid
         style={{
           background: getColor('cardBg'),
