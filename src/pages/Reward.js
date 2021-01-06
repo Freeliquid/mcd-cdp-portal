@@ -9,7 +9,7 @@ import BigNumber from 'bignumber.js';
 import { USD, USDFL } from '../libs/dai-plugin-mcd/src/index.js';
 import rewardList from '../references/rewardList';
 import { formatDate } from 'utils/ui';
-import ExternalLink from 'components/ExternalLink';
+import ExternalLinkUni from 'components/ExternalLinkUni';
 import { Currency } from '@makerdao/currency';
 
 import {
@@ -128,6 +128,7 @@ function Reward({ viewedAddress }) {
     account?.address,
     true
   );
+  //console.log('rewardPairInfosHiRisk', rewardPairInfosHiRisk);
   const rewardPairInfosLowRisk = watch.walletRewardPairInfos(
     rewardList,
     account?.address,
@@ -173,16 +174,15 @@ function Reward({ viewedAddress }) {
   // console.log("rewardPairInfos");
   // console.log(rewardList);
 
- 
   const timeStart = rewardNextStartTime * 1000;
-  
+
   const globalParams = [
     [
       lang.overview_page.reward_next_start_time,
       formatDate(new Date(rewardNextStartTime * 1000)),
       '',
       '',
-      timeStart,
+      timeStart
     ],
     [
       lang.overview_page.reward_per_hour_hirisk,
@@ -370,14 +370,15 @@ function Reward({ viewedAddress }) {
                 width="100%"
                 variant="cozy"
                 css={`
-                table{overflow-x: scroll;}
+                  table {
+                    overflow-x: scroll;
+                  }
                   td,
                   th {
                     white-space: nowrap;
                     color: ${getColor('whiteText')};
-                    
                   }
-                  
+
                   tbody,
                   tr {
                     border-color: ${getColor('border')} !important;
@@ -386,7 +387,7 @@ function Reward({ viewedAddress }) {
                   th:not(:last-child) {
                     padding-right: 2px;
                   }
-                  thead{
+                  thead {
                     overflow-x: auto;
                   }
                 `}
@@ -403,7 +404,10 @@ function Reward({ viewedAddress }) {
                     <Table.th display={{ s: 'none', xl: 'table-cell' }}>
                       {lang.reward_page.locked_value}
                     </Table.th>
-                    <Table.th display={{ s: 'none', xl: 'table-cell' }} style={{textAlign: 'center'}}>
+                    <Table.th
+                      display={{ s: 'none', xl: 'table-cell' }}
+                      style={{ textAlign: 'center' }}
+                    >
                       {lang.reward_page.allowance}
                     </Table.th>
                     <Table.th />
@@ -442,10 +446,9 @@ function Reward({ viewedAddress }) {
                             fontSize={{ s: '1.2rem', xl: 'm' }}
                             color={{ s: 'grey', xl: 'white' }}
                           >
-                            <ExternalLink
+                            <ExternalLinkUni
                               key={1}
                               string={gem}
-                              network={network}
                               arrowInheritsColorOnHover={true}
                             />
                           </Text>
@@ -460,7 +463,9 @@ function Reward({ viewedAddress }) {
                             {formatter(lockedvalue, { precision: short })}
                           </Text>
                         </Table.td>
-                        <Table.td display={{ s: 'table-cell', xl: 'table-cell' }}>
+                        <Table.td
+                          display={{ s: 'table-cell', xl: 'table-cell' }}
+                        >
                           <Flex justifyContent="flex-end">
                             <Button
                               // variant="secondary-outline"
