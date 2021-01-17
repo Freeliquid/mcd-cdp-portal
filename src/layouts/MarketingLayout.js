@@ -14,6 +14,7 @@ import { ReactComponent as Twitter } from 'images/social/twitter.svg';
 import { ReactComponent as Medium } from 'images/social/medium.svg';
 import { ReactComponent as Email } from 'images/social/email.svg';
 import { ReactComponent as Github } from 'images/social/github.svg';
+import { ReactComponent as Discord } from 'images/social/discord.svg';
 
 const MarketingLayoutStyle = styled.div`
   text-rendering: optimizeLegibility;
@@ -79,11 +80,22 @@ const MainNav = ({ onLinkClicked, ...props }) => {
       >
         {lang.navbar.save}
       </Link>
+      <Link
+        target="_blank"
+        href="https://vote.freeliquid.io"
+        activeStyle={{ color: getColor('whiteText'), fontWeight: 'bold' }}
+        onClick={() => onLinkClicked && onLinkClicked()}
+      >
+        {lang.navbar.governance}
+      </Link>
       <a href="/wp/Freeliquid_WP_English.pdf" download="">
         {lang.navbar.whitepaper}
       </a>
-      <a href="/wp/Smart_contract_security_audit_report_freeliquid.pdf" download="">
-      {lang.navbar.audit}
+      <a
+        href="/wp/Smart_contract_security_audit_report_freeliquid.pdf"
+        download=""
+      >
+        {lang.navbar.audit}
       </a>
     </MainNavStyle>
   );
@@ -227,6 +239,7 @@ const Footer = styled.footer`
   }
 
   .legal-nav {
+    margin-bottom: 10px;
     a:not(:first-child) {
       margin-left: 44px;
     }
@@ -236,6 +249,10 @@ const Footer = styled.footer`
   }
   @media (min-width: 40em) {
     padding: 20px 0px;
+  }
+  @media only screen and (max-device-width: 768px) and (orientation: portrait) {
+    display: flex;
+    flex-flow: column;
   }
   @media only screen and (min-device-width: 769px) and (max-device-width: 1024px) and (orientation: portrait) {
     padding: 20px 15px;
@@ -393,15 +410,6 @@ const MarketingLayout = ({ showNavInFooter, children }) => {
         <CookieNotice />
         <Footer>
           <div className="navs">
-            {showNavInFooter && (
-              <Flex
-                display={{ s: 'none', xl: 'inline-flex' }}
-                alignItems="center"
-              >
-                <MainNav fontSize="16px" separation="24px" />
-                <SeparatorDot m="0 38px" />
-              </Flex>
-            )}
             <Nav className="legal-nav">
               <Link href={`/${Routes.TERMS}`}>{lang.navbar.terms}</Link>
               <Link href={`/${Routes.PRIVACY}`}>{lang.navbar.privacy}</Link>
@@ -416,6 +424,9 @@ const MarketingLayout = ({ showNavInFooter, children }) => {
             </Link>
             <Link target="_blank" href="https://freeliquid.medium.com/">
               <Medium />
+            </Link>
+            <Link target="_blank" href="https://discord.gg/FtGJvvVYrV">
+              <Discord />
             </Link>
             <Link target="_blank" href="mailto:support@freeliquid.info">
               <Email />

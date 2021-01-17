@@ -225,9 +225,25 @@ const Blocks2 = styled(Flex)`
     flex-direction: column-reverse;
     padding: 0px 10px;
   }
+  @media (max-width: 768px) {
+    width: 100%;
+    text-align: center;
+    flex-direction: column-reverse;
+    padding: 0px 10px;
+    a.linkContract,
+    a.linkContract2 {
+      font-size: 13px !important;
+    }
+  }
+  @media (max-width: 321px) {
+    a.linkContract,
+    a.linkContract2 {
+      font-size: 11px !important;
+    }
+  }
   a.linkContract {
     color: rgb(122 193 255);
-    font-size: 13px;
+    font-size: 16px;
     text-transform: lowercase;
   }
   a.linkContract:hover {
@@ -235,7 +251,7 @@ const Blocks2 = styled(Flex)`
   }
   a.linkContract2 {
     color: #00dcdc;
-    font-size: 13px;
+    font-size: 16px;
     text-transform: lowercase;
   }
   a.linkContract2:hover {
