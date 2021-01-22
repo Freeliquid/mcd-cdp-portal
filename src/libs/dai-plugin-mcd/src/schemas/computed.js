@@ -77,7 +77,13 @@ import {
   USER_VAULTS_LOCKED_VALUE,
   REWARD_FAIR_DISTRIBUTION_MAX_VALUE,
   REWARD_FAIR_DISTRIBUTION_TIME,
-  REWARD_START_TIME
+  REWARD_START_TIME,
+  REWARD_GET_HIRISK_APY,
+  REWARD_GET_LOWRISK_APY, 
+  REWARD_GET_AMOUNTS_OUT,
+  REWARD_GET_AMOUNTS_IN,
+  REWARD_GET_UNI_PRICE,
+  REWARD_GET_FL_PRICE
 } from './_constants';
 import { validateAddress, validateVaultId } from './_validators';
 
@@ -780,6 +786,38 @@ export const systemCollateralization = {
   })
 };
 
+
+export const getUniPrice = {
+  generate: (t0, t1, amount) => ({
+    dependencies: [
+      [REWARD_GET_AMOUNTS_OUT, amount, t1, t0],
+      [REWARD_GET_AMOUNTS_IN, amount, t0, t1]
+    ],
+    computed: (amountOut, amountIn) => {
+      return (amountOut+amountIn) / (2.0*amount);
+    }
+  })
+};
+
+
+export const getFLPrice = {
+  generate: () => ({
+
+    dependencies: ({ get }) => {
+      const cdpFLAddress = get('smartContract').getContractAddress(
+        'MCD_GOV'
+      );
+      const cdpUSDFLAddress = get('smartContract').getContractAddress(
+        'MCD_DAI'
+      );
+      return [
+        [REWARD_GET_UNI_PRICE, cdpUSDFLAddress, cdpFLAddress, 1000],
+      ];
+    },
+    computed: price => price
+  })
+};
+
 export const proxyOwner = {
   generate: address => ({
     dependencies: ({ get }) => [
@@ -840,5 +878,7 @@ export default {
   walletRewardPairInfos,
   rewardContract,
   userVaultsLockedValue,
-  fairDistribAllowToLockValue
+  fairDistribAllowToLockValue,
+  getUniPrice,
+  getFLPrice
 };

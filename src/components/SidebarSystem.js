@@ -5,6 +5,9 @@ import { formatCollateralizationRatio, prettifyNumber } from 'utils/ui';
 import SiteVersion from 'components/SiteVersion';
 import styled from 'styled-components';
 import { getColor } from 'styles/theme';
+import { watch } from 'hooks/useObservable';
+import { USDFL } from '../libs/dai-plugin-mcd/src/index.js';
+
 
 const SidebarSystem = ({ system }) => {
   const { lang } = useLanguage();
@@ -14,7 +17,13 @@ const SidebarSystem = ({ system }) => {
     totalVaultsCreated
   } = system;
 
+  const flPrice = USDFL(watch.getFLPrice() || '0');
+
   const systemParams = [
+    [
+      "FL price",
+      prettifyNumber(flPrice)
+    ],
     [
       lang.sidebar.system_collateralization,
       formatCollateralizationRatio(sc?.toNumber())
