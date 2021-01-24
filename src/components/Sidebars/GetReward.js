@@ -21,6 +21,7 @@ import { formatCollateralizationRatio, formatter } from 'utils/ui';
 import { decimalRules } from '../../styles/constants';
 import { getColor } from '../../styles/theme';
 import { watch } from 'hooks/useObservable';
+import WalletConnectDropdown from 'components/WalletConnectDropdown.js';
 const { long, medium, short } = decimalRules;
 
 const GetReward = () => {
@@ -36,7 +37,7 @@ const GetReward = () => {
   const { account } = useMaker();
   const rewardAmount = watch.walletRewardAmount(account?.address);
   const walletAmount = watch.tokenBalance(account?.address, 'FL');
-  const valid = formatter(rewardAmount) == 0;
+  const valid = formatter(rewardAmount) === 0 ? false: true;
 
   return (
     <Card
