@@ -20,10 +20,9 @@ import {
   REWARD_FAIR_DISTRIBUTION_MAX_VALUE,
   REWARD_FAIR_DISTRIBUTION_TIME,
   REWARD_PAIRINFO_GETPRICE,
-  REWARD_GET_HIRISK_APY,
-  REWARD_GET_LOWRISK_APY, 
   REWARD_GET_AMOUNTS_OUT,
-  REWARD_GET_AMOUNTS_IN
+  REWARD_GET_AMOUNTS_IN,
+  REWARD_GET_APY_BY_PRICE
 } from './_constants';
 
 export const rewardAmount = {
@@ -130,23 +129,16 @@ export const rewardCurrentEpoch = {
 };
 
 
-export const getHiRiskApy = {
-  generate: (amount, price) => ({
-    id: `GET_HIRISK_APY()`,
-    contract: 'FL_STATS',
-    call: ['getHiRiskApy(uint256,uint256)(uint256)', amount, price]
-  }),
-  returns: [[REWARD_GET_HIRISK_APY]]
-};
 
-
-export const getLowRiskApy = {
-  generate: (amount, price) => ({
-    id: `GET_LOWRISK_APY()`,
+export const getApyByPrice = {
+  generate: (hiRisk, amount, price) => ({
+    id: `REWARD_GET_APY_BY_PRICE(${hiRisk})`,
     contract: 'FL_STATS',
-    call: ['getLowRiskApy(uint256,uint256)(uint256)', amount, price]
+    call: [`${hiRisk ? 'getHiRiskApy' : 'getLowRiskApy'}(uint256,uint256)(uint256)`, 
+          BigNumber(amount).shiftedBy(18).toFixed(),
+          BigNumber(price).shiftedBy(18).toFixed()]
   }),
-  returns: [[REWARD_GET_LOWRISK_APY]]
+  returns: [[REWARD_GET_APY_BY_PRICE, fromWei]]
 };
 
 
@@ -156,11 +148,8 @@ export const getAmountsOut = {
     contract: 'UNI_ROUTER',
     call: ['getAmountsOut(uint256,address[])(uint256[])', amount, [t0, t1]]
   }),
-  returns: [
-      [REWARD_GET_AMOUNTS_OUT, v => v[v.length - 1].toNumber()]
-  ]
+  returns: [[REWARD_GET_AMOUNTS_OUT, v => v[v.length - 1].toNumber()]]
 };
-
 
 export const getAmountsIn = {
   generate: (amount, t0, t1) => ({
@@ -168,11 +157,8 @@ export const getAmountsIn = {
     contract: 'UNI_ROUTER',
     call: ['getAmountsIn(uint256,address[])(uint256[])', amount, [t0, t1]]
   }),
-  returns: [
-      [REWARD_GET_AMOUNTS_IN, v => v[0].toNumber()]
-  ]
+  returns: [[REWARD_GET_AMOUNTS_IN, v => v[0].toNumber()]]
 };
-
 
 export default {
   rewardAmount,
@@ -185,8 +171,7 @@ export default {
   rewardFairDistributionMaxValue,
   rewardFairDistributionTime,
   rewardPairInfoGetPrice,
-  getHiRiskApy,
-  getLowRiskApy,
   getAmountsOut,
-  getAmountsIn
+  getAmountsIn,
+  getApyByPrice
 };
