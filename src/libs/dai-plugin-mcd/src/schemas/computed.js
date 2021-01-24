@@ -78,12 +78,13 @@ import {
   REWARD_FAIR_DISTRIBUTION_MAX_VALUE,
   REWARD_FAIR_DISTRIBUTION_TIME,
   REWARD_START_TIME,
-  REWARD_GET_HIRISK_APY,
-  REWARD_GET_LOWRISK_APY, 
   REWARD_GET_AMOUNTS_OUT,
   REWARD_GET_AMOUNTS_IN,
   REWARD_GET_UNI_PRICE,
-  REWARD_GET_FL_PRICE
+  REWARD_GET_FL_PRICE,
+  REWARD_GET_APY_BY_PRICE,
+  REWARD_GET_APY,
+  REWARD_GET_PROFIT
 } from './_constants';
 import { validateAddress, validateVaultId } from './_validators';
 
@@ -786,7 +787,6 @@ export const systemCollateralization = {
   })
 };
 
-
 export const getUniPrice = {
   generate: (t0, t1, amount) => ({
     dependencies: [
@@ -794,27 +794,44 @@ export const getUniPrice = {
       [REWARD_GET_AMOUNTS_IN, amount, t0, t1]
     ],
     computed: (amountOut, amountIn) => {
-      return (amountOut+amountIn) / (2.0*amount);
+      return (amountOut + amountIn) / (2.0 * amount);
     }
   })
 };
 
-
 export const getFLPrice = {
-  generate: () => ({
-
+  generate: (inWei = false) => ({
     dependencies: ({ get }) => {
-      const cdpFLAddress = get('smartContract').getContractAddress(
-        'MCD_GOV'
-      );
+      const cdpFLAddress = get('smartContract').getContractAddress('MCD_GOV');
       const cdpUSDFLAddress = get('smartContract').getContractAddress(
         'MCD_DAI'
       );
-      return [
-        [REWARD_GET_UNI_PRICE, cdpUSDFLAddress, cdpFLAddress, 1000],
-      ];
+      return [[REWARD_GET_UNI_PRICE, cdpUSDFLAddress, cdpFLAddress, 1000]];
     },
-    computed: price => price
+    computed: price =>
+      inWei
+        ? BigNumber(price)
+            .shiftedBy(18)
+            .toFixed()
+        : price
+  })
+};
+
+export const getProfit = {
+  generate: (amount, hiRisk) => ({
+    dependencies: [
+      [REWARD_GET_APY_BY_PRICE, hiRisk, amount, [REWARD_GET_FL_PRICE, false]]
+    ],
+
+    computed: apy => apy
+  })
+};
+
+export const getAPY = {
+  generate: hiRisk => ({
+    dependencies: [[REWARD_GET_PROFIT, 10000, hiRisk]],
+
+    computed: apy => apy / 10000.0
   })
 };
 
@@ -880,5 +897,7 @@ export default {
   userVaultsLockedValue,
   fairDistribAllowToLockValue,
   getUniPrice,
-  getFLPrice
+  getFLPrice,
+  getAPY,
+  getProfit
 };

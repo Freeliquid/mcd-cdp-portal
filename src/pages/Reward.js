@@ -8,7 +8,7 @@ import { cutMiddle } from 'utils/ui';
 import BigNumber from 'bignumber.js';
 import { USD, USDFL } from '../libs/dai-plugin-mcd/src/index.js';
 import rewardList from '../references/rewardList';
-import { formatDate } from 'utils/ui';
+import { formatDate, formatCollateralizationRatio } from 'utils/ui';
 import ExternalLinkUni from 'components/ExternalLinkUni';
 import { Currency } from '@makerdao/currency';
 
@@ -128,6 +128,11 @@ function Reward({ viewedAddress }) {
     account?.address,
     true
   );
+
+  const flPrice = USDFL(watch.getFLPrice() || '0');
+  const apyHiRisk = watch.getAPY(true) * 100;
+  const apyLowRisk = watch.getAPY(false) * 100;
+
   //console.log('rewardPairInfosHiRisk', rewardPairInfosHiRisk);
   const rewardPairInfosLowRisk = watch.walletRewardPairInfos(
     rewardList,
@@ -189,7 +194,7 @@ function Reward({ viewedAddress }) {
       formatter(rewardPerHourHiRisk ? rewardPerHourHiRisk : 0.0, {
         precision: short
       }),
-      'FL',
+      'FL (APY: ' + formatCollateralizationRatio(apyHiRisk) + ')',
       lang.overview_page.reward_epoch + ' ' + hiRiskEpoch,
       null
     ],
@@ -198,7 +203,7 @@ function Reward({ viewedAddress }) {
       formatter(rewardPerHourLowRisk ? rewardPerHourLowRisk : 0.0, {
         precision: short
       }),
-      'FL',
+      'FL (APY: ' + formatCollateralizationRatio(apyLowRisk) + ')',
       lang.overview_page.reward_epoch + ' ' + lowRiskEpoch,
       null
     ]

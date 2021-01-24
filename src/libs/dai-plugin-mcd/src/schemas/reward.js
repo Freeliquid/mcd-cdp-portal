@@ -128,19 +128,22 @@ export const rewardCurrentEpoch = {
   returns: [[REWARD_CURRENT_EPOCH]]
 };
 
-
-
 export const getApyByPrice = {
   generate: (hiRisk, amount, price) => ({
     id: `REWARD_GET_APY_BY_PRICE(${hiRisk})`,
     contract: 'FL_STATS',
-    call: [`${hiRisk ? 'getHiRiskApy' : 'getLowRiskApy'}(uint256,uint256)(uint256)`, 
-          BigNumber(amount).shiftedBy(18).toFixed(),
-          BigNumber(price).shiftedBy(18).toFixed()]
+    call: [
+      `${hiRisk ? 'getHiRiskApy' : 'getLowRiskApy'}(uint256,uint256)(uint256)`,
+      BigNumber(amount)
+        .shiftedBy(18)
+        .toFixed(),
+      BigNumber(price)
+        .shiftedBy(18)
+        .toFixed()
+    ]
   }),
   returns: [[REWARD_GET_APY_BY_PRICE, fromWei]]
 };
-
 
 export const getAmountsOut = {
   generate: (amount, t0, t1) => ({

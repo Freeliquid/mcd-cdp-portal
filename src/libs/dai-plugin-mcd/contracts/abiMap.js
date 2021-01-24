@@ -52,7 +52,7 @@ module.exports = {
   USDNDAI: require('./abis/DSToken.json'),
   USDCUSDN: require('./abis/DSToken.json'),
   UNI_ROUTER: require('./abis/UniRouter.json'),
-
+  FL_STATS: require('./abis/CollateralStat.json'),
   FL_REWARDER: require('./abis/StakingRewards.json'),
   FL_REWARDER_GOV_USD: require('./abis/StakingRewardsDecay.json'),
   FL_REWARDER_STABLES: require('./abis/StakingRewardsDecay.json'),

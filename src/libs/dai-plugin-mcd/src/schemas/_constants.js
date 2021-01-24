@@ -119,12 +119,10 @@ export const REWARD_FAIR_DISTRIBUTION_MAX_VALUE =
   'rewardFairDistributionMaxValue';
 export const REWARD_FAIR_DISTRIBUTION_TIME = 'rewardFairDistributionTime';
 export const USER_VAULTS_LOCKED_VALUE = 'userVaultsLockedValue';
-export const REWARD_GET_HIRISK_APY = 'getHiRiskApy';
-export const REWARD_GET_LOWRISK_APY = 'getLowRiskApy';
 export const REWARD_GET_AMOUNTS_OUT = 'getAmountsOut';
 export const REWARD_GET_AMOUNTS_IN = 'getAmountsIn';
 export const REWARD_GET_UNI_PRICE = 'getUniPrice';
 export const REWARD_GET_FL_PRICE = 'getFLPrice';
-
-
-
+export const REWARD_GET_APY_BY_PRICE = 'getApyByPrice';
+export const REWARD_GET_APY = 'getAPY';
+export const REWARD_GET_PROFIT = 'getProfit';
