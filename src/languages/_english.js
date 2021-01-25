@@ -41,6 +41,22 @@ export default {
     block5_title:'Community',
     block5_text:'Join us on social media to learn more about Freeliquid, connect with the team, and share your experience with other community members.',
     headline: 'Borrow and save using USDFL',
+    rd_link: 'Roadmap',
+    rd_title:'Roadmap 2021',
+    rd_q1:'Q1',
+    rd_q2:'Q2',
+    rd_b1_1:'Governance platform launch vote.freeliquid.io',
+    rd_b1_2:'Waves Protocol integration',
+    rd_b1_2_1:'- Mutual partnership',
+    rd_b1_2_2:'- FL and USDFL on Waves.exchange',
+    rd_b1_2_3:'- FL and USDFL pools on swop.fi',
+    rd_b1_3:'Curve Finance integration',
+    rd_b1_3_1:'- Support of Curve LP tokens in Freeliquid Borrow',
+    rd_b2_1:'Introducing Stability Fees (~2%)',
+    rd_b2_1_1:'- FL buyback and burn for USDFL earned',
+    rd_b2_2:'Introducing USDFL stabilization mechanism',
+    rd_b2_2_1:' - Ensuring USDFL peg at ~$1',
+    rd_note:'Note: Changes to the Protocol parameters are possible only after a successful community vote',
     trade_card: {
       title: 'Trade',
       description:
@@ -359,7 +375,8 @@ export default {
     terms: 'Terms',
     blog: 'Blog',
     whitepaper: 'White paper',
-    audit: 'Audit'
+    audit: 'Audit',
+    rd_link: 'Roadmap'
   },
   sidebar: {
     wallet_balances: 'Wallet Pools Balances',

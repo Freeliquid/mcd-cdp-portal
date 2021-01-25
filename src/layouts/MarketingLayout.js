@@ -97,6 +97,11 @@ const MainNav = ({ onLinkClicked, ...props }) => {
       >
         {lang.navbar.audit}
       </a>
+      <a
+        href="#roadmap"
+      >
+       {lang.navbar.rd_link}
+      </a>
     </MainNavStyle>
   );
 };
