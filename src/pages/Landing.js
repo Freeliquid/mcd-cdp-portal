@@ -20,16 +20,15 @@ import { ReactComponent as ImgPoolsUsdl } from 'images/landing/pools_to_usdl_ful
 import { ReactComponent as Play } from 'images/landing/pl_vdo.svg';
 import { ReactComponent as RdImg } from 'images/landing/rd_img.svg';
 import { ReactComponent as RdPoint } from 'images/landing/rd_point.svg';
+import Line from 'images/landing/line.png';
 
 import { Address, Box, Flex, Text } from '@makerdao/ui-components-core';
 import Modal from 'react-modal';
 import { bottom } from 'styled-system';
 import ReactPlayer from 'react-player';
-import ExternalLink from 'components/ExternalLink';
-import { watch } from 'hooks/useObservable';
+
 
 const Content = ({ children }) => (
-  
   <Box p={{ s: `0 ${marketingTheme.mobilePaddingX}`, l: '0 32px' }}>
     <Box maxWidth="1140px" mx="auto">
       {children}
@@ -122,7 +121,6 @@ const Cards = (() => {
   return props => {
     const { url } = useCurrentRoute();
     const { lang } = useLanguage();
-    
 
     return (
       <CardsContainer {...props}>
@@ -439,11 +437,11 @@ const RoadMap = styled.div`
   border-radius: 20px;
   padding: 35px 45px;
   .rd_img{
-    padding: 65px 0px 30px;
+    padding: 65px 0px 0px;
+    margin-bottom: -18px;
   }
   .div_wrap{
     display: flex;
-    margin-top: 35px;
   }
   .rd_block{
     width: 50%;
@@ -462,6 +460,10 @@ const RoadMap = styled.div`
   .rd_point{
     margin-top: 8px;
   }
+  .rd_point2{
+    width: 26px;
+    height: 26px;
+  }
   .rd_block4 {
     margin-top: 85px;
     padding-right: 100px;
@@ -473,6 +475,9 @@ const RoadMap = styled.div`
   padding: 35px 25px;
   .div_wrap{
     flex-direction: column;
+  }
+  .rd_point2{
+    display: none;
   }
   .rd_img{
     display: none;
@@ -489,16 +494,14 @@ const RoadMap = styled.div`
   }
   .rd_block4 {
     padding-right: 0px;
-  }
+  }}
 `;
 
 Modal.setAppElement('#root');
 
-function Landing () {
+function Landing() {
   const { lang } = useLanguage();
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [isOpen, setOpen] = useState(false);
-
 
   return (
     <MarketingLayout>
@@ -641,78 +644,77 @@ function Landing () {
           </BlocksDiv2>
         </Blocks2>
         <RoadMap id="roadmap">
-        <Box mt={{ s: '35px', m: '25px' }} px={{ s: '10px', m: 0 }}>
-          <TitleCard>{lang.landing_page.rd_title}</TitleCard>
-        </Box>
-        <div className="rd_img"><RdImg /></div>
-        <div className="div_wrap">
-        <div className="rd_block">
-        <Text.h3>{lang.landing_page.rd_q1}</Text.h3>
-        <div className="rd_block3">
-          <RdPoint className="rd_point"/>
-          <Text.h5>
-          {lang.landing_page.rd_b1_1}
-          </Text.h5>
-        </div>
-        <br />
-        <div className="rd_block3">
-          <RdPoint className="rd_point"/>
-          <Text.h5>
-          {lang.landing_page.rd_b1_2}
-          <ul>
-          <li>{lang.landing_page.rd_b1_2_1}</li>
-          <li>{lang.landing_page.rd_b1_2_2}</li>
-          <li>{lang.landing_page.rd_b1_2_3}</li>
-          </ul>
-          </Text.h5>
-        </div>
-        <br />
-        <div className="rd_block3">
-          <RdPoint className="rd_point"/>
-          <Text.h5>
-          {lang.landing_page.rd_b1_3}
-          <ul>
-          <li> {lang.landing_page.rd_b1_3_1}</li>
-          </ul>
-          </Text.h5>
-        </div>
-        </div>
-        <div className="rd_block2">
-        <Text.h3>{lang.landing_page.rd_q2}</Text.h3>
-        <div className="rd_block3">
-          <RdPoint className="rd_point"/>
-          <Text.h5>
-          {lang.landing_page.rd_b2_1}
-          <ul>
-          <li>{lang.landing_page.rd_b2_1_1}</li>
-          </ul>
-          </Text.h5>
-        </div>
-        <br />
-        <div className="rd_block3">
-          <RdPoint className="rd_point"/>
-          <Text.h5>
-          {lang.landing_page.rd_b2_2}
-          <ul>
-          <li>{lang.landing_page.rd_b2_2_1}</li>
-          </ul>
-          </Text.h5>
-        </div>
-        <div className="rd_block4">
-          <p>
-          {lang.landing_page.rd_note}
-          </p>
-        </div>
-        </div>
-        </div>
-        </RoadMap>         
+          <Box mt={{ s: '35px', m: '25px' }} px={{ s: '10px', m: 0 }}>
+            <TitleCard>{lang.landing_page.rd_title}</TitleCard>
+          </Box>
+          <div className="rd_img">
+          <img src={Line}/>
+          </div>
+          <div className="div_wrap">
+            <div className="rd_block">
+            <RdPoint className="rd_point2" />
+              <Text.h3>{lang.landing_page.rd_q1}</Text.h3>
+              <div className="rd_block3">
+                <RdPoint className="rd_point" />
+                <Text.h5>{lang.landing_page.rd_b1_1}</Text.h5>
+              </div>
+              <br />
+              <div className="rd_block3">
+                <RdPoint className="rd_point" />
+                <Text.h5>
+                  {lang.landing_page.rd_b1_2}
+                  <ul>
+                    <li>{lang.landing_page.rd_b1_2_1}</li>
+                    <li>{lang.landing_page.rd_b1_2_2}</li>
+                    <li>{lang.landing_page.rd_b1_2_3}</li>
+                  </ul>
+                </Text.h5>
+              </div>
+              <br />
+              <div className="rd_block3">
+                <RdPoint className="rd_point" />
+                <Text.h5>
+                  {lang.landing_page.rd_b1_3}
+                  <ul>
+                    <li> {lang.landing_page.rd_b1_3_1}</li>
+                  </ul>
+                </Text.h5>
+              </div>
+            </div>
+            <div className="rd_block2">
+            <RdPoint className="rd_point2" />
+              <Text.h3>{lang.landing_page.rd_q2}</Text.h3>
+              <div className="rd_block3">
+                <RdPoint className="rd_point" />
+                <Text.h5>
+                  {lang.landing_page.rd_b2_1}
+                  <ul>
+                    <li>{lang.landing_page.rd_b2_1_1}</li>
+                  </ul>
+                </Text.h5>
+              </div>
+              <br />
+              <div className="rd_block3">
+                <RdPoint className="rd_point" />
+                <Text.h5>
+                  {lang.landing_page.rd_b2_2}
+                  <ul>
+                    <li>{lang.landing_page.rd_b2_2_1}</li>
+                  </ul>
+                </Text.h5>
+              </div>
+              <div className="rd_block4">
+                <p>{lang.landing_page.rd_note}</p>
+              </div>
+            </div>
+          </div>
+        </RoadMap>
         <Box mt={{ s: '126px', m: '89px' }} px={{ s: '10px', m: 0 }}>
           <TitleCard>{lang.landing_page.headline}</TitleCard>
         </Box>
         <FadeIn moveDistance="47px">
           <Cards mt="72px" mb="50px" />
         </FadeIn>
-        
       </Content>
     </MarketingLayout>
   );
