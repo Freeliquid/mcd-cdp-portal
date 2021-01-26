@@ -234,4 +234,8 @@ button.close_btn:hover{
   .btn {
     padding: 10px 5px !important;
   }
+  .info_reward{
+    display: grid !important;
+    grid-template-columns: 1fr;
+  }
 }

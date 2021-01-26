@@ -72,6 +72,7 @@ const RewardInfo = ({ params, title, button }) => {
             alignItems="baseline"
             width="100%"
             style={{ padding: '7px 10px' }}
+            className="info_reward"
           >
             <Text fontWeight="semibold" t="smallCaps" color="#A3B2CF">
               {param}
