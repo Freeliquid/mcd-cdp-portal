@@ -26,9 +26,7 @@ import { ReactComponent as FL } from 'images/landing/icon-coin-fl.svg';
 
 import { Address, Box, Flex, Text } from '@makerdao/ui-components-core';
 import Modal from 'react-modal';
-import { bottom } from 'styled-system';
 import ReactPlayer from 'react-player';
-
 
 const Content = ({ children }) => (
   <Box p={{ s: `0 ${marketingTheme.mobilePaddingX}`, l: '0 32px' }}>
@@ -110,6 +108,22 @@ const Cards = (() => {
         }
       }
     }
+    .buttonContainer_v {
+      background-color: ${getColor('cardBg')};
+      border-radius: 50px;
+      margin-top: 40px;
+      display: inline-block;
+      transition: all 0.15s ease;
+      padding-bottom: 0;
+      cursor: pointer;
+      :hover {
+        ${FilledButton} {
+          background-color: ${getColor('cardBg')};
+          color: ${getColor('cayn')};
+          bprder-color: ${getColor('cayn')};
+        }
+      }
+    }
 
     ${FilledButton} {
       display: inline-flex;
@@ -141,7 +155,7 @@ const Cards = (() => {
               prefetch={true}
               onClick={() => {
                 mixpanel.track('btn-click', {
-                  id: 'BorrowDai',
+                  id: 'BorrowUSDFL',
                   product: 'freeliquid-landing'
                 });
               }}
@@ -167,7 +181,7 @@ const Cards = (() => {
               prefetch={true}
               onClick={() => {
                 mixpanel.track('btn-click', {
-                  id: 'SaveUSDL',
+                  id: 'SaveUSDFL',
                   product: 'freeliquid-landing'
                 });
               }}
@@ -422,11 +436,17 @@ const ButtonFlex = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
+  grid-column-gap: 20px;
   @media (max-width: 768px) {
     justify-content: space-between;
+    flex-direction: column;
+    grid-row-gap: 20px;
+    
   }
   @media (min-width: 40em) {
     justify-content: start;
+    flex-direction: row;
+    justify-content: center;
   }
 `;
 const TitleCard = styled.div`
@@ -438,31 +458,31 @@ const RoadMap = styled.div`
   background: ${getColor('cardBg')};
   border-radius: 20px;
   padding: 35px 45px;
-  .rd_img{
+  .rd_img {
     padding: 65px 0px 0px;
     margin-bottom: -18px;
   }
-  .div_wrap{
+  .div_wrap {
     display: flex;
   }
-  .rd_block{
+  .rd_block {
     width: 50%;
     text-align: left;
     padding-left: 120px;
   }
-  .rd_block2{
+  .rd_block2 {
     width: 50%;
     text-align: left;
     padding-left: 45px;
   }
-  .rd_block3{
+  .rd_block3 {
     display: grid;
     grid-template-columns: 1fr 8fr;
   }
-  .rd_point{
+  .rd_point {
     margin-top: 8px;
   }
-  .rd_point2{
+  .rd_point2 {
     width: 26px;
     height: 26px;
   }
@@ -470,58 +490,59 @@ const RoadMap = styled.div`
     margin-top: 85px;
     padding-right: 100px;
   }
-  .rd_block4 p{
+  .rd_block4 p {
     font-size: 16px;
-}
-@media (max-width: 768px) {
-  padding: 35px 25px;
-  .div_wrap{
-    flex-direction: column;
   }
-  .rd_point2{
-    display: none;
+  @media (max-width: 768px) {
+    padding: 35px 25px;
+    .div_wrap {
+      flex-direction: column;
+    }
+    .rd_point2 {
+      display: none;
+    }
+    .rd_img {
+      display: none;
+    }
+    .rd_block {
+      width: 100%;
+      text-align: left;
+      padding-left: 0px;
+    }
+    .rd_block2 {
+      width: 100%;
+      text-align: left;
+      padding-left: 0px;
+    }
+    .rd_block4 {
+      padding-right: 0px;
+    }
   }
-  .rd_img{
-    display: none;
-  }
-  .rd_block{
-    width: 100%;
-    text-align: left;
-    padding-left: 0px;
-  }
-  .rd_block2{
-    width: 100%;
-    text-align: left;
-    padding-left: 0px;
-  }
-  .rd_block4 {
-    padding-right: 0px;
-  }}
 `;
-const Banner = styled.div `
-  background: #222B3F;
+const Banner = styled.div`
+  background: #222b3f;
   border-radius: 20px;
   padding: 15px 45px;
-  .wrap{
+  .wrap {
     display: grid;
     grid-template-columns: 1fr 10fr 3fr;
     align-items: center;
-    }
-  .coin_icons{
+  }
+  .coin_icons {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-self: center;
   }
-  .wrap_text{
+  .wrap_text {
     align-items: center;
     justify-content: center;
   }
   @media (max-width: 768px) {
-    .wrap{
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: center;
-    grid-gap: 20px;
+    .wrap {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      grid-gap: 20px;
     }
   }
 `;
@@ -541,26 +562,25 @@ function Landing() {
       <Content>
         <SpaceBox />
         <Banner>
-       <div className="wrap">
-       <div className="coin_icons">
-         <USDFL />
-         <FL />
-       </div>
-       <div>
-       <div className="wrap_text">
-       <Text.h5>{lang.landing_page.banner}</Text.h5>
-        </div>
+          <div className="wrap">
+            <div className="coin_icons">
+              <USDFL />
+              <FL />
+            </div>
+            <div>
+              <div className="wrap_text">
+                <Text.h5>{lang.landing_page.banner}</Text.h5>
+              </div>
+            </div>
 
-       </div>
- 
-          <div className="buttonContainer">
-                  <Link href="/borrow" className="button-link">
-                    <FilledButton className="button_p">
-                      {lang.landing_page.get_start}
-                    </FilledButton>
-                  </Link>
-                </div>
-        </div>
+            <div className="buttonContainer">
+              <Link href="/borrow" className="button-link">
+                <FilledButton className="button_p">
+                  {lang.landing_page.get_start}
+                </FilledButton>
+              </Link>
+            </div>
+          </div>
         </Banner>
         <FadeIn moveDistance="-60px">
           <Blocks>
@@ -578,13 +598,19 @@ function Landing() {
                     </FilledButton>
                   </Link>
                 </div>
+                <div className="buttonContainer_v">
+                  <Link className="modalVideo" onClick={() => setModalIsOpen(true)}>
+                    <FilledButton className="button_v">
+                      Play Tutorial
+                      <Play
+                      className="svg_vdo"
+                      style={{ marginTop: '2px', marginLeft: '20px', width: '15px' }}
+                    />
+                    </FilledButton>
+                    
+                  </Link>
+                </div>
                 <div className="modalVideo">
-                  <button
-                    className="btn_vdo"
-                    onClick={() => setModalIsOpen(true)}
-                  >
-                    <Play className="svg_vdo" />
-                  </button>
                   <Modal
                     isOpen={modalIsOpen}
                     onRequestClose={() => setModalIsOpen(false)}
@@ -699,11 +725,11 @@ function Landing() {
             <TitleCard>{lang.landing_page.rd_title}</TitleCard>
           </Box>
           <div className="rd_img">
-          <img src={Line}/>
+            <img src={Line} />
           </div>
           <div className="div_wrap">
             <div className="rd_block">
-            <RdPoint className="rd_point2" />
+              <RdPoint className="rd_point2" />
               <Text.h3>{lang.landing_page.rd_q1}</Text.h3>
               <div className="rd_block3">
                 <RdPoint className="rd_point" />
@@ -733,7 +759,7 @@ function Landing() {
               </div>
             </div>
             <div className="rd_block2">
-            <RdPoint className="rd_point2" />
+              <RdPoint className="rd_point2" />
               <Text.h3>{lang.landing_page.rd_q2}</Text.h3>
               <div className="rd_block3">
                 <RdPoint className="rd_point" />
