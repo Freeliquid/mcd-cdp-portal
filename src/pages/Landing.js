@@ -441,7 +441,6 @@ const ButtonFlex = styled.div`
     justify-content: space-between;
     flex-direction: column;
     grid-row-gap: 20px;
-    
   }
   @media (min-width: 40em) {
     justify-content: start;
@@ -599,15 +598,21 @@ function Landing() {
                   </Link>
                 </div>
                 <div className="buttonContainer_v">
-                  <Link className="modalVideo" onClick={() => setModalIsOpen(true)}>
+                  <Link
+                    className="modalVideo"
+                    onClick={() => setModalIsOpen(true)}
+                  >
                     <FilledButton className="button_v">
-                      Play Tutorial
+                    {lang.landing_page.play_tutorial}
                       <Play
-                      className="svg_vdo"
-                      style={{ marginTop: '2px', marginLeft: '20px', width: '15px' }}
-                    />
+                        className="svg_vdo"
+                        style={{
+                          marginTop: '2px',
+                          marginLeft: '20px',
+                          width: '15px'
+                        }}
+                      />
                     </FilledButton>
-                    
                   </Link>
                 </div>
                 <div className="modalVideo">

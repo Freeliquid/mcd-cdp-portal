@@ -33,6 +33,7 @@ export default {
     usdl_desc:'Lock liquidity pools with zero fees and receive loans in USDFL stablecoin',
     get_start:'Get started',
     play_video:'Play video',
+    play_tutorial: 'Play tutorial',
     block1_text:'Freeliquid makes it easy to receive USD stablecoins without any fees by collateralizing pools in DAI, USDT, USDC, USDN.',
     block1_text2:'USDFL is a fully decentralized, censorship-resistant stablecoin available to any liquidity provider',
     block3_title:'USDFL - providing even greater financial freedom',
