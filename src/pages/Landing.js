@@ -21,6 +21,8 @@ import { ReactComponent as Play } from 'images/landing/pl_vdo.svg';
 import { ReactComponent as RdImg } from 'images/landing/rd_img.svg';
 import { ReactComponent as RdPoint } from 'images/landing/rd_point.svg';
 import Line from 'images/landing/line.png';
+import { ReactComponent as USDFL } from 'images/landing/icon-coin-usdfl.svg';
+import { ReactComponent as FL } from 'images/landing/icon-coin-fl.svg';
 
 import { Address, Box, Flex, Text } from '@makerdao/ui-components-core';
 import Modal from 'react-modal';
@@ -496,6 +498,33 @@ const RoadMap = styled.div`
     padding-right: 0px;
   }}
 `;
+const Banner = styled.div `
+  background: #222B3F;
+  border-radius: 20px;
+  padding: 15px 45px;
+  .wrap{
+    display: grid;
+    grid-template-columns: 1fr 10fr 3fr;
+    align-items: center;
+    }
+  .coin_icons{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-self: center;
+  }
+  .wrap_text{
+    align-items: center;
+    justify-content: center;
+  }
+  @media (max-width: 768px) {
+    .wrap{
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    grid-gap: 20px;
+    }
+  }
+`;
 
 Modal.setAppElement('#root');
 
@@ -511,6 +540,28 @@ function Landing() {
       />
       <Content>
         <SpaceBox />
+        <Banner>
+       <div className="wrap">
+       <div className="coin_icons">
+         <USDFL />
+         <FL />
+       </div>
+       <div>
+       <div className="wrap_text">
+       <Text.h5>{lang.landing_page.banner}</Text.h5>
+        </div>
+
+       </div>
+ 
+          <div className="buttonContainer">
+                  <Link href="/borrow" className="button-link">
+                    <FilledButton className="button_p">
+                      {lang.landing_page.get_start}
+                    </FilledButton>
+                  </Link>
+                </div>
+        </div>
+        </Banner>
         <FadeIn moveDistance="-60px">
           <Blocks>
             <BlocksDiv>
