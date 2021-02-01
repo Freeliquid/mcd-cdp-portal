@@ -63,7 +63,7 @@ const DepositLPReward = ({ avail, availValue, name, gem, hiRisk, reset }) => {
   const valueToDeposit = value || BigNumber(0);
   const amountToDeposit = convertValueToAmount(valueToDeposit);
 
-  const valid = value && !amountErrors && hasProxy;
+  const valid = value && !amountErrors;
 
   const deposit = () => {
     const v = amountToDeposit.integerValue(BigNumber.ROUND_DOWN).toFixed();

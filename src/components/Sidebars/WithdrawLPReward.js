@@ -70,7 +70,7 @@ const WithdrawLPReward = ({
   const valueToWithdraw = value || BigNumber(0);
   const amountToWithdraw = convertValueToAmount(valueToWithdraw);
 
-  const valid = value && !amountErrors && hasProxy;
+  const valid = value && !amountErrors;
 
   const withdraw = () => {
     const v = amountToWithdraw.integerValue(BigNumber.ROUND_DOWN).toFixed();
