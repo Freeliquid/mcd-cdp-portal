@@ -21,6 +21,8 @@ import { ReactComponent as Play } from 'images/landing/pl_vdo.svg';
 import { ReactComponent as RdImg } from 'images/landing/rd_img.svg';
 import { ReactComponent as RdPoint } from 'images/landing/rd_point.svg';
 import Line from 'images/landing/line.png';
+import BannerBg from 'images/landing/bg_banner.png';
+import BannerMb from 'images/landing/banner_mb.png';
 import { ReactComponent as USDFL } from 'images/landing/icon-coin-usdfl.svg';
 import { ReactComponent as FL } from 'images/landing/icon-coin-fl.svg';
 
@@ -519,12 +521,17 @@ const RoadMap = styled.div`
   }
 `;
 const Banner = styled.div`
-  background: #222b3f;
-  border-radius: 20px;
-  padding: 15px 45px;
+  
+  
+}
   .wrap {
+    min-height: 105px;
+    background-image: url(${BannerBg});
+    padding: 30px 10px;
+    background-size: 100%;
+    background-repeat: no-repeat;
     display: grid;
-    grid-template-columns: 1fr 10fr;
+    grid-template-columns: 2fr 10fr 3fr;
     align-items: center;
   }
   .coin_icons {
@@ -533,8 +540,17 @@ const Banner = styled.div`
     justify-self: center;
   }
   .wrap_text {
+    color: #fff;
     align-items: center;
     justify-content: center;
+    color: #fff;
+    font-size: 18px;
+    text-align: right
+  }
+  a.banner_link{
+    color: #fff !important;
+    font-size: 18px !important;
+    text-decoration: revert;
   }
   @media (max-width: 768px) {
     .wrap {
@@ -542,7 +558,15 @@ const Banner = styled.div`
       grid-template-columns: 1fr;
       align-items: center;
       grid-gap: 20px;
+      background-image: url(${BannerMb});
+      background-color: #3A1FB9;
+      border-radius: 25px;
+      background-position: -140px -125px;
+      padding: 65px 40px 30px;
     }
+     .wrap_text {
+    text-align: center;
+  }
   }
 `;
 
@@ -563,19 +587,22 @@ function Landing() {
         <Banner>
           <div className="wrap">
             <div className="coin_icons">
-              <USDFL />
-              <FL />
             </div>
             <div>
               <div className="wrap_text">
-                
-                  {lang.landing_page.banner}
-              <Link href="https://freeliquid.medium.com/freeliquid-rewards-distribution-a40b3de86dc" target="_blank" color="#00dcdc">
-                {lang.landing_page.banner_link}
-              </Link>
-            
+                {lang.landing_page.banner}
               </div>
             </div>
+            <div >
+                <Link
+                className="banner_link"
+                  href="https://freeliquid.medium.com/freeliquid-rewards-distribution-a40b3de86dc"
+                  target="_blank"
+                  color="#00dcdc"
+                >
+                  {lang.landing_page.banner_link}
+                </Link>
+              </div>
           </div>
         </Banner>
         <FadeIn moveDistance="-60px">
@@ -600,7 +627,7 @@ function Landing() {
                     onClick={() => setModalIsOpen(true)}
                   >
                     <FilledButton className="button_v">
-                    {lang.landing_page.play_tutorial}
+                      {lang.landing_page.play_tutorial}
                       <Play
                         className="svg_vdo"
                         style={{
