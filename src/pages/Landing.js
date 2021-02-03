@@ -524,7 +524,7 @@ const Banner = styled.div`
   padding: 15px 45px;
   .wrap {
     display: grid;
-    grid-template-columns: 1fr 10fr 3fr;
+    grid-template-columns: 1fr 10fr;
     align-items: center;
   }
   .coin_icons {
@@ -568,16 +568,13 @@ function Landing() {
             </div>
             <div>
               <div className="wrap_text">
-                <Text.h5>{lang.landing_page.banner}</Text.h5>
-              </div>
-            </div>
-
-            <div className="buttonContainer">
-              <Link href="/borrow" className="button-link">
-                <FilledButton className="button_p">
-                  {lang.landing_page.get_start}
-                </FilledButton>
+                
+                  {lang.landing_page.banner}
+              <Link href="https://freeliquid.medium.com/freeliquid-rewards-distribution-a40b3de86dc" target="_blank" color="#00dcdc">
+                {lang.landing_page.banner_link}
               </Link>
+            
+              </div>
             </div>
           </div>
         </Banner>

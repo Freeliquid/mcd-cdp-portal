@@ -27,7 +27,8 @@ export default {
       description:
         'Borrow and Save using USDFL. Place orders on the marketplace using Trade, generate USDFL, a stablecoin pegged to 1 USD, on Borrow and earn savings on your USDFL using Save. All on Freeliquid.io.'
     },
-    banner: 'FL distribution is in progress. Click here to know about the rewards!',
+    banner: 'FL distribution is in progress. ',
+    banner_link: 'Click here to know about the rewards!',
     title:'Freeliquid',
     usdl_title:'Get funding up to 90% of your liquidity pool size',
     usdl_desc:'Lock liquidity pools with zero fees and receive loans in USDFL stablecoin',
