@@ -4,7 +4,9 @@ import useSidebar from 'hooks/useSidebar';
 import PageContentLayout from 'layouts/PageContentLayout';
 import LoadingLayout from 'layouts/LoadingLayout';
 import { formatter } from 'utils/ui';
-import {  USDFL } from '../libs/dai-plugin-mcd/src/index.js';
+import { cutMiddle } from 'utils/ui';
+import BigNumber from 'bignumber.js';
+import { USD, USDFL } from '../libs/dai-plugin-mcd/src/index.js';
 import rewardList from '../references/rewardList';
 import { formatDate, formatCollateralizationRatio } from 'utils/ui';
 import ExternalLinkUni from 'components/ExternalLinkUni';
@@ -28,6 +30,7 @@ import useLanguage from 'hooks/useLanguage';
 import useModal from '../hooks/useModal';
 import useNotification from 'hooks/useNotification';
 import useAnalytics from 'hooks/useAnalytics';
+import useVaults from 'hooks/useVaults';
 import { watch } from 'hooks/useObservable';
 import useEmergencyShutdown from 'hooks/useEmergencyShutdown';
 import { NotificationList, Routes, SAFETY_LEVELS } from 'utils/constants';
@@ -35,7 +38,7 @@ import { NotificationList, Routes, SAFETY_LEVELS } from 'utils/constants';
 import { decimalRules } from '../styles/constants';
 import TimeAgo from 'timeago-react';
 
-const { short } = decimalRules;
+const { long, medium, short } = decimalRules;
 
 const RewardInfo = ({ params, title, button }) => {
   return (
@@ -114,8 +117,11 @@ const RewardInfo = ({ params, title, button }) => {
 };
 
 function Reward({ viewedAddress }) {
+  const { trackBtnClick } = useAnalytics('Table');
   const { account, network } = useMaker();
+  const { url } = useCurrentRoute();
   const { lang } = useLanguage();
+  const { emergencyShutdownActive } = useEmergencyShutdown();
   const { maker } = useMaker();
   const { addNotification, deleteNotifications } = useNotification();
   const rewardPairInfosHiRisk = watch.walletRewardPairInfos(
@@ -124,7 +130,7 @@ function Reward({ viewedAddress }) {
     true
   );
 
-  //const flPrice = USDFL(watch.getFLPrice() || '0');
+  const flPrice = USDFL(watch.getFLPrice() || '0');
   const apyHiRisk = watch.getAPY(true) * 100;
   const apyLowRisk = watch.getAPY(false) * 100;
 
@@ -356,6 +362,7 @@ function Reward({ viewedAddress }) {
               {lang.reward_page.participating_pools}
             </Text>
             <Card
+              px={{ s: 's', xl: 'l' }}
               pt="m"
               pb="s"
               my="m"
@@ -371,7 +378,6 @@ function Reward({ viewedAddress }) {
                 css={`
                   table {
                     overflow-x: scroll;
-                   
                   }
                   td,
                   th {
@@ -386,10 +392,9 @@ function Reward({ viewedAddress }) {
                   td:not(:last-child),
                   th:not(:last-child) {
                     padding-right: 2px;
-                    padding-left: 18px;
                   }
                   thead {
-                    overflow-x: scroll;
+                    overflow-x: auto;
                   }
                 `}
               >
@@ -414,7 +419,7 @@ function Reward({ viewedAddress }) {
                     <Table.th />
                   </Table.tr>
                 </Table.thead>
-                <tbody >
+                <tbody>
                   {rewardPairInfosEx.map(
                     ({
                       name,
@@ -430,13 +435,13 @@ function Reward({ viewedAddress }) {
                       unlockDisabled,
                       network
                     }) => (
-                      <Table.tr key={gem} style={{background: name === 'USDFL_FL'? '#222B3F' : '#131824'}}>
+                      <Table.tr key={gem}>
                         <Table.td>
                           <Text
                             t="body"
                             fontSize={{ s: '1.2rem', xl: 'm' }}
                             fontWeight={{ s: 'medium', xl: 'normal' }}
-                            color={ name === 'USDFL_FL' ? 'red' : 'white'}
+                            color={hiRisk ? 'red' : 'white'}
                           >
                             {name}
                           </Text>
@@ -487,7 +492,8 @@ function Reward({ viewedAddress }) {
                             <Button
                               // variant="secondary-outline"
                               className="btn"
-                              style={{ margin: '1px auto', fontSize: '12px'}}
+                              style={{ margin: '1px auto', fontSize: '12px' }}
+                              borderColor="steel"
                               disabled={lockDisabled}
                               onClick={() => {
                                 showAction({
@@ -502,7 +508,7 @@ function Reward({ viewedAddress }) {
                                 });
                               }}
                             >
-                            {name === 'USDFL_FL'? 'Lock X2' : 'Lock'}
+                              {lang.reward_page.button_lock}
                             </Button>
                           </Flex>
                         </Table.td>
