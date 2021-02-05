@@ -430,13 +430,13 @@ function Reward({ viewedAddress }) {
                       unlockDisabled,
                       network
                     }) => (
-                      <Table.tr key={gem}>
+                      <Table.tr key={gem} style={{background: name === 'USDFL_FL'? '#222B3F' : '#131824'}}>
                         <Table.td>
                           <Text
                             t="body"
                             fontSize={{ s: '1.2rem', xl: 'm' }}
                             fontWeight={{ s: 'medium', xl: 'normal' }}
-                            color={hiRisk ? 'red' : 'white'}
+                            color={ name === 'USDFL_FL' ? 'red' : 'white'}
                           >
                             {name}
                           </Text>
@@ -502,7 +502,7 @@ function Reward({ viewedAddress }) {
                                 });
                               }}
                             >
-                            {lang.reward_page.button_lock}
+                            {name === 'USDFL_FL'? 'Lock X2' : 'Lock'}
                             </Button>
                           </Flex>
                         </Table.td>
