@@ -8,6 +8,7 @@ import { cutMiddle } from 'utils/ui';
 import BigNumber from 'bignumber.js';
 import { USD, USDFL } from '../libs/dai-plugin-mcd/src/index.js';
 import rewardList from '../references/rewardList';
+import rewardListX2 from '../references/rewardListX2';
 import { formatDate, formatCollateralizationRatio } from 'utils/ui';
 import ExternalLinkUni from 'components/ExternalLinkUni';
 import { Currency } from '@makerdao/currency';
@@ -146,7 +147,7 @@ function Reward({ viewedAddress }) {
           item => item.gem != 0
         )
       : [];
-
+ 
   const rewardPerHourHiRisk = watch.rewardPerHour(true);
   const rewardPerHourLowRisk = watch.rewardPerHour(false);
 
@@ -287,7 +288,8 @@ function Reward({ viewedAddress }) {
         allowance.toNumber() < avail.toNumber() ||
         rewardNextStartTime >= timestamp,
       unlockDisabled: locked.toNumber() <= 0,
-      network
+      network,
+      x2: rewardListX2
     };
   });
 
@@ -433,7 +435,8 @@ function Reward({ viewedAddress }) {
                       approveDisabled,
                       lockDisabled,
                       unlockDisabled,
-                      network
+                      network,
+                      x2
                     }) => (
                       <Table.tr key={gem}>
                         <Table.td>
@@ -475,7 +478,7 @@ function Reward({ viewedAddress }) {
                           <Flex justifyContent="flex-end">
                             <Button
                               // variant="secondary-outline"
-                              className="btn"
+                              className="btn w100"
                               style={{ margin: '1px auto', fontSize: '12px' }}
                               borderColor="steel"
                               disabled={approveDisabled}
@@ -489,9 +492,30 @@ function Reward({ viewedAddress }) {
                         </Table.td>
                         <Table.td>
                           <Flex justifyContent="flex-end">
+                         { name != x2? <Button
+                              // variant="secondary-outline"
+                              className="btn w100 x2"
+                              style={{ margin: '1px auto', fontSize: '12px' }}
+                              borderColor="steel"
+                              disabled={lockDisabled}
+                              onClick={() => {
+                                showAction({
+                                  type: 'depositLPReward',
+                                  props: {
+                                    avail,
+                                    availValue: availvalue,
+                                    name,
+                                    gem,
+                                    hiRisk
+                                  }
+                                });
+                              }}
+                            >
+                              {lang.reward_page.button_lockx2}
+                            </Button> : 
                             <Button
                               // variant="secondary-outline"
-                              className="btn"
+                              className="btn w100"
                               style={{ margin: '1px auto', fontSize: '12px' }}
                               borderColor="steel"
                               disabled={lockDisabled}
@@ -509,14 +533,14 @@ function Reward({ viewedAddress }) {
                               }}
                             >
                               {lang.reward_page.button_lock}
-                            </Button>
+                            </Button>}
                           </Flex>
                         </Table.td>
                         <Table.td>
                           <Flex justifyContent="flex-end">
                             <Button
                               // variant="secondary-outline"
-                              className="btn"
+                              className="btn w100"
                               style={{ margin: '1px auto', fontSize: '12px' }}
                               borderColor="steel"
                               disabled={unlockDisabled}

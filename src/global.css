@@ -248,6 +248,13 @@ button.close_btn:hover{
   background-color: #00DCDC !important;
   color: #0B0E15 !important;
 }
+.w100{
+  width: 100px;
+}
+.x2{
+  background-color: #00dcdc !important; 
+  color: #231536 !important;
+}
 @media (max-width: 768px) {
   .btn {
     padding: 10px 5px !important;
@@ -255,5 +262,8 @@ button.close_btn:hover{
   .info_reward{
     display: grid !important;
     grid-template-columns: 1fr;
+  }
+  .w100{
+    width: 54px;
   }
 }

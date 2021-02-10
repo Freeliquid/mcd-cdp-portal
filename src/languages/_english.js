@@ -366,6 +366,7 @@ export default {
     allowance:'Allowance',
     participating_pools:'Participating pools',
     button_lock:'Lock',
+    button_lockx2:'Lock X2',
     button_unlock:'Unlock',
     button_approve:'Approve'
   },
