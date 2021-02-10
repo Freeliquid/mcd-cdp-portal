@@ -22,7 +22,7 @@ import { ReactComponent as RdImg } from 'images/landing/rd_img.svg';
 import { ReactComponent as RdPoint } from 'images/landing/rd_point.svg';
 import Line from 'images/landing/line.png';
 import BannerBg from 'images/landing/bg_banner.png';
-import BannerMb from 'images/landing/banner_mb.png';
+import BannerMb from 'images/landing/bg_banner.svg';
 import { ReactComponent as USDFL } from 'images/landing/icon-coin-usdfl.svg';
 import { ReactComponent as FL } from 'images/landing/icon-coin-fl.svg';
 
@@ -556,16 +556,17 @@ const Banner = styled.div`
     .wrap {
       display: grid;
       grid-template-columns: 1fr;
-      align-items: center;
       grid-gap: 20px;
       background-image: url(${BannerMb});
       background-color: #3A1FB9;
       border-radius: 25px;
-      background-position: -140px -125px;
-      padding: 65px 40px 30px;
+      background-position: -120px -100px;
+      background-size: 70%;
+      padding: 5px 10px 25px 100px;
+      text-align: left;
     }
      .wrap_text {
-    text-align: center;
+    text-align: left;
   }
   }
 `;
