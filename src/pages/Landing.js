@@ -435,20 +435,24 @@ const BlockPoolsUsdl = styled.div`
 
 const ButtonFlex = styled.div`
   font-size: 18px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-content: start;
   align-items: center;
   grid-column-gap: 20px;
   @media (max-width: 768px) {
     justify-content: space-between;
-    flex-direction: column;
+    grid-template-columns: 1fr;
     grid-row-gap: 20px;
   }
   @media (min-width: 40em) {
-    justify-content: start;
-    flex-direction: row;
     justify-content: center;
+    grid-template-columns: 1fr 1fr;
   }
+  @media only screen and (orientation: landscape) and (min-device-width: 768px) {
+  grid-template-columns: 1fr;  
+  grid-row-gap: 20px;            
+}
 `;
 const TitleCard = styled.div`
   font-size: 40px;
@@ -552,7 +556,7 @@ const Banner = styled.div`
     font-size: 18px !important;
     text-decoration: revert;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     .wrap {
       display: grid;
       grid-template-columns: 1fr;
@@ -569,6 +573,29 @@ const Banner = styled.div`
     text-align: left;
   }
   }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .wrap {
+      min-height: 70px;
+      padding: 10px 10px;
+      background-image: url(${BannerMb});
+      background-color: #3A1FB9;
+      background-position: -120px -121px;
+      background-size: 37%;
+      border-radius: 20px;
+    }
+  }
+  @media only screen and (orientation: landscape) and (min-device-width: 768px) {
+    .wrap {
+      min-height: 70px;
+      padding: 10px 10px;
+    }
+    .wrap_text {
+      font-size: 16px;
+  }
+  a.banner_link{
+    font-size: 16px !important;
+  }     
+}
 `;
 
 Modal.setAppElement('#root');
@@ -587,23 +614,20 @@ function Landing() {
         <SpaceBox />
         <Banner>
           <div className="wrap">
-            <div className="coin_icons">
+            <div className="coin_icons"></div>
+            <div>
+              <div className="wrap_text">{lang.landing_page.banner}</div>
             </div>
             <div>
-              <div className="wrap_text">
-                {lang.landing_page.banner}
-              </div>
-            </div>
-            <div >
-                <Link
+              <Link
                 className="banner_link"
-                  href="https://freeliquid.medium.com/freeliquid-rewards-distribution-a40b3de86dc"
-                  target="_blank"
-                  color="#00dcdc"
-                >
-                  {lang.landing_page.banner_link}
-                </Link>
-              </div>
+                href="https://freeliquid.medium.com/freeliquid-rewards-distribution-a40b3de86dc"
+                target="_blank"
+                color="#00dcdc"
+              >
+                {lang.landing_page.banner_link}
+              </Link>
+            </div>
           </div>
         </Banner>
         <FadeIn moveDistance="-60px">
