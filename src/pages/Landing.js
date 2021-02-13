@@ -449,10 +449,10 @@ const ButtonFlex = styled.div`
     justify-content: center;
     grid-template-columns: 1fr 1fr;
   }
-  @media only screen and (orientation: landscape) and (min-device-width: 768px) {
-  grid-template-columns: 1fr;  
-  grid-row-gap: 20px;            
-}
+  @media only screen and (orientation: landscape) and (max-device-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-row-gap: 20px;
+  }
 `;
 const TitleCard = styled.div`
   font-size: 40px;
@@ -584,7 +584,7 @@ const Banner = styled.div`
       border-radius: 20px;
     }
   }
-  @media only screen and (orientation: landscape) and (min-device-width: 768px) {
+  @media only screen and (orientation: landscape) and (max-device-width: 768px) {
     .wrap {
       min-height: 70px;
       padding: 10px 10px;
