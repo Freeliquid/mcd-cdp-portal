@@ -23,6 +23,8 @@ import {
   Address,
   Flex
 } from '@makerdao/ui-components-core';
+import FullScreenAction from 'components/CDPDisplay/FullScreenAction';
+import styled from 'styled-components';
 import { Link, useCurrentRoute } from 'react-navi';
 import useMaker from 'hooks/useMaker';
 import RatioDisplay from '../components/RatioDisplay';
@@ -364,6 +366,7 @@ function Reward({ viewedAddress }) {
               {lang.reward_page.participating_pools}
             </Text>
             <Card
+              className="table-reward"
               px={{ s: 's', xl: 'l' }}
               pt="m"
               pb="s"
@@ -379,7 +382,6 @@ function Reward({ viewedAddress }) {
                 variant="cozy"
                 css={`
                   table {
-                    overflow-x: scroll;
                   }
                   td,
                   th {
@@ -393,10 +395,10 @@ function Reward({ viewedAddress }) {
                   }
                   td:not(:last-child),
                   th:not(:last-child) {
-                    padding-right: 2px;
+                    padding-right: 15px;
                   }
                   thead {
-                    overflow-x: auto;
+                    overflow: auto;
                   }
                 `}
               >
@@ -462,12 +464,12 @@ function Reward({ viewedAddress }) {
                             />
                           </Text>
                         </Table.td>
-                        <Table.td display={{ s: 'none', xl: 'table-cell' }}>
+                        <Table.td display={{ s: 'table-cell', xl: 'table-cell' }}>
                           <Text t="caption">
                             {formatter(availvalue, { precision: short })}
                           </Text>
                         </Table.td>
-                        <Table.td display={{ s: 'none', xl: 'table-cell' }}>
+                        <Table.td display={{ s: 'table-cell', xl: 'table-cell' }}>
                           <Text t="caption">
                             {formatter(lockedvalue, { precision: short })}
                           </Text>
@@ -492,10 +494,9 @@ function Reward({ viewedAddress }) {
                         </Table.td>
                         <Table.td>
                           <Flex justifyContent="flex-end">
-                            {
-                              x2.some( function(val){
-                                return val == name;
-                              }) ? 
+                            {x2.some(function(val) {
+                              return val == name;
+                            }) ? (
                               <Button
                                 // variant="secondary-outline"
                                 className="btn w100"
@@ -516,8 +517,8 @@ function Reward({ viewedAddress }) {
                                 }}
                               >
                                 {lang.reward_page.button_lock}
-                              </Button> 
-                              : 
+                              </Button>
+                            ) : (
                               <Button
                                 // variant="secondary-outline"
                                 className="btn w100 x2"
@@ -539,7 +540,7 @@ function Reward({ viewedAddress }) {
                               >
                                 {lang.reward_page.button_lockx2}
                               </Button>
-                            }
+                            )}
                           </Flex>
                         </Table.td>
                         <Table.td>
@@ -576,6 +577,9 @@ function Reward({ viewedAddress }) {
           </Box>
         </Grid>
       }
+      {actionShown && (
+        <FullScreenAction {...actionShown} reset={() => setActionShown(null)} />
+      )}
     </PageContentLayout>
   );
 }

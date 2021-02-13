@@ -255,7 +255,7 @@ button.close_btn:hover{
   background-color: #00dcdc !important; 
   color: #231536 !important;
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .btn {
     padding: 10px 5px !important;
   }
@@ -264,6 +264,17 @@ button.close_btn:hover{
     grid-template-columns: 1fr;
   }
   .w100{
-    width: 54px;
+    width: 65px;
   }
+  .table-reward{
+    width: 350px;
+    overflow-y: scroll;
+  }  
+}
+
+
+@media only screen and (orientation: landscape) and (min-device-width: 768px) {
+.table-reward{
+  width: 100%;
+}              
 }
