@@ -831,7 +831,10 @@ export const getAPY = {
   generate: hiRisk => ({
     dependencies: [[REWARD_GET_PROFIT, 10000, hiRisk]],
 
-    computed: apy => apy / 10000.0
+    computed: apy => {
+      const f = hiRisk ? 1.91 : 1.0; //handle X2 boost for new risk pools
+      return (apy * f) / 10000.0;
+    }
   })
 };
 
