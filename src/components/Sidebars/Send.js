@@ -11,7 +11,6 @@ import BigNumber from 'bignumber.js';
 import SetMax from '../SetMax';
 import { isValidAddressString, calculateGasCost } from '../../utils/ethereum';
 import { getColor } from 'styles/theme';
-import { prettifyCurrency, prettifyNumber } from 'utils/ui';
 
 const PasteLink = styled(Link)``;
 

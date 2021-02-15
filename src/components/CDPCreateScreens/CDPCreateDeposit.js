@@ -17,7 +17,6 @@ import { getColor } from 'styles/theme';
 function OpenCDPForm({
   selectedIlk,
   cdpParams,
-  collateralizationRatio,
   handleInputChange,
   ilkData,
   dispatch,
@@ -27,7 +26,6 @@ function OpenCDPForm({
   const { lang } = useLanguage();
   let {
     calculateMaxDai,
-    liquidationRatio,
     debtFloor,
     collateralDebtAvailable,
     collateralAmountByValue
@@ -264,7 +262,6 @@ const CDPCreateDepositSidebar = ({
   const currency = selectedIlk.currency;
   let {
     annualStabilityFee,
-    collateralTypePrice,
     collateralDebtAvailable
   } = ilkData;
 

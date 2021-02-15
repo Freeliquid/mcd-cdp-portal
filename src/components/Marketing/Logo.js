@@ -15,12 +15,7 @@ const LogoDiv = styled.div`
   display: flex;
   align-items: center;
 `;
-const LogoTitle = styled.div`
-  margin-left: 10px;
-  @media (max-width: 639px) {
-    display: none;
-  }
-`;
+
 export default styled(props => (
   <StyledLink {...props} href="/">
     <LogoDiv>

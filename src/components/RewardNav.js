@@ -35,14 +35,6 @@ const RewardNav = ({ account, ...props }) => {
         : selected && !account
         ? '1'
         : '0.5';
-        const iconFilter =
-        selected && account
-          ? 'none'
-          : !selected && account
-          ? 'grayscale(1)'
-          : selected && !account
-          ? 'none'
-          : 'grayscale(1)';
 
   const rewardUrl = `/${Routes.REWARD}/owner/${account?.address}${url.search}`;
   return (

@@ -10,12 +10,11 @@ import useMaker from 'hooks/useMaker';
 import useLanguage from 'hooks/useLanguage';
 import useAnalytics from 'hooks/useAnalytics';
 import useValidatedInput from 'hooks/useValidatedInput';
-import { greaterThan, multiply } from 'utils/bignumber';
+import { multiply } from 'utils/bignumber';
 import { formatCollateralizationRatio, formatter } from 'utils/ui';
 import { getCurrency } from 'utils/cdp';
 import { decimalRules } from '../../styles/constants';
 import { getColor } from '../../styles/theme';
-import { ShortType } from 'three';
 const { short } = decimalRules;
 
 const Withdraw = ({ vault, reset }) => {
@@ -30,7 +29,6 @@ const Withdraw = ({ vault, reset }) => {
     collateralTypePrice,
     collateralAmount,
     collateralValue,
-    encumberedCollateral,
     collateralValueForAmount,
     collateralAmountByValue,
     encumberedDebt: debtAmount
@@ -40,19 +38,19 @@ const Withdraw = ({ vault, reset }) => {
   collateralValue = collateralValue.toBigNumber();
 
   function convertAmountToValue(amount) {
-    if (amount == 0) return BigNumber(0);
+    if (amount === 0) return BigNumber(0);
     const r = collateralValueForAmount(BigNumber(amount));
 
-    if (r == undefined) return BigNumber(0);
+    if (r === undefined) return BigNumber(0);
 
     return r;
   }
 
   function convertValueToAmount(value) {
-    if (value == 0) return BigNumber(0);
+    if (value === 0) return BigNumber(0);
     const r = collateralAmountByValue(BigNumber(value));
 
-    if (r == undefined) return BigNumber(0);
+    if (r === undefined) return BigNumber(0);
     return r;
   }
 
@@ -76,8 +74,6 @@ const Withdraw = ({ vault, reset }) => {
 
   const valueToWithdraw = value || BigNumber(0);
   const amountToWithdraw = convertValueToAmount(valueToWithdraw);
-  const undercollateralized =
-    value && greaterThan(value, collateralAvailableValue);
 
   const setMax = () => setAmount(formatter(collateralAvailableValue));
 
@@ -105,6 +101,7 @@ const Withdraw = ({ vault, reset }) => {
       : currency(0)
   });
 
+  
   return (
     <Grid gridRowGap="m">
       <Grid gridRowGap="s" className="input_des">

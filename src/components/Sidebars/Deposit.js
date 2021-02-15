@@ -11,18 +11,14 @@ import useLanguage from 'hooks/useLanguage';
 import useAnalytics from 'hooks/useAnalytics';
 import {
   formatCollateralizationRatio,
-  formatter,
-  prettifyCurrency,
-  prettifyNumber
+  formatter
 } from 'utils/ui';
 import { multiply } from 'utils/bignumber';
 import { getCurrency } from 'utils/cdp';
 import ProxyAllowanceToggle from 'components/ProxyAllowanceToggle';
 import BigNumber from 'bignumber.js';
-import { decimalRules } from '../../styles/constants';
 import { getColor } from '../../styles/theme';
 import { watch } from 'hooks/useObservable';
-const { short } = decimalRules;
 
 const Deposit = ({ vault, reset }) => {
   const { trackBtnClick } = useAnalytics('Deposit', 'Sidebar');
@@ -46,19 +42,19 @@ const Deposit = ({ vault, reset }) => {
   const gemBalance = gemBalances[symbol] || 0;
 
   function convertAmountToValue(amount) {
-    if (amount == 0) return BigNumber(0);
+    if (amount === 0) return BigNumber(0);
     const r = collateralValueForAmount(BigNumber(amount));
 
-    if (r == undefined) return BigNumber(0);
+    if (r === undefined) return BigNumber(0);
 
     return r;
   }
 
   function convertValueToAmount(value) {
-    if (value == 0) return BigNumber(0);
+    if (value === 0) return BigNumber(0);
     const r = collateralAmountByValue(BigNumber(value));
 
-    if (r == undefined) return BigNumber(0);
+    if (r === undefined) return BigNumber(0);
     return r;
   }
 

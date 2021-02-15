@@ -3,7 +3,6 @@ import {
   Flex,
   Grid,
   Text,
-  Button,
   Address
 } from '@makerdao/ui-components-core';
 
@@ -29,8 +28,8 @@ import useNotification from 'hooks/useNotification';
 import { watch } from 'hooks/useObservable';
 import useEmergencyShutdown from 'hooks/useEmergencyShutdown';
 import { getColor } from 'styles/theme';
-import { FadeIn, FilledButton, PageHead } from 'components/Marketing';
-import { Link, useCurrentRoute } from 'react-navi';
+import { FilledButton } from 'components/Marketing';
+import { Link } from 'react-navi';
 
 import { FeatureFlags } from 'utils/constants';
 import { NotificationList, SAFETY_LEVELS } from 'utils/constants';

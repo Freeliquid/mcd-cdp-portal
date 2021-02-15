@@ -13,7 +13,6 @@ import Reward from 'pages/Reward';
 import SaveOverview from 'pages/SaveOverview';
 import Privacy from 'pages/Privacy';
 import Terms from 'pages/Terms';
-import Whitepaper from 'pages/Whitepaper';
 import CDPDisplay from 'components/CDPDisplay';
 import modals, { templates } from 'components/Modals';
 import { ModalProvider } from 'providers/ModalProvider';
@@ -25,9 +24,7 @@ import TransactionManagerProvider from 'providers/TransactionManagerProvider';
 import NotificationProvider from 'providers/NotificationProvider';
 import config from 'references/config';
 import MobileNav from 'components/MobileNav';
-//import { userSnapInit } from 'utils/analytics';
 import { Routes } from 'utils/constants';
-import RewardNav from 'components/RewardNav';
 
 const { networkNames, defaultNetwork } = config;
 
@@ -151,11 +148,6 @@ export default mount({
   [`/${Routes.PRIVACY}`]: route(() => ({
     title: 'Freeliquid - Privacy Policy',
     view: <Privacy />
-  })),
-
-  [`/${Routes.WHITEPAPER}`]: route(() => ({
-    title: 'Freeliquid - Whitepaper',
-    view: <Whitepaper />
   }))
 });
 

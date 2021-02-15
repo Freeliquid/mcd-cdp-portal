@@ -8,7 +8,7 @@ import {
   Card
 } from '@makerdao/ui-components-core';
 import { TextBlock } from 'components/Typography';
-import { prettifyNumber, formatter } from 'utils/ui';
+import { formatter } from 'utils/ui';
 import useCdpTypes from 'hooks/useCdpTypes';
 import useLanguage from 'hooks/useLanguage';
 import useAnalytics from 'hooks/useAnalytics';
@@ -60,8 +60,6 @@ function IlkTableRow({
   const { trackInputChange } = useAnalytics('SelectCollateral', 'VaultCreate');
   const {
     annualStabilityFee,
-    liquidationRatio,
-    liquidationPenalty,
     collateralValueForAmount
   } = ilkData;
 
@@ -113,7 +111,10 @@ function IlkTableRow({
       </td>
       <td>
         <div style={{ color: '#00dcdc' }}>
-          <a target="_blank" href={`${ilk.link}${ilk.token1}/${ilk.token2}`}>
+          <a 
+          target="_blank"
+          rel="noopener noreferrer"
+          href={`${ilk.link}${ilk.token1}/${ilk.token2}`}>
             {ilk.platform} <ExternalLinkIcon style={{ fill: '#00dcdc' }} />
           </a>
         </div>

@@ -94,7 +94,7 @@ function CDPCreate({ onClose }) {
     const ids = userVaultIds;
     const curTime = Math.round(new Date().getTime() / 1000);
     const r = watch.fairDistribAllowToLockValue(ids, addValue, curTime);
-    if (r == undefined) return true;
+    if (r === undefined) return true;
     return r;
   }
 

@@ -3,28 +3,17 @@ import { Text, Input, Grid, Button } from '@makerdao/ui-components-core';
 import Info from './shared/Info';
 import InfoContainer from './shared/InfoContainer';
 import useMaker from 'hooks/useMaker';
-import useProxy from 'hooks/useProxy';
-import useTokenAllowance from 'hooks/useTokenAllowance';
-import useWalletBalances from 'hooks/useWalletBalances';
 import useValidatedInput from 'hooks/useValidatedInput';
 import useLanguage from 'hooks/useLanguage';
-import useAnalytics from 'hooks/useAnalytics';
-import { formatter, prettifyCurrency, prettifyNumber } from 'utils/ui';
-import { multiply } from 'utils/bignumber';
-import { getCurrency } from 'utils/cdp';
-import ProxyAllowanceToggle from 'components/ProxyAllowanceToggle';
+import { formatter } from 'utils/ui';
 import BigNumber from 'bignumber.js';
-import { decimalRules } from '../../styles/constants';
 import { getColor } from '../../styles/theme';
 import { watch } from 'hooks/useObservable';
 import { Currency } from '@makerdao/currency';
 
-const { short } = decimalRules;
-
 const DepositLPReward = ({ avail, availValue, name, gem, hiRisk, reset }) => {
   const { lang } = useLanguage();
   const { maker } = useMaker();
-  const { hasProxy } = useProxy();
 
   const usdPrice = watch.rewardPairInfoGetPrice(name, hiRisk) || BigNumber(0);
 

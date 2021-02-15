@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Loader, Table, Text } from '@makerdao/ui-components-core';
 import BigNumber from 'bignumber.js';
@@ -88,8 +88,6 @@ const MarketsTable = ({ cdpTypesList, ...props }) => {
     collateralTypesData,
     type => type.symbol.split('-')[0]
   );
-  const [expandedRows, setExpandedRows] = useState({});
-  const isExpanded = rowIndex => expandedRows[rowIndex];
 
   return (
     <MarketsTableStyle {...props}>
@@ -123,7 +121,6 @@ const MarketsTable = ({ cdpTypesList, ...props }) => {
           // aggregate data
           const fees = cdpTypesData.map(data => data.annualStabilityFee);
           const minFee = BigNumber.min.apply(null, fees);
-          const maxFee = BigNumber.max.apply(null, fees);
           const colRatios = cdpTypesData.map(data =>
             data.liquidationRatio.toBigNumber()
           );

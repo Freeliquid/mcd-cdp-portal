@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
-import { Link, useNavigation } from 'react-navi';
+import { useNavigation } from 'react-navi';
 import styled from 'styled-components';
 import { getColor } from 'styles/theme';
 import AccountSelection from 'components/AccountSelection';
@@ -12,7 +12,6 @@ import BgBorrow from 'images/landing/borrow/bg_borrow.png';
 import {
   ConnectHero,
   ThickUnderline,
-  GradientBox,
   Questions,
   QuestionsWrapper,
   buildQuestionsFromLangObj,
@@ -24,7 +23,6 @@ import {
 } from 'components/Marketing';
 
 import useCdpTypes from 'hooks/useCdpTypes';
-import { watch } from 'hooks/useObservable';
 
 const HeroBackground = (() => {
   const Pos = styled(Position)`
@@ -77,9 +75,6 @@ function Borrow({ disableConnect = false }) {
   }, [account, navigation, disableConnect]);
 
   const { cdpTypesList } = useCdpTypes();
-  const prices = watch.collateralTypesPrices(
-    cdpTypesList?.length ? cdpTypesList : []
-  );
   const BorrowBg = styled.div`
     max-width: 1140px;
     padding: 0px;

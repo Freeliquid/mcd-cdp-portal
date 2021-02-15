@@ -68,7 +68,7 @@ const CDPCreateSetAllowance = ({ selectedIlk, isFirstVault, dispatch }) => {
       <ProxyAllowanceCheck
         style={{
           background: getColor('cardBg'),
-          border: "1px solid ${getColor('border')}",
+          border: '1px solid #323B4F',
           borderRadius: '20px',
           padding: '20px 0px',
           textAlign: 'center'

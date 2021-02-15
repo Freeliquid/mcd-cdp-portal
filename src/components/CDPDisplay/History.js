@@ -3,7 +3,6 @@ import { Box, Card, Table, Text } from '@makerdao/ui-components-core';
 import useLanguage from 'hooks/useLanguage';
 import ExternalLink from 'components/ExternalLink';
 import { formatEventDescription, formatDate } from 'utils/ui';
-import theme from 'styles/theme';
 import styled, { keyframes } from 'styled-components';
 import { getColor } from 'styles/theme';
 
@@ -35,11 +34,6 @@ export default function({
 }) {
   const { lang } = useLanguage();
   if (rows) rows = formatEventHistory(lang, rows, network);
-
-  const emSize = parseInt(getComputedStyle(document.body).fontSize);
-  const pxBreakpoint = parseInt(theme.breakpoints.m) * emSize;
-  const overflowX =
-    document.documentElement.clientWidth > pxBreakpoint ? 'hidden' : 'scroll';
   const fadeInRows = useMemo(
     () =>
       rows?.length > 0

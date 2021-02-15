@@ -16,7 +16,7 @@ import { decimalRules } from '../../styles/constants';
 import RatioDisplay, { RatioDisplayTypes } from 'components/RatioDisplay';
 import { getColor } from '../../styles/theme';
 
-const { long, medium } = decimalRules;
+const { long } = decimalRules;
 
 export function calcDaiAvailable(collateralValue, debtValue, liquidationRatio) {
   const maxSafeDebtValue = collateralValue.div(liquidationRatio);
@@ -36,8 +36,7 @@ const DepositAndGenerate = ({ vault, reset }) => {
     collateralAmount,
     collateralTypePrice,
     collateralDebtAvailable,
-    collateralizationRatio,
-    calculateLiquidationPrice
+    collateralizationRatio
   } = vault;
   debtValue = debtValue.toBigNumber().decimalPlaces(18);
   collateralDebtAvailable = collateralDebtAvailable?.toBigNumber();
@@ -128,12 +127,6 @@ const DepositAndGenerate = ({ vault, reset }) => {
   const calculatedDebtValue = debtValue.plus(
     !generateAmount ? BigNumber(0) : BigNumber(generateAmount)
   );
-
-  const calculatedLiquidationPrice = calculateLiquidationPrice({
-    collateralAmount: calculatedCollateralAmount.toBigNumber(),
-    debtValue: calculatedDebtValue,
-    liquidationRatio: liquidationRatio.toBigNumber()
-  });
 
   const calculatedCollateralizationRatio = vault.calculateCollateralizationRatio(
     {

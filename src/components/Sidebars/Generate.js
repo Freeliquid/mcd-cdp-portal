@@ -13,7 +13,7 @@ import { add, greaterThan } from 'utils/bignumber';
 import { formatCollateralizationRatio, formatter } from 'utils/ui';
 import { decimalRules } from '../../styles/constants';
 import { getColor } from '../../styles/theme';
-const { long, medium, short } = decimalRules;
+const { short } = decimalRules;
 
 const Generate = ({ vault, reset }) => {
   const { trackBtnClick } = useAnalytics('Generate', 'Sidebar');
@@ -73,16 +73,10 @@ const Generate = ({ vault, reset }) => {
       ? BigNumber(amount)
       : BigNumber(0);
 
-  const undercollateralized = daiAvailable.lt(amountToGenerate);
-
   const generate = () => {
     maker.service('mcd:cdpManager').draw(vault.id, vaultType, USDFL(amount));
     reset();
   };
-
-  const liquidationPrice = vault.calculateLiquidationPrice({
-    debtValue: vault?.debtValue.plus(amountToGenerate)
-  });
 
   const collateralizationRatio = vault.calculateCollateralizationRatio({
     debtValue: vault?.debtValue.plus(amountToGenerate)

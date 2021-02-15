@@ -18,15 +18,12 @@ import { ReactComponent as LpgIcon } from 'images/landing/land_fl.svg';
 import { ReactComponent as CommunityIcon } from 'images/landing/land_com.svg';
 import { ReactComponent as ImgPoolsUsdl } from 'images/landing/pools_to_usdl_full.svg';
 import { ReactComponent as Play } from 'images/landing/pl_vdo.svg';
-import { ReactComponent as RdImg } from 'images/landing/rd_img.svg';
 import { ReactComponent as RdPoint } from 'images/landing/rd_point.svg';
 import Line from 'images/landing/line.png';
 import BannerBg from 'images/landing/bg_banner.png';
 import BannerMb from 'images/landing/bg_banner.svg';
-import { ReactComponent as USDFL } from 'images/landing/icon-coin-usdfl.svg';
-import { ReactComponent as FL } from 'images/landing/icon-coin-fl.svg';
 
-import { Address, Box, Flex, Text } from '@makerdao/ui-components-core';
+import { Box, Flex, Text } from '@makerdao/ui-components-core';
 import Modal from 'react-modal';
 import ReactPlayer from 'react-player';
 
@@ -623,6 +620,7 @@ function Landing() {
                 className="banner_link"
                 href="https://freeliquid.medium.com/freeliquid-rewards-distribution-a40b3de86dc"
                 target="_blank"
+                rel="noopener noreferrer"
                 color="#00dcdc"
               >
                 {lang.landing_page.banner_link}
@@ -684,7 +682,7 @@ function Landing() {
                       width="100%"
                       height="100%"
                       controls
-                      playing="true"
+                      playing={true}
                       url="/images/tutorial_vdo.mp4"
                     />
                     <button
@@ -726,6 +724,7 @@ function Landing() {
               USDFL contract address:{' '}
               <a
                 target="_blank"
+                rel="noopener noreferrer"
                 className="linkContract"
                 href="https://etherscan.io/address/0x2B4200A8D373d484993C37d63eE14AeE0096cd12"
               >
@@ -749,6 +748,7 @@ function Landing() {
               FL contract address:{' '}
               <a
                 target="_blank"
+                rel="noopener noreferrer"
                 className="linkContract2"
                 href="https://etherscan.io/address/0xfFED56a180f23fD32Bc6A1d8d3c09c283aB594A8"
               >
@@ -779,7 +779,7 @@ function Landing() {
             <TitleCard>{lang.landing_page.rd_title}</TitleCard>
           </Box>
           <div className="rd_img">
-            <img src={Line} />
+            <img src={Line} alt="img line"/>
           </div>
           <div className="div_wrap">
             <div className="rd_block">

@@ -34,14 +34,6 @@ const SaveNav = ({ account, ...props }) => {
         : selected && !account
         ? '1'
         : '0.5';
-        const iconFilter =
-        selected && account
-          ? 'none'
-          : !selected && account
-          ? 'grayscale(1)'
-          : selected && !account
-          ? 'none'
-          : 'grayscale(1)';
 
   const saveUrl = account?.address
     ? `/${Routes.SAVE}/owner/${account?.address}${url.search}`

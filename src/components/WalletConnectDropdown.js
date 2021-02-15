@@ -18,7 +18,7 @@ import { useLedger, useTrezor, useDcent } from 'hooks/useHardwareWallet';
 import useBrowserIcon from 'hooks/useBrowserIcon';
 import useBrowserProvider from 'hooks/useBrowserProvider';
 import useLanguage from 'hooks/useLanguage';
-import { getMeasurement, getColor } from 'styles/theme';
+import { getMeasurement } from 'styles/theme';
 import { AccountTypes, Routes } from 'utils/constants';
 import { BrowserView } from 'react-device-detect';
 import { ReactComponent as LedgerLogo } from 'images/ledger.svg';

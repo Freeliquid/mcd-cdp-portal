@@ -7,7 +7,7 @@ import useLanguage from 'hooks/useLanguage';
 import CookieNotice from '../components/CookieNotice';
 import { hot } from 'react-hot-loader/root';
 import { getColor, marketingTheme } from 'styles/theme';
-import { Box, Flex } from '@makerdao/ui-components-core';
+import { Box } from '@makerdao/ui-components-core';
 import { LogoLink, SeparatorDot, Hamburger } from 'components/Marketing';
 import { ReactComponent as Telegram } from 'images/social/telegram.svg';
 import { ReactComponent as Twitter } from 'images/social/twitter.svg';
@@ -82,6 +82,7 @@ const MainNav = ({ onLinkClicked, ...props }) => {
       </Link>
       <Link
         target="_blank"
+        rel="noopener noreferrer"
         href="https://vote.freeliquid.io"
         activeStyle={{ color: getColor('whiteText'), fontWeight: 'bold' }}
         onClick={() => onLinkClicked && onLinkClicked()}

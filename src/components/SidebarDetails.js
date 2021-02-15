@@ -55,12 +55,12 @@ const SidebarDetails = ({ system, savings }) => {
             width="100%"
             py="xs"
             px="s"
-            bg="#1c2334"
+            bg={getColor('cardBg')}
           >
-            <Text color="#A3B2CF" fontWeight="semibold" t="smallCaps">
+            <Text color={getColor('textGrey')} fontWeight="semibold" t="smallCaps">
               {param}
             </Text>
-            <Text fontSize="1.4rem" color="${getColor('greyText')}">
+            <Text fontSize="1.4rem"  color={getColor('textGrey')}>
               {value}
             </Text>
           </Flex>

@@ -1,27 +1,20 @@
 import React from 'react';
 import BigNumber from 'bignumber.js';
-import { USDFL } from '../../libs/dai-plugin-mcd/src/index.js';
 import { hot } from 'react-hot-loader/root';
 import {
   Text,
-  Grid,
   Button,
   Card,
   Flex,
   CardBody
 } from '@makerdao/ui-components-core';
-import Info from './shared/Info';
-import InfoContainer from './shared/InfoContainer';
-import RatioDisplay, { RatioDisplayTypes } from 'components/RatioDisplay';
 import useMaker from 'hooks/useMaker';
 import useLanguage from 'hooks/useLanguage';
-import useAnalytics from 'hooks/useAnalytics';
-import { add, greaterThan } from 'utils/bignumber';
-import { formatCollateralizationRatio, formatter } from 'utils/ui';
+import {  formatter } from 'utils/ui';
 import { decimalRules } from '../../styles/constants';
 import { getColor } from '../../styles/theme';
 import { watch } from 'hooks/useObservable';
-const { long, medium, short } = decimalRules;
+const { short } = decimalRules;
 
 const GetReward = () => {
   const { lang } = useLanguage();

@@ -49,15 +49,6 @@ const BorrowNav = ({ viewedAddress, account, mobile, ...props }) => {
         ? '1'
         : '0.35';
 
-  const iconFilter =
-      selected && account
-        ? 'none'
-        : !selected && account
-        ? 'grayscale(1)'
-        : selected && !account
-        ? 'none'
-        : 'grayscale(1)';
-
   return (
     <Fragment>
       {mobile && selected ? (

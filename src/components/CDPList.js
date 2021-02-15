@@ -123,7 +123,7 @@ const CDPList = memo(function({
     scrollTop: 0,
     maxScrollTop: 1
   });
-  const { scrollTop, maxScrollTop } = scrollPosition;
+  const { scrollTop } = scrollPosition;
 
   const cdpContainerRef = useRef(null);
 

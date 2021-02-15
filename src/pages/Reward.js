@@ -4,15 +4,11 @@ import useSidebar from 'hooks/useSidebar';
 import PageContentLayout from 'layouts/PageContentLayout';
 import LoadingLayout from 'layouts/LoadingLayout';
 import { formatter } from 'utils/ui';
-import { cutMiddle } from 'utils/ui';
-import BigNumber from 'bignumber.js';
-import { USD, USDFL } from '../libs/dai-plugin-mcd/src/index.js';
 import rewardList from '../references/rewardList';
 import rewardListX2 from '../references/rewardListX2';
 import { formatDate, formatCollateralizationRatio } from 'utils/ui';
 import ExternalLinkUni from 'components/ExternalLinkUni';
 import { Currency } from '@makerdao/currency';
-
 import {
   Text,
   Grid,
@@ -24,24 +20,16 @@ import {
   Flex
 } from '@makerdao/ui-components-core';
 import FullScreenAction from 'components/CDPDisplay/FullScreenAction';
-import styled from 'styled-components';
-import { Link, useCurrentRoute } from 'react-navi';
 import useMaker from 'hooks/useMaker';
-import RatioDisplay from '../components/RatioDisplay';
 import theme, { getColor } from 'styles/theme';
 import useLanguage from 'hooks/useLanguage';
-import useModal from '../hooks/useModal';
 import useNotification from 'hooks/useNotification';
-import useAnalytics from 'hooks/useAnalytics';
-import useVaults from 'hooks/useVaults';
 import { watch } from 'hooks/useObservable';
-import useEmergencyShutdown from 'hooks/useEmergencyShutdown';
-import { NotificationList, Routes, SAFETY_LEVELS } from 'utils/constants';
-
+import { NotificationList, SAFETY_LEVELS } from 'utils/constants';
 import { decimalRules } from '../styles/constants';
 import TimeAgo from 'timeago-react';
 
-const { long, medium, short } = decimalRules;
+const { short } = decimalRules;
 
 const RewardInfo = ({ params, title, button }) => {
   return (
@@ -68,7 +56,7 @@ const RewardInfo = ({ params, title, button }) => {
             {title}
           </Text>
         </Flex>
-        {params.map(([param, value, denom, info, timer], idx) => (
+        {params.map(([param, value, denom, info, timer]) => (
           <Flex
             key={`system_${param}`}
             justifyContent="space-between"
@@ -120,11 +108,9 @@ const RewardInfo = ({ params, title, button }) => {
 };
 
 function Reward({ viewedAddress }) {
-  const { trackBtnClick } = useAnalytics('Table');
+
   const { account, network } = useMaker();
-  const { url } = useCurrentRoute();
   const { lang } = useLanguage();
-  const { emergencyShutdownActive } = useEmergencyShutdown();
   const { maker } = useMaker();
   const { addNotification, deleteNotifications } = useNotification();
   const rewardPairInfosHiRisk = watch.walletRewardPairInfos(
@@ -132,12 +118,9 @@ function Reward({ viewedAddress }) {
     account?.address,
     true
   );
-
-  const flPrice = USDFL(watch.getFLPrice() || '0');
   const apyHiRisk = watch.getAPY(true) * 100;
   const apyLowRisk = watch.getAPY(false) * 100;
 
-  //console.log('rewardPairInfosHiRisk', rewardPairInfosHiRisk);
   const rewardPairInfosLowRisk = watch.walletRewardPairInfos(
     rewardList,
     account?.address,
@@ -152,15 +135,11 @@ function Reward({ viewedAddress }) {
 
   const rewardPerHourHiRisk = watch.rewardPerHour(true);
   const rewardPerHourLowRisk = watch.rewardPerHour(false);
-
   const rewardFirstStageDuration = watch.rewardFirstStageDuration();
   const rewardStartTime = watch.rewardStartTime();
-
   const earnedRewardHiRisk = watch.rewardEarnedEx(account?.address, true);
   const earnedRewardLowRisk = watch.rewardEarnedEx(account?.address, false);
-
   const walletAmount = watch.tokenBalance(account?.address, 'FL');
-
   const rewardNextStartTime =
     rewardFirstStageDuration && rewardStartTime
       ? parseInt(rewardFirstStageDuration) + parseInt(rewardStartTime)
@@ -168,21 +147,7 @@ function Reward({ viewedAddress }) {
 
   const hiRiskEpoch = watch.rewardCurrentEpoch(true);
   const lowRiskEpoch = watch.rewardCurrentEpoch(false);
-
   const timestamp = Math.round(new Date().getTime() / 1000);
-  // if (rewardFirstStageDuration && rewardStartTime)
-  //   console.log(
-  //     'rewardNextStartTime',
-  //     rewardNextStartTime,
-  //     rewardFirstStageDuration.toFixed(0),
-  //     rewardStartTime.toFixed(0),
-  //     timestamp,
-  //     formatDate(new Date(rewardNextStartTime * 1000))
-  //   );
-
-  // console.log("rewardPairInfos");
-  // console.log(rewardList);
-
   const timeStart = rewardNextStartTime * 1000;
 
   const globalParams = [
@@ -245,7 +210,6 @@ function Reward({ viewedAddress }) {
 
   const { show: showSidebar } = useSidebar();
   const [actionShown, setActionShown] = useState(null);
-
   const showAction = props => {
     const emSize = parseInt(getComputedStyle(document.body).fontSize);
     const pxBreakpoint = parseInt(theme.breakpoints.l) * emSize;
@@ -275,7 +239,6 @@ function Reward({ viewedAddress }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [viewedAddress, account]);
 
-  const { show } = useModal();
   if (!rewardPairInfos) {
     return <LoadingLayout background={getColor('cardBg')} />;
   }
@@ -295,37 +258,12 @@ function Reward({ viewedAddress }) {
     };
   });
 
-  console.log('rewardPairInfosEx', rewardPairInfosEx);
-
   const conv = amount => {
     const c = new Currency(amount);
     return c.toFixed('wei');
   };
 
-  const lockPool = (selectedGem, avail, hiRisk) => {
-    console.log('lockPool', selectedGem, avail.toNumber(), conv(avail), hiRisk);
-    maker.service('mcd:rewards').lockPool(conv(avail), selectedGem, hiRisk);
-  };
-
-  const unlockPool = (selectedGem, locked, hiRisk) => {
-    console.log(
-      'unlockPool',
-      selectedGem,
-      locked.toNumber(),
-      conv(locked),
-      hiRisk
-    );
-    maker.service('mcd:rewards').unlockPool(conv(locked), selectedGem, hiRisk);
-  };
-
   const poolApprove = (selectedGem, avail, allowance, hiRisk) => {
-    console.log(
-      'poolApprove',
-      selectedGem,
-      avail.toNumber(),
-      allowance.toNumber(),
-      hiRisk
-    );
     maker.service('mcd:rewards').poolApprove(conv(avail), selectedGem, hiRisk);
   };
   const valid =
@@ -437,7 +375,6 @@ function Reward({ viewedAddress }) {
                       approveDisabled,
                       lockDisabled,
                       unlockDisabled,
-                      network,
                       x2
                     }) => (
                       <Table.tr key={gem}>
@@ -495,7 +432,7 @@ function Reward({ viewedAddress }) {
                         <Table.td>
                           <Flex justifyContent="flex-end">
                             {x2.some(function(val) {
-                              return val == name;
+                              return val === name;
                             }) ? (
                               <Button
                                 // variant="secondary-outline"

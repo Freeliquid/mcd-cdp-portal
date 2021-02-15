@@ -231,14 +231,6 @@ const Footnote = styled(Text).attrs(() => ({
   letterSpacing: '0.5px'
 }))``;
 
-const getDaiAvailable = (locale, depositAmount, price, colRatio) => {
-  if (!price) {
-    return '...';
-  }
-  const daiAvailable = price.times(depositAmount).dividedBy(colRatio / 100);
-  return prettifyCurrency(locale, daiAvailable, 0);
-};
-
 const BorrowCalcContent = styled(Box)`
   margin: 0 auto;
 
@@ -320,8 +312,6 @@ const cdpTypesMetaData = {
 const BorrowCalculator = ({ prices, cdpTypesList, ...props }) => {
   const { lang } = useLanguage();
   const [selectedSymbol, setSelectedSymbol] = useState('USDTUSDC-A');
-
-  const interfaceLocale = lang.getInterfaceLanguage();
 
   const ilks = cdpTypesList
     .map((cdpTypeName, index) => ({

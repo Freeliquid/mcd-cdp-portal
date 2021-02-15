@@ -46,8 +46,6 @@ const CDPCreateConfirmSummary = ({
   const [hasUnderstoodSF, setHasUnderstoodSF] = useState(false);
 
   const {
-    liquidationPenalty,
-    liquidationRatio,
     annualStabilityFee,
     collateralValueForAmount
   } = ilkData;

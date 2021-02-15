@@ -23,7 +23,7 @@ import useAnalytics from 'hooks/useAnalytics';
 import useVaults from 'hooks/useVaults';
 import useEmergencyShutdown from 'hooks/useEmergencyShutdown';
 import { NotificationList, Routes, SAFETY_LEVELS } from 'utils/constants';
-import { FadeIn, FilledButton, PageHead } from 'components/Marketing';
+import { FilledButton } from 'components/Marketing';
 import { formatter } from 'utils/ui';
 
 const InfoCard = ({ title, amount, denom }) => (

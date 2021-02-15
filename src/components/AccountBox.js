@@ -16,7 +16,7 @@ import useWalletBalances from 'hooks/useWalletBalances';
 import useSidebar from 'hooks/useSidebar';
 import useLanguage from 'hooks/useLanguage';
 import { showWalletTokens } from 'references/config';
-import { prettifyNumber, formatter } from 'utils/ui';
+import { prettifyNumber } from 'utils/ui';
 import { Toggles } from 'utils/constants';
 import useToggle from 'hooks/useToggle';
 import useAnalytics from 'hooks/useAnalytics';

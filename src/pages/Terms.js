@@ -24,12 +24,16 @@ const Privacy = () => (
         take the most precautions while using Freeliquid. Please read our{' '}
         <a
           target="_blank"
+          rel="noopener noreferrer"
           href="https://freeliquid.io/wp/Freeliquid_WP_English.pdf"
         >
           white paper
         </a>{' '}
         and watch the{' '}
-        <a target="_blank" href="https://vimeo.com/493096918">
+        <a 
+          target="_blank" 
+          rel="noopener noreferrer"
+          href="https://vimeo.com/493096918">
           tutorial
         </a>{' '}
         before investing.
@@ -52,6 +56,7 @@ const Privacy = () => (
         is available at{' '}
         <a
           target="_blank"
+          rel="noopener noreferrer"
           href="https://beosin.com/vaasApi/report/download?num=19e334590140a7117f09ef7aa4df9943"
         >
           the following link.
@@ -69,7 +74,10 @@ const Privacy = () => (
       </p>
       <p>
         The Freeliquid Protocol derives the price of crypto assets by using the{' '}
-        <a target="_blank" href="https://chain.link/">
+        <a 
+          target="_blank" 
+          rel="noopener noreferrer"
+          href="https://chain.link/">
           Chainlink
         </a>{' '}
         oracle system. Freeliquid holds no responsibility for any financial

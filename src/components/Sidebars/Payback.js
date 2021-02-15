@@ -20,10 +20,9 @@ import Info from './shared/Info';
 import InfoContainer from './shared/InfoContainer';
 import ProxyAllowanceToggle from 'components/ProxyAllowanceToggle';
 import SetMax from 'components/SetMax';
-import { BigNumber } from 'bignumber.js';
 import { decimalRules } from '../../styles/constants';
 
-const { long, medium, short } = decimalRules;
+const { short } = decimalRules;
 
 const log = debug('maker:Sidebars/Payback');
 
@@ -104,11 +103,6 @@ const Payback = ({ vault, reset }) => {
   const valid = amount && !amountErrors && hasProxy && hasAllowance;
   const undercollateralized = debtValue.minus(amountToPayback).lt(0);
 
-  const liquidationPrice = undercollateralized
-    ? BigNumber(0)
-    : vault.calculateLiquidationPrice({
-        debtValue: USDFL(debtValue.minus(amountToPayback))
-      });
   const collateralizationRatio = undercollateralized
     ? Infinity
     : vault.calculateCollateralizationRatio({

@@ -3,7 +3,6 @@ import { Text, Box, Card, Flex } from '@makerdao/ui-components-core';
 import useLanguage from 'hooks/useLanguage';
 import { formatCollateralizationRatio, prettifyNumber } from 'utils/ui';
 import SiteVersion from 'components/SiteVersion';
-import styled from 'styled-components';
 import { getColor } from 'styles/theme';
 import { watch } from 'hooks/useObservable';
 import { USDFL } from '../libs/dai-plugin-mcd/src/index.js';

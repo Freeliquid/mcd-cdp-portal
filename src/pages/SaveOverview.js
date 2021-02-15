@@ -10,27 +10,20 @@ import {
   FixedHeaderTrigger,
   Questions,
   QuestionsWrapper,
-  Quotes,
-  GradientBox,
   ThickUnderline,
   Parallaxed,
-  QuotesFadeIn,
   StyledPageContentLayout,
-  SaveCalculator,
   PageHead
 } from '../components/Marketing';
 import { Box, Text } from '@makerdao/ui-components-core';
 import useLanguage from 'hooks/useLanguage';
 import styled from 'styled-components';
-import { Flex } from '@makerdao/ui-components-core';
 import { getColor } from 'styles/theme';
 import { ReactComponent as Feat1 } from 'images/landing/save/feature-1.svg';
 import { ReactComponent as Feat2 } from 'images/landing/save/feature-2.svg';
 import { ReactComponent as Feat3 } from 'images/landing/save/feature-3.svg';
 import { ReactComponent as Feat4 } from 'images/landing/save/feature-4.svg';
 import BgSave from 'images/landing/save/save_block1.png';
-import { Link } from 'react-navi';
-import { useDaiSavingsRate } from '../components/Marketing/Calculators';
 
 const HeroBackground = (() => {
   return () => (
@@ -46,24 +39,6 @@ const HeroBackground = (() => {
     </Box>
   );
 })();
-
-const StyledQuotes = styled(Quotes)`
-  background: ${getColor('cardBg')};
-  border-radius: 40px;
-
-  @media (min-width: ${props => props.theme.breakpoints.m}) {
-    :after {
-      content: '';
-      display: block;
-      height: 80%;
-      width: 110%;
-      position: absolute;
-      top: 13%;
-      left: -5%;
-      z-index: -1;
-    }
-  }
-`;
 
 const SaveBg = styled.div`
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
@@ -114,8 +89,7 @@ const SaveBg = styled.div`
 function SaveOverview() {
   const { account, network, navigation } = useMaker();
   const { lang } = useLanguage();
-  const dsr = useDaiSavingsRate()?.toNumber() - 1;
-
+ 
   useEffect(() => {
     if (account && account.address) {
       navigation.navigate(
@@ -178,16 +152,6 @@ function SaveOverview() {
               lang.save_landing.questions,
               lang
             )}
-            /* links={
-              <Link
-                style={{ color: '#00C4C4' }}
-                href="https://community-development.makerdao.com/makerdao-mcd-faqs/faqs/dsr"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {lang.save_landing.questions.bottom_link1}
-              </Link>
-            } */
           />
         </QuestionsWrapper>
       </StyledPageContentLayout>

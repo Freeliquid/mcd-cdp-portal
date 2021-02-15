@@ -13,7 +13,6 @@ import {
   ActionContainerRow,
   AmountDisplay,
   CdpViewCard,
-  ExtraInfo,
   InfoContainerRow
 } from './subcomponents';
 import theme, { getColor } from '../../styles/theme';

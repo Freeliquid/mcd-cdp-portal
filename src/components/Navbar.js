@@ -4,14 +4,13 @@ import BorrowNav from 'components/BorrowNav';
 import RewardNav from 'components/RewardNav';
 import { Flex, Grid, Box } from '@makerdao/ui-components-core';
 import useMaker from 'hooks/useMaker';
-import { getColor } from 'styles/theme';
 import { Logo } from 'components/Marketing';
 
 const Navbar = ({ viewedAddress }) => {
   const { account } = useMaker();
 
   return (
-    <Box bg={account ? '#191E2B' : '#191E2B'} height="100%">
+    <Box bg="#191E2B" height="100%">
       <Flex alignItems="center" justifyContent="center" py="m" />
       <Grid mx="0px">
       <Logo style={{

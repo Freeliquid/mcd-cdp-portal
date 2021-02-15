@@ -1,5 +1,5 @@
 import { Box } from '@makerdao/ui-components-core';
-import { getColor, marketingTheme } from 'styles/theme';
+import { getColor } from 'styles/theme';
 
 import FullWidth from './FullWidth';
 import Questions, {
