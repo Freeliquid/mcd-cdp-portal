@@ -164,16 +164,18 @@ const MarketsTable = ({ cdpTypesList, ...props }) => {
           ];
         })
       ) : (
-        <tr>
-          <td colSpan={8}>
+        <Table.tbody>
+        <Table.tr>
+          <Table.td colSpan={8}>
             <Loader
               size="4rem"
               color={getColor('spinner')}
               bg="#131824"
               m="40px auto"
             />
-          </td>
-        </tr>
+          </Table.td>
+        </Table.tr>
+        </Table.tbody>
       )}
     </MarketsTableStyle>
   );
