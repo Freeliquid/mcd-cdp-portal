@@ -84,10 +84,6 @@ const WalletBalances = ({ hasActiveAccount, closeSidebarDrawer }) => {
   const balances = useWalletBalances();
 
   const { show: showSidebar } = useSidebar();
-  const { toggle: collapsed, setToggle: setCollapsed } = useToggle(
-    Toggles.WALLETBALANCES,
-    true
-  );
 
   const { cdpTypesList } = useCdpTypes();
   const prices = watch.collateralTypesPrices(cdpTypesList);
@@ -165,80 +161,18 @@ const WalletBalances = ({ hasActiveAccount, closeSidebarDrawer }) => {
 
         <StripedRows>
           {tokenBalances.map(
-            ({ token, amount, symbol, usdRatio }, idx) =>
-              (!collapsed || idx < 4) && (
+            ({ amount, symbol, usdRatio }, idx) =>
                 <TokenBalance
                   key={`tokenbalance_${idx}`}
                   symbol={symbol}
                   amount={amount}
                   usdRatio={usdRatio}
                   hasActiveAccount={hasActiveAccount}
-                  button={
-                    hasActiveAccount &&
-                    (symbol === 'DSR' ? (
-                      <Link
-                        href={`/${Routes.SAVE}${url.search}`}
-                        style={{
-                          visibility: url.pathname.startsWith(`/${Routes.SAVE}`)
-                            ? 'hidden'
-                            : 'visible'
-                        }}
-                      >
-                        <ActionButton onClick={() => trackBtnClick('Withdraw')}>
-                          {lang.actions.withdraw}
-                        </ActionButton>
-                      </Link>
-                    ) : symbol === 'SAI' ? (
-                      <ActionButton
-                        onClick={() => trackBtnClick('Migrate')}
-                        as="a"
-                        target="_blank"
-                        href="#"
-                      >
-                        {lang.sidebar.migrate}
-                      </ActionButton>
-                    ) : (
-                      <ActionButton
-                        disabled={!hasActiveAccount}
-                        onClick={() => {
-                          trackBtnClick('Send', {
-                            collateral: token
-                          });
-                          showAction({
-                            type: 'send',
-                            props: { token, trackBtnClick }
-                          });
-                        }}
-                      >
-                        {lang.sidebar.send}
-                      </ActionButton>
-                    ))
-                  }
                 />
-              )
+              
           )}
         </StripedRows>
       </CardBody>
-      {tokenBalances.length > 4 && (
-        <StyledCardBody p="s" onClick={() => setCollapsed(!collapsed)}>
-          <Flex justifyContent="center" alignItems="center">
-            {collapsed ? (
-              <>
-                <Text pr="xs">{lang.sidebar.view_more}</Text>
-                <Carat />
-              </>
-            ) : (
-              <>
-                <Text pr="xs">{lang.sidebar.view_less}</Text>
-                <Carat rotation={180} />
-              </>
-            )}
-          </Flex>
-        </StyledCardBody>
-      )}
-      {actionShown && (
-        <FullScreenAction {...actionShown} reset={() => setActionShown(null)} />
-      )}
     </>
   );
 };
