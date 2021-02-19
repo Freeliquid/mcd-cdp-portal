@@ -270,14 +270,36 @@ button.close_btn:hover{
     width: 65px;
   }
   .table-reward{
-    width: 350px;
+    width: 760px;
     overflow-y: scroll;
   }  
 }
-
-
+@media (min-width: 411px) and (max-width: 765px){
+  .table-reward{
+    width: 385px;
+    overflow-x: scroll;
+  }  
+}
+@media (max-width: 410px) {
+  .table-reward{
+    width: 350px;
+    overflow-x: scroll;
+  }  
+}
+@media (max-width: 361px) {
+  .table-reward{
+    width: 340px;
+    overflow-x: scroll;
+  }  
+}
 @media only screen and (orientation: landscape) and (min-device-width: 768px) {
 .table-reward{
   width: 100%;
 }              
+}
+a.link_post{
+  color: #00dcdc;
+}
+a.link_post:hover{
+  color: #F3F3F5;
 }

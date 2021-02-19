@@ -17,7 +17,8 @@ import {
   Box,
   Button,
   Address,
-  Flex
+  Flex,
+  Link
 } from '@makerdao/ui-components-core';
 import FullScreenAction from 'components/CDPDisplay/FullScreenAction';
 import useMaker from 'hooks/useMaker';
@@ -28,6 +29,8 @@ import { watch } from 'hooks/useObservable';
 import { NotificationList, SAFETY_LEVELS } from 'utils/constants';
 import { decimalRules } from '../styles/constants';
 import TimeAgo from 'timeago-react';
+import { ReactComponent as MarkerCayn } from 'images/landing/marker_cayn.svg';
+import { ReactComponent as MarkerPurple } from 'images/landing/marker_purple.svg';
 
 const { short } = decimalRules;
 
@@ -91,15 +94,15 @@ const RewardInfo = ({ params, title, buttons }) => {
             gridColumnGap="m"
             gridRowGap="s"
           >
-            {buttons.map(({disable, onClick, text}) => (
-            <Button
-              className="btn reward_btn"
-              style={{ margin: '10px auto 0px', fontSize: '14px' }}
-              disabled={disable}
-              onClick={onClick}
-            >
-              {text}
-            </Button>
+            {buttons.map(({ disable, onClick, text }) => (
+              <Button
+                className="btn reward_btn"
+                style={{ margin: '10px auto 0px', fontSize: '14px' }}
+                disabled={disable}
+                onClick={onClick}
+              >
+                {text}
+              </Button>
             ))}
           </Grid>
         )}
@@ -109,7 +112,6 @@ const RewardInfo = ({ params, title, buttons }) => {
 };
 
 function Reward({ viewedAddress }) {
-
   const { account, network } = useMaker();
   const { lang } = useLanguage();
   const { maker } = useMaker();
@@ -313,9 +315,62 @@ function Reward({ viewedAddress }) {
             <RewardInfo
               params={yourInfoParams}
               title={lang.overview_page.reward_your_info}
-              buttons={[getRewardButtonHiRisk, getRewardButtonLowRisk, getRewardButton ]}
+              buttons={[
+                getRewardButtonHiRisk,
+                getRewardButtonLowRisk,
+                getRewardButton
+              ]}
             />
           </Grid>
+          <Text style={{ fontSize: '20px', color: getColor('greyText') }}>
+              {lang.reward_page.info_box}
+            </Text>
+          <Card
+        css={'overflow:hidden;'}
+        pt="sm"
+        style={{
+          background: getColor('cardBg'),
+          borderColor: getColor('border'),
+          paddingTop: '35px',
+          paddingLeft: '35px',
+          paddingRight: '35px',
+          paddingBottom: '35px',
+          color: getColor('greyText'),
+          lineHeight: '34px',
+        }}
+      >
+           <ul>
+              <li>
+                {lang.formatString(lang.reward_page.info_box_l1, 
+                  <Link
+                    className="link_post"
+                    href="https://freeliquid.medium.com/freeliquid-rewards-distribution-a40b3de86dc"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >
+                      {lang.reward_page.info_box_link_meduim}
+                  </Link>,
+                  <Link
+                    className="link_post"
+                    href="https://freeliquid.io/wp/Freeliquid_WP_English.pdf"
+                    download=""
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >
+                      {lang.reward_page.info_box_link_wp}
+                  </Link>
+                )}
+              </li>
+             <li>{lang.reward_page.info_box_l2}</li>
+             <li>
+             {lang.formatString(lang.reward_page.info_box_l3,
+              <MarkerCayn />,
+              <MarkerPurple />
+              )}</li>
+             <li>{lang.reward_page.info_box_l4}</li>
+             <li>{lang.reward_page.info_box_l5}</li>
+           </ul>
+            </Card>
           <Box>
             <Text style={{ fontSize: '20px', color: getColor('greyText') }}>
               {lang.reward_page.participating_pools}
@@ -359,6 +414,7 @@ function Reward({ viewedAddress }) {
               >
                 <Table.thead>
                   <Table.tr>
+                  <Table.th></Table.th>
                     <Table.th>{lang.overview_page.token}</Table.th>
                     <Table.th display={{ s: 'none', xl: 'table-cell' }}>
                       {lang.reward_page.address}
@@ -395,14 +451,23 @@ function Reward({ viewedAddress }) {
                       x2
                     }) => (
                       <Table.tr key={gem}>
+                      <Table.td>
+                        <div style={{
+                          width: '10px',
+                          height: '10px',
+                          background: hiRisk ? getColor('cayn') : getColor('blue'),
+                          borderRadius: '50%'
+                        }} />
+
+                      </Table.td>
                         <Table.td>
                           <Text
                             t="body"
                             fontSize={{ s: '1.2rem', xl: 'm' }}
                             fontWeight={{ s: 'medium', xl: 'normal' }}
-                            color={hiRisk ? 'red' : 'white'}
+                            color = {getColor('whiteText')}
                           >
-                            {name}
+                            { name == 'USDFL_FL' ? 'FL_USDFL' : name } 
                           </Text>
                         </Table.td>
                         <Table.td>
@@ -418,12 +483,16 @@ function Reward({ viewedAddress }) {
                             />
                           </Text>
                         </Table.td>
-                        <Table.td display={{ s: 'table-cell', xl: 'table-cell' }}>
+                        <Table.td
+                          display={{ s: 'table-cell', xl: 'table-cell' }}
+                        >
                           <Text t="caption">
                             {formatter(availvalue, { precision: short })}
                           </Text>
                         </Table.td>
-                        <Table.td display={{ s: 'table-cell', xl: 'table-cell' }}>
+                        <Table.td
+                          display={{ s: 'table-cell', xl: 'table-cell' }}
+                        >
                           <Text t="caption">
                             {formatter(lockedvalue, { precision: short })}
                           </Text>

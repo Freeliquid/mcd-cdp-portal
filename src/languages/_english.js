@@ -123,7 +123,9 @@ export default {
       'You cannot buy crypto from your bank account using Freeliquid. Instead, you can use USDFL to buy Ethereum and other supported tokens.',
     read_only: 'Read-Only',
     wallet_connect: 'Wallet Connect',
-    wallet_link: 'Coinbase Wallet'
+    wallet_link: 'Coinbase Wallet',
+    link_medium: 'https://freeliquid.medium.com/freeliquid-rewards-distribution-a40b3de86dc',
+    link_wp: 'https://freeliquid.io/wp/Freeliquid_WP_English.pdf'
   },
   borrow_landing: {
     meta: {
@@ -368,7 +370,16 @@ export default {
     button_lock:'Lock',
     button_lockx2:'Lock X2',
     button_unlock:'Unlock',
-    button_approve:'Approve'
+    button_approve:'Approve',
+    info_box: 'Information',
+    info_box_l1: '1. Please read our {0} and {1} before using Freeliquid Rewards.',
+    info_box_link_meduim: 'Medium post',
+    info_box_link_wp: 'White paper',
+    info_box_l2: '2. For FL-USDFL, the APY is two times smaller than displayed above, since the pair does not receive the x2 boost.',
+    info_box_l3: '3. Color indicators are cyan {0} for the 2nd reward program and purple {1} for the 3rd program.',
+    info_box_l4: '4. The gas spent on Ethereum fees is usually lower by 40-50% than shown in your Metamask. However, do not adjust the suggested gas limit to be safe.',
+    info_box_l5: '5. Please pay attention to the gas price you are setting and avoid gas price spikes throughout the day.',
+
   },
   navbar: {
     save: 'Save',
