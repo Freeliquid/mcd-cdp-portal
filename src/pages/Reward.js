@@ -86,15 +86,14 @@ const RewardInfo = ({ params, title, buttons }) => {
           </Flex>
         ))}
         {buttons && (
-          <Flex
-            justifyContent="space-between"
-            alignContent="right"
-            px="s"
-            pb="s2"
+          <Grid
+            gridTemplateColumns={{ s: '1fr', xl: '1fr 1fr' }}
+            gridColumnGap="m"
+            gridRowGap="s"
           >
             {buttons.map(({disable, onClick, text}) => (
             <Button
-              className="btn btn"
+              className="btn reward_btn"
               style={{ margin: '10px auto 0px', fontSize: '14px' }}
               disabled={disable}
               onClick={onClick}
@@ -102,7 +101,7 @@ const RewardInfo = ({ params, title, buttons }) => {
               {text}
             </Button>
             ))}
-          </Flex>
+          </Grid>
         )}
       </Card>
     </Fragment>
@@ -279,7 +278,7 @@ function Reward({ viewedAddress }) {
   };
 
   const getRewardButtonHiRisk = {
-    text: "Get Hi risk reward",
+    text: lang.sidebar.reward_button_hi_risk,
     disable: valid,
     onClick: () => {
       maker.service('mcd:rewards').claimRewardHiRisk();
@@ -287,7 +286,7 @@ function Reward({ viewedAddress }) {
   };
 
   const getRewardButtonLowRisk = {
-    text: "Get Low risk reward",
+    text: lang.sidebar.reward_button_low_risk,
     disable: valid,
     onClick: () => {
       maker.service('mcd:rewards').claimRewardLowRisk();
@@ -314,7 +313,7 @@ function Reward({ viewedAddress }) {
             <RewardInfo
               params={yourInfoParams}
               title={lang.overview_page.reward_your_info}
-              buttons={[getRewardButton, getRewardButtonHiRisk, getRewardButtonLowRisk]}
+              buttons={[getRewardButtonHiRisk, getRewardButtonLowRisk, getRewardButton ]}
             />
           </Grid>
           <Box>

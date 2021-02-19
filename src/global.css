@@ -251,6 +251,9 @@ button.close_btn:hover{
 .w100{
   width: 100px;
 }
+.reward_btn{
+  width: 100%;
+}
 .x2{
   background-color: #00dcdc !important; 
   color: #231536 !important;
