@@ -31,7 +31,7 @@ import TimeAgo from 'timeago-react';
 
 const { short } = decimalRules;
 
-const RewardInfo = ({ params, title, button }) => {
+const RewardInfo = ({ params, title, buttons }) => {
   return (
     <Fragment>
       <Card
@@ -85,21 +85,23 @@ const RewardInfo = ({ params, title, button }) => {
             </Box>
           </Flex>
         ))}
-        {button && (
+        {buttons && (
           <Flex
             justifyContent="space-between"
             alignContent="right"
             px="s"
             pb="s2"
           >
+            {buttons.map(({disable, onClick, text}) => (
             <Button
               className="btn btn"
               style={{ margin: '10px auto 0px', fontSize: '14px' }}
-              disabled={button.disable}
-              onClick={button.onClick}
+              disabled={disable}
+              onClick={onClick}
             >
-              {button.text}
+              {text}
             </Button>
+            ))}
           </Flex>
         )}
       </Card>
@@ -276,6 +278,22 @@ function Reward({ viewedAddress }) {
     }
   };
 
+  const getRewardButtonHiRisk = {
+    text: "Get Hi risk reward",
+    disable: valid,
+    onClick: () => {
+      maker.service('mcd:rewards').claimRewardHiRisk();
+    }
+  };
+
+  const getRewardButtonLowRisk = {
+    text: "Get Low risk reward",
+    disable: valid,
+    onClick: () => {
+      maker.service('mcd:rewards').claimRewardLowRisk();
+    }
+  };
+
   return (
     <PageContentLayout>
       <Text.h2 pr="m" mb="m" color="white">
@@ -291,12 +309,12 @@ function Reward({ viewedAddress }) {
             <RewardInfo
               params={globalParams}
               title={lang.overview_page.reward_global_info}
-              button={null}
+              buttons={null}
             />
             <RewardInfo
               params={yourInfoParams}
               title={lang.overview_page.reward_your_info}
-              button={getRewardButton}
+              buttons={[getRewardButton, getRewardButtonHiRisk, getRewardButtonLowRisk]}
             />
           </Grid>
           <Box>

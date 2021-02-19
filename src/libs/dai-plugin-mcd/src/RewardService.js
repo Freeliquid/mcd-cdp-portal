@@ -71,4 +71,19 @@ export default class RewardService extends PublicService {
       .getContract('FL_REWARD_AGGREGATOR')
       .claimReward({ dsProxy: false, promise });
   }
+
+  @tracksTransactions
+  async claimRewardHiRisk({ promise }) {
+    return this.get('smartContract')
+      .getContract('FL_REWARDER_GOV_USD')
+      .getReward({ dsProxy: false, promise });
+  }
+
+  @tracksTransactions
+  async claimRewardLowRisk({ promise }) {
+    return this.get('smartContract')
+      .getContract('FL_REWARDER_STABLES')
+      .getReward({ dsProxy: false, promise });
+  }
+
 }
