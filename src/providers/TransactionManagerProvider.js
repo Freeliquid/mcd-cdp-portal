@@ -49,6 +49,21 @@ const formatTxMessage = (lang, { metadata, ...tx }, state) => {
           `${lang[langKey].get_reward}${suffix}`,
           <ValueText></ValueText>
         );
+    case 'claimRewardEx':
+          return lang.formatString(
+            `${lang[langKey].get_reward_all}${suffix}`,
+            <ValueText></ValueText>
+          );
+    case 'claimRewardHiRisk':
+          return lang.formatString(
+            `${lang[langKey].get_reward_h}${suffix}`,
+            <ValueText></ValueText>
+          );
+    case 'claimRewardLowRisk':
+            return lang.formatString(
+              `${lang[langKey].get_reward_l}${suffix}`,
+              <ValueText></ValueText>
+            );
     case 'withdraw':
           return lang.formatString(
             `${lang[langKey].unlock_pool}${suffix}`,
