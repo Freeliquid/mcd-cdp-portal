@@ -487,7 +487,7 @@ function Reward({ viewedAddress }) {
                           display={{ s: 'table-cell', xl: 'table-cell' }}
                         >
                           <Text t="caption">
-                            {formatter(availvalue, { precision: short })}
+                            {formatter(availvalue, { precision: short })/2}
                           </Text>
                         </Table.td>
                         <Table.td
