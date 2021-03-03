@@ -487,7 +487,11 @@ function Reward({ viewedAddress }) {
                           display={{ s: 'table-cell', xl: 'table-cell' }}
                         >
                           <Text t="caption">
-                            {formatter(availvalue, { precision: short })/2}
+                          {x2.some(function(val) {
+                              return val === name;
+                            }) ? 
+                            formatter(availvalue, { precision: short }) 
+                            : formatter(availvalue/2, { precision: short })}
                           </Text>
                         </Table.td>
                         <Table.td
