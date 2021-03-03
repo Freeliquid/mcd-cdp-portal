@@ -22,8 +22,8 @@ const SidebarDetails = ({ system, savings }) => {
     lang.sidebar.save_details.dai_savings_rate,
     system.annualDaiSavingsRate
       ? formatter(system.annualDaiSavingsRate, {
-          rounding: BigNumber.ROUND_HALF_UP
-        }) + '%'
+        rounding: BigNumber.ROUND_HALF_UP
+      }) + '%'
       : ''
   ];
 
@@ -57,10 +57,10 @@ const SidebarDetails = ({ system, savings }) => {
             px="s"
             bg={getColor('cardBg')}
           >
-            <Text color={getColor('textGrey')} fontWeight="semibold" t="smallCaps">
+            <Text style={{ color: getColor('greyText') }} fontWeight="semibold" t="smallCaps">
               {param}
             </Text>
-            <Text fontSize="1.4rem"  color={getColor('textGrey')}>
+            <Text fontSize="1.4rem">
               {value}
             </Text>
           </Flex>

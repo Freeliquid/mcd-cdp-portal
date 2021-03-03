@@ -134,7 +134,12 @@ const DSRDepositCreate = ({ dispatch, onClose }) => {
         text={lang.save.deposit_dai_subheading}
       />
       <Grid gridGap="m" my="l">
-        <Card px={{ s: 'm', m: 'xl' }} py={{ s: 'm', m: 'l' }}>
+        <Card px={{ s: 'm', m: 'xl' }} py={{ s: 'm', m: 'l' }}
+          style={{
+            background: getColor('cardBg'),
+            borderColor: getColor('dashBorder')
+          }}
+        >
           <DepositDaiForm
             daiBalance={daiBalance}
             setDepositMax={setDepositMax}
