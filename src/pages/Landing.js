@@ -20,10 +20,10 @@ import { ReactComponent as ImgPoolsUsdl } from 'images/landing/pools_to_usdl_ful
 import { ReactComponent as Play } from 'images/landing/pl_vdo.svg';
 import { ReactComponent as RdPoint } from 'images/landing/rd_point.svg';
 import Line from 'images/landing/line.png';
-import BannerBg from 'images/landing/bg_banner.png';
-import BannerMb from 'images/landing/bg_banner.svg';
+import BannerFl from 'images/landing/banner_fl.svg';
+import BannerBinance from 'images/landing/banner_binance.svg';
 
-import { Box, Flex, Text } from '@makerdao/ui-components-core';
+import { Box, Flex, Text, Grid } from '@makerdao/ui-components-core';
 import Modal from 'react-modal';
 import ReactPlayer from 'react-player';
 
@@ -522,48 +522,79 @@ const RoadMap = styled.div`
   }
 `;
 const Banner = styled.div`
-  
-  
-}
-  .wrap {
-    min-height: 105px;
-    background-image: url(${BannerBg});
-    padding: 30px 10px;
-    background-size: 100%;
+  .wrap_banner_fl {
+    
+    background-image: url(${BannerFl});
+    background-color: #3A1FB9;
+    padding: 30px 230px 30px 35px;
+    background-size: 62%;
     background-repeat: no-repeat;
     display: grid;
-    grid-template-columns: 2fr 10fr 3fr;
-    align-items: center;
+    grid-template-columns: 1fr;
+    -webkit-align-items: left;
+    -webkit-box-align: left;
+    -ms-flex-align: left;
+    align-items: left;
+    background-position: 330px -135px;
+    border-radius: 20px;
+    text-align: left;
   }
-  .coin_icons {
+  .wrap_banner_binance {
+  
+    background-image: url(${BannerBinance});
+    background-color: #343840;
+    padding: 30px 200px 30px 35px;
+    background-size: 75%;
+    background-repeat: no-repeat;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-self: center;
+    grid-template-columns: 1fr;
+    -webkit-align-items: left;
+    -webkit-box-align: left;
+    -ms-flex-align: left;
+    align-items: left;
+    background-position: 220px -122px;
+    border-radius: 20px;
+    text-align: left;
   }
+  
   .wrap_text {
     color: #fff;
     align-items: center;
     justify-content: center;
     color: #fff;
     font-size: 18px;
-    text-align: right
+    text-align: left
   }
   a.banner_link{
     color: #fff !important;
     font-size: 18px !important;
     text-decoration: revert;
+    font-weight: bold
+  }
+  a.banner_link:hover{
+    color: #00dcdc !important;
   }
   @media (max-width: 767px) {
-    .wrap {
+    .wrap_banner_fl {
       display: grid;
       grid-template-columns: 1fr;
       grid-gap: 20px;
-      background-image: url(${BannerMb});
-      background-color: #3A1FB9;
+      background-image: url(${BannerFl});
       border-radius: 25px;
-      background-position: -120px -100px;
+      background-position: 211px -92px;
       background-size: 70%;
-      padding: 5px 10px 25px 100px;
+      padding: 20px 112px 25px 25px;
+      text-align: left;
+    }
+    .wrap_banner_binance {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: 20px;
+      background-image: url(${BannerBinance});
+      border-radius: 25px;
+      background-position: 175px -18px;
+      background-size: 70%;
+      padding: 20px 112px 25px 25px;
       text-align: left;
     }
      .wrap_text {
@@ -571,18 +602,19 @@ const Banner = styled.div`
   }
   }
   @media (min-width: 768px) and (max-width: 1023px) {
-    .wrap {
-      min-height: 70px;
-      padding: 10px 10px;
-      background-image: url(${BannerMb});
-      background-color: #3A1FB9;
-      background-position: -120px -121px;
+    .wrap_banner_fl {
+      padding: 30px 200px 30px 30px;
+      background-position: 560px -110px;
       background-size: 37%;
-      border-radius: 20px;
+    }
+    .wrap_banner_binance {
+      padding: 30px 200px 30px 30px;
+      background-position: 485px -62px;
+      background-size: 37%;
     }
   }
   @media only screen and (orientation: landscape) and (max-device-width: 768px) {
-    .wrap {
+    .wrap_banner_fl {
       min-height: 70px;
       padding: 10px 10px;
     }
@@ -609,25 +641,48 @@ function Landing() {
       />
       <Content>
         <SpaceBox />
-        <Banner>
-          <div className="wrap">
-            <div className="coin_icons"></div>
-            <div>
-              <div className="wrap_text">{lang.landing_page.banner}</div>
+        <Grid
+          gridTemplateColumns={{ s: '1fr', xl: '1fr 1fr', l: '1fr 1fr' }}
+          gridColumnGap="m"
+          gridRowGap="s"
+        >
+          <Banner>
+            <div className="wrap_banner_fl">
+              <div>
+                <div className="wrap_text">{lang.landing_page.banner_fl}</div>
+              </div>
+              <div>
+                <Link
+                  className="banner_link"
+                  href="https://freeliquid.medium.com/freeliquid-rewards-distribution-a40b3de86dc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+
+                >
+                  {lang.landing_page.banner_link}
+                </Link>
+              </div>
             </div>
-            <div>
-              <Link
-                className="banner_link"
-                href="https://freeliquid.medium.com/freeliquid-rewards-distribution-a40b3de86dc"
-                target="_blank"
-                rel="noopener noreferrer"
-                color="#00dcdc"
-              >
-                {lang.landing_page.banner_link}
-              </Link>
+          </Banner>
+          <Banner>
+            <div className="wrap_banner_binance">
+              <div>
+                <div className="wrap_text">{lang.landing_page.banner_binance}</div>
+              </div>
+              <div>
+                <Link
+                  className="banner_link"
+                  href="https://freeliquid.medium.com/freeliquid-proposes-an-expansion-to-bsc-edcc8e8bec9f"
+                  target="_blank"
+                  rel="noopener noreferrer"
+
+                >
+                  {lang.landing_page.banner_link}
+                </Link>
+              </div>
             </div>
-          </div>
-        </Banner>
+          </Banner>
+        </Grid>
         <FadeIn moveDistance="-60px">
           <Blocks>
             <BlocksDiv>
@@ -779,7 +834,7 @@ function Landing() {
             <TitleCard>{lang.landing_page.rd_title}</TitleCard>
           </Box>
           <div className="rd_img">
-            <img src={Line} alt="img line"/>
+            <img src={Line} alt="img line" />
           </div>
           <div className="div_wrap">
             <div className="rd_block">
