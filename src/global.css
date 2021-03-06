@@ -206,8 +206,8 @@ h4.text_center{
   }
   button.close_btn {
     position: absolute;
-    right: 6px;
-    top: 6px;
+    right: 1px;
+    top: 1px;
     border: none;
     border-radius: 50%;
     background: #222b3f;
@@ -302,4 +302,22 @@ a.link_post{
 }
 a.link_post:hover{
   color: #F3F3F5;
+}
+a.link_banner{
+  color: #00dcdc;
+  text-align: center;
+  display: block;
+}
+a.link_banner:hover{
+  color: #F3F3F5;
+}
+.network_box{
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 10px;
+  gap: 10px;
+  border-radius: 10px;
+}
+.network_box:hover{
+  background-color: #222B3F !important;
 }

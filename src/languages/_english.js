@@ -29,6 +29,7 @@ export default {
     },
     banner_fl: 'FL distribution is in progress. Click here to know about the rewards!',
     banner_binance: 'Freeliquid is expanding to Binance Smart Chain (BSC)! Read more in our proposal:',
+    banner_in_progress: 'Development in progress...',
     title: 'Freeliquid',
     banner_link: 'Learn more',
     usdl_title: 'Get funding up to 90% of your liquidity pool size',
@@ -392,7 +393,10 @@ export default {
     blog: 'Blog',
     whitepaper: 'White paper',
     audit: 'Audit',
-    rd_link: 'Roadmap'
+    rd_link: 'Roadmap',
+    network: 'Network',
+    eth: 'ETH',
+    bsc: 'BSC'
   },
   sidebar: {
     wallet_balances: 'Wallet Pools Balances',
