@@ -541,7 +541,7 @@ const Banner = styled.div`
   .wrap_banner_binance {
     background-image: url(${BannerBinance});
     background-color: #343840;
-    padding: 30px 200px 30px 35px;
+    padding: 30px 170px 30px 35px;
     background-size: 75%;
     background-repeat: no-repeat;
     display: grid;
@@ -613,10 +613,10 @@ const Banner = styled.div`
   }
   @media (min-width: 1024px) and (max-width: 1199px) {
     .wrap_banner_fl {
-     min-height: 160px;
+      min-height: 160px;
     }
     .wrap_banner_binance {
-     min-height: 160px;
+      min-height: 160px;
     }
   }
   @media only screen and (orientation: landscape) and (max-device-width: 768px) {
