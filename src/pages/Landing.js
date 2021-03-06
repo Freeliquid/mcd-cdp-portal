@@ -523,9 +523,8 @@ const RoadMap = styled.div`
 `;
 const Banner = styled.div`
   .wrap_banner_fl {
-    
     background-image: url(${BannerFl});
-    background-color: #3A1FB9;
+    background-color: #3a1fb9;
     padding: 30px 230px 30px 35px;
     background-size: 62%;
     background-repeat: no-repeat;
@@ -540,7 +539,6 @@ const Banner = styled.div`
     text-align: left;
   }
   .wrap_banner_binance {
-  
     background-image: url(${BannerBinance});
     background-color: #343840;
     padding: 30px 200px 30px 35px;
@@ -556,22 +554,22 @@ const Banner = styled.div`
     border-radius: 20px;
     text-align: left;
   }
-  
+
   .wrap_text {
     color: #fff;
     align-items: center;
     justify-content: center;
     color: #fff;
     font-size: 18px;
-    text-align: left
+    text-align: left;
   }
-  a.banner_link{
+  a.banner_link {
     color: #fff !important;
     font-size: 18px !important;
     text-decoration: revert;
-    font-weight: bold
+    font-weight: bold;
   }
-  a.banner_link:hover{
+  a.banner_link:hover {
     color: #00dcdc !important;
   }
   @media (max-width: 767px) {
@@ -597,9 +595,9 @@ const Banner = styled.div`
       padding: 20px 112px 25px 25px;
       text-align: left;
     }
-     .wrap_text {
-    text-align: left;
-  }
+    .wrap_text {
+      text-align: left;
+    }
   }
   @media (min-width: 768px) and (max-width: 1023px) {
     .wrap_banner_fl {
@@ -613,6 +611,14 @@ const Banner = styled.div`
       background-size: 37%;
     }
   }
+  @media (min-width: 1024px) and (max-width: 1199px) {
+    .wrap_banner_fl {
+     min-height: 160px;
+    }
+    .wrap_banner_binance {
+     min-height: 160px;
+    }
+  }
   @media only screen and (orientation: landscape) and (max-device-width: 768px) {
     .wrap_banner_fl {
       min-height: 70px;
@@ -620,11 +626,11 @@ const Banner = styled.div`
     }
     .wrap_text {
       font-size: 16px;
+    }
+    a.banner_link {
+      font-size: 16px !important;
+    }
   }
-  a.banner_link{
-    font-size: 16px !important;
-  }     
-}
 `;
 
 Modal.setAppElement('#root');
@@ -657,7 +663,6 @@ function Landing() {
                   href="https://freeliquid.medium.com/freeliquid-rewards-distribution-a40b3de86dc"
                   target="_blank"
                   rel="noopener noreferrer"
-
                 >
                   {lang.landing_page.banner_link}
                 </Link>
@@ -667,7 +672,9 @@ function Landing() {
           <Banner>
             <div className="wrap_banner_binance">
               <div>
-                <div className="wrap_text">{lang.landing_page.banner_binance}</div>
+                <div className="wrap_text">
+                  {lang.landing_page.banner_binance}
+                </div>
               </div>
               <div>
                 <Link
@@ -675,7 +682,6 @@ function Landing() {
                   href="https://freeliquid.medium.com/freeliquid-proposes-an-expansion-to-bsc-edcc8e8bec9f"
                   target="_blank"
                   rel="noopener noreferrer"
-
                 >
                   {lang.landing_page.banner_link}
                 </Link>
