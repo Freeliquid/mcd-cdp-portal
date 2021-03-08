@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment, useState } from 'react';
+import React, { Component, useEffect, Fragment, useState } from 'react';
 import { hot } from 'react-hot-loader/root';
 import useSidebar from 'hooks/useSidebar';
 import PageContentLayout from 'layouts/PageContentLayout';
@@ -34,7 +34,7 @@ import { ReactComponent as MarkerPurple } from 'images/landing/marker_purple.svg
 
 const { short } = decimalRules;
 
-const RewardInfo = ({ params, title, buttons }) => {
+const RewardInfo = ({ params, title }) => {
   return (
     <Fragment>
       <Card
@@ -88,28 +88,176 @@ const RewardInfo = ({ params, title, buttons }) => {
             </Box>
           </Flex>
         ))}
-        {buttons && (
-          <Grid
-            gridTemplateColumns={{ s: '1fr', xl: '1fr 1fr' }}
-            gridColumnGap="m"
-            gridRowGap="s"
-          >
-            {buttons.map(({ disable, onClick, text }) => (
-              <Button
-                className="btn reward_btn"
-                style={{ margin: '10px auto 0px', fontSize: '14px' }}
-                disabled={disable}
-                onClick={onClick}
-              >
-                {text}
-              </Button>
-            ))}
-          </Grid>
-        )}
       </Card>
     </Fragment>
   );
 };
+
+class Rewards extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.onValueChange = this.onValueChange.bind(this);
+    this.formSubmit = this.formSubmit.bind(this);
+
+  }
+  onValueChange(event) {
+    this.setState({
+      selectedOption: event.target.value
+    });
+  }
+  formSubmit(event) {
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <Card
+        css={'overflow:hidden;'}
+        pt="sm"
+        style={{
+          background: getColor('cardBg'),
+          borderColor: getColor('border'),
+          paddingTop: '20px',
+          paddingLeft: '20px',
+          paddingRight: '20px',
+          paddingBottom: '20px'
+        }}
+      >
+        <Text style={{ fontSize: '20px', color: getColor('whiteText'), display: 'block' }}>
+          {this.props.title}
+        </Text>
+        <Text style={{ fontSize: '16px', color: getColor('greyText') }}>
+          {this.props.select}
+        </Text>
+        <form onSubmit={this.formSubmit}>
+          <div className="reward_box">
+            <label>
+              <Grid
+                gridTemplateColumns="1fr 7fr 3fr"
+                gridRowGap="s"
+                alignItems="center"
+              >
+                <input
+                  type="radio"
+                  value="getRewardButton"
+                  checked={this.state.selectedOption === "getRewardButton"}
+                  onChange={this.onValueChange}
+                />
+                <Text color="#A3B2CF">
+                  {this.props.allRewardsTitle}
+                </Text>
+                <Text fontSize="s" style={{ color: getColor('whiteText'), textAlign: 'right' }}>
+                  {formatter(parseInt(this.props.hiRiskValue) + parseInt(this.props.lowRiskValue))}{' '}{'FL'}
+                </Text>
+              </Grid>
+            </label>
+          </div>
+          <div className="reward_box">
+            <label>
+              <Grid
+                gridTemplateColumns="1fr 7fr 3fr"
+                gridRowGap="s"
+                alignItems="center"
+              >
+                <input
+                  type="radio"
+                  value="getRewardButtonHiRisk"
+                  checked={this.state.selectedOption === "getRewardButtonHiRisk"}
+                  onChange={this.onValueChange}
+                />
+                <Text color="#A3B2CF">
+                  {this.props.hiRiskTitle}
+                </Text>
+                <Text fontSize="s" style={{ color: getColor('whiteText'), textAlign: 'right' }}>
+                  {this.props.hiRiskValue}{' '}{'FL'}
+                </Text>
+              </Grid>
+            </label>
+          </div>
+          <div className="reward_box">
+            <label>
+              <Grid
+                gridTemplateColumns="1fr 7fr 3fr"
+                gridRowGap="s"
+                alignItems="center"
+              >
+                <input
+                  type="radio"
+                  value="getRewardButtonLowRisk"
+                  checked={this.state.selectedOption === "getRewardButtonLowRisk"}
+                  onChange={this.onValueChange}
+                />
+                <Text color="#A3B2CF">
+                  {this.props.lowRiskTitle}
+                </Text>
+                <Text fontSize="s" style={{ color: getColor('whiteText'), textAlign: 'right' }}>
+                  {this.props.lowRiskValue}{' '}{'FL'}
+                </Text>
+              </Grid>
+            </label>
+          </div>
+          <div className="onwallet">
+            <Grid
+              gridTemplateColumns="7fr 3fr"
+              gridRowGap="s"
+              alignItems="center"
+            >
+              <Text fontWeight="semibold" t="smallCaps" color="#A3B2CF">
+                {this.props.onwalletTitle}
+              </Text>
+              <Text fontSize="s" style={{ color: getColor('whiteText'), textAlign: 'right' }}>
+                {this.props.onwallet}{' '}{'FL'}
+              </Text>
+            </Grid>
+          </div>
+          {this.state.selectedOption === "getRewardButtonLowRisk" &&
+
+            this.props.buttonLow.map(({ onClick, text }) => (
+              <Button
+                className="btn reward_btn"
+                style={{ margin: '10px auto 0px', fontSize: '14px' }}
+                disabled={this.props.lowRiskValue == 0 ? true : false}
+                onClick={onClick}
+              >
+                {text}
+              </Button>
+            ))
+
+          }
+          {this.state.selectedOption === "getRewardButtonHiRisk" &&
+
+            this.props.buttonHi.map(({ onClick, text }) => (
+              <Button
+                className="btn reward_btn"
+                style={{ margin: '10px auto 0px', fontSize: '14px' }}
+                disabled={this.props.hiRiskValue == 0 ? true : false}
+                onClick={onClick}
+              >
+                {text}
+              </Button>
+            ))
+
+          }
+          {this.state.selectedOption === "getRewardButton" &&
+
+            this.props.button.map(({ onClick, text }) => (
+              <Button
+                className="btn reward_btn"
+                style={{ margin: '10px auto 0px', fontSize: '14px' }}
+                disabled={formatter(parseInt(this.props.hiRiskValue) + parseInt(this.props.lowRiskValue)) == 0 ? true : false}
+                onClick={onClick}
+              >
+                {text}
+              </Button>
+            ))
+
+          }
+        </form>
+      </Card>
+    );
+  }
+}
 
 function Reward({ viewedAddress }) {
   const { account, network } = useMaker();
@@ -132,8 +280,8 @@ function Reward({ viewedAddress }) {
   const rewardPairInfos =
     rewardPairInfosHiRisk && rewardPairInfosLowRisk
       ? [...rewardPairInfosHiRisk, ...rewardPairInfosLowRisk].filter(
-          item => item.gem != 0
-        )
+        item => item.gem != 0
+      )
       : [];
 
   const rewardPerHourHiRisk = watch.rewardPerHour(true);
@@ -177,36 +325,6 @@ function Reward({ viewedAddress }) {
       }),
       'FL (APY: ' + formatCollateralizationRatio(apyLowRisk) + ')',
       lang.overview_page.reward_epoch + ' ' + lowRiskEpoch,
-      null
-    ]
-  ];
-
-  const yourInfoParams = [
-    [
-      lang.overview_page.reward_earned_hirisk,
-      formatter(earnedRewardHiRisk ? earnedRewardHiRisk : 0.0, {
-        precision: short
-      }),
-      'FL',
-      '',
-      null
-    ],
-    [
-      lang.overview_page.reward_earned_lowrisk,
-      formatter(earnedRewardLowRisk ? earnedRewardLowRisk : 0.0, {
-        precision: short
-      }),
-      'FL',
-      '',
-      null
-    ],
-    [
-      lang.sidebar.reward_on_wallet,
-      formatter(walletAmount ? walletAmount : 0.0, {
-        precision: short
-      }),
-      'FL',
-      '',
       null
     ]
   ];
@@ -269,11 +387,9 @@ function Reward({ viewedAddress }) {
   const poolApprove = (selectedGem, avail, allowance, hiRisk) => {
     maker.service('mcd:rewards').poolApprove(conv(avail), selectedGem, hiRisk);
   };
-  const valid =
-    formatter(earnedRewardHiRisk) == 0 && formatter(earnedRewardLowRisk) == 0;
+
   const getRewardButton = {
     text: lang.sidebar.reward_button,
-    disable: valid,
     onClick: () => {
       maker.service('mcd:rewards').claimRewardEx();
     }
@@ -281,7 +397,6 @@ function Reward({ viewedAddress }) {
 
   const getRewardButtonHiRisk = {
     text: lang.sidebar.reward_button_hi_risk,
-    disable: valid,
     onClick: () => {
       maker.service('mcd:rewards').claimRewardHiRisk();
     }
@@ -289,7 +404,6 @@ function Reward({ viewedAddress }) {
 
   const getRewardButtonLowRisk = {
     text: lang.sidebar.reward_button_low_risk,
-    disable: valid,
     onClick: () => {
       maker.service('mcd:rewards').claimRewardLowRisk();
     }
@@ -310,45 +424,51 @@ function Reward({ viewedAddress }) {
             <RewardInfo
               params={globalParams}
               title={lang.overview_page.reward_global_info}
-              buttons={null}
             />
-            <RewardInfo
-              params={yourInfoParams}
+            <Rewards
               title={lang.overview_page.reward_your_info}
-              buttons={[
-                getRewardButtonHiRisk,
-                getRewardButtonLowRisk,
-                getRewardButton
-              ]}
+              select={lang.overview_page.reward_select}
+              hiRiskTitle={lang.overview_page.reward_earned_hirisk}
+              hiRiskValue={formatter(earnedRewardHiRisk ? earnedRewardHiRisk : 0.0)}
+              buttonHi={[getRewardButtonHiRisk]}
+              lowRiskTitle={lang.overview_page.reward_earned_lowrisk}
+              lowRiskValue={formatter(earnedRewardLowRisk ? earnedRewardLowRisk : 0.0)}
+              allRewardsTitle={lang.overview_page.reward_all}
+              buttonLow={[getRewardButtonLowRisk]}
+              button={[getRewardButton]}
+              onwalletTitle={lang.reward_page.on_wallet}
+              onwallet={formatter(walletAmount ? walletAmount : 0.0, {
+                precision: short
+              })}
             />
           </Grid>
           <Text style={{ fontSize: '20px', color: getColor('greyText') }}>
-              {lang.reward_page.info_box}
-            </Text>
+            {lang.reward_page.info_box}
+          </Text>
           <Card
-        css={'overflow:hidden;'}
-        pt="sm"
-        style={{
-          background: getColor('cardBg'),
-          borderColor: getColor('border'),
-          paddingTop: '35px',
-          paddingLeft: '35px',
-          paddingRight: '35px',
-          paddingBottom: '35px',
-          color: getColor('greyText'),
-          lineHeight: '34px',
-        }}
-      >
-           <ul>
+            css={'overflow:hidden;'}
+            pt="sm"
+            style={{
+              background: getColor('cardBg'),
+              borderColor: getColor('border'),
+              paddingTop: '35px',
+              paddingLeft: '35px',
+              paddingRight: '35px',
+              paddingBottom: '35px',
+              color: getColor('greyText'),
+              lineHeight: '34px',
+            }}
+          >
+            <ul>
               <li>
-                {lang.formatString(lang.reward_page.info_box_l1, 
+                {lang.formatString(lang.reward_page.info_box_l1,
                   <Link
                     className="link_post"
                     href="https://freeliquid.medium.com/freeliquid-rewards-distribution-a40b3de86dc"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >
-                      {lang.reward_page.info_box_link_meduim}
+                  >
+                    {lang.reward_page.info_box_link_meduim}
                   </Link>,
                   <Link
                     className="link_post"
@@ -356,21 +476,21 @@ function Reward({ viewedAddress }) {
                     download=""
                     target="_blank"
                     rel="noopener noreferrer"
-                    >
-                      {lang.reward_page.info_box_link_wp}
+                  >
+                    {lang.reward_page.info_box_link_wp}
                   </Link>
                 )}
               </li>
-             <li>{lang.reward_page.info_box_l2}</li>
-             <li>
-             {lang.formatString(lang.reward_page.info_box_l3,
-              <MarkerCayn />,
-              <MarkerPurple />
-              )}</li>
-             <li>{lang.reward_page.info_box_l4}</li>
-             <li>{lang.reward_page.info_box_l5}</li>
-           </ul>
-            </Card>
+              <li>{lang.reward_page.info_box_l2}</li>
+              <li>
+                {lang.formatString(lang.reward_page.info_box_l3,
+                  <MarkerCayn />,
+                  <MarkerPurple />
+                )}</li>
+              <li>{lang.reward_page.info_box_l4}</li>
+              <li>{lang.reward_page.info_box_l5}</li>
+            </ul>
+          </Card>
           <Box>
             <Text style={{ fontSize: '20px', color: getColor('greyText') }}>
               {lang.reward_page.participating_pools}
@@ -414,7 +534,7 @@ function Reward({ viewedAddress }) {
               >
                 <Table.thead>
                   <Table.tr>
-                  <Table.th></Table.th>
+                    <Table.th></Table.th>
                     <Table.th>{lang.overview_page.token}</Table.th>
                     <Table.th display={{ s: 'none', xl: 'table-cell' }}>
                       {lang.reward_page.address}
@@ -451,23 +571,23 @@ function Reward({ viewedAddress }) {
                       x2
                     }) => (
                       <Table.tr key={gem}>
-                      <Table.td>
-                        <div style={{
-                          width: '10px',
-                          height: '10px',
-                          background: hiRisk ? getColor('cayn') : getColor('blue'),
-                          borderRadius: '50%'
-                        }} />
+                        <Table.td>
+                          <div style={{
+                            width: '10px',
+                            height: '10px',
+                            background: hiRisk ? getColor('cayn') : getColor('blue'),
+                            borderRadius: '50%'
+                          }} />
 
-                      </Table.td>
+                        </Table.td>
                         <Table.td>
                           <Text
                             t="body"
                             fontSize={{ s: '1.2rem', xl: 'm' }}
                             fontWeight={{ s: 'medium', xl: 'normal' }}
-                            color = {getColor('whiteText')}
+                            color={getColor('whiteText')}
                           >
-                            { name == 'USDFL_FL' ? 'FL_USDFL' : name } 
+                            {name == 'USDFL_FL' ? 'FL_USDFL' : name}
                           </Text>
                         </Table.td>
                         <Table.td>
@@ -487,11 +607,12 @@ function Reward({ viewedAddress }) {
                           display={{ s: 'table-cell', xl: 'table-cell' }}
                         >
                           <Text t="caption">
-                          {x2.some(function(val) {
+                            {x2.some(function (val) {
                               return val === name;
-                            }) ? 
-                            formatter(availvalue, { precision: short }) 
-                            : formatter(availvalue/2, { precision: short })}
+                            }) ?
+                              formatter(availvalue, { precision: short })
+                              : formatter(availvalue / 2, { precision: short })
+                            }
                           </Text>
                         </Table.td>
                         <Table.td
@@ -521,53 +642,53 @@ function Reward({ viewedAddress }) {
                         </Table.td>
                         <Table.td>
                           <Flex justifyContent="flex-end">
-                            {x2.some(function(val) {
+                            {x2.some(function (val) {
                               return val === name;
                             }) ? (
-                              <Button
-                                // variant="secondary-outline"
-                                className="btn w100"
-                                style={{ margin: '1px auto', fontSize: '12px' }}
-                                borderColor="steel"
-                                disabled={lockDisabled}
-                                onClick={() => {
-                                  showAction({
-                                    type: 'depositLPReward',
-                                    props: {
-                                      avail,
-                                      availValue: availvalue,
-                                      name,
-                                      gem,
-                                      hiRisk
-                                    }
-                                  });
-                                }}
-                              >
-                                {lang.reward_page.button_lock}
-                              </Button>
-                            ) : (
-                              <Button
-                                // variant="secondary-outline"
-                                className="btn w100 x2"
-                                style={{ margin: '1px auto', fontSize: '12px' }}
-                                borderColor="steel"
-                                disabled={lockDisabled}
-                                onClick={() => {
-                                  showAction({
-                                    type: 'depositLPReward',
-                                    props: {
-                                      avail,
-                                      availValue: availvalue,
-                                      name,
-                                      gem,
-                                      hiRisk
-                                    }
-                                  });
-                                }}
-                              >
-                                {lang.reward_page.button_lockx2}
-                              </Button>
-                            )}
+                                <Button
+                                  // variant="secondary-outline"
+                                  className="btn w100"
+                                  style={{ margin: '1px auto', fontSize: '12px' }}
+                                  borderColor="steel"
+                                  disabled={lockDisabled}
+                                  onClick={() => {
+                                    showAction({
+                                      type: 'depositLPReward',
+                                      props: {
+                                        avail,
+                                        availValue: availvalue,
+                                        name,
+                                        gem,
+                                        hiRisk
+                                      }
+                                    });
+                                  }}
+                                >
+                                  {lang.reward_page.button_lock}
+                                </Button>
+                              ) : (
+                                <Button
+                                  // variant="secondary-outline"
+                                  className="btn w100 x2"
+                                  style={{ margin: '1px auto', fontSize: '12px' }}
+                                  borderColor="steel"
+                                  disabled={lockDisabled}
+                                  onClick={() => {
+                                    showAction({
+                                      type: 'depositLPReward',
+                                      props: {
+                                        avail,
+                                        availValue: availvalue,
+                                        name,
+                                        gem,
+                                        hiRisk
+                                      }
+                                    });
+                                  }}
+                                >
+                                  {lang.reward_page.button_lockx2}
+                                </Button>
+                              )}
                           </Flex>
                         </Table.td>
                         <Table.td>

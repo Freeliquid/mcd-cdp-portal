@@ -321,3 +321,34 @@ a.link_banner:hover{
 .network_box:hover{
   background-color: #222B3F !important;
 }
+.reward_box{
+  margin: 6px 0px;
+  padding: 14px 15px;
+  border-radius: 12px;
+  background-color: #1c2230;
+}
+.onwallet{
+  margin: 15px 0px;
+}
+input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 16px;
+    height: 16px;
+    outline: none;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    
+    cursor: pointer;
+    border-radius: 100%;
+    border: 2px solid#1c2230;
+    background: #131824;
+
+  }
+  input[type="radio"]:checked {
+    width: 14px;
+    height: 14px;
+    border: 2px solid#131824;
+    background: #00dcdc;
+  }
