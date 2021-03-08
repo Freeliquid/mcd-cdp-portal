@@ -258,6 +258,44 @@ button.close_btn:hover{
   background-color: #00dcdc !important; 
   color: #231536 !important;
 }
+
+@media (min-width: 1250px) and (max-width: 1359px){
+  .table-reward{
+    min-width: 730px !important;
+    max-width: 750px !important;
+    overflow-y: scroll;
+  }
+  .info_reward{
+    display: block !important;
+  }
+}
+@media (min-width: 1232px) and (max-width: 1250px){
+  .table-reward{
+    width: 725px !important;
+    overflow-y: scroll;
+  }
+  .info_reward{
+    display: block !important;
+  }
+}
+@media (min-width: 1201px) and (max-width: 1232px){
+  .table-reward{
+    width: 700px !important;
+    overflow-y: scroll;
+  }
+  .info_reward{
+    display: block !important;
+  }
+}
+@media (min-width: 1160px) and (max-width: 1200px){
+  .table-reward{
+    width: 680px !important;
+    overflow-y: scroll;
+  }
+  .info_reward{
+    display: block !important;
+  }
+}
 @media (max-width: 767px) {
   .btn {
     padding: 10px 5px !important;
