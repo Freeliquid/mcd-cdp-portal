@@ -17,15 +17,15 @@ const DepositLPReward = ({ avail, availValue, name, gem, hiRisk, reset }) => {
 
   const usdPrice = watch.rewardPairInfoGetPrice(name, hiRisk) || BigNumber(0);
 
-  console.log(
-    'DepositLPReward',
-    usdPrice.toNumber(),
-    avail ? avail.toNumber() : 0,
-    availValue ? availValue.toNumber() : 0,
-    name,
-    gem,
-    hiRisk
-  );
+  /*  console.log(
+     'DepositLPReward',
+     usdPrice.toNumber(),
+     avail ? avail.toNumber() : 0,
+     availValue ? availValue.toNumber() : 0,
+     name,
+     gem,
+     hiRisk
+   ); */
 
   function convertValueToAmount(value) {
     const WAD = new BigNumber('1e18');

@@ -99,7 +99,6 @@ class Rewards extends Component {
     this.state = {};
     this.onValueChange = this.onValueChange.bind(this);
     this.formSubmit = this.formSubmit.bind(this);
-
   }
   onValueChange(event) {
     this.setState({
@@ -124,7 +123,13 @@ class Rewards extends Component {
           paddingBottom: '20px'
         }}
       >
-        <Text style={{ fontSize: '20px', color: getColor('whiteText'), display: 'block' }}>
+        <Text
+          style={{
+            fontSize: '20px',
+            color: getColor('whiteText'),
+            display: 'block'
+          }}
+        >
           {this.props.title}
         </Text>
         <Text style={{ fontSize: '16px', color: getColor('greyText') }}>
@@ -141,14 +146,19 @@ class Rewards extends Component {
                 <input
                   type="radio"
                   value="getRewardButton"
-                  checked={this.state.selectedOption === "getRewardButton"}
+                  checked={this.state.selectedOption === 'getRewardButton'}
                   onChange={this.onValueChange}
                 />
-                <Text color="#A3B2CF">
-                  {this.props.allRewardsTitle}
-                </Text>
-                <Text fontSize="s" style={{ color: getColor('whiteText'), textAlign: 'right' }}>
-                  {formatter(parseInt(this.props.hiRiskValue) + parseInt(this.props.lowRiskValue))}{' '}{'FL'}
+                <Text color="#A3B2CF">{this.props.allRewardsTitle}</Text>
+                <Text
+                  fontSize="s"
+                  style={{ color: getColor('whiteText'), textAlign: 'right' }}
+                >
+                  {formatter(
+                    parseInt(this.props.hiRiskValue) +
+                    parseInt(this.props.lowRiskValue)
+                  )}{' '}
+                  {'FL'}
                 </Text>
               </Grid>
             </label>
@@ -163,14 +173,17 @@ class Rewards extends Component {
                 <input
                   type="radio"
                   value="getRewardButtonHiRisk"
-                  checked={this.state.selectedOption === "getRewardButtonHiRisk"}
+                  checked={
+                    this.state.selectedOption === 'getRewardButtonHiRisk'
+                  }
                   onChange={this.onValueChange}
                 />
-                <Text color="#A3B2CF">
-                  {this.props.hiRiskTitle}
-                </Text>
-                <Text fontSize="s" style={{ color: getColor('whiteText'), textAlign: 'right' }}>
-                  {this.props.hiRiskValue}{' '}{'FL'}
+                <Text color="#A3B2CF">{this.props.hiRiskTitle}</Text>
+                <Text
+                  fontSize="s"
+                  style={{ color: getColor('whiteText'), textAlign: 'right' }}
+                >
+                  {this.props.hiRiskValue} {'FL'}
                 </Text>
               </Grid>
             </label>
@@ -185,14 +198,17 @@ class Rewards extends Component {
                 <input
                   type="radio"
                   value="getRewardButtonLowRisk"
-                  checked={this.state.selectedOption === "getRewardButtonLowRisk"}
+                  checked={
+                    this.state.selectedOption === 'getRewardButtonLowRisk'
+                  }
                   onChange={this.onValueChange}
                 />
-                <Text color="#A3B2CF">
-                  {this.props.lowRiskTitle}
-                </Text>
-                <Text fontSize="s" style={{ color: getColor('whiteText'), textAlign: 'right' }}>
-                  {this.props.lowRiskValue}{' '}{'FL'}
+                <Text color="#A3B2CF">{this.props.lowRiskTitle}</Text>
+                <Text
+                  fontSize="s"
+                  style={{ color: getColor('whiteText'), textAlign: 'right' }}
+                >
+                  {this.props.lowRiskValue} {'FL'}
                 </Text>
               </Grid>
             </label>
@@ -206,13 +222,15 @@ class Rewards extends Component {
               <Text fontWeight="semibold" t="smallCaps" color="#A3B2CF">
                 {this.props.onwalletTitle}
               </Text>
-              <Text fontSize="s" style={{ color: getColor('whiteText'), textAlign: 'right' }}>
-                {this.props.onwallet}{' '}{'FL'}
+              <Text
+                fontSize="s"
+                style={{ color: getColor('whiteText'), textAlign: 'right' }}
+              >
+                {this.props.onwallet} {'FL'}
               </Text>
             </Grid>
           </div>
-          {this.state.selectedOption === "getRewardButtonLowRisk" &&
-
+          {this.state.selectedOption === 'getRewardButtonLowRisk' &&
             this.props.buttonLow.map(({ onClick, text }) => (
               <Button
                 className="btn reward_btn"
@@ -222,11 +240,8 @@ class Rewards extends Component {
               >
                 {text}
               </Button>
-            ))
-
-          }
-          {this.state.selectedOption === "getRewardButtonHiRisk" &&
-
+            ))}
+          {this.state.selectedOption === 'getRewardButtonHiRisk' &&
             this.props.buttonHi.map(({ onClick, text }) => (
               <Button
                 className="btn reward_btn"
@@ -236,23 +251,25 @@ class Rewards extends Component {
               >
                 {text}
               </Button>
-            ))
-
-          }
-          {this.state.selectedOption === "getRewardButton" &&
-
+            ))}
+          {this.state.selectedOption === 'getRewardButton' &&
             this.props.button.map(({ onClick, text }) => (
               <Button
                 className="btn reward_btn"
                 style={{ margin: '10px auto 0px', fontSize: '14px' }}
-                disabled={formatter(parseInt(this.props.hiRiskValue) + parseInt(this.props.lowRiskValue)) == 0 ? true : false}
+                disabled={
+                  formatter(
+                    parseInt(this.props.hiRiskValue) +
+                    parseInt(this.props.lowRiskValue)
+                  ) == 0
+                    ? true
+                    : false
+                }
                 onClick={onClick}
               >
                 {text}
               </Button>
-            ))
-
-          }
+            ))}
         </form>
       </Card>
     );
@@ -429,10 +446,14 @@ function Reward({ viewedAddress }) {
               title={lang.overview_page.reward_your_info}
               select={lang.overview_page.reward_select}
               hiRiskTitle={lang.overview_page.reward_earned_hirisk}
-              hiRiskValue={formatter(earnedRewardHiRisk ? earnedRewardHiRisk : 0.0)}
+              hiRiskValue={formatter(
+                earnedRewardHiRisk ? earnedRewardHiRisk : 0.0
+              )}
               buttonHi={[getRewardButtonHiRisk]}
               lowRiskTitle={lang.overview_page.reward_earned_lowrisk}
-              lowRiskValue={formatter(earnedRewardLowRisk ? earnedRewardLowRisk : 0.0)}
+              lowRiskValue={formatter(
+                earnedRewardLowRisk ? earnedRewardLowRisk : 0.0
+              )}
               allRewardsTitle={lang.overview_page.reward_all}
               buttonLow={[getRewardButtonLowRisk]}
               button={[getRewardButton]}
@@ -456,12 +477,13 @@ function Reward({ viewedAddress }) {
               paddingRight: '35px',
               paddingBottom: '35px',
               color: getColor('greyText'),
-              lineHeight: '34px',
+              lineHeight: '34px'
             }}
           >
             <ul>
               <li>
-                {lang.formatString(lang.reward_page.info_box_l1,
+                {lang.formatString(
+                  lang.reward_page.info_box_l1,
                   <Link
                     className="link_post"
                     href="https://freeliquid.medium.com/freeliquid-rewards-distribution-a40b3de86dc"
@@ -483,10 +505,12 @@ function Reward({ viewedAddress }) {
               </li>
               <li>{lang.reward_page.info_box_l2}</li>
               <li>
-                {lang.formatString(lang.reward_page.info_box_l3,
+                {lang.formatString(
+                  lang.reward_page.info_box_l3,
                   <MarkerCayn />,
                   <MarkerPurple />
-                )}</li>
+                )}
+              </li>
               <li>{lang.reward_page.info_box_l4}</li>
               <li>{lang.reward_page.info_box_l5}</li>
             </ul>
@@ -572,13 +596,16 @@ function Reward({ viewedAddress }) {
                     }) => (
                       <Table.tr key={gem}>
                         <Table.td>
-                          <div style={{
-                            width: '10px',
-                            height: '10px',
-                            background: hiRisk ? getColor('cayn') : getColor('blue'),
-                            borderRadius: '50%'
-                          }} />
-
+                          <div
+                            style={{
+                              width: '10px',
+                              height: '10px',
+                              background: hiRisk
+                                ? getColor('cayn')
+                                : getColor('blue'),
+                              borderRadius: '50%'
+                            }}
+                          />
                         </Table.td>
                         <Table.td>
                           <Text
@@ -609,17 +636,21 @@ function Reward({ viewedAddress }) {
                           <Text t="caption">
                             {x2.some(function (val) {
                               return val === name;
-                            }) ?
-                              formatter(availvalue, { precision: short })
-                              : formatter(availvalue / 2, { precision: short })
-                            }
+                            })
+                              ? formatter(availvalue, { precision: short })
+                              : formatter(availvalue / 2, { precision: short })}
                           </Text>
                         </Table.td>
                         <Table.td
                           display={{ s: 'table-cell', xl: 'table-cell' }}
                         >
                           <Text t="caption">
-                            {formatter(lockedvalue, { precision: short })}
+                            {x2.some(function (val) {
+                              return val === name;
+                            }) ?
+                              formatter(lockedvalue, { precision: short })
+                              : formatter(lockedvalue / 2, { precision: short })
+                            }
                           </Text>
                         </Table.td>
                         <Table.td
@@ -678,7 +709,7 @@ function Reward({ viewedAddress }) {
                                       type: 'depositLPReward',
                                       props: {
                                         avail,
-                                        availValue: availvalue,
+                                        availValue: availvalue / 2,
                                         name,
                                         gem,
                                         hiRisk
@@ -704,7 +735,11 @@ function Reward({ viewedAddress }) {
                                   type: 'withdrawLPReward',
                                   props: {
                                     locked,
-                                    lockedValue: lockedvalue,
+                                    lockedValue:
+                                      x2.some(function (val) {
+                                        return val === name;
+                                      }) ? lockedvalue
+                                        : lockedvalue / 2,
                                     name,
                                     gem,
                                     hiRisk
