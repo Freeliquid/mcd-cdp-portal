@@ -24,7 +24,7 @@ const WithdrawLPReward = ({
 
   const usdPrice = watch.rewardPairInfoGetPrice(name, hiRisk) || BigNumber(0);
 
-  /* console.log(
+  console.log(
     'WithdrawLPReward',
     usdPrice.toNumber(),
     locked ? locked.toNumber() : 0,
@@ -32,7 +32,7 @@ const WithdrawLPReward = ({
     name,
     gem,
     hiRisk
-  ); */
+  );
 
   function convertValueToAmount(value) {
     const WAD = new BigNumber('1e18');
