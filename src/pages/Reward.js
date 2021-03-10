@@ -409,6 +409,12 @@ function Reward({ viewedAddress }) {
     }
   };
 
+  function checkX2(arr, val) {
+    return arr.some(function (arrVall) {
+      return val === arrVall;
+    });
+  }
+
   return (
     <PageContentLayout>
       <Text.h2 pr="m" mb="m" color="white">
@@ -607,11 +613,9 @@ function Reward({ viewedAddress }) {
                           display={{ s: 'table-cell', xl: 'table-cell' }}
                         >
                           <Text t="caption">
-                            {x2.some(function (val) {
-                              return val === name;
-                            }) ?
-                              formatter(availvalue, { precision: short })
-                              : formatter(availvalue / 2, { precision: short })
+                            {checkX2(x2, name) ?
+                              formatter(availvalue / 2)
+                              : formatter(availvalue)
                             }
                           </Text>
                         </Table.td>
@@ -619,7 +623,10 @@ function Reward({ viewedAddress }) {
                           display={{ s: 'table-cell', xl: 'table-cell' }}
                         >
                           <Text t="caption">
-                            {formatter(lockedvalue, { precision: short })}
+                            {checkX2(x2, name) ?
+                              formatter(lockedvalue / 2)
+                              : formatter(lockedvalue)
+                            }
                           </Text>
                         </Table.td>
                         <Table.td
@@ -642,9 +649,29 @@ function Reward({ viewedAddress }) {
                         </Table.td>
                         <Table.td>
                           <Flex justifyContent="flex-end">
-                            {x2.some(function (val) {
-                              return val === name;
-                            }) ? (
+                            {checkX2(x2, name) ? (
+                              <Button
+                                // variant="secondary-outline"
+                                className="btn w100 x2"
+                                style={{ margin: '1px auto', fontSize: '12px' }}
+                                borderColor="steel"
+                                disabled={lockDisabled}
+                                onClick={() => {
+                                  showAction({
+                                    type: 'depositLPReward',
+                                    props: {
+                                      avail,
+                                      availValue: availvalue,
+                                      name,
+                                      gem,
+                                      hiRisk
+                                    }
+                                  });
+                                }}
+                              >
+                                {lang.reward_page.button_lockx2}
+                              </Button>
+                            ) : (
                                 <Button
                                   // variant="secondary-outline"
                                   className="btn w100"
@@ -665,28 +692,6 @@ function Reward({ viewedAddress }) {
                                   }}
                                 >
                                   {lang.reward_page.button_lock}
-                                </Button>
-                              ) : (
-                                <Button
-                                  // variant="secondary-outline"
-                                  className="btn w100 x2"
-                                  style={{ margin: '1px auto', fontSize: '12px' }}
-                                  borderColor="steel"
-                                  disabled={lockDisabled}
-                                  onClick={() => {
-                                    showAction({
-                                      type: 'depositLPReward',
-                                      props: {
-                                        avail,
-                                        availValue: availvalue,
-                                        name,
-                                        gem,
-                                        hiRisk
-                                      }
-                                    });
-                                  }}
-                                >
-                                  {lang.reward_page.button_lockx2}
                                 </Button>
                               )}
                           </Flex>
