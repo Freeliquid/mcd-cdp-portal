@@ -607,12 +607,7 @@ function Reward({ viewedAddress }) {
                           display={{ s: 'table-cell', xl: 'table-cell' }}
                         >
                           <Text t="caption">
-                            {x2.some(function (val) {
-                              return val === name;
-                            }) ?
-                              formatter(availvalue, { precision: short })
-                              : formatter(availvalue / 2, { precision: short })
-                            }
+                            {formatter(availvalue, { precision: short })}
                           </Text>
                         </Table.td>
                         <Table.td
@@ -645,50 +640,50 @@ function Reward({ viewedAddress }) {
                             {x2.some(function (val) {
                               return val === name;
                             }) ? (
-                                <Button
-                                  // variant="secondary-outline"
-                                  className="btn w100"
-                                  style={{ margin: '1px auto', fontSize: '12px' }}
-                                  borderColor="steel"
-                                  disabled={lockDisabled}
-                                  onClick={() => {
-                                    showAction({
-                                      type: 'depositLPReward',
-                                      props: {
-                                        avail,
-                                        availValue: availvalue,
-                                        name,
-                                        gem,
-                                        hiRisk
-                                      }
-                                    });
-                                  }}
-                                >
-                                  {lang.reward_page.button_lock}
-                                </Button>
-                              ) : (
-                                <Button
-                                  // variant="secondary-outline"
-                                  className="btn w100 x2"
-                                  style={{ margin: '1px auto', fontSize: '12px' }}
-                                  borderColor="steel"
-                                  disabled={lockDisabled}
-                                  onClick={() => {
-                                    showAction({
-                                      type: 'depositLPReward',
-                                      props: {
-                                        avail,
-                                        availValue: availvalue,
-                                        name,
-                                        gem,
-                                        hiRisk
-                                      }
-                                    });
-                                  }}
-                                >
-                                  {lang.reward_page.button_lockx2}
-                                </Button>
-                              )}
+                              <Button
+                                // variant="secondary-outline"
+                                className="btn w100"
+                                style={{ margin: '1px auto', fontSize: '12px' }}
+                                borderColor="steel"
+                                disabled={lockDisabled}
+                                onClick={() => {
+                                  showAction({
+                                    type: 'depositLPReward',
+                                    props: {
+                                      avail,
+                                      availValue: availvalue,
+                                      name,
+                                      gem,
+                                      hiRisk
+                                    }
+                                  });
+                                }}
+                              >
+                                {lang.reward_page.button_lock}
+                              </Button>
+                            ) : (
+                              <Button
+                                // variant="secondary-outline"
+                                className="btn w100 x2"
+                                style={{ margin: '1px auto', fontSize: '12px' }}
+                                borderColor="steel"
+                                disabled={lockDisabled}
+                                onClick={() => {
+                                  showAction({
+                                    type: 'depositLPReward',
+                                    props: {
+                                      avail,
+                                      availValue: availvalue,
+                                      name,
+                                      gem,
+                                      hiRisk
+                                    }
+                                  });
+                                }}
+                              >
+                                {lang.reward_page.button_lockx2}
+                              </Button>
+                            )}
                           </Flex>
                         </Table.td>
                         <Table.td>
