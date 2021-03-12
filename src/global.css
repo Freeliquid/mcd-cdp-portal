@@ -352,9 +352,13 @@ a.link_banner:hover{
 .network_box{
   flex-direction: column;
   align-items: center;
-  padding: 15px 10px;
-  gap: 10px;
-  border-radius: 10px;
+  padding: 10px 2px;
+  gap: 6px;
+  border-radius: 3px;
+}
+.network_img{
+  width: 22px;
+  height: 22px;
 }
 .network_box:hover{
   background-color: #222B3F !important;

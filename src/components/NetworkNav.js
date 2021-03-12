@@ -30,16 +30,15 @@ const TradeNav = ({ ...props }) => {
         style={{
           background: getColor('cardBg'),
           border: getColor('border'),
-          padding: '10px 5px',
-          marginBottom: '30px',
-          marginTop: '10px'
+          padding: '3px',
+          margin: '5px 25px',
         }}
       >
 
         <Grid
-          gridTemplateColumns={{ s: '1fr', xl: '1fr 1fr', l: '1fr 1fr' }}
-          gridColumnGap="8px"
-          gridRowGap="s"
+          gridTemplateColumns="1fr 1fr"
+          gridColumnGap="3px"
+          gridRowGap="6px"
           padding="3px"
 
         >
@@ -49,7 +48,7 @@ const TradeNav = ({ ...props }) => {
               style={{
                 background: '#222B3F',
               }}>
-              <EthIcon />
+              <EthIcon className="network_img" />
               <Text t="p6" fontWeight="bold" color={'white'}>
                 {lang.navbar.eth}
               </Text>
@@ -61,9 +60,9 @@ const TradeNav = ({ ...props }) => {
             <Flex
               className="network_box"
               style={{
-                background: getColor('bgInputCalc'),
+                background: getColor('cardBg'),
               }}>
-              <BscIcon />
+              <BscIcon className="network_img" />
               <Text t="p6" fontWeight="bold" color={'gray'}>
                 {lang.navbar.bsc}
               </Text>
