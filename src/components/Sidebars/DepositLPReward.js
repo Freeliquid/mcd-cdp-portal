@@ -10,7 +10,6 @@ import BigNumber from 'bignumber.js';
 import { getColor } from '../../styles/theme';
 import { watch } from 'hooks/useObservable';
 import { Currency } from '@makerdao/currency';
-import rewardListx2 from '../../references/rewardListX2';
 
 const DepositLPReward = ({ avail, availValue, name, gem, hiRisk, reset }) => {
   const { lang } = useLanguage();
@@ -36,18 +35,11 @@ const DepositLPReward = ({ avail, availValue, name, gem, hiRisk, reset }) => {
     if (r == undefined) return BigNumber(0);
     return r;
   }
-  function checkX2(arr, val) {
-    return arr.some(function (arrVall) {
-      return val === arrVall;
-    });
-  }
-
-  const availValueX2 = checkX2(rewardListx2, name) ? availValue / 2 : availValue;
 
   const [value, , onAmountChange, amountErrors] = useValidatedInput(
-    availValueX2,
+    availValue,
     {
-      maxFloat: availValueX2,
+      maxFloat: availValue,
       minFloat: 0,
       isFloat: true
     },
@@ -57,8 +49,7 @@ const DepositLPReward = ({ avail, availValue, name, gem, hiRisk, reset }) => {
     }
   );
 
-  const valueToDeposit = checkX2(rewardListx2, name) ? value * 2 || BigNumber(0) : value || BigNumber(0);
-  console.log('valueToDeposit', valueToDeposit);
+  const valueToDeposit = value || BigNumber(0);
   const amountToDeposit = convertValueToAmount(valueToDeposit);
 
   const valid = value && !amountErrors;
@@ -135,7 +126,7 @@ const DepositLPReward = ({ avail, availValue, name, gem, hiRisk, reset }) => {
       <InfoContainer>
         <Info
           title={lang.action_sidebar.current_account_balance}
-          body={`${formatter(availValueX2)} USD`}
+          body={`${formatter(availValue)} USD`}
         />
       </InfoContainer>
     </Grid>

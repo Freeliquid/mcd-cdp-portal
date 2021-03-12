@@ -10,7 +10,6 @@ import BigNumber from 'bignumber.js';
 import { getColor } from '../../styles/theme';
 import { watch } from 'hooks/useObservable';
 import { Currency } from '@makerdao/currency';
-import rewardListx2 from '../../references/rewardListX2';
 
 const WithdrawLPReward = ({
   locked,
@@ -44,18 +43,10 @@ const WithdrawLPReward = ({
     return r;
   }
 
-  function checkX2(arr, val) {
-    return arr.some(function (arrVall) {
-      return val === arrVall;
-    });
-  }
-
-  const lockedValueX2 = checkX2(rewardListx2, name) ? lockedValue / 2 : lockedValue;
-
   const [value, , onAmountChange, amountErrors] = useValidatedInput(
-    lockedValueX2,
+    lockedValue,
     {
-      maxFloat: lockedValueX2,
+      maxFloat: lockedValue,
       minFloat: 0,
       isFloat: true
     },
@@ -65,8 +56,7 @@ const WithdrawLPReward = ({
     }
   );
 
-  const valueToWithdraw = checkX2(rewardListx2, name) ? value * 2 || BigNumber(0) : value || BigNumber(0);
-  console.log('valueToWithdraw', valueToWithdraw);
+  const valueToWithdraw = value || BigNumber(0);
   const amountToWithdraw = convertValueToAmount(valueToWithdraw);
 
   const valid = value && !amountErrors;
@@ -143,7 +133,7 @@ const WithdrawLPReward = ({
       <InfoContainer>
         <Info
           title={lang.action_sidebar.maximum_available_to_withdraw}
-          body={`${formatter(lockedValueX2)} USD`}
+          body={`${formatter(lockedValue)} USD`}
         />
       </InfoContainer>
     </Grid>
