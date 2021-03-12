@@ -65,17 +65,21 @@ const WithdrawLPReward = ({
     }
   );
 
-  const valueToWithdraw = checkX2(rewardListx2, name) ? value * 2 || BigNumber(0) : value || BigNumber(0);
-  console.log('valueToWithdraw', valueToWithdraw);
+  const valueToWithdraw = checkX2(rewardListx2, name) ? (value * 2 || BigNumber(0)) : (value || BigNumber(0));
   const amountToWithdraw = convertValueToAmount(valueToWithdraw);
 
   const valid = value && !amountErrors;
 
   const withdraw = () => {
-    const v = amountToWithdraw.integerValue(BigNumber.ROUND_DOWN).toFixed();
-    console.log('withdraw', name, gem, amountToWithdraw.toNumber(), v, hiRisk);
-    maker.service('mcd:rewards').unlockPool(v, gem, hiRisk);
-    reset();
+    if (amountToWithdraw.toNumber() > new Currency(locked).toFixed('wei')) {
+      withdrawAll();
+    }
+    else {
+      const v = amountToWithdraw.integerValue(BigNumber.ROUND_DOWN).toFixed();
+      console.log('withdraw', name, gem, amountToWithdraw.toNumber(), v, hiRisk);
+      maker.service('mcd:rewards').unlockPool(v, gem, hiRisk);
+      reset();
+    }
   };
 
   const withdrawAll = () => {

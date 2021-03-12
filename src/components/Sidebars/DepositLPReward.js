@@ -57,17 +57,24 @@ const DepositLPReward = ({ avail, availValue, name, gem, hiRisk, reset }) => {
     }
   );
 
-  const valueToDeposit = checkX2(rewardListx2, name) ? value * 2 || BigNumber(0) : value || BigNumber(0);
+  const valueToDeposit = checkX2(rewardListx2, name) ? (value * 2 || BigNumber(0)) : (value || BigNumber(0));
   console.log('valueToDeposit', valueToDeposit);
   const amountToDeposit = convertValueToAmount(valueToDeposit);
+
+  console.log('amount', amountToDeposit.toNumber());
+  console.log('avail', new Currency(avail).toFixed('wei'));
 
   const valid = value && !amountErrors;
 
   const deposit = () => {
-    const v = amountToDeposit.integerValue(BigNumber.ROUND_DOWN).toFixed();
-    console.log('deposit', name, gem, amountToDeposit.toNumber(), v, hiRisk);
-    maker.service('mcd:rewards').lockPool(v, gem, hiRisk);
-    reset();
+    if (amountToDeposit.toNumber() > new Currency(avail).toFixed('wei')) {
+      depositAll();
+    } else {
+      const v = amountToDeposit.integerValue(BigNumber.ROUND_DOWN).toFixed();
+      console.log('deposit', name, gem, amountToDeposit.toNumber(), v, hiRisk);
+      maker.service('mcd:rewards').lockPool(v, gem, hiRisk);
+      reset();
+    }
   };
 
   const depositAll = () => {
