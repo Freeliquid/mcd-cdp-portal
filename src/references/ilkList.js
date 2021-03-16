@@ -4,7 +4,8 @@ import {
   USDCDAI,
   USDTUSDN,
   USDNDAI,
-  USDCUSDN
+  USDCUSDN,
+  CRV_3POOL
 
 } from '../libs/dai-plugin-mcd/src/index.js';
 
@@ -80,5 +81,19 @@ export default [
     token2: '0x674C6Ad92Fd080e4004b2312b45f796a192D27a0', //tonen contract
     currency: USDCUSDN, // the associated dai.js currency type
     networks: []
+  },
+
+  {
+    slug: 'crv_3pool-a', // URL param
+    symbol: 'CRV_3POOL-A', // how it's displayed in the UI
+    key: 'CRV_3POOL-A', // the actual ilk name used in the vat
+    gem: 'CRV_3POOL', // the actual asset that's being locked
+    platform: 'Curve',
+    link: 'https://curve.fi/3pool/deposit',
+    token1: '', //tonen contract
+    token2: '', //tonen contract
+    currency: CRV_3POOL, // the associated dai.js currency type
+    networks: ['kovan', 'mainnet']
   }
+
 ];

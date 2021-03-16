@@ -451,7 +451,7 @@ export default {
     tx_hash: 'Transaction hash',
     view_tx_details: 'View transaction details',
     select_title: 'Select the collateral type',
-    select_title2: '(Uniswap pools only)',
+    select_title2: '',
     select_text:
       'Each collateral type has its own risk parameters. You can lock up additional collateral types later.',
 
