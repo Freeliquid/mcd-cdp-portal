@@ -258,44 +258,35 @@ button.close_btn:hover{
   background-color: #00dcdc !important; 
   color: #231536 !important;
 }
+.card_info{
+  background: #131824;
+  padding: 20px;
+}
+.info_reward{
+  margin: 4px 0px;  
+  padding: 10px 20px;
+   
+}
+.title_info{
+  font-size: 20px!important; 
+  color: #F3F3F5!important; 
+  display: block;
+  padding: 10px 0px;
+}
+.select_reward{
+  font-size: 12px!important; 
+  color: #A3B2CF!important; 
+  font-weight: bold;
+}
+.buttons_reward{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+@media (min-width: 736px) and (max-width: 1348px){
+  .buttons_reward{
+    grid-template-columns: 1fr;
+  }
+}
 
-@media (min-width: 1250px) and (max-width: 1359px){
-  .table-reward{
-    min-width: 730px !important;
-    max-width: 750px !important;
-    overflow-y: scroll;
-  }
-  .info_reward{
-    display: block !important;
-  }
-}
-@media (min-width: 1232px) and (max-width: 1250px){
-  .table-reward{
-    width: 725px !important;
-    overflow-y: scroll;
-  }
-  .info_reward{
-    display: block !important;
-  }
-}
-@media (min-width: 1201px) and (max-width: 1232px){
-  .table-reward{
-    width: 700px !important;
-    overflow-y: scroll;
-  }
-  .info_reward{
-    display: block !important;
-  }
-}
-@media (min-width: 1160px) and (max-width: 1200px){
-  .table-reward{
-    width: 680px !important;
-    overflow-y: scroll;
-  }
-  .info_reward{
-    display: block !important;
-  }
-}
 @media (max-width: 767px) {
   .btn {
     padding: 10px 5px !important;
@@ -322,7 +313,7 @@ button.close_btn:hover{
   .table-reward{
     width: 350px;
     overflow-x: scroll;
-  }  
+  }
 }
 @media (max-width: 361px) {
   .table-reward{
@@ -334,7 +325,7 @@ button.close_btn:hover{
 .table-reward{
   width: 100%;
 }              
-}
+} 
 a.link_post{
   color: #00dcdc;
 }
@@ -365,14 +356,14 @@ a.link_banner:hover{
 }
 .reward_box{
   margin: 6px 0px;
-  padding: 14px 15px;
-  border-radius: 12px;
+  padding: 12px 15px;
+  border-radius: 10px;
   background-color: #1c2230;
 }
 .onwallet{
   margin: 15px 0px;
 }
-input[type="radio"] {
+.reward_box input[type="radio"] {
     -webkit-appearance: none;
     -moz-appearance: none;
     width: 16px;
@@ -388,7 +379,7 @@ input[type="radio"] {
     background: #131824;
 
   }
-  input[type="radio"]:checked {
+ .reward_box input[type="radio"]:checked {
     width: 14px;
     height: 14px;
     border: 2px solid#131824;

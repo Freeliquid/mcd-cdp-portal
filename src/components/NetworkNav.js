@@ -17,6 +17,7 @@ const TradeNav = ({ ...props }) => {
     <Box
       style={{
         textAlign: 'center',
+        paddingBottom: '30px'
       }}>
       <Text
         style={{

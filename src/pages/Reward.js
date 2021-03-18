@@ -29,67 +29,47 @@ import { watch } from 'hooks/useObservable';
 import { NotificationList, SAFETY_LEVELS } from 'utils/constants';
 import { decimalRules } from '../styles/constants';
 import TimeAgo from 'timeago-react';
-import { ReactComponent as MarkerCayn } from 'images/landing/marker_cayn.svg';
-import { ReactComponent as MarkerPurple } from 'images/landing/marker_purple.svg';
 
 const { short } = decimalRules;
 
 const RewardInfo = ({ params, title }) => {
   return (
-    <Fragment>
-      <Card
-        css={'overflow:hidden;'}
-        pt="sm"
-        style={{
-          background: getColor('cardBg'),
-          borderColor: getColor('border'),
-          paddingTop: '20px',
-          paddingLeft: '20px',
-          paddingRight: '20px',
-          paddingBottom: '20px'
-        }}
-      >
-        <Flex
-          justifyContent="space-between"
-          alignContent="center"
-          px="s"
-          pb="s2"
+    <Card
+      style={{
+        background: getColor('cardBg'),
+        borderColor: getColor('border'),
+        padding: '20px',
+      }}
+    >
+      <Text className="title_info">
+        {title}
+      </Text>
+      {params.map(([param, value, denom, info, timer]) => (
+        <Grid
+          gridTemplateColumns="1fr 1fr"
+          className="info_reward"
         >
-          <Text style={{ fontSize: '20px', color: getColor('whiteText') }}>
-            {title}
+          <Text fontWeight="semibold" t="smallCaps" color="#A3B2CF">
+            {param}
           </Text>
-        </Flex>
-        {params.map(([param, value, denom, info, timer]) => (
-          <Flex
-            key={`system_${param}`}
-            justifyContent="space-between"
-            alignItems="baseline"
-            width="100%"
-            style={{ padding: '7px 10px' }}
-            className="info_reward"
-          >
-            <Text fontWeight="semibold" t="smallCaps" color="#A3B2CF">
-              {param}
+          <Box style={{ textAlign: 'right', lineHeight: '15px' }}>
+            <Text fontSize="s" style={{ color: getColor('whiteText') }}>
+              {`${value}`} {`${denom}`}
             </Text>
-            <Box style={{ textAlign: 'right', lineHeight: '15px' }}>
-              <Text fontSize="s" style={{ color: getColor('whiteText') }}>
-                {`${value}`} {`${denom}`}
-              </Text>
-              <br />
-              <Text
-                style={{ fontSize: '12px', color: getColor('greyText') }}
-              >{`${info}`}</Text>
-              <Text style={{ fontSize: '12px', color: getColor('greyText') }}>
-                {' '}
-                {timer === null ? null : (
-                  <TimeAgo datetime={timer} live={true} />
-                )}
-              </Text>
-            </Box>
-          </Flex>
-        ))}
-      </Card>
-    </Fragment>
+            <br />
+            <Text
+              style={{ fontSize: '12px', color: getColor('greyText') }}
+            >{`${info}`}</Text>
+            <Text style={{ fontSize: '12px', color: getColor('greyText') }}>
+              {' '}
+              {timer === null ? null : (
+                <TimeAgo datetime={timer} live={true} />
+              )}
+            </Text>
+          </Box>
+        </Grid>
+      ))}
+    </Card>
   );
 };
 
@@ -113,21 +93,17 @@ class Rewards extends Component {
   render() {
     return (
       <Card
-        css={'overflow:hidden;'}
         pt="sm"
         style={{
           background: getColor('cardBg'),
           borderColor: getColor('border'),
-          paddingTop: '20px',
-          paddingLeft: '20px',
-          paddingRight: '20px',
-          paddingBottom: '20px'
+          padding: '20px'
         }}
       >
-        <Text style={{ fontSize: '20px', color: getColor('whiteText'), display: 'block' }}>
+        <Text className="title_info">
           {this.props.title}
         </Text>
-        <Text style={{ fontSize: '16px', color: getColor('greyText') }}>
+        <Text style={{ fontSize: '14px', color: getColor('greyText') }}>
           {this.props.select}
         </Text>
         <form onSubmit={this.formSubmit}>
@@ -144,7 +120,7 @@ class Rewards extends Component {
                   checked={this.state.selectedOption === "getRewardButton"}
                   onChange={this.onValueChange}
                 />
-                <Text color="#A3B2CF">
+                <Text className="select_reward">
                   {this.props.allRewardsTitle}
                 </Text>
                 <Text fontSize="s" style={{ color: getColor('whiteText'), textAlign: 'right' }}>
@@ -166,7 +142,7 @@ class Rewards extends Component {
                   checked={this.state.selectedOption === "getRewardButtonHiRisk"}
                   onChange={this.onValueChange}
                 />
-                <Text color="#A3B2CF">
+                <Text className="select_reward">
                   {this.props.hiRiskTitle}
                 </Text>
                 <Text fontSize="s" style={{ color: getColor('whiteText'), textAlign: 'right' }}>
@@ -188,7 +164,7 @@ class Rewards extends Component {
                   checked={this.state.selectedOption === "getRewardButtonLowRisk"}
                   onChange={this.onValueChange}
                 />
-                <Text color="#A3B2CF">
+                <Text className="select_reward">
                   {this.props.lowRiskTitle}
                 </Text>
                 <Text fontSize="s" style={{ color: getColor('whiteText'), textAlign: 'right' }}>
@@ -423,7 +399,7 @@ function Reward({ viewedAddress }) {
       {
         <Grid gridRowGap={{ s: 'm', xl: 'l' }}>
           <Grid
-            gridTemplateColumns={{ s: '1fr', xl: 'auto auto' }}
+            gridTemplateColumns={{ s: '1fr', xl: '1fr 1fr' }}
             gridColumnGap="m"
             gridRowGap="s"
           >
@@ -448,55 +424,6 @@ function Reward({ viewedAddress }) {
               })}
             />
           </Grid>
-          <Text style={{ fontSize: '20px', color: getColor('greyText') }}>
-            {lang.reward_page.info_box}
-          </Text>
-          <Card
-            css={'overflow:hidden;'}
-            pt="sm"
-            style={{
-              background: getColor('cardBg'),
-              borderColor: getColor('border'),
-              paddingTop: '35px',
-              paddingLeft: '35px',
-              paddingRight: '35px',
-              paddingBottom: '35px',
-              color: getColor('greyText'),
-              lineHeight: '34px',
-            }}
-          >
-            <ul>
-              <li>
-                {lang.formatString(lang.reward_page.info_box_l1,
-                  <Link
-                    className="link_post"
-                    href="https://freeliquid.medium.com/freeliquid-rewards-distribution-a40b3de86dc"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {lang.reward_page.info_box_link_meduim}
-                  </Link>,
-                  <Link
-                    className="link_post"
-                    href="https://freeliquid.io/wp/Freeliquid_WP_English.pdf"
-                    download=""
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {lang.reward_page.info_box_link_wp}
-                  </Link>
-                )}
-              </li>
-              <li>{lang.reward_page.info_box_l2}</li>
-              <li>
-                {lang.formatString(lang.reward_page.info_box_l3,
-                  <MarkerCayn />,
-                  <MarkerPurple />
-                )}</li>
-              <li>{lang.reward_page.info_box_l4}</li>
-              <li>{lang.reward_page.info_box_l5}</li>
-            </ul>
-          </Card>
           <Box>
             <Text style={{ fontSize: '20px', color: getColor('greyText') }}>
               {lang.reward_page.participating_pools}
@@ -508,7 +435,7 @@ function Reward({ viewedAddress }) {
               pb="s"
               my="m"
               css={`
-                overflow-x: none;
+                overflow-x: auto;
                 background: ${getColor('cardBg')};
                 border-color: ${getColor('border')};
               `}
@@ -517,8 +444,6 @@ function Reward({ viewedAddress }) {
                 width="100%"
                 variant="cozy"
                 css={`
-                  table {
-                  }
                   td,
                   th {
                     white-space: nowrap;
@@ -542,7 +467,7 @@ function Reward({ viewedAddress }) {
                   <Table.tr>
                     <Table.th></Table.th>
                     <Table.th>{lang.overview_page.token}</Table.th>
-                    <Table.th display={{ s: 'none', xl: 'table-cell' }}>
+                    <Table.th display={{ s: 'table-cell', xl: 'table-cell' }}>
                       {lang.reward_page.address}
                     </Table.th>
                     <Table.th display={{ s: 'none', xl: 'table-cell' }}>
@@ -632,7 +557,9 @@ function Reward({ viewedAddress }) {
                         <Table.td
                           display={{ s: 'table-cell', xl: 'table-cell' }}
                         >
-                          <Flex justifyContent="flex-end">
+                          <Grid
+                            className="buttons_reward"
+                          >
                             <Button
                               // variant="secondary-outline"
                               className="btn w100"
@@ -645,10 +572,7 @@ function Reward({ viewedAddress }) {
                             >
                               {lang.reward_page.button_approve}
                             </Button>
-                          </Flex>
-                        </Table.td>
-                        <Table.td>
-                          <Flex justifyContent="flex-end">
+
                             {checkX2(x2, name) ? (
                               <Button
                                 // variant="secondary-outline"
@@ -672,32 +596,29 @@ function Reward({ viewedAddress }) {
                                 {lang.reward_page.button_lockx2}
                               </Button>
                             ) : (
-                                <Button
-                                  // variant="secondary-outline"
-                                  className="btn w100"
-                                  style={{ margin: '1px auto', fontSize: '12px' }}
-                                  borderColor="steel"
-                                  disabled={lockDisabled}
-                                  onClick={() => {
-                                    showAction({
-                                      type: 'depositLPReward',
-                                      props: {
-                                        avail,
-                                        availValue: availvalue,
-                                        name,
-                                        gem,
-                                        hiRisk
-                                      }
-                                    });
-                                  }}
-                                >
-                                  {lang.reward_page.button_lock}
-                                </Button>
-                              )}
-                          </Flex>
-                        </Table.td>
-                        <Table.td>
-                          <Flex justifyContent="flex-end">
+                              <Button
+                                // variant="secondary-outline"
+                                className="btn w100"
+                                style={{ margin: '1px auto', fontSize: '12px' }}
+                                borderColor="steel"
+                                disabled={lockDisabled}
+                                onClick={() => {
+                                  showAction({
+                                    type: 'depositLPReward',
+                                    props: {
+                                      avail,
+                                      availValue: availvalue,
+                                      name,
+                                      gem,
+                                      hiRisk
+                                    }
+                                  });
+                                }}
+                              >
+                                {lang.reward_page.button_lock}
+                              </Button>
+                            )}
+
                             <Button
                               // variant="secondary-outline"
                               className="btn w100"
@@ -719,7 +640,7 @@ function Reward({ viewedAddress }) {
                             >
                               {lang.reward_page.button_unlock}
                             </Button>
-                          </Flex>
+                          </Grid>
                         </Table.td>
                       </Table.tr>
                     )

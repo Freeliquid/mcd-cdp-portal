@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { hot } from 'react-hot-loader/root';
 import SidebarSystem from 'components/SidebarSystem';
 import SidebarDetails from 'components/SidebarDetails';
+import SidebarInfoRewards from 'components/SidebarInfoRewards';
 import GetReward from './GetReward';
 import { Box, Grid } from '@makerdao/ui-components-core';
 import { useCurrentRoute } from 'react-navi';
@@ -21,12 +22,14 @@ const SidebarGlobalPanel = () => {
   const { url } = useCurrentRoute();
   const routeIsBorrow = url.pathname.startsWith(`/${Routes.BORROW}`);
   const routeIsSave = url.pathname.startsWith(`/${Routes.SAVE}`);
+   const routeIsReward = url.pathname.startsWith(`/${Routes.REWARD}`);
 
   return useMemo(() => {
     return (
       <Box>
         <Grid gridRowGap="s">
           {routeIsBorrow && <GetReward />}
+          {routeIsReward && <SidebarInfoRewards />}
           {routeIsBorrow && (
             <SidebarSystem
               system={{
