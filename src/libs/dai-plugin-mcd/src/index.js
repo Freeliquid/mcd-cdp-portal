@@ -98,7 +98,9 @@ export const defaultCdpTypes = [
   { currency: USDNDAI, ilk: 'USDNDAI-A' },
   { currency: USDTUSDN, ilk: 'USDTUSDN-A' },
   { currency: USDCUSDN, ilk: 'USDCUSDN-A' },
-  { currency: CRV_3POOL, ilk: 'CRV_3POOL-A' }
+  { currency: CRV_3POOL, ilk: 'CRV_3POOL-A' },
+  { currency: CRV_3POOL, ilk: 'CRV_3POOL-B' }
+
 ];
 
 export const SAI = createCurrency('SAI');

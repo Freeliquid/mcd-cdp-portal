@@ -87,6 +87,7 @@ export const TOKEN_BALANCE = 'tokenBalance';
 export const TOKEN_ALLOWANCE_BASE = 'tokenAllowanceBase';
 export const TOKEN_ALLOWANCE = 'tokenAllowance';
 export const ADAPTER_BALANCE = 'adapterBalance';
+export const TOTAL_CRV_JOIN_COLLATERAL = 'totalCrvJoinCollateral';
 
 // end
 export const EMERGENCY_SHUTDOWN_ACTIVE = 'emergencyShutdownActive';

@@ -5,7 +5,8 @@ import BigNumber from 'bignumber.js';
 import {
   TOKEN_BALANCE,
   TOKEN_ALLOWANCE_BASE,
-  REWARD_TOKEN_ALLOWANCE_BY_ADDRESS
+  REWARD_TOKEN_ALLOWANCE_BY_ADDRESS,
+  TOTAL_CRV_JOIN_COLLATERAL
 } from './_constants';
 import { validateAddress } from './_validators';
 
@@ -113,10 +114,41 @@ export const tokenAllowance = {
   }
 };
 
+
+export function crvWeiCurrency(value) {
+
+  const currencyToken = getMcdToken('CRV_3POOL');
+
+  return currencyToken(value, 'wei')
+}
+
+
+export const totalCrvJoinCollateral = {
+
+  generate: contractName => ({
+    id: `TOTAL_CRV_JOIN_COLLATERAL(${contractName})`,
+    contract: contractName,
+    call: ['totalCollateral()(uint256)']
+  }),
+  returns: [[TOTAL_CRV_JOIN_COLLATERAL, crvWeiCurrency]]
+};
+
+
+
 export const adapterBalance = {
   generate: collateralTypeName => ({
     dependencies: ({ get }) => {
       let tokenSymbol = collateralTypeName.split('-')[0];
+
+      if (collateralTypeName === 'CRV_3POOL-B') {
+        return [
+          [
+            TOTAL_CRV_JOIN_COLLATERAL,
+            `MCD_JOIN_${collateralTypeName.replace('-', '_')}`,
+          ]
+        ];
+
+      }
       tokenSymbol = tokenSymbol === 'ETH' ? 'WETH' : tokenSymbol;
       return [
         [
@@ -156,6 +188,7 @@ export default {
   tokenBalance,
   tokenAllowanceBase,
   tokenAllowanceByAddress,
+  totalCrvJoinCollateral,
 
   // computed
   adapterBalance,
