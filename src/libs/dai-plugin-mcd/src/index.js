@@ -100,7 +100,6 @@ export const defaultCdpTypes = [
   { currency: USDCUSDN, ilk: 'USDCUSDN-A' },
   { currency: CRV_3POOL, ilk: 'CRV_3POOL-A' },
   { currency: CRV_3POOL, ilk: 'CRV_3POOL-B' }
-
 ];
 
 export const SAI = createCurrency('SAI');

@@ -114,17 +114,13 @@ export const tokenAllowance = {
   }
 };
 
-
 export function crvWeiCurrency(value) {
-
   const currencyToken = getMcdToken('CRV_3POOL');
 
-  return currencyToken(value, 'wei')
+  return currencyToken(value, 'wei');
 }
 
-
 export const totalCrvJoinCollateral = {
-
   generate: contractName => ({
     id: `TOTAL_CRV_JOIN_COLLATERAL(${contractName})`,
     contract: contractName,
@@ -132,8 +128,6 @@ export const totalCrvJoinCollateral = {
   }),
   returns: [[TOTAL_CRV_JOIN_COLLATERAL, crvWeiCurrency]]
 };
-
-
 
 export const adapterBalance = {
   generate: collateralTypeName => ({
@@ -144,10 +138,9 @@ export const adapterBalance = {
         return [
           [
             TOTAL_CRV_JOIN_COLLATERAL,
-            `MCD_JOIN_${collateralTypeName.replace('-', '_')}`,
+            `MCD_JOIN_${collateralTypeName.replace('-', '_')}`
           ]
         ];
-
       }
       tokenSymbol = tokenSymbol === 'ETH' ? 'WETH' : tokenSymbol;
       return [
