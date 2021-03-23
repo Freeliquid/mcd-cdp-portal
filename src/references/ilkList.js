@@ -94,6 +94,19 @@ export default [
     token2: '', //tonen contract
     currency: CRV_3POOL, // the associated dai.js currency type
     networks: ['kovan', 'mainnet']
+  },
+
+  {
+    slug: 'crv_3pool-b', // URL param
+    symbol: 'CRV_3POOL-B', // how it's displayed in the UI
+    key: 'CRV_3POOL-B', // the actual ilk name used in the vat
+    gem: 'CRV_3POOL', // the actual asset that's being locked
+    platform: 'Curve',
+    link: 'https://curve.fi/3pool/deposit',
+    token1: '', //tonen contract
+    token2: '', //tonen contract
+    currency: CRV_3POOL, // the associated dai.js currency type
+    networks: ['kovan']
   }
 
 ];
