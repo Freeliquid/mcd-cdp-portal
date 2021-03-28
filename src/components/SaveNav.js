@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useCurrentRoute } from 'react-navi';
 import styled from 'styled-components';
-import { Flex, Text } from '@makerdao/ui-components-core';
+import { Flex, Text, Box } from '@makerdao/ui-components-core';
 
 import { ReactComponent as SaveIcon } from 'images/landing/save_block.svg';
 import { Routes } from '../utils/constants';
 import useLanguage from 'hooks/useLanguage';
+import Modal from 'react-modal';
+import { getColor } from 'styles/theme';
+
+Modal.setAppElement('#root');
 
 const StyledSaveIcon = styled(SaveIcon)`
   width: 40px;
@@ -14,6 +18,7 @@ const StyledSaveIcon = styled(SaveIcon)`
 
 const SaveNav = ({ account, ...props }) => {
   const { lang } = useLanguage();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const { url } = useCurrentRoute();
   const selected = url.pathname.startsWith(`/${Routes.SAVE}`);
 
@@ -39,7 +44,8 @@ const SaveNav = ({ account, ...props }) => {
     ? `/${Routes.SAVE}/owner/${account?.address}${url.search}`
     : `/${Routes.SAVE}${url.search}`;
   return (
-    <Link href={saveUrl}>
+    <Box>
+    <Link onClick={() => setModalIsOpen(true)}>
       <Flex
         bg={!account && selected && '#0B0E15'}
         flexDirection="column"
@@ -60,6 +66,43 @@ const SaveNav = ({ account, ...props }) => {
         </Text>
       </Flex>
     </Link>
+    <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={() => setModalIsOpen(false)}
+          style={{
+            overlay: {
+              background: 'rgba(0, 0, 0, 0.5)'
+            },
+            content: {
+              background: '#222B3F',
+              border: 'none',
+              width: '25%',
+              height: '30%',
+              margin: 'auto',
+              textAlign: 'center'
+            }
+          }}
+        >
+          <Text.h4
+            style={{
+              color: getColor('whiteText'),
+              padding: '20px 10px'
+            }}
+          >
+            {lang.landing_page.banner_in_progress}
+          </Text.h4>
+          <Text
+          style={{
+              color: getColor('greyText'),
+              padding: '20px 10px'
+            }}>
+          The Save module has not been launched yet, please wait for further updates!
+          </Text>
+          <button className="close_btn" onClick={() => setModalIsOpen(false)}>
+            &times;
+          </button>
+        </Modal>
+        </Box>
   );
 };
 
