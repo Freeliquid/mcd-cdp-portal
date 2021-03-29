@@ -106,7 +106,7 @@ export default [
     token1: '', //tonen contract
     token2: '', //tonen contract
     currency: CRV_3POOL, // the associated dai.js currency type
-    networks: ['kovan']
+    networks: ['kovan', 'mainnet']
   }
 
 ];
