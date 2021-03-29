@@ -58,10 +58,7 @@ function IlkTableRow({
   ilkData
 }) {
   const { trackInputChange } = useAnalytics('SelectCollateral', 'VaultCreate');
-  const {
-    annualStabilityFee,
-    collateralValueForAmount
-  } = ilkData;
+  const { annualStabilityFee, collateralValueForAmount } = ilkData;
 
   async function selectIlk() {
     trackInputChange('CollateralType', {
@@ -111,10 +108,11 @@ function IlkTableRow({
       </td>
       <td>
         <div style={{ color: '#00dcdc' }}>
-          <a 
-          target="_blank"
-          rel="noopener noreferrer"
-          href={`${ilk.link}${ilk.token1}/${ilk.token2}`}>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={`${ilk.link}${ilk.token1}/${ilk.token2}`}
+          >
             {ilk.platform} <ExternalLinkIcon style={{ fill: '#00dcdc' }} />
           </a>
         </div>
@@ -200,7 +198,8 @@ const CDPCreateSelectCollateral = ({
                   {cdpTypes.map(
                     ilk =>
                       collateralTypesData &&
-                      balances[ilk.gem] && (
+                      balances[ilk.gem] &&
+                      ilk.symbol != 'CRV_3POOL-A' && (
                         <IlkTableRow
                           key={ilk.symbol}
                           checked={ilk.symbol === selectedIlk.symbol}
