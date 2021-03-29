@@ -20,7 +20,7 @@ import { ReactComponent as ImgPoolsUsdl } from 'images/landing/pools_to_usdl_ful
 import { ReactComponent as Play } from 'images/landing/pl_vdo.svg';
 import { ReactComponent as RdPoint } from 'images/landing/rd_point.svg';
 import Line from 'images/landing/line.png';
-import BannerFl from 'images/landing/banner_fl.svg';
+import BannerSwop from 'images/landing/banner_swop.svg';
 import BannerBinance from 'images/landing/banner_binance.svg';
 
 import { Box, Flex, Text, Grid } from '@makerdao/ui-components-core';
@@ -523,10 +523,11 @@ const RoadMap = styled.div`
 `;
 const Banner = styled.div`
   .wrap_banner_fl {
-    background-image: url(${BannerFl});
-    background-color: #3a1fb9;
-    padding: 30px 230px 30px 35px;
-    background-size: 62%;
+    min-height: 135px;
+    background-image: url(${BannerSwop});
+    background-color: #12A17E;
+    padding: 30px 250px 30px 35px;
+    background-size: 100%;
     background-repeat: no-repeat;
     display: grid;
     grid-template-columns: 1fr;
@@ -534,11 +535,12 @@ const Banner = styled.div`
     -webkit-box-align: left;
     -ms-flex-align: left;
     align-items: left;
-    background-position: 330px -135px;
+    background-position: 344px -170px;
     border-radius: 20px;
     text-align: left;
   }
   .wrap_banner_binance {
+     min-height: 135px;
     background-image: url(${BannerBinance});
     background-color: #343840;
     padding: 30px 170px 30px 35px;
@@ -574,17 +576,19 @@ const Banner = styled.div`
   }
   @media (max-width: 767px) {
     .wrap_banner_fl {
+      min-height: 170px;
       display: grid;
       grid-template-columns: 1fr;
       grid-gap: 20px;
-      background-image: url(${BannerFl});
+      background-image: url(${BannerSwop});
       border-radius: 25px;
-      background-position: 211px -92px;
-      background-size: 70%;
+     background-position: 225px -50px;
+    background-size: 100%;
       padding: 20px 112px 25px 25px;
       text-align: left;
     }
     .wrap_banner_binance {
+      min-height: 170px;
       display: grid;
       grid-template-columns: 1fr;
       grid-gap: 20px;
@@ -602,8 +606,8 @@ const Banner = styled.div`
   @media (min-width: 768px) and (max-width: 1023px) {
     .wrap_banner_fl {
       padding: 30px 200px 30px 30px;
-      background-position: 560px -110px;
-      background-size: 37%;
+     background-position: 559px -74px;
+    background-size: 55%;
     }
     .wrap_banner_binance {
       padding: 30px 200px 30px 30px;
@@ -617,6 +621,7 @@ const Banner = styled.div`
     }
     .wrap_banner_binance {
       min-height: 160px;
+      background-position: 220px -82px;
     }
   }
   @media only screen and (orientation: landscape) and (max-device-width: 768px) {
@@ -654,19 +659,24 @@ function Landing() {
         >
           <Banner>
             <div className="wrap_banner_fl">
-              <div>
-                <div className="wrap_text">{lang.landing_page.banner_fl}</div>
-              </div>
-              <div>
-                <Link
-                  className="banner_link"
-                  href="https://freeliquid.medium.com/freeliquid-rewards-distribution-a40b3de86dc"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {lang.landing_page.banner_link}
-                </Link>
-              </div>
+                <div className="wrap_text">
+                  {lang.formatString(lang.landing_page.banner_swop_text,
+              <Link
+                className="banner_link"
+                href="https://swop.fi"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+               {lang.landing_page.banner_swop_link}
+              </Link>,
+              <Text style={{
+                fontSize:'17px',
+                fontWeight: 'bold'
+              }}>
+                {lang.landing_page.banner_swop_text2}
+              </Text>
+            )}
+                </div>
             </div>
           </Banner>
           <Banner>
