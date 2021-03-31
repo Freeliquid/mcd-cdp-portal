@@ -6,6 +6,7 @@ import LoadingLayout from 'layouts/LoadingLayout';
 import { formatter } from 'utils/ui';
 import rewardList from '../references/rewardList';
 import rewardListX2 from '../references/rewardListX2';
+import listFl from '../references/listFl';
 import { formatDate, formatCollateralizationRatio } from 'utils/ui';
 import ExternalLinkUni from 'components/ExternalLinkUni';
 import { Currency } from '@makerdao/currency';
@@ -287,10 +288,8 @@ function Reward({ viewedAddress }) {
     ],
     [
       lang.overview_page.reward_per_hour_hirisk,
-      formatter(rewardPerHourHiRisk ? rewardPerHourHiRisk : 0.0, {
-        precision: short
-      }),
-      'FL (APY: ' + formatCollateralizationRatio(apyHiRisk) + ')',
+      '0',
+      'FL (APY: ' + 0.00 + ')',
       lang.overview_page.reward_epoch + ' ' + hiRiskEpoch,
       null
     ],
@@ -565,7 +564,10 @@ function Reward({ viewedAddress }) {
                               className="btn w100"
                               style={{ margin: '1px auto', fontSize: '12px' }}
                               borderColor="steel"
-                              disabled={approveDisabled}
+                              disabled={checkX2(listFl, name) ?
+                                true
+                                : approveDisabled
+                              }
                               onClick={() => {
                                 poolApprove(gem, avail, allowance, hiRisk);
                               }}
@@ -579,7 +581,10 @@ function Reward({ viewedAddress }) {
                                 className="btn w100 x2"
                                 style={{ margin: '1px auto', fontSize: '12px' }}
                                 borderColor="steel"
-                                disabled={lockDisabled}
+                                disabled={checkX2(listFl, name) ?
+                                  true
+                                  : lockDisabled
+                                }
                                 onClick={() => {
                                   showAction({
                                     type: 'depositLPReward',
@@ -601,7 +606,10 @@ function Reward({ viewedAddress }) {
                                 className="btn w100"
                                 style={{ margin: '1px auto', fontSize: '12px' }}
                                 borderColor="steel"
-                                disabled={lockDisabled}
+                                disabled={checkX2(listFl, name) ?
+                                  true
+                                  : lockDisabled
+                                }
                                 onClick={() => {
                                   showAction({
                                     type: 'depositLPReward',
