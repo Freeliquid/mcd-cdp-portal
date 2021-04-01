@@ -39,17 +39,12 @@ const RewardInfo = ({ params, title }) => {
       style={{
         background: getColor('cardBg'),
         borderColor: getColor('border'),
-        padding: '20px',
+        padding: '20px'
       }}
     >
-      <Text className="title_info">
-        {title}
-      </Text>
+      <Text className="title_info">{title}</Text>
       {params.map(([param, value, denom, info, timer]) => (
-        <Grid
-          gridTemplateColumns="1fr 1fr"
-          className="info_reward"
-        >
+        <Grid gridTemplateColumns="1fr 1fr" className="info_reward">
           <Text fontWeight="semibold" t="smallCaps" color="#A3B2CF">
             {param}
           </Text>
@@ -63,9 +58,7 @@ const RewardInfo = ({ params, title }) => {
             >{`${info}`}</Text>
             <Text style={{ fontSize: '12px', color: getColor('greyText') }}>
               {' '}
-              {timer === null ? null : (
-                <TimeAgo datetime={timer} live={true} />
-              )}
+              {timer === null ? null : <TimeAgo datetime={timer} live={true} />}
             </Text>
           </Box>
         </Grid>
@@ -80,7 +73,6 @@ class Rewards extends Component {
     this.state = {};
     this.onValueChange = this.onValueChange.bind(this);
     this.formSubmit = this.formSubmit.bind(this);
-
   }
   onValueChange(event) {
     this.setState({
@@ -101,9 +93,7 @@ class Rewards extends Component {
           padding: '20px'
         }}
       >
-        <Text className="title_info">
-          {this.props.title}
-        </Text>
+        <Text className="title_info">{this.props.title}</Text>
         <Text style={{ fontSize: '14px', color: getColor('greyText') }}>
           {this.props.select}
         </Text>
@@ -118,14 +108,21 @@ class Rewards extends Component {
                 <input
                   type="radio"
                   value="getRewardButton"
-                  checked={this.state.selectedOption === "getRewardButton"}
+                  checked={this.state.selectedOption === 'getRewardButton'}
                   onChange={this.onValueChange}
                 />
                 <Text className="select_reward">
                   {this.props.allRewardsTitle}
                 </Text>
-                <Text fontSize="s" style={{ color: getColor('whiteText'), textAlign: 'right' }}>
-                  {formatter(parseInt(this.props.hiRiskValue) + parseInt(this.props.lowRiskValue))}{' '}{'FL'}
+                <Text
+                  fontSize="s"
+                  style={{ color: getColor('whiteText'), textAlign: 'right' }}
+                >
+                  {formatter(
+                    parseInt(this.props.hiRiskValue) +
+                    parseInt(this.props.lowRiskValue)
+                  )}{' '}
+                  {'FL'}
                 </Text>
               </Grid>
             </label>
@@ -140,14 +137,17 @@ class Rewards extends Component {
                 <input
                   type="radio"
                   value="getRewardButtonHiRisk"
-                  checked={this.state.selectedOption === "getRewardButtonHiRisk"}
+                  checked={
+                    this.state.selectedOption === 'getRewardButtonHiRisk'
+                  }
                   onChange={this.onValueChange}
                 />
-                <Text className="select_reward">
-                  {this.props.hiRiskTitle}
-                </Text>
-                <Text fontSize="s" style={{ color: getColor('whiteText'), textAlign: 'right' }}>
-                  {this.props.hiRiskValue}{' '}{'FL'}
+                <Text className="select_reward">{this.props.hiRiskTitle}</Text>
+                <Text
+                  fontSize="s"
+                  style={{ color: getColor('whiteText'), textAlign: 'right' }}
+                >
+                  {this.props.hiRiskValue} {'FL'}
                 </Text>
               </Grid>
             </label>
@@ -162,14 +162,17 @@ class Rewards extends Component {
                 <input
                   type="radio"
                   value="getRewardButtonLowRisk"
-                  checked={this.state.selectedOption === "getRewardButtonLowRisk"}
+                  checked={
+                    this.state.selectedOption === 'getRewardButtonLowRisk'
+                  }
                   onChange={this.onValueChange}
                 />
-                <Text className="select_reward">
-                  {this.props.lowRiskTitle}
-                </Text>
-                <Text fontSize="s" style={{ color: getColor('whiteText'), textAlign: 'right' }}>
-                  {this.props.lowRiskValue}{' '}{'FL'}
+                <Text className="select_reward">{this.props.lowRiskTitle}</Text>
+                <Text
+                  fontSize="s"
+                  style={{ color: getColor('whiteText'), textAlign: 'right' }}
+                >
+                  {this.props.lowRiskValue} {'FL'}
                 </Text>
               </Grid>
             </label>
@@ -183,13 +186,15 @@ class Rewards extends Component {
               <Text fontWeight="semibold" t="smallCaps" color="#A3B2CF">
                 {this.props.onwalletTitle}
               </Text>
-              <Text fontSize="s" style={{ color: getColor('whiteText'), textAlign: 'right' }}>
-                {this.props.onwallet}{' '}{'FL'}
+              <Text
+                fontSize="s"
+                style={{ color: getColor('whiteText'), textAlign: 'right' }}
+              >
+                {this.props.onwallet} {'FL'}
               </Text>
             </Grid>
           </div>
-          {this.state.selectedOption === "getRewardButtonLowRisk" &&
-
+          {this.state.selectedOption === 'getRewardButtonLowRisk' &&
             this.props.buttonLow.map(({ onClick, text }) => (
               <Button
                 className="btn reward_btn"
@@ -199,11 +204,8 @@ class Rewards extends Component {
               >
                 {text}
               </Button>
-            ))
-
-          }
-          {this.state.selectedOption === "getRewardButtonHiRisk" &&
-
+            ))}
+          {this.state.selectedOption === 'getRewardButtonHiRisk' &&
             this.props.buttonHi.map(({ onClick, text }) => (
               <Button
                 className="btn reward_btn"
@@ -213,23 +215,25 @@ class Rewards extends Component {
               >
                 {text}
               </Button>
-            ))
-
-          }
-          {this.state.selectedOption === "getRewardButton" &&
-
+            ))}
+          {this.state.selectedOption === 'getRewardButton' &&
             this.props.button.map(({ onClick, text }) => (
               <Button
                 className="btn reward_btn"
                 style={{ margin: '10px auto 0px', fontSize: '14px' }}
-                disabled={formatter(parseInt(this.props.hiRiskValue) + parseInt(this.props.lowRiskValue)) == 0 ? true : false}
+                disabled={
+                  formatter(
+                    parseInt(this.props.hiRiskValue) +
+                    parseInt(this.props.lowRiskValue)
+                  ) == 0
+                    ? true
+                    : false
+                }
                 onClick={onClick}
               >
                 {text}
               </Button>
-            ))
-
-          }
+            ))}
         </form>
       </Card>
     );
@@ -288,8 +292,8 @@ function Reward({ viewedAddress }) {
     ],
     [
       lang.overview_page.reward_per_hour_hirisk,
-      '0',
-      'FL (APY: ' + 0.00 + ')',
+      '',
+      'Successfully finished!',
       lang.overview_page.reward_epoch + ' ' + hiRiskEpoch,
       null
     ],
@@ -410,10 +414,14 @@ function Reward({ viewedAddress }) {
               title={lang.overview_page.reward_your_info}
               select={lang.overview_page.reward_select}
               hiRiskTitle={lang.overview_page.reward_earned_hirisk}
-              hiRiskValue={formatter(earnedRewardHiRisk ? earnedRewardHiRisk : 0.0)}
+              hiRiskValue={formatter(
+                earnedRewardHiRisk ? earnedRewardHiRisk : 0.0
+              )}
               buttonHi={[getRewardButtonHiRisk]}
               lowRiskTitle={lang.overview_page.reward_earned_lowrisk}
-              lowRiskValue={formatter(earnedRewardLowRisk ? earnedRewardLowRisk : 0.0)}
+              lowRiskValue={formatter(
+                earnedRewardLowRisk ? earnedRewardLowRisk : 0.0
+              )}
               allRewardsTitle={lang.overview_page.reward_all}
               buttonLow={[getRewardButtonLowRisk]}
               button={[getRewardButton]}
@@ -502,13 +510,16 @@ function Reward({ viewedAddress }) {
                     }) => (
                       <Table.tr key={gem}>
                         <Table.td>
-                          <div style={{
-                            width: '10px',
-                            height: '10px',
-                            background: hiRisk ? getColor('cayn') : getColor('blue'),
-                            borderRadius: '50%'
-                          }} />
-
+                          <div
+                            style={{
+                              width: '10px',
+                              height: '10px',
+                              background: hiRisk
+                                ? getColor('cayn')
+                                : getColor('blue'),
+                              borderRadius: '50%'
+                            }}
+                          />
                         </Table.td>
                         <Table.td>
                           <Text
@@ -537,36 +548,31 @@ function Reward({ viewedAddress }) {
                           display={{ s: 'table-cell', xl: 'table-cell' }}
                         >
                           <Text t="caption">
-                            {checkX2(x2, name) ?
-                              formatter(availvalue / 2)
-                              : formatter(availvalue)
-                            }
+                            {checkX2(x2, name)
+                              ? formatter(availvalue / 2)
+                              : formatter(availvalue)}
                           </Text>
                         </Table.td>
                         <Table.td
                           display={{ s: 'table-cell', xl: 'table-cell' }}
                         >
                           <Text t="caption">
-                            {checkX2(x2, name) ?
-                              formatter(lockedvalue / 2)
-                              : formatter(lockedvalue)
-                            }
+                            {checkX2(x2, name)
+                              ? formatter(lockedvalue / 2)
+                              : formatter(lockedvalue)}
                           </Text>
                         </Table.td>
                         <Table.td
                           display={{ s: 'table-cell', xl: 'table-cell' }}
                         >
-                          <Grid
-                            className="buttons_reward"
-                          >
+                          <Grid className="buttons_reward">
                             <Button
                               // variant="secondary-outline"
                               className="btn w100"
                               style={{ margin: '1px auto', fontSize: '12px' }}
                               borderColor="steel"
-                              disabled={checkX2(listFl, name) ?
-                                true
-                                : approveDisabled
+                              disabled={
+                                checkX2(listFl, name) ? true : approveDisabled
                               }
                               onClick={() => {
                                 poolApprove(gem, avail, allowance, hiRisk);
@@ -581,9 +587,8 @@ function Reward({ viewedAddress }) {
                                 className="btn w100 x2"
                                 style={{ margin: '1px auto', fontSize: '12px' }}
                                 borderColor="steel"
-                                disabled={checkX2(listFl, name) ?
-                                  true
-                                  : lockDisabled
+                                disabled={
+                                  checkX2(listFl, name) ? true : lockDisabled
                                 }
                                 onClick={() => {
                                   showAction({
@@ -606,9 +611,8 @@ function Reward({ viewedAddress }) {
                                 className="btn w100"
                                 style={{ margin: '1px auto', fontSize: '12px' }}
                                 borderColor="steel"
-                                disabled={checkX2(listFl, name) ?
-                                  true
-                                  : lockDisabled
+                                disabled={
+                                  checkX2(listFl, name) ? true : lockDisabled
                                 }
                                 onClick={() => {
                                   showAction({
