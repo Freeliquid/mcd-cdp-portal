@@ -19,6 +19,7 @@ import { ReactComponent as CommunityIcon } from 'images/landing/land_com.svg';
 import { ReactComponent as ImgPoolsUsdl } from 'images/landing/pools_to_usdl_full.svg';
 import { ReactComponent as Play } from 'images/landing/pl_vdo.svg';
 import { ReactComponent as RdPoint } from 'images/landing/rd_point.svg';
+import { ReactComponent as RdPointP } from 'images/landing/rd_point_p.svg';
 import Line from 'images/landing/line.png';
 import BannerSwop from 'images/landing/banner_swop.svg';
 import BannerBinance from 'images/landing/banner_binance.svg';
@@ -492,6 +493,14 @@ const RoadMap = styled.div`
     margin-top: 85px;
     padding-right: 100px;
   }
+  .rd_block5 {
+   margin-top: 245px;
+    padding-right: 100px;
+    gap: 10px;
+    display: flex;
+    align-items: flex-end;
+
+  }
   .rd_block4 p {
     font-size: 16px;
   }
@@ -517,6 +526,10 @@ const RoadMap = styled.div`
       padding-left: 0px;
     }
     .rd_block4 {
+      padding-right: 0px;
+    }
+     .rd_block5 {
+       display: none;
       padding-right: 0px;
     }
   }
@@ -659,24 +672,24 @@ function Landing() {
         >
           <Banner>
             <div className="wrap_banner_fl">
-                <div className="wrap_text">
-                  {lang.formatString(lang.landing_page.banner_swop_text,
-              <Link
-                className="banner_link"
-                href="https://swop.fi"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-               {lang.landing_page.banner_swop_link}
-              </Link>,
-              <Text style={{
-                fontSize:'17px',
-                fontWeight: 'bold'
-              }}>
-                {lang.landing_page.banner_swop_text2}
-              </Text>
-            )}
-                </div>
+              <div className="wrap_text">
+                {lang.formatString(lang.landing_page.banner_swop_text,
+                  <Link
+                    className="banner_link"
+                    href="https://swop.fi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {lang.landing_page.banner_swop_link}
+                  </Link>,
+                  <Text style={{
+                    fontSize: '17px',
+                    fontWeight: 'bold'
+                  }}>
+                    {lang.landing_page.banner_swop_text2}
+                  </Text>
+                )}
+              </div>
             </div>
           </Banner>
           <Banner>
@@ -882,6 +895,12 @@ function Landing() {
                   </ul>
                 </Text.h5>
               </div>
+              <div className="rd_block5">
+                <RdPoint className="rd_point" />
+                - ready
+                <RdPointP className="rd_point" />
+                - in progress
+              </div>
             </div>
             <div className="rd_block2">
               <RdPoint className="rd_point2" />
@@ -905,6 +924,31 @@ function Landing() {
                   </ul>
                 </Text.h5>
               </div>
+              <br />
+              <div className="rd_block3">
+                <RdPointP className="rd_point" />
+                <Text.h5>
+                  {lang.landing_page.rd_b2_3}
+                </Text.h5>
+              </div>
+              <br />
+              <div className="rd_block3">
+                <RdPointP className="rd_point" />
+                <Text.h5>
+                  {lang.landing_page.rd_b2_4}
+                  <ul>
+                    <li>{lang.landing_page.rd_b2_5}</li>
+                  </ul>
+                </Text.h5>
+              </div>
+              <br />
+              <div className="rd_block3">
+                <RdPointP className="rd_point" />
+                <Text.h5>
+                  {lang.landing_page.rd_b2_6}
+                </Text.h5>
+              </div>
+              <br />
               <div className="rd_block4">
                 <p>{lang.landing_page.rd_note}</p>
               </div>
