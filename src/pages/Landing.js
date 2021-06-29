@@ -23,6 +23,7 @@ import { ReactComponent as RdPointP } from 'images/landing/rd_point_p.svg';
 import Line from 'images/landing/line.png';
 import BannerSwop from 'images/landing/banner_swop.svg';
 import BannerBinance from 'images/landing/banner_binance.svg';
+import BannerBridge from 'images/landing/bg_bridge3.png';
 
 import { Box, Flex, Text, Grid } from '@makerdao/ui-components-core';
 import Modal from 'react-modal';
@@ -494,12 +495,11 @@ const RoadMap = styled.div`
     padding-right: 100px;
   }
   .rd_block5 {
-   margin-top: 245px;
+    margin-top: 245px;
     padding-right: 100px;
     gap: 10px;
     display: flex;
     align-items: flex-end;
-
   }
   .rd_block4 p {
     font-size: 16px;
@@ -528,8 +528,8 @@ const RoadMap = styled.div`
     .rd_block4 {
       padding-right: 0px;
     }
-     .rd_block5 {
-       display: none;
+    .rd_block5 {
+      display: none;
       padding-right: 0px;
     }
   }
@@ -538,7 +538,7 @@ const Banner = styled.div`
   .wrap_banner_fl {
     min-height: 135px;
     background-image: url(${BannerSwop});
-    background-color: #12A17E;
+    background-color: #12a17e;
     padding: 30px 250px 30px 35px;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -553,11 +553,11 @@ const Banner = styled.div`
     text-align: left;
   }
   .wrap_banner_binance {
-     min-height: 135px;
-    background-image: url(${BannerBinance});
+    min-height: 135px;
+    background-image: url(${BannerBridge});
     background-color: #343840;
-    padding: 30px 170px 30px 35px;
-    background-size: 75%;
+    padding: 30px 99px 30px 35px;
+    background-size: 100%;
     background-repeat: no-repeat;
     display: grid;
     grid-template-columns: 1fr;
@@ -565,7 +565,7 @@ const Banner = styled.div`
     -webkit-box-align: left;
     -ms-flex-align: left;
     align-items: left;
-    background-position: 220px -122px;
+    background-position: 0px -122px;
     border-radius: 20px;
     text-align: left;
   }
@@ -595,8 +595,8 @@ const Banner = styled.div`
       grid-gap: 20px;
       background-image: url(${BannerSwop});
       border-radius: 25px;
-     background-position: 225px -50px;
-    background-size: 100%;
+      background-position: 225px -50px;
+      background-size: 100%;
       padding: 20px 112px 25px 25px;
       text-align: left;
     }
@@ -605,10 +605,10 @@ const Banner = styled.div`
       display: grid;
       grid-template-columns: 1fr;
       grid-gap: 20px;
-      background-image: url(${BannerBinance});
+      background-image: url(${BannerBridge});
       border-radius: 25px;
-      background-position: 175px -18px;
-      background-size: 70%;
+      background-position: 0;
+      background-size: 100%;
       padding: 20px 112px 25px 25px;
       text-align: left;
     }
@@ -619,13 +619,13 @@ const Banner = styled.div`
   @media (min-width: 768px) and (max-width: 1023px) {
     .wrap_banner_fl {
       padding: 30px 200px 30px 30px;
-     background-position: 559px -74px;
-    background-size: 55%;
+      background-position: 559px -74px;
+      background-size: 55%;
     }
     .wrap_banner_binance {
       padding: 30px 200px 30px 30px;
-      background-position: 485px -62px;
-      background-size: 37%;
+      background-position: 0px -202px;
+      background-size: 100%;
     }
   }
   @media (min-width: 1024px) and (max-width: 1199px) {
@@ -634,7 +634,7 @@ const Banner = styled.div`
     }
     .wrap_banner_binance {
       min-height: 160px;
-      background-position: 220px -82px;
+      background-position: 0px -63px;
     }
   }
   @media only screen and (orientation: landscape) and (max-device-width: 768px) {
@@ -673,7 +673,8 @@ function Landing() {
           <Banner>
             <div className="wrap_banner_fl">
               <div className="wrap_text">
-                {lang.formatString(lang.landing_page.banner_swop_text,
+                {lang.formatString(
+                  lang.landing_page.banner_swop_text,
                   <Link
                     className="banner_link"
                     href="https://swop.fi"
@@ -682,10 +683,12 @@ function Landing() {
                   >
                     {lang.landing_page.banner_swop_link}
                   </Link>,
-                  <Text style={{
-                    fontSize: '17px',
-                    fontWeight: 'bold'
-                  }}>
+                  <Text
+                    style={{
+                      fontSize: '17px',
+                      fontWeight: 'bold'
+                    }}
+                  >
                     {lang.landing_page.banner_swop_text2}
                   </Text>
                 )}
@@ -696,13 +699,15 @@ function Landing() {
             <div className="wrap_banner_binance">
               <div>
                 <div className="wrap_text">
-                  {lang.landing_page.banner_binance}
+                   {
+                  lang.landing_page.banner_bridge
+                }
                 </div>
               </div>
               <div>
                 <Link
                   className="banner_link"
-                  href="https://freeliquid.medium.com/freeliquid-proposes-an-expansion-to-bsc-edcc8e8bec9f"
+                  href="https://freeliquid.medium.com/how-to-transfer-fl-token-from-eth-to-bsc-4d7d650c7505"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -898,8 +903,7 @@ function Landing() {
               <div className="rd_block5">
                 <RdPoint className="rd_point" />
                 - ready
-                <RdPointP className="rd_point" />
-                - in progress
+                <RdPointP className="rd_point" />- in progress
               </div>
             </div>
             <div className="rd_block2">
@@ -927,9 +931,7 @@ function Landing() {
               <br />
               <div className="rd_block3">
                 <RdPointP className="rd_point" />
-                <Text.h5>
-                  {lang.landing_page.rd_b2_3}
-                </Text.h5>
+                <Text.h5>{lang.landing_page.rd_b2_3}</Text.h5>
               </div>
               <br />
               <div className="rd_block3">
@@ -944,9 +946,7 @@ function Landing() {
               <br />
               <div className="rd_block3">
                 <RdPointP className="rd_point" />
-                <Text.h5>
-                  {lang.landing_page.rd_b2_6}
-                </Text.h5>
+                <Text.h5>{lang.landing_page.rd_b2_6}</Text.h5>
               </div>
               <br />
               <div className="rd_block4">
