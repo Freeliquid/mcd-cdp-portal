@@ -29,7 +29,7 @@ export default {
     },
     banner_fl: 'FL distribution is in progress. Click here to know about the rewards!',
     banner_binance: 'Freeliquid is expanding to Binance Smart Chain (BSC)! Read more in our proposal:',
-    banner_bridge: 'From now you can transfer yout FL tokens beetween ETH and BSC networks',
+    banner_bridge: 'From now you can transfer your FL tokens beetween ETH and BSC networks',
     banner_bridge_link: 'https://fl-x-swap.freeliquid.io/',
     banner_in_progress: 'Development in progress',
     banner_swop_link: 'swop.fi',
