@@ -1,17 +1,26 @@
 {
-  "supportedNetworkIds": ["1337", "999", "99", "5", "4", "3", "42", "1"],
+  "supportedNetworkIds": [
+    "1337",
+    "999",
+    "99",
+    "5",
+    "4",
+    "3",
+    "42",
+    "1"
+  ],
   "rpcUrls": {
-    "1": "https://mainnet.infura.io/v3/58073b4a32df4105906c702f167b91d2",
-    "42": "https://kovan.infura.io/v3/58073b4a32df4105906c702f167b91d2",
-    "4": "https://rinkeby.infura.io/v3/58073b4a32df4105906c702f167b91d2",
+    "1": "https://mainnet.infura.io/v3/f741f6145a1a4920a8b1d3973f9d143b",
+    "42": "https://kovan.infura.io/v3/f741f6145a1a4920a8b1d3973f9d143b",
+    "4": "https://rinkeby.infura.io/v3/f741f6145a1a4920a8b1d3973f9d143b",
     "999": "http://localhost:2000",
     "99": "http://localhost:8545",
     "1337": "http://localhost:2000"
   },
   "wsRpcUrls": {
-    "1": "wss://mainnet.infura.io/ws/v3/58073b4a32df4105906c702f167b91d2",
-    "42": "wss://kovan.infura.io/ws/v3/58073b4a32df4105906c702f167b91d2",
-    "4": "wss://rinkeby.infura.io/ws/v3/58073b4a32df4105906c702f167b91d2"
+    "1": "wss://mainnet.infura.io/ws/v3/f741f6145a1a4920a8b1d3973f9d143b",
+    "42": "wss://kovan.infura.io/ws/v3/f741f6145a1a4920a8b1d3973f9d143b",
+    "4": "wss://rinkeby.infura.io/ws/v3/f741f6145a1a4920a8b1d3973f9d143b"
   },
   "networkNames": {
     "1": "mainnet",
@@ -35,7 +44,14 @@
   },
   "defaultNetwork": "1",
   "exTestchainApiUrl": "http://localhost:4000/chain",
-  "showWalletTokens": ["USDFL", "USDTUSDC", "USDCDAI", "USDTDAI", "USDTUSDN", "CRV_3POOL"],
+  "showWalletTokens": [
+    "USDFL",
+    "USDTUSDC",
+    "USDCDAI",
+    "USDTDAI",
+    "USDTUSDN",
+    "CRV_3POOL"
+  ],
   "trackingPages": {
     "Overview": "Overview",
     "CDP": "Dashboard",
