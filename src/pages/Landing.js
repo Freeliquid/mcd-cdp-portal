@@ -474,6 +474,9 @@ const RoadMap = styled.div`
     text-align: left;
     padding-left: 120px;
   }
+  .rd_block_one {
+    width: 90% !important;
+  }
   .rd_block2 {
     width: 50%;
     text-align: left;
@@ -482,6 +485,10 @@ const RoadMap = styled.div`
   .rd_block3 {
     display: grid;
     grid-template-columns: 1fr 8fr;
+  }
+  .rd_block3_one {
+    display: grid;
+    grid-template-columns: 1fr 14fr;
   }
   .rd_point {
     margin-top: 8px;
@@ -495,7 +502,7 @@ const RoadMap = styled.div`
     padding-right: 100px;
   }
   .rd_block5 {
-    margin-top: 245px;
+    margin-top: 45px;
     padding-right: 100px;
     gap: 10px;
     display: flex;
@@ -532,6 +539,10 @@ const RoadMap = styled.div`
       display: none;
       padding-right: 0px;
     }
+    .rd_block3_one {
+
+    grid-template-columns: 1fr 8fr;
+  }
   }
 `;
 const Banner = styled.div`
@@ -699,9 +710,7 @@ function Landing() {
             <div className="wrap_banner_binance">
               <div>
                 <div className="wrap_text">
-                   {
-                  lang.landing_page.banner_bridge
-                }
+                  {lang.landing_page.banner_bridge}
                 </div>
               </div>
               <div>
@@ -729,7 +738,7 @@ function Landing() {
                 <div className="buttonContainer">
                   <Link href="/borrow" className="button-link">
                     <FilledButton className="button_p">
-                      {lang.landing_page.get_start}
+                      {lang.landing_page.launch_app}
                     </FilledButton>
                   </Link>
                 </div>
@@ -900,11 +909,6 @@ function Landing() {
                   </ul>
                 </Text.h5>
               </div>
-              <div className="rd_block5">
-                <RdPoint className="rd_point" />
-                - ready
-                <RdPointP className="rd_point" />- in progress
-              </div>
             </div>
             <div className="rd_block2">
               <RdPoint className="rd_point2" />
@@ -930,12 +934,12 @@ function Landing() {
               </div>
               <br />
               <div className="rd_block3">
-                <RdPointP className="rd_point" />
+                <RdPoint className="rd_point" />
                 <Text.h5>{lang.landing_page.rd_b2_3}</Text.h5>
               </div>
               <br />
               <div className="rd_block3">
-                <RdPointP className="rd_point" />
+                <RdPoint className="rd_point" />
                 <Text.h5>
                   {lang.landing_page.rd_b2_4}
                   <ul>
@@ -945,13 +949,48 @@ function Landing() {
               </div>
               <br />
               <div className="rd_block3">
-                <RdPointP className="rd_point" />
+                <RdPoint className="rd_point" />
                 <Text.h5>{lang.landing_page.rd_b2_6}</Text.h5>
               </div>
-              <br />
-              <div className="rd_block4">
-                <p>{lang.landing_page.rd_note}</p>
-              </div>
+            </div>
+          </div>
+          <div className="rd_img">
+            <img src={Line} alt="img line" />
+          </div>
+          <div className="rd_block rd_block_one">
+            <RdPoint className="rd_point2" />
+            <Text.h3>{lang.landing_page.rd_q3}</Text.h3>
+            <div className="rd_block3 rd_block3_one">
+              <RdPointP className="rd_point" />
+              <Text.h5>
+                {lang.landing_page.rd_b3_1}
+              </Text.h5>
+            </div>
+            <br />
+            <div className="rd_block3 rd_block3_one">
+              <RdPointP className="rd_point" />
+              <Text.h5>
+                {lang.landing_page.rd_b3_2}
+                <ul>
+                  <li>{lang.landing_page.rd_b3_2_1}</li>
+                </ul>
+              </Text.h5>
+            </div>
+            <br />
+            <div className="rd_block3 rd_block3_one">
+              <RdPointP className="rd_point" />
+              <Text.h5>
+                {lang.landing_page.rd_b3_3}
+                <ul>
+                  <li>{lang.landing_page.rd_b3_3_1}</li>
+                </ul>
+              </Text.h5>
+            </div>
+            <br />
+            <div className="rd_block5">
+              <RdPoint className="rd_point" />
+              - ready
+              <RdPointP className="rd_point" />- in progress
             </div>
           </div>
         </RoadMap>
