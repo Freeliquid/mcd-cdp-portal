@@ -540,9 +540,8 @@ const RoadMap = styled.div`
       padding-right: 0px;
     }
     .rd_block3_one {
-
-    grid-template-columns: 1fr 8fr;
-  }
+      grid-template-columns: 1fr 8fr;
+    }
   }
 `;
 const Banner = styled.div`
@@ -924,7 +923,7 @@ function Landing() {
               </div>
               <br />
               <div className="rd_block3">
-                <RdPoint className="rd_point" />
+                <RdPointP className="rd_point" />
                 <Text.h5>
                   {lang.landing_page.rd_b2_2}
                   <ul>
@@ -962,9 +961,7 @@ function Landing() {
             <Text.h3>{lang.landing_page.rd_q3}</Text.h3>
             <div className="rd_block3 rd_block3_one">
               <RdPointP className="rd_point" />
-              <Text.h5>
-                {lang.landing_page.rd_b3_1}
-              </Text.h5>
+              <Text.h5>{lang.landing_page.rd_b3_1}</Text.h5>
             </div>
             <br />
             <div className="rd_block3 rd_block3_one">
