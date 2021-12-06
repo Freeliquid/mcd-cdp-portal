@@ -54,6 +54,7 @@ export default {
     headline: 'Borrow and save using USDFL',
     rd_link: 'Roadmap',
     rd_title: 'Roadmap 2021',
+    rd2_title: '2022',
     rd_q1: 'Q1',
     rd_q2: 'Q2',
     rd_q3: 'Q3',
@@ -79,6 +80,10 @@ export default {
     rd_b3_1_1: '',
     rd_b3_2_1: '- Support of Ellipsis.finance LP tokens in Freeliquid Borrow',
     rd_b3_3_1: '- Further updates will be added soon',
+    rd_b4_1: 'Launching USDFL Surplus Auction:',
+    rd_b4_2: 'Launching new platform (Kashi framework)',
+    rd_b4_1_1: '- The winning bidder pays FL for surplus USDFL from stability fees. The FL received is burnt, thereby reducing the amount of FL in circulation',
+    rd_b4_2_1: '- Allows any user to exchange USDFL for USDN in a 1:1 aspirant ratio',
     rd_note: 'Note: Changes to the Protocol parameters are possible only after a successful community vote',
     trade_card: {
       title: 'Trade',

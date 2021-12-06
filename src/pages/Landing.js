@@ -956,39 +956,65 @@ function Landing() {
           <div className="rd_img">
             <img src={Line} alt="img line" />
           </div>
-          <div className="rd_block rd_block_one">
-            <RdPoint className="rd_point2" />
-            <Text.h3>{lang.landing_page.rd_q3}</Text.h3>
-            <div className="rd_block3 rd_block3_one">
-              <RdPointP className="rd_point" />
-              <Text.h5>{lang.landing_page.rd_b3_1}</Text.h5>
+          <div className="div_wrap">
+            <div className="rd_block">
+              <RdPoint className="rd_point2" />
+              <Text.h3>{lang.landing_page.rd_q3}</Text.h3>
+              <div className="rd_block3">
+                <RdPointP className="rd_point" />
+                <Text.h5>{lang.landing_page.rd_b3_1}</Text.h5>
+              </div>
+              <br />
+              <div className="rd_block3">
+                <RdPointP className="rd_point" />
+                <Text.h5>
+                  {lang.landing_page.rd_b3_2}
+                  <ul>
+                    <li>{lang.landing_page.rd_b3_2_1}</li>
+                  </ul>
+                </Text.h5>
+              </div>
+              <br />
+              <div className="rd_block3">
+                <RdPointP className="rd_point" />
+                <Text.h5>
+                  {lang.landing_page.rd_b3_3}
+                  <ul>
+                    <li>{lang.landing_page.rd_b3_3_1}</li>
+                  </ul>
+                </Text.h5>
+              </div>
             </div>
-            <br />
-            <div className="rd_block3 rd_block3_one">
-              <RdPointP className="rd_point" />
-              <Text.h5>
-                {lang.landing_page.rd_b3_2}
-                <ul>
-                  <li>{lang.landing_page.rd_b3_2_1}</li>
-                </ul>
-              </Text.h5>
+            <div className="rd_block2">
+              <RdPoint className="rd_point2" />
+              <Text.h3>{lang.landing_page.rd_q4}</Text.h3>
+              <div className="rd_block3">
+                <RdPointP className="rd_point" />
+                <Text.h5>
+                  {lang.landing_page.rd_b4_1}
+                  <ul>
+                    <li>{lang.landing_page.rd_b4_1_1}</li>
+                  </ul>
+                </Text.h5>
+              </div>
+              <br />
+              <div className="rd_block3">
+                <RdPointP className="rd_point" />
+                <Text.h5>
+                  {lang.landing_page.rd_b4_2}
+                  <ul>
+                    <li>{lang.landing_page.rd_b4_2_1}</li>
+                  </ul>
+                </Text.h5>
+              </div>
+              <br />
             </div>
-            <br />
-            <div className="rd_block3 rd_block3_one">
-              <RdPointP className="rd_point" />
-              <Text.h5>
-                {lang.landing_page.rd_b3_3}
-                <ul>
-                  <li>{lang.landing_page.rd_b3_3_1}</li>
-                </ul>
-              </Text.h5>
-            </div>
-            <br />
-            <div className="rd_block5">
-              <RdPoint className="rd_point" />
-              - ready
-              <RdPointP className="rd_point" />- in progress
-            </div>
+          </div>
+
+          <div className="rd_block5">
+            <RdPoint className="rd_point" />
+            - ready
+            <RdPointP className="rd_point" />- in progress
           </div>
         </RoadMap>
         <Box mt={{ s: '126px', m: '89px' }} px={{ s: '10px', m: 0 }}>
